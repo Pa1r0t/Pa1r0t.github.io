@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hexo</title>
+  <title>Pa1r0t_bolg</title>
   
+  <subtitle>bolg</subtitle>
+  <link href="https://pa1r0t.github.io/atom.xml" rel="self"/>
   
-  <link href="http://example.com/atom.xml" rel="self"/>
-  
-  <link href="http://example.com/"/>
+  <link href="https://pa1r0t.github.io/"/>
   <updated>2022-11-05T14:58:47.208Z</updated>
-  <id>http://example.com/</id>
+  <id>https://pa1r0t.github.io/</id>
   
   <author>
-    <name>John Doe</name>
+    <name>Pa1r0t_9e</name>
     
   </author>
   
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://example.com/2022/11/05/hello-world/"/>
-    <id>http://example.com/2022/11/05/hello-world/</id>
+    <link href="https://pa1r0t.github.io/2022/11/05/hello-world/"/>
+    <id>https://pa1r0t.github.io/2022/11/05/hello-world/</id>
     <published>2022-11-05T14:58:47.208Z</published>
     <updated>2022-11-05T14:58:47.208Z</updated>
     
