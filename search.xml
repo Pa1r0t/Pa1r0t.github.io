@@ -1,10 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
+    <title>对安卓逆向的理解</title>
+    <url>/2022/11/07/%E5%AF%B9%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E7%9A%84%E7%90%86%E8%A7%A3/</url>
+    <content><![CDATA[<p>安卓逆向是什么？<br>目前百度知道都没有收录安卓逆向这个词条，大部分能搜索到的资料都是技术人员写的偏技术类的文章，往往充斥着代码和各类工具集合，非技术人员一看就比较懵逼。</p>
+<span id="more"></span>
+
+<p>简单地来说，安卓逆向是对已经打包好的APP进行反编译、源码分析了解APP实现逻辑的一门技术。我们可以把安卓安装时用到的APK文件看作一个加密后的压缩包，逆向就是要最大程序地还原出APK打包之前的源码。</p>
+<p>逆向需要用到解密、反编译、解压缩等技术，想要100%还原APK的源码几乎是不可能的，所以在实际进行逆向分析的时候，一般都是根据想实现的目的，分析出APK的部分源码和实现逻辑，然后对这一部分源码进行修改后与原始的APK打包在一起，这样就获得了一个实现自己特定目的的APP。</p>
+<p>安卓逆向到底能做什么？<br>APP自动化执行程序脚本<br>比如有这么一个场景：某APP在某天某一时刻将推广一个领代金券的活动，只要登录账号，进入领取页面即可领取一张面额100元的无门槛代金券。很显然，这是一个可以撸羊毛的活动，如果我收集了100个账号，在那天利用某些手段确保每个账号抢到一张代金券，那我就能抢到100*100&#x3D;10000元的代金券，再利用网络把这些券打7折卖出去，就能赚个7000块，是不是很爽？！通过安卓逆向分析，我就能把登录、领券的动作做成一个自动化执行的插件，我先把所有账号和密码保存起来备用，到了领券的开放时间，立即自动登录、领券，一个账号领券完，自动切换登录另一个账号，一气呵成就把所有账号的券都领到手。这就是安卓逆向的用途之一，可以自动化批量执行APP的一系列动作。类似地，如果想实现批量登录账号、点赞、评论，同样也是可以的。</p>
+<p>修改APP的功能<br>不知道大家有没有遇到过，有些APP经常提示要更新，有些必须强制更新才能使用，可我就是不想更新，这时候也可以用逆向技术来实现修改APP的某些功能。通过逆向分析，找到触发更新的代码，然后把它屏蔽掉，这样打开APP后就再也不会提示更新了。</p>
+<p>安卓逆向学习路线<br>以下是笔者自学笔记，以破解某目标apk的方式进行学习，中间辅以原理性知识，方便面试需求。</p>
+<p>Android逆向入门流程<br>获取目标apk<br>确定逆向目标<br>拖动目标文件到集成工具<br>加固<br>集成工具分析<br>减少混淆干扰<br>定位目标<br>分析业务逻辑<br>确定逆向方法<br>使用apktool进行反编译<br>得到.smali<br>源码调试<br>回编译app<br>签名</p>
+]]></content>
+      <categories>
+        <category>android_re</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>简介</title>
     <url>/2022/11/05/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+    <content><![CDATA[<h2 id="大家好，欢迎来到我的blog，哈哈哈"><a href="#大家好，欢迎来到我的blog，哈哈哈" class="headerlink" title="大家好，欢迎来到我的blog，哈哈哈"></a>大家好，欢迎来到我的blog，哈哈哈</h2><span id="more"></span>
+
+
+
+<h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
 <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
