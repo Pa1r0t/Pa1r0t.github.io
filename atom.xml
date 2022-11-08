@@ -6,7 +6,7 @@
   <link href="https://pa1r0t.github.io/atom.xml" rel="self"/>
   
   <link href="https://pa1r0t.github.io/"/>
-  <updated>2022-11-07T09:25:44.468Z</updated>
+  <updated>2022-11-07T10:06:48.095Z</updated>
   <id>https://pa1r0t.github.io/</id>
   
   <author>
@@ -15,6 +15,19 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ctf</title>
+    <link href="https://pa1r0t.github.io/2022/11/07/ctf-1/"/>
+    <id>https://pa1r0t.github.io/2022/11/07/ctf-1/</id>
+    <published>2022-11-07T10:06:48.000Z</published>
+    <updated>2022-11-07T10:06:48.095Z</updated>
+    
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>对安卓逆向的理解</title>
