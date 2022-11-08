@@ -6,7 +6,7 @@
   <link href="https://pa1r0t.github.io/atom.xml" rel="self"/>
   
   <link href="https://pa1r0t.github.io/"/>
-  <updated>2022-11-07T10:06:48.095Z</updated>
+  <updated>2022-11-08T08:41:07.497Z</updated>
   <id>https://pa1r0t.github.io/</id>
   
   <author>
@@ -17,14 +17,20 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>ctf</title>
-    <link href="https://pa1r0t.github.io/2022/11/07/ctf-1/"/>
-    <id>https://pa1r0t.github.io/2022/11/07/ctf-1/</id>
-    <published>2022-11-07T10:06:48.000Z</published>
-    <updated>2022-11-07T10:06:48.095Z</updated>
+    <title>ctf介绍</title>
+    <link href="https://pa1r0t.github.io/2022/11/08/ctf%E4%BB%8B%E7%BB%8D/"/>
+    <id>https://pa1r0t.github.io/2022/11/08/ctf%E4%BB%8B%E7%BB%8D/</id>
+    <published>2022-11-08T08:19:16.000Z</published>
+    <updated>2022-11-08T08:41:07.497Z</updated>
+    
+    <content type="html"><![CDATA[<p>CTF（Capture The Flag）中文一般译作夺旗赛，在网络安全领域中指的是网络安全技术人员之间进行技术竞技的一种比赛形式。</p><span id="more"></span><p>CTF竞赛模式具体分为以下三类：</p><p>一、解题模式（Jeopardy）</p><p>在解题模式CTF赛制中，参赛队伍可以通过互联网或者现场网络参与，这种模式的CTF竞赛与ACM编程竞赛、<a href="https://baike.baidu.com/item/%E4%BF%A1%E6%81%AF%E5%AD%A6%E5%A5%A5%E8%B5%9B/1147921?fromModule=lemma_inlink">信息学奥赛</a>比较类似，以解决网络安全技术挑战题目的分值和时间来排名，通常用于在线选拔赛。题目主要包含逆向、漏洞挖掘与利用、Web渗透、密码、取证、隐写、安全编程等类别。</p><p>二、攻防模式（Attack-Defense）</p><p>在攻防模式CTF赛制中，参赛队伍在网络空间互相进行攻击和防守，挖掘网络服务漏洞并攻击对手服务来得分，修补自身服务漏洞进行防御来避免丢分。攻防模式CTF赛制可以实时通过得分反映出比赛情况，最终也以得分直接分出胜负，是一种竞争激烈，具有很强观赏性和高度透明性的网络安全赛制。在这种赛制中，不仅仅是比参赛队员的智力和技术，也比体力（因为比赛一般都会持续48小时及以上），同时也比团队之间的分工配合与合作。 [1] </p><p>三、混合模式（Mix）</p><p>结合了解题模式与攻防模式的CTF<a href="https://baike.baidu.com/item/%E8%B5%9B%E5%88%B6/8176373?fromModule=lemma_inlink">赛制</a>，比如参赛队伍通过解题可以获取一些初始分数，然后通过攻防对抗进行得分增减的零和游戏，最终以得分高低分出胜负。采用混合模式CTF赛制的典型代表如iCTF国际CTF竞赛。</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;CTF（Capture The Flag）中文一般译作夺旗赛，在网络安全领域中指的是网络安全技术人员之间进行技术竞技的一种比赛形式。&lt;/p&gt;</summary>
     
     
     
+    <category term="ctf" scheme="https://pa1r0t.github.io/categories/ctf/"/>
     
     
   </entry>
@@ -34,7 +40,7 @@
     <link href="https://pa1r0t.github.io/2022/11/07/%E5%AF%B9%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E7%9A%84%E7%90%86%E8%A7%A3/"/>
     <id>https://pa1r0t.github.io/2022/11/07/%E5%AF%B9%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E7%9A%84%E7%90%86%E8%A7%A3/</id>
     <published>2022-11-07T07:29:56.000Z</published>
-    <updated>2022-11-07T09:25:44.468Z</updated>
+    <updated>2022-11-08T09:01:37.693Z</updated>
     
     <content type="html"><![CDATA[<p>安卓逆向是什么？<br>目前百度知道都没有收录安卓逆向这个词条，大部分能搜索到的资料都是技术人员写的偏技术类的文章，往往充斥着代码和各类工具集合，非技术人员一看就比较懵逼。</p><span id="more"></span><p>简单地来说，安卓逆向是对已经打包好的APP进行反编译、源码分析了解APP实现逻辑的一门技术。我们可以把安卓安装时用到的APK文件看作一个加密后的压缩包，逆向就是要最大程序地还原出APK打包之前的源码。</p><p>逆向需要用到解密、反编译、解压缩等技术，想要100%还原APK的源码几乎是不可能的，所以在实际进行逆向分析的时候，一般都是根据想实现的目的，分析出APK的部分源码和实现逻辑，然后对这一部分源码进行修改后与原始的APK打包在一起，这样就获得了一个实现自己特定目的的APP。</p><p>安卓逆向到底能做什么？<br>APP自动化执行程序脚本<br>比如有这么一个场景：某APP在某天某一时刻将推广一个领代金券的活动，只要登录账号，进入领取页面即可领取一张面额100元的无门槛代金券。很显然，这是一个可以撸羊毛的活动，如果我收集了100个账号，在那天利用某些手段确保每个账号抢到一张代金券，那我就能抢到100*100&#x3D;10000元的代金券，再利用网络把这些券打7折卖出去，就能赚个7000块，是不是很爽？！通过安卓逆向分析，我就能把登录、领券的动作做成一个自动化执行的插件，我先把所有账号和密码保存起来备用，到了领券的开放时间，立即自动登录、领券，一个账号领券完，自动切换登录另一个账号，一气呵成就把所有账号的券都领到手。这就是安卓逆向的用途之一，可以自动化批量执行APP的一系列动作。类似地，如果想实现批量登录账号、点赞、评论，同样也是可以的。</p><p>修改APP的功能<br>不知道大家有没有遇到过，有些APP经常提示要更新，有些必须强制更新才能使用，可我就是不想更新，这时候也可以用逆向技术来实现修改APP的某些功能。通过逆向分析，找到触发更新的代码，然后把它屏蔽掉，这样打开APP后就再也不会提示更新了。</p><p>安卓逆向学习路线<br>以下是笔者自学笔记，以破解某目标apk的方式进行学习，中间辅以原理性知识，方便面试需求。</p><p>Android逆向入门流程<br>获取目标apk<br>确定逆向目标<br>拖动目标文件到集成工具<br>加固<br>集成工具分析<br>减少混淆干扰<br>定位目标<br>分析业务逻辑<br>确定逆向方法<br>使用apktool进行反编译<br>得到.smali<br>源码调试<br>回编译app<br>签名</p>]]></content>
     
@@ -43,24 +49,7 @@
     
     
     
-    <category term="android_re" scheme="https://pa1r0t.github.io/categories/android-re/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>简介</title>
-    <link href="https://pa1r0t.github.io/2022/11/05/hello-world/"/>
-    <id>https://pa1r0t.github.io/2022/11/05/hello-world/</id>
-    <published>2022-11-05T14:58:47.208Z</published>
-    <updated>2022-11-07T07:34:40.753Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="大家好，欢迎来到我的blog，哈哈哈"><a href="#大家好，欢迎来到我的blog，哈哈哈" class="headerlink" title="大家好，欢迎来到我的blog，哈哈哈"></a>大家好，欢迎来到我的blog，哈哈哈</h2><span id="more"></span><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;大家好，欢迎来到我的blog，哈哈哈&quot;&gt;&lt;a href=&quot;#大家好，欢迎来到我的blog，哈哈哈&quot; class=&quot;headerlink&quot; title=&quot;大家好，欢迎来到我的blog，哈哈哈&quot;&gt;&lt;/a&gt;大家好，欢迎来到我的blog，哈哈哈&lt;/h2&gt;</summary>
-    
-    
+    <category term="re" scheme="https://pa1r0t.github.io/categories/re/"/>
     
     
   </entry>

@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>ctf</title>
-    <url>/2022/11/07/ctf-1/</url>
-    <content><![CDATA[]]></content>
+    <title>ctf介绍</title>
+    <url>/2022/11/08/ctf%E4%BB%8B%E7%BB%8D/</url>
+    <content><![CDATA[<p>CTF（Capture The Flag）中文一般译作夺旗赛，在网络安全领域中指的是网络安全技术人员之间进行技术竞技的一种比赛形式。</p>
+<span id="more"></span>
+
+<p>CTF竞赛模式具体分为以下三类：</p>
+<p>一、解题模式（Jeopardy）</p>
+<p>在解题模式CTF赛制中，参赛队伍可以通过互联网或者现场网络参与，这种模式的CTF竞赛与ACM编程竞赛、<a href="https://baike.baidu.com/item/%E4%BF%A1%E6%81%AF%E5%AD%A6%E5%A5%A5%E8%B5%9B/1147921?fromModule=lemma_inlink">信息学奥赛</a>比较类似，以解决网络安全技术挑战题目的分值和时间来排名，通常用于在线选拔赛。题目主要包含逆向、漏洞挖掘与利用、Web渗透、密码、取证、隐写、安全编程等类别。</p>
+<p>二、攻防模式（Attack-Defense）</p>
+<p>在攻防模式CTF赛制中，参赛队伍在网络空间互相进行攻击和防守，挖掘网络服务漏洞并攻击对手服务来得分，修补自身服务漏洞进行防御来避免丢分。攻防模式CTF赛制可以实时通过得分反映出比赛情况，最终也以得分直接分出胜负，是一种竞争激烈，具有很强观赏性和高度透明性的网络安全赛制。在这种赛制中，不仅仅是比参赛队员的智力和技术，也比体力（因为比赛一般都会持续48小时及以上），同时也比团队之间的分工配合与合作。 [1] </p>
+<p>三、混合模式（Mix）</p>
+<p>结合了解题模式与攻防模式的CTF<a href="https://baike.baidu.com/item/%E8%B5%9B%E5%88%B6/8176373?fromModule=lemma_inlink">赛制</a>，比如参赛队伍通过解题可以获取一些初始分数，然后通过攻防对抗进行得分增减的零和游戏，最终以得分高低分出胜负。采用混合模式CTF赛制的典型代表如iCTF国际CTF竞赛。</p>
+]]></content>
+      <categories>
+        <category>ctf</category>
+      </categories>
   </entry>
   <entry>
     <title>对安卓逆向的理解</title>
@@ -19,28 +32,7 @@
 <p>Android逆向入门流程<br>获取目标apk<br>确定逆向目标<br>拖动目标文件到集成工具<br>加固<br>集成工具分析<br>减少混淆干扰<br>定位目标<br>分析业务逻辑<br>确定逆向方法<br>使用apktool进行反编译<br>得到.smali<br>源码调试<br>回编译app<br>签名</p>
 ]]></content>
       <categories>
-        <category>android_re</category>
+        <category>re</category>
       </categories>
-  </entry>
-  <entry>
-    <title>简介</title>
-    <url>/2022/11/05/hello-world/</url>
-    <content><![CDATA[<h2 id="大家好，欢迎来到我的blog，哈哈哈"><a href="#大家好，欢迎来到我的blog，哈哈哈" class="headerlink" title="大家好，欢迎来到我的blog，哈哈哈"></a>大家好，欢迎来到我的blog，哈哈哈</h2><span id="more"></span>
-
-
-
-<h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
   </entry>
 </search>
