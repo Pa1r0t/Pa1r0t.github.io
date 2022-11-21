@@ -38,21 +38,22 @@
   <entry>
     <title>安徽省赛</title>
     <url>/2022/11/21/%E5%AE%89%E5%BE%BD%E7%9C%81%E8%B5%9B/</url>
-    <content><![CDATA[<h3 id="安徽省赛只有一个小时，我吐了，脚本都来不及写。。。。赛后才把flag搞出来"><a href="#安徽省赛只有一个小时，我吐了，脚本都来不及写。。。。赛后才把flag搞出来" class="headerlink" title="安徽省赛只有一个小时，我吐了，脚本都来不及写。。。。赛后才把flag搞出来"></a>安徽省赛只有一个小时，我吐了，脚本都来不及写。。。。赛后才把flag搞出来</h3><span id="more"></span>
+    <content><![CDATA[<p>安徽省赛只有一个小时，我吐了，脚本都来不及写。。。。赛后才把flag搞出来</p>
+<span id="more"></span>
 
 <p>呃，</p>
 <p>我其实也是第一次见这么庞大的迷宫，一共4384个格~~</p>
 <p>这里看见一行66</p>
-<p><img src="D:\Pa1r0t_blog\source_posts\安徽省赛.assets\image-20221121141926479.png" alt="image-20221121141926479"></p>
+<p><img src="/.%5C%E5%AE%89%E5%BE%BD%E7%9C%81%E8%B5%9B.assets%5Cimage-20221121141926479.png" alt="image-20221121141926479"></p>
 <p>代码逻辑很简单，这里不做过多介绍</p>
 <p><em>&#x2F;我原先的脚本的思路是走到错的地方再返回，导致效率太低，跑了好久都没跑出来&#x2F;</em></p>
 <p>赛后我还未想好该怎么优化我的深搜算法，所以就进行了一波手工画图。。。。。。。。</p>
-<h4 id="图1："><a href="#图1：" class="headerlink" title="图1："></a>图1：</h4><p><img src="D:\Pa1r0t_blog\source_posts\安徽省赛.assets\map1.png" alt="map1"></p>
-<h4 id="图二："><a href="#图二：" class="headerlink" title="图二："></a>图二：</h4><p><img src="D:\Pa1r0t_blog\source_posts\安徽省赛.assets\map2.png" alt="map2"></p>
-<h4 id="图三："><a href="#图三：" class="headerlink" title="图三："></a>图三：</h4><p><img src="D:\Pa1r0t_blog\source_posts\安徽省赛.assets\map3.png" alt="map3"></p>
+<h4 id="图1："><a href="#图1：" class="headerlink" title="图1："></a>图1：</h4><p><img src="/.%5C%E5%AE%89%E5%BE%BD%E7%9C%81%E8%B5%9B.assets%5Cmap1.png" alt="map1"></p>
+<h4 id="图二："><a href="#图二：" class="headerlink" title="图二："></a>图二：</h4><p><img src="/.%5C%E5%AE%89%E5%BE%BD%E7%9C%81%E8%B5%9B.assets%5Cmap2.png" alt="map2"></p>
+<h4 id="图三："><a href="#图三：" class="headerlink" title="图三："></a>图三：</h4><p><img src="/.%5C%E5%AE%89%E5%BE%BD%E7%9C%81%E8%B5%9B.assets%5Cmap3.png" alt="map3"></p>
 <p>emmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</p>
 <p>然后就根据这个路线，手写路线字符串</p>
-<p><img src="D:\Pa1r0t_blog\source_posts\安徽省赛.assets\image-20221121142752005.png" alt="image-20221121142752005"></p>
+<p><img src="/.%5C%E5%AE%89%E5%BE%BD%E7%9C%81%E8%B5%9B.assets%5Cimage-20221121142752005.png" alt="image-20221121142752005"></p>
 <p>以上是我写的，本办法，太菜了，只能这么搞了</p>
 <hr>
 <p>##下面贴上EDI团队的脚本</p>
