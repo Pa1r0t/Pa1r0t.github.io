@@ -44,16 +44,16 @@
 <p>呃，</p>
 <p>我其实也是第一次见这么庞大的迷宫，一共4384个格~~</p>
 <p>这里看见一行66</p>
-<p><img src="./images/%E5%AE%89%E5%BE%BD%E7%9C%81%E8%B5%9B/image-20221121141926479.png" alt="image-20221121141926479"></p>
+<p><a href="https://imgse.com/i/zQvXfe"><img src="/./images/%E5%AE%89%E5%BE%BD%E7%9C%81%E8%B5%9B/zQvXfe.png" alt="zQvXfe.png"></a></p>
 <p>代码逻辑很简单，这里不做过多介绍</p>
 <p><em>&#x2F;我原先的脚本的思路是走到错的地方再返回，导致效率太低，跑了好久都没跑出来&#x2F;</em></p>
 <p>赛后我还未想好该怎么优化我的深搜算法，所以就进行了一波手工画图。。。。。。。。</p>
-<h4 id="图一："><a href="#图一：" class="headerlink" title="图一："></a>图一：</h4><p><img src="./images/%E5%AE%89%E5%BE%BD%E7%9C%81%E8%B5%9B/map1.png" alt="map1"></p>
-<h4 id="图二："><a href="#图二：" class="headerlink" title="图二："></a>图二：</h4><p><img src="./images/%E5%AE%89%E5%BE%BD%E7%9C%81%E8%B5%9B/map2.png" alt="map2"></p>
-<h4 id="图三："><a href="#图三：" class="headerlink" title="图三："></a>图三：</h4><p><img src="./images/%E5%AE%89%E5%BE%BD%E7%9C%81%E8%B5%9B/map3.png" alt="map3"></p>
+<h4 id="图一："><a href="#图一：" class="headerlink" title="图一："></a>图一：</h4><p><a href="https://imgse.com/i/zQvwWQ"><img src="/./images/%E5%AE%89%E5%BE%BD%E7%9C%81%E8%B5%9B/zQvwWQ.md.png" alt="zQvwWQ.md.png"></a></p>
+<h4 id="图二："><a href="#图二：" class="headerlink" title="图二："></a>图二：</h4><p><a href="https://imgse.com/i/zQv7ex"><img src="/./images/%E5%AE%89%E5%BE%BD%E7%9C%81%E8%B5%9B/zQv7ex.md.png" alt="zQv7ex.md.png"></a></p>
+<h4 id="图三："><a href="#图三：" class="headerlink" title="图三："></a>图三：</h4><p><a href="https://imgse.com/i/zQvHw6"><img src="/./images/%E5%AE%89%E5%BE%BD%E7%9C%81%E8%B5%9B/zQvHw6.md.png" alt="zQvHw6.md.png"></a></p>
 <p>emmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</p>
 <p>然后就根据这个路线，手写路线字符串</p>
-<p><img src="./images/%E5%AE%89%E5%BE%BD%E7%9C%81%E8%B5%9B/image-20221121142752005.png" alt="image-20221121142752005"></p>
+<p><a href="https://imgse.com/i/zQx9mt"><img src="/./images/%E5%AE%89%E5%BE%BD%E7%9C%81%E8%B5%9B/zQx9mt.png" alt="zQx9mt.png"></a></p>
 <p>以上是我写的，本办法，太菜了，只能这么搞了</p>
 <hr>
 <p>##下面贴上EDI团队的脚本</p>
