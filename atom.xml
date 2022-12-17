@@ -6,7 +6,7 @@
   <link href="https://pa1r0t.github.io/atom.xml" rel="self"/>
   
   <link href="https://pa1r0t.github.io/"/>
-  <updated>2022-12-05T03:12:44.452Z</updated>
+  <updated>2022-12-17T13:36:34.076Z</updated>
   <id>https://pa1r0t.github.io/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>re_base1</title>
+    <link href="https://pa1r0t.github.io/2022/12/17/re-base1/"/>
+    <id>https://pa1r0t.github.io/2022/12/17/re-base1/</id>
+    <published>2022-12-17T13:16:25.000Z</published>
+    <updated>2022-12-17T13:36:34.076Z</updated>
+    
+    <content type="html"><![CDATA[<p>re_OD debugger1</p><span id="more"></span><h1 id="查找main函数的五种方法"><a href="#查找main函数的五种方法" class="headerlink" title="查找main函数的五种方法"></a>查找main函数的五种方法</h1><p>运行程序，看见弹窗，盲猜是user32.GetmessageW()的api</p><p><img src="/./../images/image-20221217212124141.png" alt="image-20221217212124141"></p><p>方法一：</p><p>1.不断地F7步入函数</p><p>2.看见一些红色api，即一些库函数，就Ctrl+F9跳出此函数</p><p><img src="/./../images/image-20221217212358112.png" alt="image-20221217212358112"></p><p>3.直到看见弹窗函数</p><p>方法二：</p><p>1.不断地F8步过函数</p><p>2.直到某个函数执行了弹窗函数，然后在此函数之上下断，然后ctrl+F2重新开始</p><p>3.直到找到弹窗函数</p><p>方法三：</p><p>1.通过查找api的方式查找main函数</p><p>2.右键查看模块间的调用函数</p><p><img src="/./../images/image-20221217212828911.png" alt="image-20221217212828911"></p><p>3.找到弹窗函数即可</p><p>方法四：</p><p>1.Ctrl+n查找所有内存的api</p><p><img src="/./../images/image-20221217213116702.png" alt="image-20221217213116702"></p><p>方法五：</p><p>1.查找字符串,右键即可</p><p>这里修改dump窗口的数据，选中数据后摁ctrl+E</p><p><img src="/./../images/image-20221217213430348.png" alt="image-20221217213430348"></p><p>修改后右键复制到文件</p><p><img src="/./../images/image-20221217213520134.png" alt="image-20221217213520134"></p><p>在dump窗口中，右键保存文件即可</p><p><img src="/./../images/image-20221217213618822.png" alt="image-20221217213618822"></p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;re_OD debugger1&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="re" scheme="https://pa1r0t.github.io/categories/re/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>信创网安wp</title>
