@@ -289,4 +289,87 @@
         <category>re</category>
       </categories>
   </entry>
+  <entry>
+    <title>re_base3</title>
+    <url>/2022/12/22/re-base3/</url>
+    <content><![CDATA[<p>PE and IAT hook</p>
+<span id="more"></span>
+
+<h1 id="PE"><a href="#PE" class="headerlink" title="PE"></a>PE</h1><p>由于了解IAT,需要了解一点PE,这里把PE也给写了吧</p>
+<p>PE文件种类：</p>
+<p><img src="/./../images/image-20221222193952005.png" alt="image-20221222193952005"></p>
+<p>OBJ文件不能执行，dll和sys文件需要调试器执行或者服务和程序加载执行</p>
+<p>DOS签名和PE签名</p>
+<p><img src="/./../images/image-20221222194231640.png" alt="image-20221222194231640"></p>
+<p>PE文件大体分为：1.PE头、2.PE体</p>
+<p>1.PE头</p>
+<ul>
+<li>DOS签名</li>
+<li>DOS存根</li>
+<li>NT头</li>
+<li>一系列节区头<ul>
+<li>.data(数据)</li>
+<li>.text(代码)</li>
+<li>.rsrc(资源)</li>
+</ul>
+</li>
+</ul>
+<p>2.PE体：一系列节区</p>
+<p>名词介绍：</p>
+<p>​	VA:virtual address 绝对虚拟内存地址</p>
+<p>​	RVA:相对虚拟内存地址</p>
+<p>​	VA &#x3D; RVA + imageBase</p>
+<p>DOS头结构体：唯一有用的就是e_magic和e_lfanew</p>
+<p><img src="/./../images/image-20221222195650362.png" alt="image-20221222195650362"></p>
+<p>其中e_magic就是Dos签名，e_lfanew就是NT头的偏移</p>
+<h5 id="DOS存根"><a href="#DOS存根" class="headerlink" title="DOS存根"></a>DOS存根</h5><p>Dos存根是兼容dos系统的一种产物，可有可无，内容可用xp内置debug查看</p>
+<p><img src="/./../images/image-20221222195853656.png" alt="image-20221222195853656"></p>
+<p>内容是一段汇编代码，在dos系统中执行</p>
+<h5 id="NT头"><a href="#NT头" class="headerlink" title="NT头"></a>NT头</h5><p>NT头结构体</p>
+<p><img src="/./../images/image-20221222200235227.png" alt="image-20221222200235227"></p>
+<p>签名不作介绍，文件头结构体：</p>
+<p><img src="/./../images/image-20221222200349032.png" alt="image-20221222200349032"></p>
+<p>Machine代表cpu类别</p>
+<p>SizeOfOptionalHeader是表示可选头的大小</p>
+<p>Characteristics表示文件是否是dll，是否可执行</p>
+<p>NT可选头结构体：</p>
+<p><img src="/./../images/image-20221222200743347.png" alt="image-20221222200743347"></p>
+<p><img src="/./../images/image-20221222200759909.png" alt="image-20221222200759909"></p>
+<p>NT可选头非常重要，它记录了很多重要的数据</p>
+<p>ImageBase，是映像基址，映像指的是PE文件加载到内存的一种形态（我觉得更像是一种叫法），映像基址定义了文件加载进内存的基础地址</p>
+<p>SectionAlignment, 节区对齐是文件在内存中的最小单位，文件在内存的大小应该是这个值的整数倍</p>
+<p>FileAlignment, 文件对齐是文件在磁盘中的最小单位，文件在磁盘的大小应该是这个值的整数倍</p>
+<p>Subsystem,子系统用来区分文件是sys驱动文件还是exe可执行文件</p>
+<p><img src="/./../images/image-20221222201551009.png" alt="image-20221222201551009"></p>
+<p>NumberOfRvaAndSizes , 记录DataDirectory数组的个数</p>
+<p>DataDirectory：</p>
+<p><img src="/./../images/image-20221222201756663.png" alt="image-20221222201756663"></p>
+<p>节区头结构体：</p>
+<p><img src="/./../images/image-20221222202014726.png" alt="image-20221222202014726"></p>
+<p><img src="/./../images/image-20221222202552956.png" alt="image-20221222202552956"></p>
+<p>这里的VirtualAddress是用RVA表示的</p>
+<h5 id="RAV-to-RAW"><a href="#RAV-to-RAW" class="headerlink" title="RAV to RAW"></a>RAV to RAW</h5><p>RAW就是文件中节区的偏移（非内存）</p>
+<p><img src="/./../images/image-20221222203627898.png" alt="image-20221222203627898"></p>
+<h5 id="IAT导入地址表"><a href="#IAT导入地址表" class="headerlink" title="IAT导入地址表"></a>IAT导入地址表</h5><p>映像导入描述结构体：</p>
+<p><img src="/./../images/image-20221222204623280.png" alt="image-20221222204623280"></p>
+<p><img src="/./../images/image-20221222204719793.png" alt="image-20221222204719793"></p>
+<p>文件导入多少个库文件，就有多少个 image_import_descriptor结构体</p>
+<p>&#x3D;&#x3D;该结构体的地址保存在image_optional_header32.DataDirectory[1].VirtualAddress中&#x3D;&#x3D;</p>
+<p><img src="/./../images/image-20221222210418625.png" alt="image-20221222210418625"></p>
+<p>INT结构体保存着Image_import_by_name的指针</p>
+<p>结构图：</p>
+<p><img src="/./../images/image-20221222205449044.png" alt="image-20221222205449044"></p>
+<p>PE装载器将导入函数加载到IAT的顺序：</p>
+<p><img src="/./../images/image-20221222205721041.png" alt="image-20221222205721041"></p>
+<h1 id="EAT"><a href="#EAT" class="headerlink" title="EAT"></a>EAT</h1><p>不想写了，和IAT差不多，一个导入一个导出</p>
+<p>它的查找数据先是image_optional_header32.DataDirectory[0].VirtualAddress找到这个结构体，然后根据要找的函数名去AddressOfNames数组里面拿到下标，然后用下标再去Oridinal数组找，找到下标又去AddressOfFunction那里找函数地址</p>
+<p>没有函数名直接用Ordinal查找，Ordinal数组存在的意义是我忘了。。反正就这样</p>
+<p><img src="/./../images/image-20221222211536947.png" alt="image-20221222211536947"></p>
+<p><img src="/./../images/image-20221222211514061.png" alt="image-20221222211514061"></p>
+<hr>
+<h1 id="IAT-hook"><a href="#IAT-hook" class="headerlink" title="IAT hook"></a>IAT hook</h1>]]></content>
+      <categories>
+        <category>re</category>
+      </categories>
+  </entry>
 </search>
