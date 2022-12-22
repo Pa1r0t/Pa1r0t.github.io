@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pa1r0t.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","width":320,"display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="TLS and keyboard hooking">
+<meta property="og:type" content="article">
+<meta property="og:title" content="re_base2">
+<meta property="og:url" content="https://pa1r0t.github.io/2022/12/21/re-base2/index.html">
+<meta property="og:site_name" content="Pa1r0t">
+<meta property="og:description" content="TLS and keyboard hooking">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20221221220303818.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20221221220612843.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20221221221105861.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20221221221841170.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20221221221931378.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20221221222309417.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20221221222931558.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20221222102644542.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20221222103023824.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20221222110634215.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20221222111024672.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20221222111311777.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20221222111708005.png">
+<meta property="article:published_time" content="2022-12-21T13:56:29.000Z">
+<meta property="article:modified_time" content="2022-12-22T03:22:59.840Z">
+<meta property="article:author" content="Pa1r0t_9e">
+<meta name="twitter:card" content="&lt;twitter:card&gt;">
+<meta name="twitter:image" content="https://pa1r0t.github.io/2022/12/21/re-base2/%3Ctwitter:image%3E">
+<meta name="twitter:creator" content="@&lt;twitter:creator&gt;">
+<meta name="twitter:site" content="<twitter:site>">
+<link rel="publisher" href="%3Cg+:profile_link%3E">
+<meta property="fb:admins" content="&lt;fb:admin_id&gt;">
+<meta property="fb:app_id" content="&lt;fb:app_id&gt;">
+
+
+<link rel="canonical" href="https://pa1r0t.github.io/2022/12/21/re-base2/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pa1r0t.github.io/2022/12/21/re-base2/","path":"2022/12/21/re-base2/","title":"re_base2"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>re_base2 | Pa1r0t</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Pa1r0t" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Pa1r0t</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">re&crypto</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-ctf"><a href="/ctf/" rel="section"><i class="fa fa-flag fa-fw"></i>ctf</a></li><li class="menu-item menu-item-re"><a href="/re/" rel="section"><i class="fa fa-brands fa-rev fa-fw"></i>re</a></li><li class="menu-item menu-item-friendly-chain"><a href="/links/" rel="section"><i class="fa fa-user-group fa-fw"></i>Friendly chain</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#TLS%E5%9B%9E%E8%B0%83"><span class="nav-number">1.</span> <span class="nav-text">TLS回调</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#TLS%E7%BB%93%E6%9E%84%E4%BD%93%EF%BC%9A"><span class="nav-number">1.0.0.0.0.1.</span> <span class="nav-text">TLS结构体：</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B0%83%E8%AF%95TLS%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0"><span class="nav-number">1.0.0.0.1.</span> <span class="nav-text">调试TLS回调函数</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#keyboard-hooking"><span class="nav-number">2.</span> <span class="nav-text">keyboard hooking</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B0%83%E8%AF%95hook"><span class="nav-number">2.0.0.0.1.</span> <span class="nav-text">调试hook</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Pa1r0t_9e"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Pa1r0t_9e</p>
+  <div class="site-description" itemprop="description">welcome to my bolg</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="mailto:2817455529@qq.com" title="E-Mail → mailto:2817455529@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pa1r0t.github.io/2022/12/21/re-base2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Pa1r0t_9e">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Pa1r0t">
+      <meta itemprop="description" content="welcome to my bolg">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="re_base2 | Pa1r0t">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          re_base2
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-12-21 21:56:29" itemprop="dateCreated datePublished" datetime="2022-12-21T21:56:29+08:00">2022-12-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-12-22 11:22:59" itemprop="dateModified" datetime="2022-12-22T11:22:59+08:00">2022-12-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/re/" itemprop="url" rel="index"><span itemprop="name">re</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>TLS and keyboard hooking</p>
+<span id="more"></span>
+
+<h1 id="TLS回调"><a href="#TLS回调" class="headerlink" title="TLS回调"></a>TLS回调</h1><p>TLS(Thread Local Storage) 线程本地存储，主要用于提供本地线程访问局部数据的句柄。</p>
+<p>下面来一段官方解释：</p>
+<p>使用线程<em>本地存储</em> （TLS），可以为进程可以使用全局索引访问的每个线程提供唯一数据。一个线程分配索引，其他线程可以使用它来检索与索引关联的唯一数据</p>
+<p>原理图：</p>
+<p><img src="/./../images/image-20221221220303818.png" alt="image-20221221220303818"></p>
+<p>&#x3D;&#x3D;TLS主要用于程序的反调试检测&#x3D;&#x3D;</p>
+<p>它在运行EP（entrypoint 程序入口代码）代码前执行</p>
+<h6 id="TLS结构体："><a href="#TLS结构体：" class="headerlink" title="TLS结构体："></a>TLS结构体：</h6><p><img src="/./../images/image-20221221220612843.png" alt="image-20221221220612843"></p>
+<p>可以看到TLS结构体中保存着回调函数的地址</p>
+<p>可以打开CFF explore软件直接查看存放TLS回调函数数组的地址</p>
+<p><img src="/./../images/image-20221221221105861.png" alt="image-20221221221105861"></p>
+<p>打开od查看它的地址为401000</p>
+<p><img src="/./../images/image-20221221221841170.png" alt="image-20221221221841170"></p>
+<p>汇编直接定位过去就出来了</p>
+<p><img src="/./../images/image-20221221221931378.png" alt="image-20221221221931378"></p>
+<p>TLS回调函数是在进程或线程创建或终止时调用，如果某个进程存在一个线程，那从程序的创建到销毁需要4次调用回调函数</p>
+<p>TLS回调函数定义：</p>
+<p><img src="/./../images/image-20221221222309417.png" alt="image-20221221222309417"></p>
+<p>注册TLS程序示例代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;windows.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> comment(linker, <span class="string">&quot;/INCLUDE:__tls_used&quot;</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">print_console</span><span class="params">(<span class="type">char</span>* szMsg)</span></span><br><span class="line">&#123;</span><br><span class="line">    HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);</span><br><span class="line"></span><br><span class="line">    WriteConsoleA(hStdout, szMsg, <span class="built_in">strlen</span>(szMsg), <span class="literal">NULL</span>, <span class="literal">NULL</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> NTAPI <span class="title function_">TLS_CALLBACK1</span><span class="params">(PVOID DllHandle, DWORD Reason, PVOID Reserved)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">char</span> szMsg[<span class="number">80</span>] = &#123;<span class="number">0</span>,&#125;;</span><br><span class="line">    wsprintfA(szMsg, <span class="string">&quot;TLS_CALLBACK1() : DllHandle = %X, Reason = %d\n&quot;</span>, DllHandle, Reason);</span><br><span class="line">    print_console(szMsg);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> NTAPI <span class="title function_">TLS_CALLBACK2</span><span class="params">(PVOID DllHandle, DWORD Reason, PVOID Reserved)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">char</span> szMsg[<span class="number">80</span>] = &#123;<span class="number">0</span>,&#125;;</span><br><span class="line">    wsprintfA(szMsg, <span class="string">&quot;TLS_CALLBACK2() : DllHandle = %X, Reason = %d\n&quot;</span>, DllHandle, Reason);</span><br><span class="line">    print_console(szMsg);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> data_seg(<span class="string">&quot;.CRT$XLX&quot;</span>)</span></span><br><span class="line">    PIMAGE_TLS_CALLBACK pTLS_CALLBACKs[] = &#123; TLS_CALLBACK1, TLS_CALLBACK2, <span class="number">0</span> &#125;;</span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> data_seg()</span></span><br><span class="line"></span><br><span class="line">DWORD WINAPI <span class="title function_">ThreadProc</span><span class="params">(LPVOID lParam)</span></span><br><span class="line">&#123;</span><br><span class="line">    print_console(<span class="string">&quot;ThreadProc() start\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">    print_console(<span class="string">&quot;ThreadProc() end\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    HANDLE hThread = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">    print_console(<span class="string">&quot;main() start\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">    hThread = CreateThread(<span class="literal">NULL</span>, <span class="number">0</span>, ThreadProc, <span class="literal">NULL</span>, <span class="number">0</span>, <span class="literal">NULL</span>);</span><br><span class="line">    WaitForSingleObject(hThread, <span class="number">60</span>*<span class="number">1000</span>);</span><br><span class="line">    CloseHandle(hThread);</span><br><span class="line"></span><br><span class="line">    print_console(<span class="string">&quot;main() end\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="调试TLS回调函数"><a href="#调试TLS回调函数" class="headerlink" title="调试TLS回调函数"></a>调试TLS回调函数</h5><p>直接在运行前设置调试选项</p>
+<p><img src="/./../images/image-20221221222931558.png" alt="image-20221221222931558"></p>
+<p>添加TLS这里不做阐述</p>
+<hr>
+<h1 id="keyboard-hooking"><a href="#keyboard-hooking" class="headerlink" title="keyboard hooking"></a>keyboard hooking</h1><p>消息钩取工作原理</p>
+<p><img src="/./../images/image-20221222102644542.png" alt="image-20221222102644542"></p>
+<p>使用SetWindowsHookEx()可以实现消息钩子，钩子函数需要存在于dll文件中，由操作系统调用回调函数</p>
+<p>API定义：</p>
+<p><img src="/./../images/image-20221222103023824.png" alt="image-20221222103023824"></p>
+<p>在某进程拥有消息，操作系统就会将dll注入进程序中，实现消息钩取</p>
+<p>只需要一个程序加载安装钩子所在的dll程序，然后SetWindowsHookEx()注册钩子，操作系统就会检测每一个程序的行为，一旦发生键盘输入，就将dll文件注入。</p>
+<p>加载dll注册hook实例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stdio.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;conio.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;windows.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span>	DEF_DLL_NAME		<span class="string">&quot;KeyHook.dll&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span>	DEF_HOOKSTART		<span class="string">&quot;HookStart&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span>	DEF_HOOKSTOP		<span class="string">&quot;HookStop&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="title function_">void</span> <span class="params">(*PFN_HOOKSTART)</span><span class="params">()</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="title function_">void</span> <span class="params">(*PFN_HOOKSTOP)</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	HMODULE			hDll = <span class="literal">NULL</span>;</span><br><span class="line">	PFN_HOOKSTART	HookStart = <span class="literal">NULL</span>;</span><br><span class="line">	PFN_HOOKSTOP	HookStop = <span class="literal">NULL</span>;</span><br><span class="line">	<span class="type">char</span>			ch = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// KeyHook.dll 肺爹</span></span><br><span class="line">	hDll = LoadLibraryA(DEF_DLL_NAME);</span><br><span class="line">    <span class="keyword">if</span>( hDll == <span class="literal">NULL</span> )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;LoadLibrary(%s) failed!!! [%d]&quot;</span>, DEF_DLL_NAME, GetLastError());</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// export 窃荐 林家 掘扁</span></span><br><span class="line">	HookStart = (PFN_HOOKSTART)GetProcAddress(hDll, DEF_HOOKSTART);</span><br><span class="line">	HookStop = (PFN_HOOKSTOP)GetProcAddress(hDll, DEF_HOOKSTOP);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 饶欧 矫累</span></span><br><span class="line">	HookStart();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 荤侩磊啊 &#x27;q&#x27; 甫 涝仿且 锭鳖瘤 措扁</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;press &#x27;q&#x27; to quit!\n&quot;</span>);</span><br><span class="line">	<span class="keyword">while</span>( _getch() != <span class="string">&#x27;q&#x27;</span> )	;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 饶欧 辆丰</span></span><br><span class="line">	HookStop();</span><br><span class="line">	</span><br><span class="line">    <span class="comment">// KeyHook.dll 攫肺爹</span></span><br><span class="line">	FreeLibrary(hDll);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>dll代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stdio.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;windows.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> DEF_PROCESS_NAME		<span class="string">&quot;notepad.exe&quot;</span></span></span><br><span class="line"></span><br><span class="line">HINSTANCE g_hInstance = <span class="literal">NULL</span>;</span><br><span class="line">HHOOK g_hHook = <span class="literal">NULL</span>;</span><br><span class="line">HWND g_hWnd = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">BOOL WINAPI <span class="title function_">DllMain</span><span class="params">(HINSTANCE hinstDLL, DWORD dwReason, LPVOID lpvReserved)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">switch</span>( dwReason )</span><br><span class="line">	&#123;</span><br><span class="line">        <span class="keyword">case</span> DLL_PROCESS_ATTACH:</span><br><span class="line">			g_hInstance = hinstDLL;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">case</span> DLL_PROCESS_DETACH:</span><br><span class="line">			<span class="keyword">break</span>;	</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> TRUE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">LRESULT CALLBACK <span class="title function_">KeyboardProc</span><span class="params">(<span class="type">int</span> nCode, WPARAM wParam, LPARAM lParam)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">char</span> szPath[MAX_PATH] = &#123;<span class="number">0</span>,&#125;;</span><br><span class="line">	<span class="type">char</span> *p = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span>( nCode &gt;= <span class="number">0</span> )</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">// bit 31 : 0 =&gt; press, 1 =&gt; release</span></span><br><span class="line">		<span class="keyword">if</span>( !(lParam &amp; <span class="number">0x80000000</span>) )</span><br><span class="line">		&#123;</span><br><span class="line">			GetModuleFileNameA(<span class="literal">NULL</span>, szPath, MAX_PATH);</span><br><span class="line">			p = <span class="built_in">strrchr</span>(szPath, <span class="string">&#x27;\\&#x27;</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 泅犁 橇肺技胶 捞抚阑 厚背秦辑 父距 notepad.exe 扼搁 0 酒囱 蔼阑 府畔窃</span></span><br><span class="line">            <span class="comment">// =&gt; 0 酒囱 蔼阑 府畔窍搁 皋矫瘤绰 促澜栏肺 傈崔登瘤 臼澜</span></span><br><span class="line">			<span class="keyword">if</span>( !_stricmp(p + <span class="number">1</span>, DEF_PROCESS_NAME) )</span><br><span class="line">				<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 老馆利牢 版快俊绰 CallNextHookEx() 甫 龋免窍咯</span></span><br><span class="line">    <span class="comment">//   览侩橇肺弊伐 (趣篮 促澜 扰) 栏肺 皋矫瘤甫 傈崔窃</span></span><br><span class="line">	<span class="keyword">return</span> CallNextHookEx(g_hHook, nCode, wParam, lParam);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">ifdef</span> __cplusplus</span></span><br><span class="line"><span class="keyword">extern</span> <span class="string">&quot;C&quot;</span> &#123;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">	__declspec(dllexport) <span class="type">void</span> <span class="title function_">HookStart</span><span class="params">()</span></span><br><span class="line">	&#123;</span><br><span class="line">		g_hHook = SetWindowsHookEx(WH_KEYBOARD, KeyboardProc, g_hInstance, <span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	__declspec(dllexport) <span class="type">void</span> <span class="title function_">HookStop</span><span class="params">()</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>( g_hHook )</span><br><span class="line">		&#123;</span><br><span class="line">			UnhookWindowsHookEx(g_hHook);</span><br><span class="line">			g_hHook = <span class="literal">NULL</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="meta">#<span class="keyword">ifdef</span> __cplusplus</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<h5 id="调试hook"><a href="#调试hook" class="headerlink" title="调试hook"></a>调试hook</h5><p>用字符串搜索直接定位到main函数</p>
+<p><img src="/./../images/image-20221222110634215.png" alt="image-20221222110634215"></p>
+<p>上面得到hookStart地址，然后call，F7直接步入就能进入hookstart函数</p>
+<p><img src="/./../images/image-20221222111024672.png" alt="image-20221222111024672"></p>
+<p>这里就是dll中注册键盘hook</p>
+<p>直接根据注册时得到的地址进行跳转就能得到hook函数</p>
+<p><img src="/./../images/image-20221222111311777.png" alt="image-20221222111311777"></p>
+<p>也可以打开notepad，进行附加attach，先摁F9，让hook注册成功</p>
+<p>然后在新加一个模块处停止，option设置</p>
+<p><img src="/./../images/image-20221222111708005.png" alt="image-20221222111708005"></p>
+<p>附加后在键盘输入字母，od会立马断住。</p>
+
+    </div>
+
+    
+    
+    
+      
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+        <div class="popular-posts-date">2022-11-29</div>
+      <div class="popular-posts-title"><a href="2022/11/29/buuctf-nov/" rel="bookmark">NOV X联合出题人</a></div>
+        <div class="popular-posts-excerpt"><p><p>​	比赛一直在打安洵杯，buu都没好好看，现在安洵杯迷宫题斜着走还没搞明白，先来复现一波buu的月赛</p></p></div>
+    </li>
+    <li class="popular-posts-item">
+        <div class="popular-posts-date">2022-12-17</div>
+      <div class="popular-posts-title"><a href="2022/12/17/re-base1/" rel="bookmark">re_base1</a></div>
+        <div class="popular-posts-excerpt"><p><p>re_OD debugger1</p></p></div>
+    </li>
+    <li class="popular-posts-item">
+        <div class="popular-posts-date">2022-12-20</div>
+      <div class="popular-posts-title"><a href="2022/12/20/syc-level7/" rel="bookmark">syc_level7</a></div>
+        <div class="popular-posts-excerpt"><p><p>syc_level7</p>
+<p>这种异常处理的catch代码一开始不会找，后来看了三叶草的战队的解答才知道怎么操作</p></p></div>
+    </li>
+    <li class="popular-posts-item">
+        <div class="popular-posts-date">2022-12-19</div>
+      <div class="popular-posts-title"><a href="2022/12/19/syc-level5/" rel="bookmark">syc_level5</a></div>
+        <div class="popular-posts-excerpt"><p><p>emmmmmmmmmmm,第一次做到魔改aes，有点激动记录一下吧</p></p></div>
+    </li>
+    <li class="popular-posts-item">
+        <div class="popular-posts-date">2022-12-05</div>
+      <div class="popular-posts-title"><a href="2022/12/05/信创网安wp/" rel="bookmark">信创网安wp</a></div>
+        <div class="popular-posts-excerpt"><p><p>省排名：22</p>
+<p>web师傅纠结于web最后一题，所以杂项一道没做。然后我把仿射密码的做题思路给忘了，然后密码0解，至于pwn….</p></p></div>
+    </li>
+  </ul>
+
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>你的资助更能使我继续创作！！！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.jpg" alt="Pa1r0t_9e 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="Pa1r0t_9e 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Pa1r0t_9e
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://pa1r0t.github.io/2022/12/21/re-base2/" title="re_base2">https://pa1r0t.github.io/2022/12/21/re-base2/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/12/20/syc-level7/" rel="prev" title="syc_level7">
+                  <i class="fa fa-chevron-left"></i> syc_level7
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Pa1r0t_9e</span>
+</div>
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+-->
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
