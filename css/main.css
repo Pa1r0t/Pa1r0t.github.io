@@ -2882,3 +2882,11 @@ mark.search-keyword {
     padding: 10px 12px;
   }
 }
+code {
+  padding: 2px 4px;
+  overflow-wrap: break-word;
+  color: #c7254e;
+  background: #f9f2f4;
+  border-radius: 3px;
+  font-size: 18px;
+}
