@@ -750,6 +750,7 @@
 <p>binsh的地址正好是下标0x10的整数倍，然后后面就是puts的地址，可以说出题人别有用心了</p>
 <p><img src="/./../images/image-20230114153109502.png" alt="image-20230114153109502"></p>
 <p>（PIE全称是position-independent executable，中文解释为地址无关可执行文件，该技术是一个针对代码段（.text）、数据段（.data）、未初始化全局变量段（.bss）等固定地址的一个防护技术，如果程序开启了PIE保护的话，在每次加载程序时都变换加载地址，从而不能通过ROPgadget等一些工具来帮助解题。解法：内存是以页载入机制，如果开启PIE保护的话，只能影响到单个内存页，一个内存页大小为0x1000，那么就意味着不管地址怎么变，某一条指令的后三位十六进制数的地址是始终不变的。因此我们可以通过覆盖地址的后几位来可以控制程序的流程）</p>
+<h3 id="ORW"><a href="#ORW" class="headerlink" title="ORW"></a>ORW</h3><p><strong>CTF中这类PWN题目通常通过禁用execve系统调用添加沙箱，不能直接执行命令getshell，这时候需要通过调用open、read、write这样的函数打开flag，存到内存中，再输出</strong></p>
 ]]></content>
       <categories>
         <category>ctf</category>
