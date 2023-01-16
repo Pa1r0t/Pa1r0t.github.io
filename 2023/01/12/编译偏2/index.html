@@ -28,8 +28,9 @@
 <meta property="og:description" content="高级语言描述">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pa1r0t.github.io/images/image-20230112222858340.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230114204912084.png">
 <meta property="article:published_time" content="2023-01-12T14:07:41.000Z">
-<meta property="article:modified_time" content="2023-01-12T14:29:00.718Z">
+<meta property="article:modified_time" content="2023-01-14T12:49:16.099Z">
 <meta property="article:author" content="Pa1r0t_9e">
 <meta name="twitter:card" content="&lt;twitter:card&gt;">
 <meta name="twitter:image" content="https://pa1r0t.github.io/2023/01/12/%E7%BC%96%E8%AF%91%E5%81%8F2/%3Ctwitter:image%3E">
@@ -156,7 +157,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text">编译基础知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E6%AF%8D%E8%A1%A8%E5%92%8C%E7%AC%A6%E5%8F%B7%E8%A1%A8"><span class="nav-number">2.</span> <span class="nav-text">字母表和符号表</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text">编译基础知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E6%AF%8D%E8%A1%A8%E5%92%8C%E7%AC%A6%E5%8F%B7%E8%A1%A8"><span class="nav-number">2.</span> <span class="nav-text">字母表和符号表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%B3%95%E4%B8%8E%E8%AF%AD%E8%A8%80%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">3.</span> <span class="nav-text">文法与语言的关系</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -248,9 +249,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2023-01-12 22:07:41 / 修改时间：22:29:00" itemprop="dateCreated datePublished" datetime="2023-01-12T22:07:41+08:00">2023-01-12</time>
+      <time title="创建时间：2023-01-12 22:07:41" itemprop="dateCreated datePublished" datetime="2023-01-12T22:07:41+08:00">2023-01-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-01-14 20:49:16" itemprop="dateModified" datetime="2023-01-14T20:49:16+08:00">2023-01-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -304,6 +311,49 @@
 </ol>
 <p>符号串集合的运算：</p>
 <p><img src="/./../images/image-20230112222858340.png" alt="image-20230112222858340"></p>
+<p>符号串集合的运算：</p>
+<p>例如：A&#x3D;{a,b}; B&#x3D;{c,e,d}</p>
+<p>则AB&#x3D;{ac,ae,ad,bc,be,bd}</p>
+<p>A中的元素必须在B元素的前面，否则是错的，这个顺序要搞对</p>
+<p>例如：串集A＝{a}的各次方幂定义为：</p>
+<p>– A0&#x3D;{ε} </p>
+<p>– A1&#x3D;A&#x3D;{a}</p>
+<p> – …… </p>
+<p>– An&#x3D;AAn-1(n&gt;0)&#x3D;{a…a}</p>
+<p>字母表的闭包与正闭包</p>
+<ol>
+<li>字母表A的闭包（A<em>）：A</em>&#x3D;A0∪A1∪A2∪… 即：由A上符号组成的所有串的集合（包括空串 ε ）</li>
+<li>字母表A的正闭包（A+）：A+&#x3D; A1 ∪A2∪ …&#x3D;A*-{ε}   即：由A上符号组成的所有串的集合（不包括空 串ε ）</li>
+<li>字母表上语言：是字母表上正闭包的子集</li>
+</ol>
+<h3 id="文法与语言的关系"><a href="#文法与语言的关系" class="headerlink" title="文法与语言的关系"></a>文法与语言的关系</h3><p>文法：</p>
+<ul>
+<li>其语法规则如下：<ul>
+<li>– &lt;句子&gt;→&lt;主语&gt;&lt;谓语&gt; </li>
+<li>– &lt;主语&gt; →&lt;形容词&gt;&lt;名词&gt;</li>
+<li>– &lt;谓语&gt; →&lt;动词&gt;&lt;宾语&gt;</li>
+<li>– &lt;宾语&gt; → &lt;形容词&gt;&lt;名词&gt;</li>
+<li>– &lt;形容词&gt; →Young | pop</li>
+<li>– &lt;名词&gt; →men | music </li>
+<li>– &lt;动词&gt; →like</li>
+</ul>
+</li>
+</ul>
+<p>相关概念：</p>
+<ol>
+<li>非终结符<ul>
+<li>出现在规则的左部、用&lt;&gt;括起来、表示一定 语法概念的词</li>
+<li>非终结符集合用VN表示。</li>
+</ul>
+</li>
+<li>终结符<ul>
+<li>语言中不可再分割的字符串(包括单个字符 组成的串)。注：终结符是组成句子的基本单位</li>
+<li>终结符集合用VT表示。</li>
+</ul>
+</li>
+<li>开始符号</li>
+</ol>
+<p><img src="/./../images/image-20230114204912084.png" alt="image-20230114204912084"></p>
 
     </div>
 
