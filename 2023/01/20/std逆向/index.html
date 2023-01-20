@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pa1r0t.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","width":320,"display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="c++ STL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="STL逆向">
+<meta property="og:url" content="https://pa1r0t.github.io/2023/01/20/std%E9%80%86%E5%90%91/index.html">
+<meta property="og:site_name" content="Pa1r0t">
+<meta property="og:description" content="c++ STL">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230120202731025.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230120203121252.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230120203135198.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230120203330744.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230120203453756.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230120203507098.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230120203905814.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230120203718899.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230120204147238.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230120204319472.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230120204555397.png">
+<meta property="article:published_time" content="2023-01-20T12:03:08.000Z">
+<meta property="article:modified_time" content="2023-01-20T12:47:25.636Z">
+<meta property="article:author" content="Pa1r0t_9e">
+<meta name="twitter:card" content="&lt;twitter:card&gt;">
+<meta name="twitter:image" content="https://pa1r0t.github.io/2023/01/20/std%E9%80%86%E5%90%91/%3Ctwitter:image%3E">
+<meta name="twitter:creator" content="@&lt;twitter:creator&gt;">
+<meta name="twitter:site" content="<twitter:site>">
+<link rel="publisher" href="%3Cg+:profile_link%3E">
+<meta property="fb:admins" content="&lt;fb:admin_id&gt;">
+<meta property="fb:app_id" content="&lt;fb:app_id&gt;">
+
+
+<link rel="canonical" href="https://pa1r0t.github.io/2023/01/20/std%E9%80%86%E5%90%91/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pa1r0t.github.io/2023/01/20/std%E9%80%86%E5%90%91/","path":"2023/01/20/std逆向/","title":"STL逆向"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>STL逆向 | Pa1r0t</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Pa1r0t" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Pa1r0t</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">re&crypto</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-ctf"><a href="/ctf/" rel="section"><i class="fa fa-flag fa-fw"></i>ctf</a></li><li class="menu-item menu-item-re"><a href="/re/" rel="section"><i class="fa fa-brands fa-rev fa-fw"></i>re</a></li><li class="menu-item menu-item-friendly-chain"><a href="/links/" rel="section"><i class="fa fa-user-group fa-fw"></i>Friendly chain</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#STL-%E9%80%86%E5%90%91%E6%96%B9%E6%B3%95%E8%AE%BA"><span class="nav-number">1.</span> <span class="nav-text">STL 逆向方法论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81-STL-%E5%AE%B9%E5%99%A8"><span class="nav-number">1.1.</span> <span class="nav-text">常见 STL 容器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C-STL%E5%85%B3%E8%81%94%E5%BC%8F%E5%AE%B9%E5%99%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">C++ STL关联式容器是什么？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81-STL-%E5%AE%B9%E5%99%A8%E9%80%82%E9%85%8D%E5%99%A8"><span class="nav-number">3.</span> <span class="nav-text">常见 STL 容器适配器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#STL-%E5%90%84%E9%AB%98%E7%BA%A7%E7%B1%BB%E5%9E%8Bdump%E6%95%B0%E6%8D%AE"><span class="nav-number">4.</span> <span class="nav-text">STL 各高级类型dump数据</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#std-string"><span class="nav-number">4.1.</span> <span class="nav-text">std::string</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#std-stringsteam"><span class="nav-number">4.2.</span> <span class="nav-text">std::stringsteam</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#std-vector"><span class="nav-number">4.3.</span> <span class="nav-text">std::vector</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#std-list"><span class="nav-number">4.4.</span> <span class="nav-text">std::list</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#std-deque"><span class="nav-number">4.5.</span> <span class="nav-text">std::deque</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#std-map"><span class="nav-number">4.6.</span> <span class="nav-text">std::map</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#std-unsorted-map"><span class="nav-number">4.7.</span> <span class="nav-text">std::unsorted_map</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#std-shared-ptr"><span class="nav-number">4.8.</span> <span class="nav-text">std::shared_ptr</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E6%88%98%E9%83%A8%E5%88%86"><span class="nav-number">5.</span> <span class="nav-text">实战部分</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Pa1r0t_9e"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Pa1r0t_9e</p>
+  <div class="site-description" itemprop="description">welcome to my bolg</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="mailto:2817455529@qq.com" title="E-Mail → mailto:2817455529@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pa1r0t.github.io/2023/01/20/std%E9%80%86%E5%90%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Pa1r0t_9e">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Pa1r0t">
+      <meta itemprop="description" content="welcome to my bolg">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="STL逆向 | Pa1r0t">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          STL逆向
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-01-20 20:03:08 / 修改时间：20:47:25" itemprop="dateCreated datePublished" datetime="2023-01-20T20:03:08+08:00">2023-01-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/re/" itemprop="url" rel="index"><span itemprop="name">re</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>c++ STL</p>
+<span id="more"></span>
+
+<h1 id="STL-逆向方法论"><a href="#STL-逆向方法论" class="headerlink" title="STL 逆向方法论"></a>STL 逆向方法论</h1><ul>
+<li>识别 STL 容器类型</li>
+<li>识别 STL 容器操作</li>
+<li>提取 STL 容器中的数据</li>
+</ul>
+<p><strong>逆向 STL 主要的问题:</strong></p>
+<ol>
+<li>缺少符号，无法判断 STL 容器类型 （主要困难）</li>
+<li>STL 内部数据结构复杂，难以提取数据</li>
+<li>优化使大量 stl 函数被 inline</li>
+</ol>
+<p>方法：解析 STL 容器内存数据，从内存数据角度判断容器类型，提取容器内容判断函数操作。</p>
+<h2 id="常见-STL-容器"><a href="#常见-STL-容器" class="headerlink" title="常见 STL 容器"></a>常见 STL 容器</h2><p>序列容器</p>
+<ul>
+<li>vector</li>
+<li>Deque</li>
+<li>List</li>
+<li>String</li>
+</ul>
+<p>关联容器</p>
+<ul>
+<li>Pair</li>
+<li>Map</li>
+<li>Set</li>
+<li>MultiMap &#x2F; MultiSet</li>
+</ul>
+<p>无序关联容器:unordered_map</p>
+<h1 id="C-STL关联式容器是什么？"><a href="#C-STL关联式容器是什么？" class="headerlink" title="C++ STL关联式容器是什么？"></a>C++ STL关联式容器是什么？</h1><p>此类容器在存储元素值的同时，还会为各元素额外再配备一个值（又称为“键”，其本质也是一个 C++ 基础数据类型或自定义类型的元素），它的功能是在使用关联式容器的过程中，如果已知目标元素的键的值，则直接通过该键就可以找到目标元素，而无需再通过遍历整个容器的方式。</p>
+<p>弃用序列式容器，转而选用关联式容器存储元素，往往就是看中了关联式容器可以快速查找、读取或者删除所存储的元素，同时该类型容器插入元素的效率也比序列式容器高。</p>
+<h1 id="常见-STL-容器适配器"><a href="#常见-STL-容器适配器" class="headerlink" title="常见 STL 容器适配器"></a>常见 STL 容器适配器</h1><p><strong>容器适配器</strong>是一个封装了序列容器的类模板，它在一般序列容器的基础上提供了一些不同的功能。之所以称作适配器类，是因为它可以通过适配容器现有的接口来提供不同的功能。</p>
+<p>其实，容器适配器中的“适配器”，和生活中常见的电源适配器中“适配器”的含义非常接近。我们知道，无论是电脑、手机还是其它电器，充电时都无法直接使用 220V 的交流电，为了方便用户使用，各个电器厂商都会提供一个适用于自己产品的电源线，它可以将 220V 的交流电转换成适合电器使用的低压直流电。</p>
+<p>从用户的角度看，电源线扮演的角色就是将原本不适用的交流电变得适用，因此其又被称为电源适配器。</p>
+<p>举一个例子，假设一个代码模块 A，它的构成如下所示：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">f1</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">f2</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">f3</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">f4</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>现在我们需要设计一个模板 B，但发现，其实只需要组合一下模块 A 中的 f1()、f2()、f3()，就可以实现模板 B 需要的功能。其中 f1() 单独使用即可，而 f2() 和 f3() 需要组合起来使用，如下所示：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">B</span>&#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    A * a;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">g1</span><span class="params">()</span></span>&#123;</span><br><span class="line">        a-&gt;<span class="built_in">f1</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">g2</span><span class="params">()</span></span>&#123;</span><br><span class="line">        a-&gt;<span class="built_in">f2</span>();</span><br><span class="line">        a-&gt;<span class="built_in">f3</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，就如同是电源适配器将不适用的交流电变得适用一样，模板 B 将不适合直接拿来用的模板 A 变得适用了，因此我们可以将模板 B 称为 B 适配器.</p>
+<p>容器适配器也是同样的道理，<em>简单的理解容器适配器，其就是将不适用的序列式容器（包括 vector、deque 和 list）变得适用</em>。容器适配器的底层实现和模板 A、B 的关系是完全相同的，即通过封装某个序列式容器，并重新组合该容器中包含的成员函数，使其满足某些特定场景的需要。</p>
+<p>stack（STL stack）容器适配器:采用默认的 deque 基础容器</p>
+<p>queue容器适配器:其底层使用的基础容器选择默认的 deque 容器</p>
+<p>priority_queue ：vector</p>
+<p>逆向时处理容器适配器只需要用底层容器来处理即可</p>
+<h1 id="STL-各高级类型dump数据"><a href="#STL-各高级类型dump数据" class="headerlink" title="STL 各高级类型dump数据"></a>STL 各高级类型dump数据</h1><h2 id="std-string"><a href="#std-string" class="headerlink" title="std::string"></a>std::string</h2><ul>
+<li>固定长度 32 字节，4 个 dq</li>
+<li>第一个指针字段指向数据地址</li>
+<li>第二个 size_t 字段存储字符串长度</li>
+</ul>
+<p>内存分布：</p>
+<p><img src="/./../images/image-20230120202731025.png" alt="image-20230120202731025"></p>
+<p>IDA dump脚本：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">read_dbg_cppstr_64</span>(<span class="params">objectAddr</span>):</span><br><span class="line">    <span class="comment"># a easy function for read std:string</span></span><br><span class="line">    <span class="comment"># 首地址就是begin指针</span></span><br><span class="line">    strPtr = idc.read_dbg_qword(objectAddr)</span><br><span class="line">    result = <span class="string">&#x27;&#x27;</span></span><br><span class="line">    i = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        onebyte = idc.read_dbg_byte(strPtr + i)</span><br><span class="line">        <span class="keyword">if</span> onebyte == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            result = <span class="built_in">chr</span>(onebyte)</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+
+<h2 id="std-stringsteam"><a href="#std-stringsteam" class="headerlink" title="std::stringsteam"></a>std::stringsteam</h2><p>可以看作是读写文件</p>
+<p>内存分布：<img src="/./../images/image-20230120203121252.png" alt="image-20230120203121252"></p>
+<p><img src="/./../images/image-20230120203135198.png" alt="image-20230120203135198"></p>
+<h2 id="std-vector"><a href="#std-vector" class="headerlink" title="std::vector"></a>std::vector</h2><ul>
+<li>固定长度 24 字节，3 个 dq</li>
+<li>第一个指针字段指向数组起始地址</li>
+<li>第二个指针字段指向数组最后元素地址</li>
+<li>第三个指针字段指向最大内存地址</li>
+</ul>
+<p>内存分布：<img src="/./../images/image-20230120203330744.png" alt="image-20230120203330744"></p>
+<p>IDA dump脚本</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">vetor_dump</span>(<span class="params">addr</span>):</span><br><span class="line">    ELEMENT_SIZE = <span class="number">8</span></span><br><span class="line">    data_addr = []</span><br><span class="line">    vetor_base = idc.read_dbg_qword(addr + <span class="number">0x0</span>)</span><br><span class="line">    vetor_end = idc.read_dbg_qword(addr + <span class="number">0x8</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(vetor_base,vetor_end,ELEMENT_SIZE):</span><br><span class="line">        data_addr.append(i)</span><br><span class="line">    <span class="keyword">return</span> data_addr</span><br></pre></td></tr></table></figure>
+
+<h2 id="std-list"><a href="#std-list" class="headerlink" title="std::list"></a>std::list</h2><ul>
+<li>双向循环链表存储</li>
+<li>头结构 + 节点结构</li>
+<li>遍历长度可以用 size 字段确定</li>
+</ul>
+<p><img src="/./../images/image-20230120203453756.png" alt="image-20230120203453756"></p>
+<p>内存布局：<img src="/./../images/image-20230120203507098.png" alt="image-20230120203507098"></p>
+<p>IDA dump 脚本：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">dump_stl_list</span>(<span class="params">p_list_addr</span>):</span><br><span class="line">    data_addr = []</span><br><span class="line">    list_size = idc.read_dbg_qword(p_list_addr+<span class="number">0x10</span>)</span><br><span class="line">    cur_node = p_list_addr</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(list_size):</span><br><span class="line">        cur_node = idc.read_dbg_qword(cur_node + <span class="number">0x0</span>)</span><br><span class="line">        data_addr.append(cur_node + <span class="number">0x10</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="std-deque"><a href="#std-deque" class="headerlink" title="std::deque"></a>std::deque</h2><ul>
+<li>头结构 + 迭代器结构</li>
+<li>适用 std::deque &#x2F; std::stack</li>
+</ul>
+<p><img src="/./../images/image-20230120203905814.png" alt="image-20230120203905814"></p>
+<ol>
+<li>stl_deque.start.node 确定first map 项位置</li>
+<li>stl_deque.start.last - stl_deque.start.first 确定缓冲区大小</li>
+<li>stl_deque.finish.node 确定last map 项位置</li>
+<li>对于每一个 map 项： <ol>
+<li>start 项，解析 cur, last 区间</li>
+<li>finish 项，解析 start, cur 区间</li>
+<li>其余项，解析 start, last 区间</li>
+</ol>
+</li>
+</ol>
+<p>内存布局:<img src="/./../images/image-20230120203718899.png" alt="image-20230120203718899"></p>
+<p>IDA dump 脚本:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">deque_iter = namedtuple(<span class="string">&#x27;deque_iter&#x27;</span>,[<span class="string">&#x27;cur&#x27;</span>,<span class="string">&#x27;first&#x27;</span>,<span class="string">&#x27;last&#x27;</span>,<span class="string">&#x27;node&#x27;</span>])</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">parse_iter</span>(<span class="params">addr</span>):</span><br><span class="line">    <span class="comment"># 解析队列迭代器</span></span><br><span class="line">    cur = idc.read_dbg_qword(addr + <span class="number">0x0</span>)</span><br><span class="line">    first = idc.read_dbg_qword(addr + <span class="number">0x8</span>)</span><br><span class="line">    last = idc.read_dbg_qword(addr + <span class="number">0x10</span>)</span><br><span class="line">    node = idc.read_dbg_qword(addr + <span class="number">0x18</span>)</span><br><span class="line">    <span class="keyword">return</span> deque_iter(cur,first,last,node)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dump_deque</span>(<span class="params">addr</span>):</span><br><span class="line">    ELEMENT_SIZE = <span class="number">4</span>    <span class="comment"># std::deque&lt;xx&gt; xx 的类型大小来指定</span></span><br><span class="line">    data_addr = []</span><br><span class="line">    start_iter = parse_iter(addr + <span class="number">0x10</span>)</span><br><span class="line">    finish_iter = parse_iter(addr + <span class="number">0x30</span>)</span><br><span class="line">    buf_size = start_iter.last - start_iter.first</span><br><span class="line">    map_size = start_iter.node</span><br><span class="line">    map_finish = finish_iter.node</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 解析第一个缓存数据</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(start_iter.cur,start_iter.last,ELEMENT_SIZE):</span><br><span class="line">        data_addr.append(i)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 解析最后一个缓存数据</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(finish_iter.first,finish_iter.cur,ELEMENT_SIZE):</span><br><span class="line">        data_addr.append(i)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 解析中间缓存数据</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(map_start + <span class="number">8</span>,map_finish - <span class="number">8</span>,<span class="number">8</span>):</span><br><span class="line">        buf_start = idc.read_dbg_qword(b)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(buf_start,buf_start + buf_size, ELEMENT_SIZE):</span><br><span class="line">            data_addr.append(i)</span><br><span class="line">    <span class="keyword">return</span> data_addr</span><br></pre></td></tr></table></figure>
+
+<h2 id="std-map"><a href="#std-map" class="headerlink" title="std::map"></a>std::map</h2><ul>
+<li>底层采用 Rb-Tree 实现（红黑二叉树）</li>
+<li>头结构 + 节点结构</li>
+<li>用二叉树遍历可提取数据</li>
+<li>适用 std::map &#x2F; std::set &#x2F; std::multimap &#x2F; std::multiset</li>
+</ul>
+<p>内存分布：<img src="/./../images/image-20230120204147238.png" alt="image-20230120204147238"></p>
+<p>IDA dump 脚本：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">parse_gnu_map_header</span>(<span class="params">address</span>):</span><br><span class="line">    root = idc.read_dbg_qword(address + <span class="number">0x10</span>)</span><br><span class="line">    <span class="keyword">return</span> root</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">parse_gnu_map_node</span>(<span class="params">address</span>):</span><br><span class="line">    left = idc.read_dbg_qword(address + <span class="number">0x10</span>)</span><br><span class="line">    right = idc.read_dbg_dword(address + <span class="number">0x10</span>)</span><br><span class="line">    data = address + <span class="number">0x20</span></span><br><span class="line">    <span class="keyword">return</span> left, right, data</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">parse_gnu_map_travel</span>(<span class="params">address</span>):</span><br><span class="line">    <span class="comment"># address &lt;—— std::map struct address</span></span><br><span class="line">    result = []</span><br><span class="line">    worklist = [parse_gnu_map_header(address)]</span><br><span class="line">    <span class="keyword">while</span> <span class="built_in">len</span>(worklist) &gt; <span class="number">0</span>:</span><br><span class="line">        addr = worklist.pop()</span><br><span class="line">        (left, right, data) = parse_gnu_map_node(addr)</span><br><span class="line">        <span class="keyword">if</span> left &gt; <span class="number">0</span>: worklist.append(left)</span><br><span class="line">        <span class="keyword">if</span> right &gt; <span class="number">0</span>: worklist.append(right)</span><br><span class="line">        result.append(data)</span><br><span class="line">    <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+
+<h2 id="std-unsorted-map"><a href="#std-unsorted-map" class="headerlink" title="std::unsorted_map"></a>std::unsorted_map</h2><ul>
+<li>底层采用 HashTable 实现</li>
+<li>头结构 + Bucket 数组 + 节点结构</li>
+<li><strong>所有节点结构用单链表串联（****dump</strong> <strong>只需要遍历单链表）</strong></li>
+<li><strong>头结构的第三个字段为单链表头</strong></li>
+<li><strong>适用</strong> **std::**<strong>unsorted_map</strong> **&#x2F; std::**<strong>unsorted_set</strong> <strong>&#x2F; …</strong></li>
+</ul>
+<p>内存布局:<img src="/./../images/image-20230120204319472.png" alt="image-20230120204319472"></p>
+<p>IDA dump 脚本:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">dump_stl_hashmap</span>(<span class="params">addr</span>):</span><br><span class="line">    <span class="comment"># dump stl hashmap gnu c++ x64</span></span><br><span class="line">    data_addr = []</span><br><span class="line">    bucket_addr = idc.read_dbg_qword(addr + <span class="number">0x10</span>)</span><br><span class="line">    node_addr = bucket_addr</span><br><span class="line">    <span class="keyword">while</span> node_addr != <span class="number">0</span>:</span><br><span class="line">        data_addr.append(node_addr + <span class="number">0x8</span>)</span><br><span class="line">        node_addr = idc.read_dbg_qword(node_addr)</span><br><span class="line">    <span class="keyword">return</span> data_addr</span><br></pre></td></tr></table></figure>
+
+<h2 id="std-shared-ptr"><a href="#std-shared-ptr" class="headerlink" title="std::shared_ptr"></a>std::shared_ptr</h2><p>第一个指针就是数据指针</p>
+<p>内存布局：<img src="/./../images/image-20230120204555397.png" alt="image-20230120204555397"></p>
+<hr>
+<h1 id="实战部分"><a href="#实战部分" class="headerlink" title="实战部分"></a>实战部分</h1>
+    </div>
+
+    
+    
+    
+      
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+        <div class="popular-posts-date">2023-01-02</div>
+      <div class="popular-posts-title"><a href="2023/01/02/unicorn-x86暴力调用/" rel="bookmark">x86暴力调用so</a></div>
+        <div class="popular-posts-excerpt"><p>c++暴力调用so</p></div>
+    </li>
+  </ul>
+
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>你的资助更能使我继续创作！！！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.jpg" alt="Pa1r0t_9e 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="Pa1r0t_9e 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Pa1r0t_9e
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://pa1r0t.github.io/2023/01/20/std%E9%80%86%E5%90%91/" title="STL逆向">https://pa1r0t.github.io/2023/01/20/std逆向/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/01/19/Microcode/" rel="prev" title="Microcode">
+                  <i class="fa fa-chevron-left"></i> Microcode
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Pa1r0t_9e</span>
+</div>
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+-->
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

