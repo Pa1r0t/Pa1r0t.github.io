@@ -1382,6 +1382,8 @@
     <title>Microcode</title>
     <url>/2023/01/19/Microcode/</url>
     <content><![CDATA[<p>记录Microcode </p>
+<span id="more"></span>
+
 <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>Microcode 是 hexrays 内部采用的介于机器代码与伪代码之间的一种中间表示语言(IR)。</p>
 <p>Microcode 生成完成后，IDA 在 Microcode 的基础上生成 CTree。 CTree 是 IDA 内部用于表示 C语言伪代码的抽象语法树，IDA 也提供了大量 API 操作 CTree，可以实现一下伪代码展示方面的优化，例如删除某些节点等等。</p>
 <p>Microcode 指令格式</p>
