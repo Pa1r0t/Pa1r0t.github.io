@@ -954,7 +954,12 @@
 <p>结果：</p>
 <p><img src="/./../images/image-20230116113635529.png" alt="image-20230116113635529"></p>
 <hr>
-<h1 id="Week2"><a href="#Week2" class="headerlink" title="Week2"></a>Week2</h1>]]></content>
+<h1 id="Week2"><a href="#Week2" class="headerlink" title="Week2"></a>Week2</h1><h2 id="re"><a href="#re" class="headerlink" title="re"></a>re</h2><h3 id="before-main"><a href="#before-main" class="headerlink" title="before_main"></a>before_main</h3><p>题中 __attribute__属性修饰函数，参考链接：<a href="https://blog.csdn.net/xiao__1bai/article/details/124156235">(61条消息) 浅析逆向中 gcc 在主函数前后运行的函数_沐一 · 林的博客-CSDN博客_逆向 init</a></p>
+<p>该题考查base64，换表函数定义了__ attribute__ ((constructor))会使函数在 main() 函数之前被执行</p>
+<p>这里ptrace检测反调试，即出现反调试就不进行换表操作<img src="/./../images/image-20230214103452756.png" alt="image-20230214103452756"></p>
+<p>自己手动换表后用cyberchef解base64即可</p>
+<hr>
+<h1 id="Week3"><a href="#Week3" class="headerlink" title="Week3"></a>Week3</h1><h2 id="re-1"><a href="#re-1" class="headerlink" title="re"></a>re</h2>]]></content>
       <categories>
         <category>ctf</category>
       </categories>
@@ -1676,9 +1681,136 @@
 <p>两个变量都是紧挨着的在内存中，属于静态分配了<img src="/./../images/image-20230121132938102.png" alt="image-20230121132938102"></p>
 <p>两个变量位置相减为0x80，所以我们就暂时确定这个结构体的大小为0x80，然后我就去struct视图中去创建一个大小为0x80的结构体，还是老操作<img src="/./../images/image-20230121133259989.png" alt="image-20230121133259989"></p>
 <p>这里其实可以先创建64长度的数组，然后再取消定义，这样就可以快速创建结构体了</p>
+<p>类型定义好之后，函数外的全局变量类型不急着更改，先更改函数形参的类型<img src="/./../images/image-20230122155016716.png" alt="image-20230122155016716"></p>
+<p>在函数中判断feild_20可能是个数组，这里先不理会</p>
+<p>后面函数形参类型也需要一个个去修改<img src="/./../images/image-20230122155424970.png" alt="image-20230122155424970"></p>
+<p>刷新一下变成这样了，给变量改个名<img src="/./../images/image-20230122182413118.png" alt="image-20230122182413118"></p>
+<p>把剩余需要修改的变量大小继续更改<img src="/./../images/image-20230122183001258.png" alt="image-20230122183001258"></p>
+<p>然后这里根据printf的字符串信息来判断结构体的类型<img src="/./../images/image-20230122183705595.png" alt="image-20230122183705595"></p>
+<p>v6可能是建筑的类型，从map数组中取出来的结构体都是house类型了，然后把变量名都改成自己猜想的名字。</p>
+<p>这个函数的实参是map数组元素，形参应该改为house结构体指针<img src="/./../images/image-20230122185813240.png" alt="image-20230122185813240"></p>
+<p>这里有个field_40,不能确定是啥<img src="/./../images/image-20230122190051439.png" alt="image-20230122190051439"></p>
+<p>我们可以用交叉引用，去别的地方找信息，刚好这里有一处<img src="/./../images/image-20230122190406178.png" alt="image-20230122190406178"></p>
+<p>这里将ppp1赋给field_40，所以我们就将field_40改成结构体2类型</p>
+<p>以上就是随意逆向的结果，真正正经逆向都是要分析程序逻辑的，我们先随意逆向，分析部分属性信息，有助于我们之后的分析</p>
+<p>程序刚开始会让我们输入游戏难度等级<img src="/./../images/image-20230122191713348.png" alt="image-20230122191713348"></p>
+<p>经过分析这个就是获取数字的函数<img src="/./../images/image-20230122191835438.png" alt="image-20230122191835438"></p>
+<p>然后我们先从简单的easy_level开始<img src="/./../images/image-20230122192539523.png" alt="image-20230122192539523"></p>
+<p>从这分析出ppp3是玩家的意思，因为刚开始它就给ppp3给到初始的金额了<img src="/./../images/image-20230122192843765.png" alt="image-20230122192843765"></p>
+<p>然后进入一个循环，首先进入这个函数<img src="/./../images/image-20230122193721525.png" alt="image-20230122193721525"></p>
+<p>这个函数很明显是个循环<img src="/./../images/image-20230122193909583.png" alt="image-20230122193909583"></p>
+<p>有两个函数，一个只有player1另外还有player2，也就是一个人玩玩，另一个人玩<img src="/./../images/image-20230122195530524.png" alt="image-20230122195530524"><img src="/./../images/image-20230122195544442.png" alt="image-20230122195544442"></p>
+<p>然后这里我们需要输入我们想做的内容<img src="/./../images/image-20230122202153532.png" alt="image-20230122202153532"></p>
+<p>我们先以第一个，这里有个比较，应该是玩家资产数量<img src="/./../images/image-20230122202349924.png" alt="image-20230122202349924"></p>
+<p>要求输入的值不能超过，玩家拥有的资产的数量。所以sub_452F函数估计就是资产的售卖了</p>
+<p>这里售卖的函数中<img src="/./../images/image-20230122203152235.png" alt="image-20230122203152235"></p>
+<p>这里资产数组大小为map的总个数为64个<img src="/./../images/image-20230122203328139.png" alt="image-20230122203328139"></p>
+<p>然后是3，购买资产<img src="/./../images/image-20230122210502911.png" alt="image-20230122210502911"></p>
+<p>分析得<img src="/./../images/image-20230122210702534.png" alt="image-20230122210702534"></p>
+<p>最终：<img src="/./../images/image-20230122210742758.png" alt="image-20230122210742758"></p>
+<p><img src="/./../images/image-20230122210913452.png" alt="image-20230122210913452"></p>
+<p>全局字段交叉引用 Ctrl + alt + X （要尽可能将相关函数找出来并修复类型，有利于查找）</p>
+<h2 id="IDA-虚表修复"><a href="#IDA-虚表修复" class="headerlink" title="IDA 虚表修复"></a>IDA 虚表修复</h2><p>实验材料： vtable</p>
+<p>虚表就是C++实现多态的一种机制</p>
+<p>为了实现C++的多态，C++使用了一种动态绑定的技术。这个技术的核心是虚函数表，当一个类（A）继承另一个类（B）时，类A会继承类B的函数的调用权。所以如果一个基类包含了虚函数，那么其继承类也可调用这些虚函数，换句话说，一个类继承了包含虚函数的基类，那么这个类也拥有自己的虚表。我们来看以下的代码。类A包含虚函数vfunc1，vfunc2，由于类A包含虚函数，故类A拥有一个虚表。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">vfunc1</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">vfunc2</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">func1</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">func2</span><span class="params">()</span></span>;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> m_data1, m_data2;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>类A的虚表如图1所示:<img src="/./../images/image-20230122212103043.png" alt="image-20230122212103043"></p>
+<p>虚表是一个指针数组，其元素是虚函数的指针，每个元素对应一个虚函数的函数指针。需要指出的是，普通的函数即非虚函数，其调用并不需要经过虚表，所以虚表的元素并不包括普通函数的函数指针。虚表内的条目，即虚函数指针的赋值发生在编译器的编译阶段，也就是说在代码的编译阶段，虚表就可以构造出来了</p>
+<p>虚表修复主要是为了重建虚表交叉引用,一般类的第一个地址就是虚表的地址。</p>
+<p>这里就是调用虚表的某一个函数<img src="/./../images/image-20230122213810302.png" alt="image-20230122213810302"></p>
+<p>这里类大小为0x28字节<img src="/./../images/image-20230122213834372.png" alt="image-20230122213834372"></p>
+<p>这里我们找到虚表，点击这个就是虚表<img src="/./../images/image-20230122213906848.png" alt="image-20230122213906848"></p>
+<p>然后右边是虚表的符号<img src="/./../images/image-20230122213950337.png" alt="image-20230122213950337"></p>
+<p>这里先进行构建结构体，在结构体中表示虚表，一个函数地址，在64位中为32位<img src="/./../images/image-20230122214250424.png" alt="image-20230122214250424"></p>
+<p>创建好后，创建类结构体，然后将类结构体的第一个属性类型设置为虚表类型<img src="/./../images/image-20230122214426259.png" alt="image-20230122214426259"></p>
+<p>然后将v3的类型设置为类结构体类型<img src="/./../images/image-20230122214509446.png" alt="image-20230122214509446"></p>
+<p>然后就修复完成了<img src="/./../images/image-20230122214621630.png" alt="image-20230122214621630"></p>
+<p><img src="/./../images/image-20230122214835711.png" alt="image-20230122214835711"></p>
 ]]></content>
       <categories>
         <category>re</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>map题解字符串问题</title>
+    <url>/2023/05/07/map%E9%A2%98%E8%A7%A3%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>PAT_basic 	C++ map1</p>
+<span id="more"></span>
+
+<h1 id="PAT乙级1003-我要通过！"><a href="#PAT乙级1003-我要通过！" class="headerlink" title="PAT乙级1003. 我要通过！"></a>PAT乙级1003. 我要通过！</h1><p>​	此题，题目就难以理解。不过现在理解了，题目其实我觉得条件二要在条件一的基础上理解，然后条件三要在条件二的基础上理解，然后需要给出例子进行推导，然后总结出结论——其实就是总结出公式</p>
+<p><strong>题目：</strong></p>
+<p>“<strong>答案正确</strong>”是自动判题系统给出的最令人欢喜的回复。本题属于 PAT 的“<strong>答案正确</strong>”大派送 —— 只要读入的字符串满足下列条件，系统就输出“<strong>答案正确</strong>”，否则输出“<strong>答案错误</strong>”。</p>
+<p>得到“<strong>答案正确</strong>”的条件是：</p>
+<ol>
+<li>字符串中必须仅有 <code>P</code>、 <code>A</code>、 <code>T</code>这三种字符，不可以包含其它字符；</li>
+<li>任意形如 <code>xPATx</code> 的字符串都可以获得“<strong>答案正确</strong>”，其中 <code>x</code> 或者是空字符串，或者是仅由字母 <code>A</code> 组成的字符串；</li>
+<li>如果 <code>aPbTc</code> 是正确的，那么 <code>aPbATca</code> 也是正确的，其中 <code>a</code>、 <code>b</code>、 <code>c</code> 均或者是空字符串，或者是仅由字母 <code>A</code> 组成的字符串。</li>
+</ol>
+<p>现在就请你为 PAT 写一个自动裁判程序，判定哪些字符串是可以获得“<strong>答案正确</strong>”的。</p>
+<h3 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h3><p>每个测试输入包含 1 个测试用例。第 1 行给出一个正整数 <em>n</em> (≤10)，是需要检测的字符串个数。接下来每个字符串占一行，字符串长度不超过 100，且不包含空格。</p>
+<h3 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h3><p>每个字符串的检测结果占一行，如果该字符串可以获得“<strong>答案正确</strong>”，则输出 <code>YES</code>，否则输出 <code>NO</code>。</p>
+<h3 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">10</span><br><span class="line">PAT</span><br><span class="line">PAAT</span><br><span class="line">AAPATAA</span><br><span class="line">AAPAATAAAA</span><br><span class="line">xPATx</span><br><span class="line">PT</span><br><span class="line">Whatever</span><br><span class="line">APAAATAA</span><br><span class="line">APT</span><br><span class="line">APATTAA</span><br></pre></td></tr></table></figure>
+
+<h3 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">YES</span><br><span class="line">YES</span><br><span class="line">YES</span><br><span class="line">YES</span><br><span class="line">NO</span><br><span class="line">NO</span><br><span class="line">NO</span><br><span class="line">NO</span><br><span class="line">NO</span><br><span class="line">NO</span><br></pre></td></tr></table></figure>
+
+<p>题解：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;map&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">void</span>)</span></span>&#123;</span><br><span class="line">	<span class="type">int</span> n;</span><br><span class="line">	string s;</span><br><span class="line">	<span class="type">int</span> p=<span class="number">-1</span>,t=<span class="number">-1</span>;</span><br><span class="line">	cin &gt;&gt; n;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">		cin &gt;&gt; s;</span><br><span class="line">		map&lt;<span class="type">char</span>,<span class="type">int</span>&gt; mp;</span><br><span class="line">		<span class="comment">//遍历字符串</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;s.<span class="built_in">size</span>();j++)&#123;</span><br><span class="line">			<span class="comment">//记录字符数量 </span></span><br><span class="line">			mp[s[j]]++;</span><br><span class="line">			<span class="comment">//记录P,T的位置</span></span><br><span class="line">			<span class="keyword">if</span>(s[j] == <span class="string">&#x27;P&#x27;</span>) p = j;</span><br><span class="line">			<span class="keyword">if</span>(s[j] == <span class="string">&#x27;T&#x27;</span>) t = j;</span><br><span class="line">		&#125; </span><br><span class="line">		<span class="comment">//mp[&#x27;A&#x27;] != 0 必须要有A字符</span></span><br><span class="line">		<span class="comment">//mp[&#x27;P&#x27;] == 1 &amp;&amp; mp[&#x27;T&#x27;] == 1  PT字符必须要有且有一个 </span></span><br><span class="line">		<span class="comment">//t-p &gt; 1 P和T的位置满足中间一个距离，即中间必须有A</span></span><br><span class="line">		<span class="comment">//mp.size() == 3 仅有P A T</span></span><br><span class="line">		<span class="comment">//p*(t-p-1)==s.size()-t-1 前A数量 ×中间A数量 = 后A数量 </span></span><br><span class="line">		<span class="keyword">if</span>(mp[<span class="string">&#x27;A&#x27;</span>] != <span class="number">0</span> &amp;&amp; mp[<span class="string">&#x27;P&#x27;</span>] == <span class="number">1</span> &amp;&amp; mp[<span class="string">&#x27;T&#x27;</span>] == <span class="number">1</span> &amp;&amp; t-p != <span class="number">1</span> &amp;&amp; mp.<span class="built_in">size</span>() == <span class="number">3</span> &amp;&amp; p*(t-p<span class="number">-1</span>)==s.<span class="built_in">size</span>()-t<span class="number">-1</span>)</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;YES\n&quot;</span>);</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;NO\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p>这题本来是要计算字符A位置上数量约束，一个map就巧妙解决了所有约束太妙了。</p>
+<p>申明：此题主要看柳神解答，非本人独创</p>
+<p>参考链接：<a href="https://www.liuchuo.net/archives/460">1003. 我要通过！(20)-PAT乙级真题 – 柳婼 の blog (liuchuo.net)</a></p>
+]]></content>
+      <categories>
+        <category>ctf</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>西湖论剑wp</title>
+    <url>/2023/02/15/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91wp/</url>
+    <content><![CDATA[<p>wp</p>
+<h2 id="BabyRE"><a href="#BabyRE" class="headerlink" title="BabyRE"></a>BabyRE</h2><p>给数组中的每一个函数都设置断点</p>
+<p>开始动调，第一个函数，给输入的值进行检验是否是数字<img src="/./../images/image-20230215100917313.png" alt="image-20230215100917313"></p>
+<p>第二个函数进行按位取反<img src="/./../images/image-20230215101120897.png" alt="image-20230215101120897"></p>
+<p>取反后的结果<img src="/./../images/image-20230215101335001.png" alt="image-20230215101335001"></p>
+<p>下个函数是IAT hook .替换GetLastError函数 替换为sub_4019D0函数<img src="/./../images/image-20230215101601229.png" alt="image-20230215101601229"></p>
+<p>GetModuleHandle函数：获取一个应用程序或动态链接库的模块句柄 </p>
+<p>GetModuleHandleA(0);返回0x00400000，而<em><strong>*模块句柄实际上就是模块在当前进程空间的装入地址。exe程序装入句柄一般为 0x00400000 。所以GetModuleHandle(NULL); 返回的值为 0x00400000；GetModuleHandle(“kernel32”)；返回值是0x7c800000(这个值正是kernel32.dll中的Image base的值)。*</strong></em></p>
+<p>这里lpModuleName为kernel32<img src="/./../images/image-20230215111115149.png" alt="image-20230215111115149"></p>
+<p>然后在kernel32模块中找GetLastError函数地址再将其替换这就是hook IAT的过程：先从程序句柄0x00400000中找kernel32.dll再从kernel32中找getlasterror。刚好两个循环</p>
+<p>这里双击也可以查看<img src="/./../images/image-20230215111553991.png" alt="image-20230215111553991"></p>
+<p><img src="/./../images/image-20230215111607580.png" alt="image-20230215111607580"></p>
+<p>再给替换的函数加上断点<img src="/./../images/image-20230215101638875.png" alt="image-20230215101638875"></p>
+<p>注意dword_4085C0是IAT之后的GetLastError函数</p>
+<p>下一个函数是替换dword_408148的值<img src="/./../images/image-20230215101915168.png" alt="image-20230215101915168"></p>
+<p>C 库函数 <strong>int atexit(void (*func)(void))</strong> 当程序正常终止时，调用指定的函数 <strong>func</strong>。您可以在任何地方注册你的终止函数，但它会在程序终止的时候被调用。<strong>func</strong> – 在程序终止时被调用的函数。</p>
+<p>如果有多处atexit那么执行顺序是什么呢？</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">functionA</span> <span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;这是函数A\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">functionB</span> <span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;这是函数B\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">functionC</span> <span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;这是函数C\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span> <span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="comment">/* 注册终止函数 */</span></span><br><span class="line">   atexit(functionA );</span><br><span class="line">   </span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;启动主程序...\n&quot;</span>);</span><br><span class="line">   atexit(functionC );</span><br><span class="line"></span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;退出主程序...\n&quot;</span>);</span><br><span class="line">   atexit(functionB );</span><br><span class="line"></span><br><span class="line">   <span class="keyword">return</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/./../images/image-20230215105209445.png" alt="image-20230215105209445"></p>
+<p>可以看出来多出atexit是以栈的执行顺序调用的</p>
+<p>所以总结一下执行顺序</p>
+<ol>
+<li>sub_401170 输入检验 -&gt; </li>
+<li>sub_401230 对某一内存数据进行按位取反</li>
+<li>sub_4012B0 IAT hook 替换GetLastError函数 替换为sub_4019D0函数</li>
+<li>main sub_4019D0 dword_408148, “dcbahgfelkjiponm”</li>
+<li>sub_401670 base8 加密后memcmp(&amp;unk_4081D0, a16230465152334, 0x60u);</li>
+<li>sub_4015C0 sub_401CC0加密后memcmp(Buffer, a67339fc92b4875, 0x28u);</li>
+<li>sub_4014E0 执行RC4，后比较密文memcmp(&amp;unk_4084C0, &amp;unk_408090, 0x70u) )</li>
+</ol>
+<p>ebpf程序：eBPF 于 2015 年推出，是 <strong>Linux 的 一项 功能，可以直接在 Linux 内核中运行程序</strong>，而不是在无法直接访问内核资源的“用户空间”中运行程序。 eBPF 源于 BPF，本质上是处于内核中的一个高效与灵活的虚类虚拟机组件，以一种安全的方式在许多内核 Hook 点执行字节码。</p>
+<p>资料链接：</p>
+<ul>
+<li><a href="https://blog.csdn.net/Rong_Toa/article/details/120250788">(61条消息) eBPF 入门之编程_rtoax的博客-CSDN博客_ebpf程序</a></li>
+<li><a href="https://blog.csdn.net/melody157398/article/details/113409274">(61条消息) eBPF在android上的使用_布道师Peter的博客-CSDN博客</a></li>
+</ul>
+<p>VT是什么意思？</p>
+<p>VT，全称是，Virtualization Technology，即是虚拟化技术，虚拟化技术可以扩大硬件的容量，简化软件的重新配置过程。<a href="https://product.pconline.com.cn/cpu/">CPU</a>的虚拟化技术可以单CPU模拟多CPU并行，允许一个平台同时运行多个操作系统，并且应用程序都可以在相互独立的空间内运行而互不影响，从而显著提高计算机的工作效率。</p>
+<p>VT实现：<a href="https://www.cnblogs.com/wingsummer/p/15971289.html">VT 入门番外篇——最小 VT 实现 - 寂静的羽夏 - 博客园 (cnblogs.com)</a></p>
+]]></content>
+      <categories>
+        <category>ctf</category>
       </categories>
   </entry>
 </search>
