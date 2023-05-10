@@ -17,8 +17,9 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"pa1r0t.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","width":320,"display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pa1r0t.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","width":320,"display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="记录ida脚本">
 <meta property="og:type" content="article">
@@ -180,7 +181,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-count">31</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -329,33 +330,33 @@
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> idc</span><br><span class="line"><span class="keyword">import</span> idaapi</span><br><span class="line"><span class="keyword">import</span> struct</span><br><span class="line"><span class="keyword">import</span> idautils</span><br><span class="line"></span><br><span class="line"><span class="comment"># ollvm函数地址</span></span><br><span class="line">fn = <span class="number">0x401F60</span></span><br><span class="line"><span class="comment"># ollvm基本块汇集地址</span></span><br><span class="line">ollvm_tail = <span class="number">0x405D4B</span></span><br><span class="line"><span class="comment"># 拿到函数基本块的迭代器</span></span><br><span class="line">f_blocks = idaapi.FlowChart(idaapi.get_func(fn),flags=idaapi.FC_PREDS)</span><br><span class="line"><span class="comment"># 然后遍历函数基本块</span></span><br><span class="line"><span class="keyword">for</span> block <span class="keyword">in</span> f_blocks:</span><br><span class="line">    <span class="comment"># 拿到每个基本块的后驱</span></span><br><span class="line">    <span class="keyword">for</span> sucess <span class="keyword">in</span> block.succs():</span><br><span class="line">        <span class="keyword">if</span> sucess.start_ea == ollvm_tail:</span><br><span class="line">            <span class="built_in">print</span>(<span class="built_in">hex</span>(block.start_ea))</span><br><span class="line">            idc.add_bpt(block.start_ea)</span><br></pre></td></tr></table></figure>
 
 <p>复制到ida下面，摁回车两次就行</p>
-<p><img src="/./../images/image-20230119182419401.png" alt="image-20230119182419401"></p>
+<p><img data-src="/./../images/image-20230119182419401.png" alt="image-20230119182419401"></p>
 <p>成功打上断点，打上断点的基本块都是真实块</p>
-<p><img src="/./../images/image-20230119182530944.png" alt="image-20230119182530944"></p>
+<p><img data-src="/./../images/image-20230119182530944.png" alt="image-20230119182530944"></p>
 <p>断点管理</p>
-<p><img src="/./../images/image-20230119182636581.png" alt="image-20230119182636581"></p>
+<p><img data-src="/./../images/image-20230119182636581.png" alt="image-20230119182636581"></p>
 <p>全选右键生成文件夹</p>
-<p><img src="/./../images/image-20230119182727613.png" alt="image-20230119182727613"></p>
+<p><img data-src="/./../images/image-20230119182727613.png" alt="image-20230119182727613"></p>
 <p>点击文件夹，进行断点的批量禁用或启用</p>
-<p><img src="/./../images/image-20230119182906812.png" alt="image-20230119182906812"></p>
+<p><img data-src="/./../images/image-20230119182906812.png" alt="image-20230119182906812"></p>
 <p>条件断点脚本编写：</p>
 <p>实验材料：dump_test.exe</p>
 <p>目标：设置一个条件断点，当 rand 函数返回值为 16949 时停下</p>
 <p>找到random函数</p>
-<p><img src="/./../images/image-20230119183303757.png" alt="image-20230119183303757"></p>
+<p><img data-src="/./../images/image-20230119183303757.png" alt="image-20230119183303757"></p>
 <p>设置断点</p>
-<p><img src="/./../images/image-20230119183327074.png" alt="image-20230119183327074"></p>
+<p><img data-src="/./../images/image-20230119183327074.png" alt="image-20230119183327074"></p>
 <p>在断点处右键编辑断点</p>
-<p><img src="/./../images/image-20230119183413079.png" alt="image-20230119183413079"></p>
+<p><img data-src="/./../images/image-20230119183413079.png" alt="image-20230119183413079"></p>
 <p>脚本：</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> idc</span><br><span class="line"><span class="keyword">import</span> idaapi</span><br><span class="line"><span class="keyword">import</span> struct</span><br><span class="line"><span class="keyword">import</span> idautils</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">bp</span>():</span><br><span class="line">    rax = idc.get_reg_value(<span class="string">&#x27;rax&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> rax == <span class="number">16949</span></span><br></pre></td></tr></table></figure>
 
 <p>先在ida中执行脚本</p>
 <p>然后编辑断点，增加condition条件</p>
-<p><img src="/./../images/image-20230119183620480.png" alt="image-20230119183620480"></p>
+<p><img data-src="/./../images/image-20230119183620480.png" alt="image-20230119183620480"></p>
 <p>然后运行程序</p>
 <p>程序停下来后，就查看rax寄存器，经过16进制转10进制，结果正确</p>
-<p><img src="/./../images/image-20230119183829577.png" alt="image-20230119183829577"></p>
+<p><img data-src="/./../images/image-20230119183829577.png" alt="image-20230119183829577"></p>
 <p>条件断点运用：dump rand 函数每一次执行结果，不让程序停下来</p>
 <p>脚本：条件断点函数返回 False，IDA 不会命中该断点,利用这个特性提取运行时数据</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">bp</span>():</span><br><span class="line">    rax = idc.get_reg_value(<span class="string">&#x27;rax&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(rax,end=<span class="string">&#x27;,&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
@@ -454,6 +455,9 @@
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   
@@ -462,6 +466,7 @@
 
 
 
+  <script src="/js/third-party/fancybox.js"></script>
 
 
   

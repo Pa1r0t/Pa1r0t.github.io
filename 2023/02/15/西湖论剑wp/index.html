@@ -17,8 +17,9 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"pa1r0t.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","width":320,"display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pa1r0t.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","width":320,"display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="西湖论剑wp">
 <meta property="og:type" content="article">
@@ -180,7 +181,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-count">31</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -291,24 +292,24 @@
 <span id="more"></span>
 
 <h2 id="BabyRE"><a href="#BabyRE" class="headerlink" title="BabyRE"></a>BabyRE</h2><p>给数组中的每一个函数都设置断点</p>
-<p>开始动调，第一个函数，给输入的值进行检验是否是数字<img src="/./../images/image-20230215100917313.png" alt="image-20230215100917313"></p>
-<p>第二个函数进行按位取反<img src="/./../images/image-20230215101120897.png" alt="image-20230215101120897"></p>
-<p>取反后的结果<img src="/./../images/image-20230215101335001.png" alt="image-20230215101335001"></p>
-<p>下个函数是IAT hook .替换GetLastError函数 替换为sub_4019D0函数<img src="/./../images/image-20230215101601229.png" alt="image-20230215101601229"></p>
+<p>开始动调，第一个函数，给输入的值进行检验是否是数字<img data-src="/./../images/image-20230215100917313.png" alt="image-20230215100917313"></p>
+<p>第二个函数进行按位取反<img data-src="/./../images/image-20230215101120897.png" alt="image-20230215101120897"></p>
+<p>取反后的结果<img data-src="/./../images/image-20230215101335001.png" alt="image-20230215101335001"></p>
+<p>下个函数是IAT hook .替换GetLastError函数 替换为sub_4019D0函数<img data-src="/./../images/image-20230215101601229.png" alt="image-20230215101601229"></p>
 <p>GetModuleHandle函数：获取一个应用程序或动态链接库的模块句柄 </p>
 <p>GetModuleHandleA(0);返回0x00400000，而<em><strong>*模块句柄实际上就是模块在当前进程空间的装入地址。exe程序装入句柄一般为 0x00400000 。所以GetModuleHandle(NULL); 返回的值为 0x00400000；GetModuleHandle(“kernel32”)；返回值是0x7c800000(这个值正是kernel32.dll中的Image base的值)。*</strong></em></p>
-<p>这里lpModuleName为kernel32<img src="/./../images/image-20230215111115149.png" alt="image-20230215111115149"></p>
+<p>这里lpModuleName为kernel32<img data-src="/./../images/image-20230215111115149.png" alt="image-20230215111115149"></p>
 <p>然后在kernel32模块中找GetLastError函数地址再将其替换这就是hook IAT的过程：先从程序句柄0x00400000中找kernel32.dll再从kernel32中找getlasterror。刚好两个循环</p>
-<p>这里双击也可以查看<img src="/./../images/image-20230215111553991.png" alt="image-20230215111553991"></p>
-<p><img src="/./../images/image-20230215111607580.png" alt="image-20230215111607580"></p>
-<p>再给替换的函数加上断点<img src="/./../images/image-20230215101638875.png" alt="image-20230215101638875"></p>
+<p>这里双击也可以查看<img data-src="/./../images/image-20230215111553991.png" alt="image-20230215111553991"></p>
+<p><img data-src="/./../images/image-20230215111607580.png" alt="image-20230215111607580"></p>
+<p>再给替换的函数加上断点<img data-src="/./../images/image-20230215101638875.png" alt="image-20230215101638875"></p>
 <p>注意dword_4085C0是IAT之后的GetLastError函数</p>
-<p>下一个函数是替换dword_408148的值<img src="/./../images/image-20230215101915168.png" alt="image-20230215101915168"></p>
+<p>下一个函数是替换dword_408148的值<img data-src="/./../images/image-20230215101915168.png" alt="image-20230215101915168"></p>
 <p>C 库函数 <strong>int atexit(void (*func)(void))</strong> 当程序正常终止时，调用指定的函数 <strong>func</strong>。您可以在任何地方注册你的终止函数，但它会在程序终止的时候被调用。<strong>func</strong> – 在程序终止时被调用的函数。</p>
 <p>如果有多处atexit那么执行顺序是什么呢？</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">functionA</span> <span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;这是函数A\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">functionB</span> <span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;这是函数B\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">functionC</span> <span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;这是函数C\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span> <span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="comment">/* 注册终止函数 */</span></span><br><span class="line">   atexit(functionA );</span><br><span class="line">   </span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;启动主程序...\n&quot;</span>);</span><br><span class="line">   atexit(functionC );</span><br><span class="line"></span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;退出主程序...\n&quot;</span>);</span><br><span class="line">   atexit(functionB );</span><br><span class="line"></span><br><span class="line">   <span class="keyword">return</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="/./../images/image-20230215105209445.png" alt="image-20230215105209445"></p>
+<p><img data-src="/./../images/image-20230215105209445.png" alt="image-20230215105209445"></p>
 <p>可以看出来多出atexit是以栈的执行顺序调用的</p>
 <p>所以总结一下执行顺序</p>
 <ol>
@@ -423,6 +424,9 @@
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   
@@ -431,6 +435,7 @@
 
 
 
+  <script src="/js/third-party/fancybox.js"></script>
 
 
   

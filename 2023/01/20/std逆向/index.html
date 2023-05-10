@@ -17,8 +17,9 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"pa1r0t.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","width":320,"display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pa1r0t.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","width":320,"display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="c++ STL">
 <meta property="og:type" content="article">
@@ -181,7 +182,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-count">31</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -335,20 +336,20 @@
 <li>第二个 size_t 字段存储字符串长度</li>
 </ul>
 <p>内存分布：</p>
-<p><img src="/./../images/image-20230120202731025.png" alt="image-20230120202731025"></p>
+<p><img data-src="/./../images/image-20230120202731025.png" alt="image-20230120202731025"></p>
 <p>IDA dump脚本：</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">read_dbg_cppstr_64</span>(<span class="params">objectAddr</span>):</span><br><span class="line">    <span class="comment"># a easy function for read std:string</span></span><br><span class="line">    <span class="comment"># 首地址就是begin指针</span></span><br><span class="line">    strPtr = idc.read_dbg_qword(objectAddr)</span><br><span class="line">    result = <span class="string">&#x27;&#x27;</span></span><br><span class="line">    i = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        onebyte = idc.read_dbg_byte(strPtr + i)</span><br><span class="line">        <span class="keyword">if</span> onebyte == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            result = <span class="built_in">chr</span>(onebyte)</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
 
 <h2 id="std-stringsteam"><a href="#std-stringsteam" class="headerlink" title="std::stringsteam"></a>std::stringsteam</h2><p>可以看作是读写文件</p>
-<p>内存分布：<img src="/./../images/image-20230120203121252.png" alt="image-20230120203121252"></p>
-<p><img src="/./../images/image-20230120203135198.png" alt="image-20230120203135198"></p>
+<p>内存分布：<img data-src="/./../images/image-20230120203121252.png" alt="image-20230120203121252"></p>
+<p><img data-src="/./../images/image-20230120203135198.png" alt="image-20230120203135198"></p>
 <h2 id="std-vector"><a href="#std-vector" class="headerlink" title="std::vector"></a>std::vector</h2><ul>
 <li>固定长度 24 字节，3 个 dq</li>
 <li>第一个指针字段指向数组起始地址</li>
 <li>第二个指针字段指向数组最后元素地址</li>
 <li>第三个指针字段指向最大内存地址</li>
 </ul>
-<p>内存分布：<img src="/./../images/image-20230120203330744.png" alt="image-20230120203330744"></p>
+<p>内存分布：<img data-src="/./../images/image-20230120203330744.png" alt="image-20230120203330744"></p>
 <p>IDA dump脚本</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">vetor_dump</span>(<span class="params">addr</span>):</span><br><span class="line">    ELEMENT_SIZE = <span class="number">8</span></span><br><span class="line">    data_addr = []</span><br><span class="line">    vetor_base = idc.read_dbg_qword(addr + <span class="number">0x0</span>)</span><br><span class="line">    vetor_end = idc.read_dbg_qword(addr + <span class="number">0x8</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(vetor_base,vetor_end,ELEMENT_SIZE):</span><br><span class="line">        data_addr.append(i)</span><br><span class="line">    <span class="keyword">return</span> data_addr</span><br></pre></td></tr></table></figure>
 
@@ -357,8 +358,8 @@
 <li>头结构 + 节点结构</li>
 <li>遍历长度可以用 size 字段确定</li>
 </ul>
-<p><img src="/./../images/image-20230120203453756.png" alt="image-20230120203453756"></p>
-<p>内存布局：<img src="/./../images/image-20230120203507098.png" alt="image-20230120203507098"></p>
+<p><img data-src="/./../images/image-20230120203453756.png" alt="image-20230120203453756"></p>
+<p>内存布局：<img data-src="/./../images/image-20230120203507098.png" alt="image-20230120203507098"></p>
 <p>IDA dump 脚本：</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">dump_stl_list</span>(<span class="params">p_list_addr</span>):</span><br><span class="line">    data_addr = []</span><br><span class="line">    list_size = idc.read_dbg_qword(p_list_addr+<span class="number">0x10</span>)</span><br><span class="line">    cur_node = p_list_addr</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(list_size):</span><br><span class="line">        cur_node = idc.read_dbg_qword(cur_node + <span class="number">0x0</span>)</span><br><span class="line">        data_addr.append(cur_node + <span class="number">0x10</span>)</span><br></pre></td></tr></table></figure>
 
@@ -366,7 +367,7 @@
 <li>头结构 + 迭代器结构</li>
 <li>适用 std::deque &#x2F; std::stack</li>
 </ul>
-<p><img src="/./../images/image-20230120203905814.png" alt="image-20230120203905814"></p>
+<p><img data-src="/./../images/image-20230120203905814.png" alt="image-20230120203905814"></p>
 <ol>
 <li>stl_deque.start.node 确定first map 项位置</li>
 <li>stl_deque.start.last - stl_deque.start.first 确定缓冲区大小</li>
@@ -378,7 +379,7 @@
 </ol>
 </li>
 </ol>
-<p>内存布局:<img src="/./../images/image-20230120203718899.png" alt="image-20230120203718899"></p>
+<p>内存布局:<img data-src="/./../images/image-20230120203718899.png" alt="image-20230120203718899"></p>
 <p>IDA dump 脚本:</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">deque_iter = namedtuple(<span class="string">&#x27;deque_iter&#x27;</span>,[<span class="string">&#x27;cur&#x27;</span>,<span class="string">&#x27;first&#x27;</span>,<span class="string">&#x27;last&#x27;</span>,<span class="string">&#x27;node&#x27;</span>])</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">parse_iter</span>(<span class="params">addr</span>):</span><br><span class="line">    <span class="comment"># 解析队列迭代器</span></span><br><span class="line">    cur = idc.read_dbg_qword(addr + <span class="number">0x0</span>)</span><br><span class="line">    first = idc.read_dbg_qword(addr + <span class="number">0x8</span>)</span><br><span class="line">    last = idc.read_dbg_qword(addr + <span class="number">0x10</span>)</span><br><span class="line">    node = idc.read_dbg_qword(addr + <span class="number">0x18</span>)</span><br><span class="line">    <span class="keyword">return</span> deque_iter(cur,first,last,node)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dump_deque</span>(<span class="params">addr</span>):</span><br><span class="line">    ELEMENT_SIZE = <span class="number">4</span>    <span class="comment"># std::deque&lt;xx&gt; xx 的类型大小来指定</span></span><br><span class="line">    data_addr = []</span><br><span class="line">    start_iter = parse_iter(addr + <span class="number">0x10</span>)</span><br><span class="line">    finish_iter = parse_iter(addr + <span class="number">0x30</span>)</span><br><span class="line">    buf_size = start_iter.last - start_iter.first</span><br><span class="line">    map_size = start_iter.node</span><br><span class="line">    map_finish = finish_iter.node</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 解析第一个缓存数据</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(start_iter.cur,start_iter.last,ELEMENT_SIZE):</span><br><span class="line">        data_addr.append(i)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 解析最后一个缓存数据</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(finish_iter.first,finish_iter.cur,ELEMENT_SIZE):</span><br><span class="line">        data_addr.append(i)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 解析中间缓存数据</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(map_start + <span class="number">8</span>,map_finish - <span class="number">8</span>,<span class="number">8</span>):</span><br><span class="line">        buf_start = idc.read_dbg_qword(b)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(buf_start,buf_start + buf_size, ELEMENT_SIZE):</span><br><span class="line">            data_addr.append(i)</span><br><span class="line">    <span class="keyword">return</span> data_addr</span><br></pre></td></tr></table></figure>
 
@@ -388,7 +389,7 @@
 <li>用二叉树遍历可提取数据</li>
 <li>适用 std::map &#x2F; std::set &#x2F; std::multimap &#x2F; std::multiset</li>
 </ul>
-<p>内存分布：<img src="/./../images/image-20230120204147238.png" alt="image-20230120204147238"></p>
+<p>内存分布：<img data-src="/./../images/image-20230120204147238.png" alt="image-20230120204147238"></p>
 <p>IDA dump 脚本：</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">parse_gnu_map_header</span>(<span class="params">address</span>):</span><br><span class="line">    root = idc.read_dbg_qword(address + <span class="number">0x10</span>)</span><br><span class="line">    <span class="keyword">return</span> root</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">parse_gnu_map_node</span>(<span class="params">address</span>):</span><br><span class="line">    left = idc.read_dbg_qword(address + <span class="number">0x10</span>)</span><br><span class="line">    right = idc.read_dbg_dword(address + <span class="number">0x10</span>)</span><br><span class="line">    data = address + <span class="number">0x20</span></span><br><span class="line">    <span class="keyword">return</span> left, right, data</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">parse_gnu_map_travel</span>(<span class="params">address</span>):</span><br><span class="line">    <span class="comment"># address &lt;—— std::map struct address</span></span><br><span class="line">    result = []</span><br><span class="line">    worklist = [parse_gnu_map_header(address)]</span><br><span class="line">    <span class="keyword">while</span> <span class="built_in">len</span>(worklist) &gt; <span class="number">0</span>:</span><br><span class="line">        addr = worklist.pop()</span><br><span class="line">        (left, right, data) = parse_gnu_map_node(addr)</span><br><span class="line">        <span class="keyword">if</span> left &gt; <span class="number">0</span>: worklist.append(left)</span><br><span class="line">        <span class="keyword">if</span> right &gt; <span class="number">0</span>: worklist.append(right)</span><br><span class="line">        result.append(data)</span><br><span class="line">    <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
 
@@ -399,12 +400,12 @@
 <li><strong>头结构的第三个字段为单链表头</strong></li>
 <li><strong>适用</strong> **std::**<strong>unsorted_map</strong> **&#x2F; std::**<strong>unsorted_set</strong> <strong>&#x2F; …</strong></li>
 </ul>
-<p>内存布局:<img src="/./../images/image-20230120204319472.png" alt="image-20230120204319472"></p>
+<p>内存布局:<img data-src="/./../images/image-20230120204319472.png" alt="image-20230120204319472"></p>
 <p>IDA dump 脚本:</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">dump_stl_hashmap</span>(<span class="params">addr</span>):</span><br><span class="line">    <span class="comment"># dump stl hashmap gnu c++ x64</span></span><br><span class="line">    data_addr = []</span><br><span class="line">    bucket_addr = idc.read_dbg_qword(addr + <span class="number">0x10</span>)</span><br><span class="line">    node_addr = bucket_addr</span><br><span class="line">    <span class="keyword">while</span> node_addr != <span class="number">0</span>:</span><br><span class="line">        data_addr.append(node_addr + <span class="number">0x8</span>)</span><br><span class="line">        node_addr = idc.read_dbg_qword(node_addr)</span><br><span class="line">    <span class="keyword">return</span> data_addr</span><br></pre></td></tr></table></figure>
 
 <h2 id="std-shared-ptr"><a href="#std-shared-ptr" class="headerlink" title="std::shared_ptr"></a>std::shared_ptr</h2><p>第一个指针就是数据指针</p>
-<p>内存布局：<img src="/./../images/image-20230120204555397.png" alt="image-20230120204555397"></p>
+<p>内存布局：<img data-src="/./../images/image-20230120204555397.png" alt="image-20230120204555397"></p>
 <hr>
 <h1 id="实战部分"><a href="#实战部分" class="headerlink" title="实战部分"></a>实战部分</h1>
     </div>
@@ -415,6 +416,11 @@
       
   <div class="popular-posts-header">相关文章</div>
   <ul class="popular-posts">
+    <li class="popular-posts-item">
+        <div class="popular-posts-date">2023-01-02</div>
+      <div class="popular-posts-title"><a href="2023/01/02/ollvm做法/" rel="bookmark">ollvm做法</a></div>
+        <div class="popular-posts-excerpt"><p><p>unicorn start</p></p></div>
+    </li>
     <li class="popular-posts-item">
         <div class="popular-posts-date">2023-01-02</div>
       <div class="popular-posts-title"><a href="2023/01/02/unicorn-x86暴力调用/" rel="bookmark">x86暴力调用so</a></div>
@@ -508,6 +514,9 @@
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   
@@ -516,6 +525,7 @@
 
 
 
+  <script src="/js/third-party/fancybox.js"></script>
 
 
   

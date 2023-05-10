@@ -17,8 +17,9 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"pa1r0t.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","width":320,"display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pa1r0t.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","width":320,"display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="IDA 类型修复">
 <meta property="og:type" content="article">
@@ -240,7 +241,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-count">31</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -372,15 +373,15 @@
 <h2 id="IDA-修复枚举值"><a href="#IDA-修复枚举值" class="headerlink" title="IDA 修复枚举值"></a>IDA 修复枚举值</h2><p>实验材料：ptrace1</p>
 <p>IDA 的类型数据库内置了常见的枚举（宏）的值，可以直接引入并修复。</p>
 <p>通过逆向分析，ptrace函数</p>
-<p><img src="/./../images/image-20230121101355025.png" alt="image-20230121101355025"></p>
+<p><img data-src="/./../images/image-20230121101355025.png" alt="image-20230121101355025"></p>
 <p>第一个参数就是ptrace函数的功能号</p>
 <p>鼠标锁定摁M键导入枚举值</p>
 <p>Ctrl+F5搜索ptrace关键字</p>
-<p><img src="/./../images/image-20230121101528976.png" alt="image-20230121101528976"></p>
+<p><img data-src="/./../images/image-20230121101528976.png" alt="image-20230121101528976"></p>
 <p>找到后双击即可</p>
-<p><img src="/./../images/image-20230121101553907.png" alt="image-20230121101553907"></p>
+<p><img data-src="/./../images/image-20230121101553907.png" alt="image-20230121101553907"></p>
 <p>下图就全部修复完成了</p>
-<p><img src="/./../images/image-20230121101813329.png" alt="image-20230121101813329"></p>
+<p><img data-src="/./../images/image-20230121101813329.png" alt="image-20230121101813329"></p>
 <h2 id="IDA-结构体修复"><a href="#IDA-结构体修复" class="headerlink" title="IDA 结构体修复"></a>IDA 结构体修复</h2><p>实验材料：monopoly</p>
 <p>这是一个大富翁游戏！</p>
 <p>确定结构体大小：</p>
@@ -388,99 +389,99 @@
 <li>内存分配可以直接确定结构体大小</li>
 <li>memcpy &#x2F; 局部变量偏移差 -&gt; 间接确定 （结构体&#x2F;类局部变量） 这种大多是在栈上</li>
 </ul>
-<p><img src="/./../images/image-20230121104326617.png" alt="image-20230121104326617"></p>
+<p><img data-src="/./../images/image-20230121104326617.png" alt="image-20230121104326617"></p>
 <p>创建相等大小匿名结构体，并将相关变量、参数的类型修改为该结构体</p>
 <p>这里看见这个0x70的new函数，直接在struct视图下创建结构体</p>
-<p><img src="/./../images/image-20230121105019521.png" alt="image-20230121105019521"></p>
+<p><img data-src="/./../images/image-20230121105019521.png" alt="image-20230121105019521"></p>
 <p>快捷键是Shift + F9，打开struct视图</p>
 <p>这里在struct视图下，右键点击增加结构体类型</p>
-<p><img src="/./../images/image-20230121105406208.png" alt="image-20230121105406208"></p>
+<p><img data-src="/./../images/image-20230121105406208.png" alt="image-20230121105406208"></p>
 <p>这里可以看见结构体大小</p>
-<p><img src="/./../images/image-20230121105556782.png" alt="image-20230121105556782"></p>
+<p><img data-src="/./../images/image-20230121105556782.png" alt="image-20230121105556782"></p>
 <p>鼠标光标在ends处，增加属性（大小）：摁d键</p>
-<p><img src="/./../images/image-20230121105718374.png" alt="image-20230121105718374"></p>
+<p><img data-src="/./../images/image-20230121105718374.png" alt="image-20230121105718374"></p>
 <p>这里直到sizeof显示为0x70为止，每个属性先以dq为单位，进行存储，后续再逆向分析再进行变更</p>
 <p>这样结构体就初步设置完成了</p>
-<p><img src="/./../images/image-20230121110056164.png" alt="image-20230121110056164"></p>
+<p><img data-src="/./../images/image-20230121110056164.png" alt="image-20230121110056164"></p>
 <p>这里回到代码处，这里将v0的类型修改为，刚刚我们创建的结构体类型</p>
-<p><img src="/./../images/image-20230121110310274.png" alt="image-20230121110310274"></p>
+<p><img data-src="/./../images/image-20230121110310274.png" alt="image-20230121110310274"></p>
 <p>第一种改法：摁Y键，进行类型修改为struc_1 *类型</p>
 <p>第二种改法：摁右键，转化为其他结构体：</p>
-<p><img src="/./../images/image-20230121110552200.png" alt="image-20230121110552200"></p>
+<p><img data-src="/./../images/image-20230121110552200.png" alt="image-20230121110552200"></p>
 <p>这里直接选择我们刚刚创建的类型即可</p>
-<p><img src="/./../images/image-20230121110626662.png" alt="image-20230121110626662"></p>
+<p><img data-src="/./../images/image-20230121110626662.png" alt="image-20230121110626662"></p>
 <p>这里创建好之后，执行下面的函数，我们跟进去看看</p>
-<p><img src="/./../images/image-20230121120704877.png" alt="image-20230121120704877"></p>
-<p>这里的a1进行了一系列操作，我们将a1的类修修改为我们定义的类型<img src="/./../images/image-20230121120850500.png" alt="image-20230121120850500"></p>
-<p>因为这个函数在new之后执行，所以可能是构造函数，这里我们改个函数名吧<img src="/./../images/image-20230121121052464.png" alt="image-20230121121052464"></p>
-<p>在构造函数中，有些属性是进行dword操作，这里我们就要将qword，改成dword类型<img src="/./../images/image-20230121121546769.png" alt="image-20230121121546769"></p>
-<p>比如field_48，这里双击field_48进入结构体定义处，将该属性改成dword，这里摁d键<img src="/./../images/image-20230121121758509.png" alt="image-20230121121758509"></p>
-<p>设置好之后下面未定义的也需要改成dword，就像这样<img src="/./../images/image-20230121121852483.png" alt="image-20230121121852483"></p>
-<p>其他变量也是一样修改，把剩下的也修改了，但是当最后一个属性改为dword后，总大小发生了改变，这里我们只需要在下面再增加一个变量即可<img src="/./../images/image-20230121122116991.png" alt="image-20230121122116991"></p>
-<p>最后就是这样<img src="/./../images/image-20230121122144895.png" alt="image-20230121122144895"></p>
-<p>然后在源码中摁F5，代码就好看多了<img src="/./../images/image-20230121122453040.png" alt="image-20230121122453040"></p>
-<p>上面循环处field_4c是以4字节进行访问，并且访问5词，也就是说field_4c开始处是一个以4字节为单位的一个数组，数组大小为5，在结构体定义处，右键点array设置数组，大小为5<img src="/./../images/image-20230121122734380.png" alt="image-20230121122734380"></p>
-<p>最终field_4c后面的变量也将合并进入数组中<img src="/./../images/image-20230121122825156.png" alt="image-20230121122825156"></p>
-<p>源码舒服，重命名为array1<img src="/./../images/image-20230121123416130.png" alt="image-20230121123416130"></p>
-<p>这里进行字符串的初始化和赋值操作<img src="/./../images/image-20230121123758528.png" alt="image-20230121123758528"></p>
+<p><img data-src="/./../images/image-20230121120704877.png" alt="image-20230121120704877"></p>
+<p>这里的a1进行了一系列操作，我们将a1的类修修改为我们定义的类型<img data-src="/./../images/image-20230121120850500.png" alt="image-20230121120850500"></p>
+<p>因为这个函数在new之后执行，所以可能是构造函数，这里我们改个函数名吧<img data-src="/./../images/image-20230121121052464.png" alt="image-20230121121052464"></p>
+<p>在构造函数中，有些属性是进行dword操作，这里我们就要将qword，改成dword类型<img data-src="/./../images/image-20230121121546769.png" alt="image-20230121121546769"></p>
+<p>比如field_48，这里双击field_48进入结构体定义处，将该属性改成dword，这里摁d键<img data-src="/./../images/image-20230121121758509.png" alt="image-20230121121758509"></p>
+<p>设置好之后下面未定义的也需要改成dword，就像这样<img data-src="/./../images/image-20230121121852483.png" alt="image-20230121121852483"></p>
+<p>其他变量也是一样修改，把剩下的也修改了，但是当最后一个属性改为dword后，总大小发生了改变，这里我们只需要在下面再增加一个变量即可<img data-src="/./../images/image-20230121122116991.png" alt="image-20230121122116991"></p>
+<p>最后就是这样<img data-src="/./../images/image-20230121122144895.png" alt="image-20230121122144895"></p>
+<p>然后在源码中摁F5，代码就好看多了<img data-src="/./../images/image-20230121122453040.png" alt="image-20230121122453040"></p>
+<p>上面循环处field_4c是以4字节进行访问，并且访问5词，也就是说field_4c开始处是一个以4字节为单位的一个数组，数组大小为5，在结构体定义处，右键点array设置数组，大小为5<img data-src="/./../images/image-20230121122734380.png" alt="image-20230121122734380"></p>
+<p>最终field_4c后面的变量也将合并进入数组中<img data-src="/./../images/image-20230121122825156.png" alt="image-20230121122825156"></p>
+<p>源码舒服，重命名为array1<img data-src="/./../images/image-20230121123416130.png" alt="image-20230121123416130"></p>
+<p>这里进行字符串的初始化和赋值操作<img data-src="/./../images/image-20230121123758528.png" alt="image-20230121123758528"></p>
 <p>这里我们将field_20改为str1</p>
-<p>根据大富翁游戏，初始化的字符串，根据名字都是一些建筑，我们可以把定义的结构体名称改成house，然后将构造函数改成init_house<img src="/./../images/image-20230121124542969.png" alt="image-20230121124542969"></p>
-<p>然后经过构造函数，申请到的对象内存都会存放到，以A1C0为首的地址处<img src="/./../images/image-20230121125509200.png" alt="image-20230121125509200"></p>
-<p><img src="/./../images/image-20230121125527179.png" alt="image-20230121125527179"></p>
-<p>上面一共64个位置，所以类型为house *为类型，数组长度为64个来存放house对象的指针<img src="/./../images/image-20230121125756372.png" alt="image-20230121125756372"></p>
-<p>这里再右键array改为64<img src="/./../images/image-20230121125834301.png" alt="image-20230121125834301"></p>
-<p>这些建筑正好形成地图，将数组名改成map即可<img src="/./../images/image-20230121130116722.png" alt="image-20230121130116722"></p>
-<p>分析另外一个结构体，这个结构体没有使用 new &#x2F; malloc 分配内存，如何确定大小？<img src="/./../images/image-20230121132813993.png" alt="image-20230121132813993"></p>
-<p>进入函数，看起来明显是个初始化函数<img src="/./../images/image-20230121132852076.png" alt="image-20230121132852076"></p>
-<p>两个变量都是紧挨着的在内存中，属于静态分配了<img src="/./../images/image-20230121132938102.png" alt="image-20230121132938102"></p>
-<p>两个变量位置相减为0x80，所以我们就暂时确定这个结构体的大小为0x80，然后我就去struct视图中去创建一个大小为0x80的结构体，还是老操作<img src="/./../images/image-20230121133259989.png" alt="image-20230121133259989"></p>
+<p>根据大富翁游戏，初始化的字符串，根据名字都是一些建筑，我们可以把定义的结构体名称改成house，然后将构造函数改成init_house<img data-src="/./../images/image-20230121124542969.png" alt="image-20230121124542969"></p>
+<p>然后经过构造函数，申请到的对象内存都会存放到，以A1C0为首的地址处<img data-src="/./../images/image-20230121125509200.png" alt="image-20230121125509200"></p>
+<p><img data-src="/./../images/image-20230121125527179.png" alt="image-20230121125527179"></p>
+<p>上面一共64个位置，所以类型为house *为类型，数组长度为64个来存放house对象的指针<img data-src="/./../images/image-20230121125756372.png" alt="image-20230121125756372"></p>
+<p>这里再右键array改为64<img data-src="/./../images/image-20230121125834301.png" alt="image-20230121125834301"></p>
+<p>这些建筑正好形成地图，将数组名改成map即可<img data-src="/./../images/image-20230121130116722.png" alt="image-20230121130116722"></p>
+<p>分析另外一个结构体，这个结构体没有使用 new &#x2F; malloc 分配内存，如何确定大小？<img data-src="/./../images/image-20230121132813993.png" alt="image-20230121132813993"></p>
+<p>进入函数，看起来明显是个初始化函数<img data-src="/./../images/image-20230121132852076.png" alt="image-20230121132852076"></p>
+<p>两个变量都是紧挨着的在内存中，属于静态分配了<img data-src="/./../images/image-20230121132938102.png" alt="image-20230121132938102"></p>
+<p>两个变量位置相减为0x80，所以我们就暂时确定这个结构体的大小为0x80，然后我就去struct视图中去创建一个大小为0x80的结构体，还是老操作<img data-src="/./../images/image-20230121133259989.png" alt="image-20230121133259989"></p>
 <p>这里其实可以先创建64长度的数组，然后再取消定义，这样就可以快速创建结构体了</p>
-<p>类型定义好之后，函数外的全局变量类型不急着更改，先更改函数形参的类型<img src="/./../images/image-20230122155016716.png" alt="image-20230122155016716"></p>
+<p>类型定义好之后，函数外的全局变量类型不急着更改，先更改函数形参的类型<img data-src="/./../images/image-20230122155016716.png" alt="image-20230122155016716"></p>
 <p>在函数中判断feild_20可能是个数组，这里先不理会</p>
-<p>后面函数形参类型也需要一个个去修改<img src="/./../images/image-20230122155424970.png" alt="image-20230122155424970"></p>
-<p>刷新一下变成这样了，给变量改个名<img src="/./../images/image-20230122182413118.png" alt="image-20230122182413118"></p>
-<p>把剩余需要修改的变量大小继续更改<img src="/./../images/image-20230122183001258.png" alt="image-20230122183001258"></p>
-<p>然后这里根据printf的字符串信息来判断结构体的类型<img src="/./../images/image-20230122183705595.png" alt="image-20230122183705595"></p>
+<p>后面函数形参类型也需要一个个去修改<img data-src="/./../images/image-20230122155424970.png" alt="image-20230122155424970"></p>
+<p>刷新一下变成这样了，给变量改个名<img data-src="/./../images/image-20230122182413118.png" alt="image-20230122182413118"></p>
+<p>把剩余需要修改的变量大小继续更改<img data-src="/./../images/image-20230122183001258.png" alt="image-20230122183001258"></p>
+<p>然后这里根据printf的字符串信息来判断结构体的类型<img data-src="/./../images/image-20230122183705595.png" alt="image-20230122183705595"></p>
 <p>v6可能是建筑的类型，从map数组中取出来的结构体都是house类型了，然后把变量名都改成自己猜想的名字。</p>
-<p>这个函数的实参是map数组元素，形参应该改为house结构体指针<img src="/./../images/image-20230122185813240.png" alt="image-20230122185813240"></p>
-<p>这里有个field_40,不能确定是啥<img src="/./../images/image-20230122190051439.png" alt="image-20230122190051439"></p>
-<p>我们可以用交叉引用，去别的地方找信息，刚好这里有一处<img src="/./../images/image-20230122190406178.png" alt="image-20230122190406178"></p>
+<p>这个函数的实参是map数组元素，形参应该改为house结构体指针<img data-src="/./../images/image-20230122185813240.png" alt="image-20230122185813240"></p>
+<p>这里有个field_40,不能确定是啥<img data-src="/./../images/image-20230122190051439.png" alt="image-20230122190051439"></p>
+<p>我们可以用交叉引用，去别的地方找信息，刚好这里有一处<img data-src="/./../images/image-20230122190406178.png" alt="image-20230122190406178"></p>
 <p>这里将ppp1赋给field_40，所以我们就将field_40改成结构体2类型</p>
 <p>以上就是随意逆向的结果，真正正经逆向都是要分析程序逻辑的，我们先随意逆向，分析部分属性信息，有助于我们之后的分析</p>
-<p>程序刚开始会让我们输入游戏难度等级<img src="/./../images/image-20230122191713348.png" alt="image-20230122191713348"></p>
-<p>经过分析这个就是获取数字的函数<img src="/./../images/image-20230122191835438.png" alt="image-20230122191835438"></p>
-<p>然后我们先从简单的easy_level开始<img src="/./../images/image-20230122192539523.png" alt="image-20230122192539523"></p>
-<p>从这分析出ppp3是玩家的意思，因为刚开始它就给ppp3给到初始的金额了<img src="/./../images/image-20230122192843765.png" alt="image-20230122192843765"></p>
-<p>然后进入一个循环，首先进入这个函数<img src="/./../images/image-20230122193721525.png" alt="image-20230122193721525"></p>
-<p>这个函数很明显是个循环<img src="/./../images/image-20230122193909583.png" alt="image-20230122193909583"></p>
-<p>有两个函数，一个只有player1另外还有player2，也就是一个人玩玩，另一个人玩<img src="/./../images/image-20230122195530524.png" alt="image-20230122195530524"><img src="/./../images/image-20230122195544442.png" alt="image-20230122195544442"></p>
-<p>然后这里我们需要输入我们想做的内容<img src="/./../images/image-20230122202153532.png" alt="image-20230122202153532"></p>
-<p>我们先以第一个，这里有个比较，应该是玩家资产数量<img src="/./../images/image-20230122202349924.png" alt="image-20230122202349924"></p>
+<p>程序刚开始会让我们输入游戏难度等级<img data-src="/./../images/image-20230122191713348.png" alt="image-20230122191713348"></p>
+<p>经过分析这个就是获取数字的函数<img data-src="/./../images/image-20230122191835438.png" alt="image-20230122191835438"></p>
+<p>然后我们先从简单的easy_level开始<img data-src="/./../images/image-20230122192539523.png" alt="image-20230122192539523"></p>
+<p>从这分析出ppp3是玩家的意思，因为刚开始它就给ppp3给到初始的金额了<img data-src="/./../images/image-20230122192843765.png" alt="image-20230122192843765"></p>
+<p>然后进入一个循环，首先进入这个函数<img data-src="/./../images/image-20230122193721525.png" alt="image-20230122193721525"></p>
+<p>这个函数很明显是个循环<img data-src="/./../images/image-20230122193909583.png" alt="image-20230122193909583"></p>
+<p>有两个函数，一个只有player1另外还有player2，也就是一个人玩玩，另一个人玩<img data-src="/./../images/image-20230122195530524.png" alt="image-20230122195530524"><img data-src="/./../images/image-20230122195544442.png" alt="image-20230122195544442"></p>
+<p>然后这里我们需要输入我们想做的内容<img data-src="/./../images/image-20230122202153532.png" alt="image-20230122202153532"></p>
+<p>我们先以第一个，这里有个比较，应该是玩家资产数量<img data-src="/./../images/image-20230122202349924.png" alt="image-20230122202349924"></p>
 <p>要求输入的值不能超过，玩家拥有的资产的数量。所以sub_452F函数估计就是资产的售卖了</p>
-<p>这里售卖的函数中<img src="/./../images/image-20230122203152235.png" alt="image-20230122203152235"></p>
-<p>这里资产数组大小为map的总个数为64个<img src="/./../images/image-20230122203328139.png" alt="image-20230122203328139"></p>
-<p>然后是3，购买资产<img src="/./../images/image-20230122210502911.png" alt="image-20230122210502911"></p>
-<p>分析得<img src="/./../images/image-20230122210702534.png" alt="image-20230122210702534"></p>
-<p>最终：<img src="/./../images/image-20230122210742758.png" alt="image-20230122210742758"></p>
-<p><img src="/./../images/image-20230122210913452.png" alt="image-20230122210913452"></p>
+<p>这里售卖的函数中<img data-src="/./../images/image-20230122203152235.png" alt="image-20230122203152235"></p>
+<p>这里资产数组大小为map的总个数为64个<img data-src="/./../images/image-20230122203328139.png" alt="image-20230122203328139"></p>
+<p>然后是3，购买资产<img data-src="/./../images/image-20230122210502911.png" alt="image-20230122210502911"></p>
+<p>分析得<img data-src="/./../images/image-20230122210702534.png" alt="image-20230122210702534"></p>
+<p>最终：<img data-src="/./../images/image-20230122210742758.png" alt="image-20230122210742758"></p>
+<p><img data-src="/./../images/image-20230122210913452.png" alt="image-20230122210913452"></p>
 <p>全局字段交叉引用 Ctrl + alt + X （要尽可能将相关函数找出来并修复类型，有利于查找）</p>
 <h2 id="IDA-虚表修复"><a href="#IDA-虚表修复" class="headerlink" title="IDA 虚表修复"></a>IDA 虚表修复</h2><p>实验材料： vtable</p>
 <p>虚表就是C++实现多态的一种机制</p>
 <p>为了实现C++的多态，C++使用了一种动态绑定的技术。这个技术的核心是虚函数表，当一个类（A）继承另一个类（B）时，类A会继承类B的函数的调用权。所以如果一个基类包含了虚函数，那么其继承类也可调用这些虚函数，换句话说，一个类继承了包含虚函数的基类，那么这个类也拥有自己的虚表。我们来看以下的代码。类A包含虚函数vfunc1，vfunc2，由于类A包含虚函数，故类A拥有一个虚表。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">vfunc1</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">vfunc2</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">func1</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">func2</span><span class="params">()</span></span>;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> m_data1, m_data2;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<p>类A的虚表如图1所示:<img src="/./../images/image-20230122212103043.png" alt="image-20230122212103043"></p>
+<p>类A的虚表如图1所示:<img data-src="/./../images/image-20230122212103043.png" alt="image-20230122212103043"></p>
 <p>虚表是一个指针数组，其元素是虚函数的指针，每个元素对应一个虚函数的函数指针。需要指出的是，普通的函数即非虚函数，其调用并不需要经过虚表，所以虚表的元素并不包括普通函数的函数指针。虚表内的条目，即虚函数指针的赋值发生在编译器的编译阶段，也就是说在代码的编译阶段，虚表就可以构造出来了</p>
 <p>虚表修复主要是为了重建虚表交叉引用,一般类的第一个地址就是虚表的地址。</p>
-<p>这里就是调用虚表的某一个函数<img src="/./../images/image-20230122213810302.png" alt="image-20230122213810302"></p>
-<p>这里类大小为0x28字节<img src="/./../images/image-20230122213834372.png" alt="image-20230122213834372"></p>
-<p>这里我们找到虚表，点击这个就是虚表<img src="/./../images/image-20230122213906848.png" alt="image-20230122213906848"></p>
-<p>然后右边是虚表的符号<img src="/./../images/image-20230122213950337.png" alt="image-20230122213950337"></p>
-<p>这里先进行构建结构体，在结构体中表示虚表，一个函数地址，在64位中为32位<img src="/./../images/image-20230122214250424.png" alt="image-20230122214250424"></p>
-<p>创建好后，创建类结构体，然后将类结构体的第一个属性类型设置为虚表类型<img src="/./../images/image-20230122214426259.png" alt="image-20230122214426259"></p>
-<p>然后将v3的类型设置为类结构体类型<img src="/./../images/image-20230122214509446.png" alt="image-20230122214509446"></p>
-<p>然后就修复完成了<img src="/./../images/image-20230122214621630.png" alt="image-20230122214621630"></p>
-<p><img src="/./../images/image-20230122214835711.png" alt="image-20230122214835711"></p>
+<p>这里就是调用虚表的某一个函数<img data-src="/./../images/image-20230122213810302.png" alt="image-20230122213810302"></p>
+<p>这里类大小为0x28字节<img data-src="/./../images/image-20230122213834372.png" alt="image-20230122213834372"></p>
+<p>这里我们找到虚表，点击这个就是虚表<img data-src="/./../images/image-20230122213906848.png" alt="image-20230122213906848"></p>
+<p>然后右边是虚表的符号<img data-src="/./../images/image-20230122213950337.png" alt="image-20230122213950337"></p>
+<p>这里先进行构建结构体，在结构体中表示虚表，一个函数地址，在64位中为32位<img data-src="/./../images/image-20230122214250424.png" alt="image-20230122214250424"></p>
+<p>创建好后，创建类结构体，然后将类结构体的第一个属性类型设置为虚表类型<img data-src="/./../images/image-20230122214426259.png" alt="image-20230122214426259"></p>
+<p>然后将v3的类型设置为类结构体类型<img data-src="/./../images/image-20230122214509446.png" alt="image-20230122214509446"></p>
+<p>然后就修复完成了<img data-src="/./../images/image-20230122214621630.png" alt="image-20230122214621630"></p>
+<p><img data-src="/./../images/image-20230122214835711.png" alt="image-20230122214835711"></p>
 
     </div>
 
@@ -575,6 +576,9 @@
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   
@@ -583,6 +587,7 @@
 
 
 
+  <script src="/js/third-party/fancybox.js"></script>
 
 
   

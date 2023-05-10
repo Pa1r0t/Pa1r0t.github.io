@@ -17,8 +17,9 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"pa1r0t.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","width":320,"display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pa1r0t.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","width":320,"display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="学习一下csapp,第一篇">
 <meta property="og:type" content="article">
@@ -181,7 +182,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-count">31</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -296,7 +297,7 @@
 <p>​						-2147483648-1	&lt;	2147483647	结果为true</p>
 <p>在计算机中运算是会发生溢出，假如运算后的数超过了32位，那最终结果可能是一个负数，或者是其他正整数</p>
 <p>我们用linux中的gdb软件来证明其中的结论</p>
-<p><img src="/./../images/image-20230109200402530.png" alt="image-20230109200402530"></p>
+<p><img data-src="/./../images/image-20230109200402530.png" alt="image-20230109200402530"></p>
 <p>很显然，上述超乎我们的预想</p>
 <p>然而在整数运算时是符合交换律的，但是在计算机中浮点数却不符合交换律</p>
 <p>这里做一个实验：用(1e20 + -1e20) + 3.14</p>
@@ -304,7 +305,7 @@
 <p>再用1e20 + (-1e20 + 3.14)，这里3.14对于-1e20微不足道</p>
 <p>结果为：0</p>
 <p>他们用有限的位组合形式表示在数域中无线扩张的数</p>
-<p><img src="/./../images/image-20230109202910325.png" alt="image-20230109202910325"></p>
+<p><img data-src="/./../images/image-20230109202910325.png" alt="image-20230109202910325"></p>
 <h3 id="定点数和浮点数"><a href="#定点数和浮点数" class="headerlink" title="定点数和浮点数"></a>定点数和浮点数</h3><p>计算机中只能通过约定小数点的位置来表示	</p>
 <ul>
 <li>小数点位置约定在固定位置的数称为定点数</li>
@@ -315,7 +316,7 @@
 <p>其中，S取值为0或1，用来决定数X的符号；M是一个二进制定点小数 ，称为数X的尾数（mantissa）；E是一个二进制定点整数，称为数X 的阶或指数（exponent）；R是基数（radix、base），可以为2、4和16等,计算机中只要表示S、M和E三个信息，就能确定X的值，叫浮点数</p>
 <h3 id="定点数的编码表示"><a href="#定点数的编码表示" class="headerlink" title="定点数的编码表示"></a>定点数的编码表示</h3><p>浮点数（可用一个定点小数和一个定点整数来表示）</p>
 <p>定点数的编码（解决正负号问题）: 原码、补码、移码、反码 （很少用）</p>
-<h4 id="原码表示："><a href="#原码表示：" class="headerlink" title="原码表示："></a>原码表示：</h4><p><img src="/./../images/image-20230114214440623.png" alt="image-20230114214440623"></p>
+<h4 id="原码表示："><a href="#原码表示：" class="headerlink" title="原码表示："></a>原码表示：</h4><p><img data-src="/./../images/image-20230114214440623.png" alt="image-20230114214440623"></p>
 <ul>
 <li>其中由上图得0有两种表示，不唯一</li>
 <li>加减方式，对于同号，取绝对值相加，然后在加上符号，对于异号，是比较哪个绝对值大，然后大的间小的，然后再加上绝对值大的符号。这样加减方式繁琐不统一</li>
@@ -327,7 +328,7 @@
 <p><strong>补码（modular运算）：+ 和– 的统一</strong></p>
 <p>例1：“钟表”模运算系统 假定时针只能顺拨，从10点倒拨4格后是几点？ </p>
 <p>10- 4 &#x3D; 10+(12- 4) &#x3D; 10+8 &#x3D; 6（mod 12）</p>
-<p><img src="/./../images/image-20230114220017752.png" alt="image-20230114220017752"></p>
+<p><img data-src="/./../images/image-20230114220017752.png" alt="image-20230114220017752"></p>
 <h3 id="结论：一个负数的补码等于将对应正数补码-各位取反、末位加一"><a href="#结论：一个负数的补码等于将对应正数补码-各位取反、末位加一" class="headerlink" title="结论：一个负数的补码等于将对应正数补码 各位取反、末位加一"></a>结论：一个负数的补码等于将对应正数补码 各位取反、末位加一</h3><p>补码的定义 假定补码有n位，则：[X]补&#x3D; 2n + X （-2n-1≤X＜2n-1 ，mod 2n）</p>
 <p>X是真值，[x]补是机器数</p>
 <h2 id="求特殊数的补码"><a href="#求特殊数的补码" class="headerlink" title="求特殊数的补码"></a>求特殊数的补码</h2><p>假定机器数有n位：</p>
@@ -335,12 +336,12 @@
 <p>② [-1]<del>补</del>&#x3D; 2^n^ - 0…01 &#x3D; 11…1（n个1） （mod 2^n^)</p>
 <p>③ [+0]<del>补</del>&#x3D; [-0]<del>补</del>&#x3D; 00…0（n个0）</p>
 <h2 id="变形补码的表示"><a href="#变形补码的表示" class="headerlink" title="变形补码的表示"></a>变形补码的表示</h2><p>变形（4’s）补码：双符号，用于存放可能溢出的中间结果</p>
-<p><img src="/./../images/image-20230117124905779.png" alt="image-20230117124905779"></p>
+<p><img data-src="/./../images/image-20230117124905779.png" alt="image-20230117124905779"></p>
 <p>求真值的补码:</p>
 <p>简便方法：从右向左遇到第一个1的前面各位取反</p>
 <p>求补码的真值:</p>
 <p>简便求法： 符号为0，则为正数，数值部分相同 符号为1，则为负数，数值各位取反，末位加1</p>
-<p><img src="/./../images/image-20230117125216871.png" alt="image-20230117125216871"></p>
+<p><img data-src="/./../images/image-20230117125216871.png" alt="image-20230117125216871"></p>
 <h2 id="移码表示Excess"><a href="#移码表示Excess" class="headerlink" title="移码表示Excess"></a>移码表示Excess</h2><ul>
 <li>什么是移码表示？<ul>
 <li>将每一个数值加上一个偏置常数（ Excess &#x2F; bias）</li>
@@ -348,14 +349,14 @@
 </li>
 <li>通常，当编码位数为n时，bias取 2^n-1^ 或 2^n-1^-1（如 IEEE 754)</li>
 </ul>
-<p><img src="/./../images/image-20230117125707755.png" alt="image-20230117125707755"></p>
+<p><img data-src="/./../images/image-20230117125707755.png" alt="image-20230117125707755"></p>
 <ul>
 <li>为什么要用移码来表示指数（阶码）?<ul>
 <li>便于浮点数加减运算时的对阶操作（比较大小）</li>
 </ul>
 </li>
 </ul>
-<p><img src="/./../images/image-20230117125855689.png" alt="image-20230117125855689"></p>
+<p><img data-src="/./../images/image-20230117125855689.png" alt="image-20230117125855689"></p>
 <h2 id="带符号整数"><a href="#带符号整数" class="headerlink" title="带符号整数"></a>带符号整数</h2><p>有三种定点编码方式：</p>
 <ul>
 <li>Signed and magnitude （原码）：定点小数，用来表示浮点数的尾数</li>
@@ -370,10 +371,10 @@
 </ul>
 <p>无符号数:常在一个数的后面加一个“u”或“U”表示无符号数</p>
 <p>&#x3D;&#x3D;若同时有无符号和带符号整数，则C编译器将带符号整数强制转换为无符号数&#x3D;&#x3D;</p>
-<p><img src="/./../images/image-20230117152023145.png" alt="image-20230117152023145"></p>
+<p><img data-src="/./../images/image-20230117152023145.png" alt="image-20230117152023145"></p>
 <p>带*的与预想的不同</p>
-<p><img src="/./../images/image-20230117152423930.png" alt="image-20230117152423930"></p>
-<h4 id="编译器处理常量时默认的类型"><a href="#编译器处理常量时默认的类型" class="headerlink" title="编译器处理常量时默认的类型"></a>编译器处理常量时默认的类型</h4><p><img src="/./../images/image-20230117153309750.png" alt="image-20230117153309750"></p>
+<p><img data-src="/./../images/image-20230117152423930.png" alt="image-20230117152423930"></p>
+<h4 id="编译器处理常量时默认的类型"><a href="#编译器处理常量时默认的类型" class="headerlink" title="编译器处理常量时默认的类型"></a>编译器处理常量时默认的类型</h4><p><img data-src="/./../images/image-20230117153309750.png" alt="image-20230117153309750"></p>
 <p>C表达式-2147483648 &lt; 2147483647的执行结 果为false，这是因为编译器在编译时，是把符号和字面量分开识别，先识别字面量2147483648，2147483648在C90中时2^31^,属于unsigned int，所以此次比较是根据无符号数来进行比较。</p>
 <p>若定义变量“int i&#x3D;-2147483648;”，则“i &lt; 2147483647”的执行 结果为true，这个不用解释，int类型已经定义好类型了，不需要再判别</p>
 <p>如果将表达式写成“-2147483647-1 &lt; 2147483647”，则结果会怎 样呢？是true</p>
@@ -472,6 +473,9 @@
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   
@@ -480,6 +484,7 @@
 
 
 
+  <script src="/js/third-party/fancybox.js"></script>
 
 
   

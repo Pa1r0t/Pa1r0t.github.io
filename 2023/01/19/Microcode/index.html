@@ -17,8 +17,9 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"pa1r0t.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","width":320,"display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pa1r0t.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","width":320,"display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="记录Microcode">
 <meta property="og:type" content="article">
@@ -178,7 +179,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-count">31</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -322,26 +323,26 @@
 <li>RSI  is mapped into rsi.8</li>
 </ul>
 <p>Microcode 分阶段生成, 最初阶段生成的代码非常冗余</p>
-<p><img src="/./../images/image-20230119221600205.png" alt="image-20230119221600205"></p>
+<p><img data-src="/./../images/image-20230119221600205.png" alt="image-20230119221600205"></p>
 <p>Microcode 快速上手，手动调用 microcode 生成</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> ida_hexrays</span><br><span class="line"><span class="keyword">import</span> idaapi</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">print_microcode</span>(<span class="params">func_ea</span>):</span><br><span class="line">    maturity = ida_hexrays.MMAT_GLBOPT3</span><br><span class="line">    <span class="comment">#   maturity:</span></span><br><span class="line">    <span class="comment">#   MMAT_ZERO,          //&lt; microcode 不存在</span></span><br><span class="line">    <span class="comment">#   MMAT_GENERATED      //&lt; 已经生成的microcode</span></span><br><span class="line">    <span class="comment">#   MMAT_PREOPTIMIED    //&lt; 预先优化的pass已完成</span></span><br><span class="line">    <span class="comment">#   MMAT_LOCOPT         //&lt; local 本地每个基本块的优化已完成    control控制流图也就绪</span></span><br><span class="line">    <span class="comment">#   MMAT_CALLS          //&lt; 检测调用参数</span></span><br><span class="line">    <span class="comment">#   MMAT_GLBOPT1        //&lt; 执行第一个全局优化pass</span></span><br><span class="line">    <span class="comment">#   MMAT_GLBOPT2        //&lt; 大多数全局优化pass已完成</span></span><br><span class="line">    <span class="comment">#   MMAT_GLBOPT3        //&lt; 完成所有的优化，microcode被修改</span></span><br><span class="line">    <span class="comment">#   MMAT_LVAR3          //&lt; 分配所有的局部变量</span></span><br><span class="line">    hf = ida_hexrays.hexrays_failure_t()</span><br><span class="line">    pfn = idaapi.get_func(func_ea)</span><br><span class="line">    rng = ida_hexrays.mba_ranges_t(pfn)</span><br><span class="line">    mba = ida_hexrays.gen_microcode(rng,hf,<span class="literal">None</span>,</span><br><span class="line">                                    ida_hexrays.DECOMP_WARNINGS,maturity)</span><br><span class="line">    vp = ida_hexrays.vd_printer_t()</span><br><span class="line">    mba._<span class="built_in">print</span>(vp)</span><br><span class="line">print_microcode(<span class="number">0x1229</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>Microcode 相关的数据结构，定义在 hexrays.hpp 文件 </p>
-<p><img src="/./../images/image-20230119221901715.png" alt="image-20230119221901715"></p>
-<p><img src="/./../images/image-20230119222011500.png" alt="image-20230119222011500"></p>
+<p><img data-src="/./../images/image-20230119221901715.png" alt="image-20230119221901715"></p>
+<p><img data-src="/./../images/image-20230119222011500.png" alt="image-20230119222011500"></p>
 <p>Microcode 相关的数据结构: <strong>mbl_array_t</strong>,这个结构用来存放函数的基本块信息</p>
 <ul>
 <li>基本块之间使用双向链表链接</li>
 <li>基本块数组存放在 natural 数组</li>
 </ul>
-<p><img src="/./../images/image-20230119222056330.png" alt="image-20230119222056330"></p>
+<p><img data-src="/./../images/image-20230119222056330.png" alt="image-20230119222056330"></p>
 <p>Microcode 相关的数据结构: mblock_t,这个结构用来描述基本块信息。±基本块内的指令与指令之间使用双向链表链接</p>
-<p><img src="/./../images/image-20230119222156151.png" alt="image-20230119222156151"></p>
+<p><img data-src="/./../images/image-20230119222156151.png" alt="image-20230119222156151"></p>
 <p>Microcode 相关的数据结构: minsn_t。用于描述指令信息的结构。（注意微码指令支持指令嵌套。）</p>
-<p><img src="/./../images/image-20230119222222555.png" alt="image-20230119222222555"></p>
+<p><img data-src="/./../images/image-20230119222222555.png" alt="image-20230119222222555"></p>
 <p>Microcode 相关的数据结构: mop_t</p>
 <p>用于描述操作数信息的结构，指令 minsn_t 有 0 ~ 3 个操作数，分别时 l (left), r (right), d (destination) 操作数的类型用 mop_t 来表示</p>
-<p><img src="/./../images/image-20230119222252600.png" alt="image-20230119222252600"></p>
+<p><img data-src="/./../images/image-20230119222252600.png" alt="image-20230119222252600"></p>
 <p>Microcode 插件例子</p>
 <ul>
 <li>实现 svc 0x900001 与 svc 0x9000F8 指令反编译成一条 call 指令</li>
@@ -351,7 +352,7 @@
 <li>我们需要将 svc 指令替换成 call 指令，ida 已经为我们实现了替换类 udc_filter_t, 这个类继承于 microcode_filter_t 并实现了 apply 方法（即替换call指令），我们需要继承 udc_filter_t 并实现它的 match 方法用于判断拦截的指令。</li>
 </ul>
 <p>Microcode 插件例子</p>
-<p><img src="/./../images/image-20230119222437041.png" alt="image-20230119222437041"></p>
+<p><img data-src="/./../images/image-20230119222437041.png" alt="image-20230119222437041"></p>
 
     </div>
 
@@ -446,6 +447,9 @@
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   
@@ -454,6 +458,7 @@
 
 
 
+  <script src="/js/third-party/fancybox.js"></script>
 
 
   
