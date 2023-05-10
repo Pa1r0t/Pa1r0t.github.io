@@ -435,7 +435,7 @@
 </li>
 </ul>
 <p>例如将以下语句转成中间代码：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>( k = <span class="number">1</span>; k &lt;= <span class="number">100</span>; k++)&#123;</span><br><span class="line">	m = i + <span class="number">10</span>*k;</span><br><span class="line">	n = j + <span class="number">10</span>*k;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>( k = <span class="number">1</span>; k &lt;= <span class="number">100</span>; k++)&#123;</span><br><span class="line">	m = i + <span class="number">10</span>*k;</span><br><span class="line">	n = j + <span class="number">10</span>*k;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><img data-src="/./../images/image-20230110193728210.png" alt="image-20230110193728210"></p>
 <p>优化：每次乘实际上都是在上一次的基础是+10,所以能将乘操作优化成加法操作，来达到提升效率的目的</p>
