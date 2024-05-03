@@ -1,353 +1,730 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 <head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
-
-<script class="next-config" data-name="main" type="application/json">{"hostname":"pa1r0t.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","width":320,"display":"always","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":"flase","pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
-
-    <meta name="description" content="IDA 类型修复">
-<meta property="og:type" content="article">
-<meta property="og:title" content="IDA结构体分析">
-<meta property="og:url" content="https://pa1r0t.github.io/2023/01/21/IDA%E7%BB%93%E6%9E%84%E4%BD%93%E5%88%86%E6%9E%90/index.html">
+  <meta charset="utf-8">
+  <title>IDA结构体分析 | Pa1r0t</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="IDA结构体分析 | Pa1r0t">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="welcome to my bolg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="categories">
+<meta property="og:url" content="https://pa1r0t.github.io/categories/index.html">
 <meta property="og:site_name" content="Pa1r0t">
-<meta property="og:description" content="IDA 类型修复">
+<meta property="og:description" content="welcome to my bolg">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230121101355025.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230121101528976.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230121101553907.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230121101813329.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230121104326617.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230121105019521.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230121105406208.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230121105556782.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230121105718374.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230121110056164.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230121110310274.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230121110552200.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230121110626662.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230121120704877.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230121120850500.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230121121052464.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230121121546769.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230121121758509.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230121121852483.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230121122116991.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230121122144895.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230121122453040.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230121122734380.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230121122825156.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230121123416130.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230121123758528.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230121124542969.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230121125509200.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230121125527179.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230121125756372.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230121125834301.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230121130116722.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230121132813993.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230121132852076.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230121132938102.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230121133259989.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230122155016716.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230122155424970.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230122182413118.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230122183001258.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230122183705595.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230122185813240.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230122190051439.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230122190406178.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230122191713348.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230122191835438.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230122192539523.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230122192843765.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230122193721525.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230122193909583.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230122195530524.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230122195544442.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230122202153532.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230122202349924.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230122203152235.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230122203328139.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230122210502911.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230122210702534.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230122210742758.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230122210913452.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230122212103043.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230122213810302.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230122213834372.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230122213906848.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230122213950337.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230122214250424.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230122214426259.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230122214509446.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230122214621630.png">
-<meta property="og:image" content="https://pa1r0t.github.io/images/image-20230122214835711.png">
-<meta property="article:published_time" content="2023-01-21T01:52:17.000Z">
-<meta property="article:modified_time" content="2023-01-22T13:48:54.654Z">
+<meta property="article:published_time" content="2022-11-06T05:27:18.000Z">
+<meta property="article:modified_time" content="2022-11-07T03:30:48.209Z">
 <meta property="article:author" content="Pa1r0t_9e">
-<meta name="twitter:card" content="&lt;twitter:card&gt;">
-<meta name="twitter:image" content="https://pa1r0t.github.io/2023/01/21/IDA%E7%BB%93%E6%9E%84%E4%BD%93%E5%88%86%E6%9E%90/%3Ctwitter:image%3E">
-<meta name="twitter:creator" content="@&lt;twitter:creator&gt;">
-<meta name="twitter:site" content="<twitter:site>">
-<link rel="publisher" href="%3Cg+:profile_link%3E">
-<meta property="fb:admins" content="&lt;fb:admin_id&gt;">
-<meta property="fb:app_id" content="&lt;fb:app_id&gt;">
+<meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://pa1r0t.github.io/2023/01/21/IDA%E7%BB%93%E6%9E%84%E4%BD%93%E5%88%86%E6%9E%90/">
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pa1r0t.github.io/2023/01/21/IDA%E7%BB%93%E6%9E%84%E4%BD%93%E5%88%86%E6%9E%90/","path":"2023/01/21/IDA结构体分析/","title":"IDA结构体分析"}</script>
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
 
-<script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>IDA结构体分析 | Pa1r0t</title>
-  
+<script src="/js/iconfont.js?v=1.1.0" ></script>
 
-
-
-
-
-
-  <script async defer data-website-id="" src=""></script>
-
-  <script defer data-domain="" src=""></script>
-
-  <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
-  </noscript>
-<link rel="alternate" href="/atom.xml" title="Pa1r0t" type="application/atom+xml">
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Pa1r0t" type="application/atom+xml">
 </head>
-
-<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
-  <div class="headband"></div>
-
-  <main class="main">
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <p class="site-title">Pa1r0t</p>
-      <i class="logo-line"></i>
-    </a>
-      <p class="site-subtitle" itemprop="description">记录成长</p>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-        <i class="fa fa-search fa-fw fa-lg"></i>
-    </div>
-  </div>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
 </div>
 
 
 
-<nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-ctf"><a href="/ctf/" rel="section"><i class="fa fa-flag fa-fw"></i>ctf</a></li><li class="menu-item menu-item-re"><a href="/re/" rel="section"><i class="fa fa-brands fa-rev fa-fw"></i>re</a></li><li class="menu-item menu-item-algorithm"><a href="/Algorithm/" rel="section"><i class="fa-solid fa-microchip fa-fw"></i>Algorithm</a></li><li class="menu-item menu-item-friendly-chain"><a href="/links/" rel="section"><i class="fa fa-user-group fa-fw"></i>Friendly chain</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
-      <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
-        </a>
-      </li>
-  </ul>
-</nav>
-
-
-
-  <div class="search-pop-overlay">
-    <div class="popup search-popup"><div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off" maxlength="80"
-           placeholder="搜索..." spellcheck="false"
-           type="search" class="search-input">
-  </div>
-  <span class="popup-btn-close" role="button">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div class="search-result-container no-result">
-  <div class="search-result-icon">
-    <i class="fa fa-spinner fa-pulse fa-5x"></i>
-  </div>
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>Pa1r0t_9e</span>
 </div>
 
-    </div>
-  </div>
-
-</div>
+<div class="icon">
+    
         
-  
-  <div class="toggle sidebar-toggle" role="button">
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-  </div>
-
-  <aside class="sidebar">
-
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
-      <ul class="sidebar-nav">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <div class="sidebar-panel-container">
-        <!--noindex-->
-        <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#IDA-%E4%BF%AE%E5%A4%8D%E6%9E%9A%E4%B8%BE%E5%80%BC"><span class="nav-number">1.</span> <span class="nav-text">IDA 修复枚举值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IDA-%E7%BB%93%E6%9E%84%E4%BD%93%E4%BF%AE%E5%A4%8D"><span class="nav-number">2.</span> <span class="nav-text">IDA 结构体修复</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IDA-%E8%99%9A%E8%A1%A8%E4%BF%AE%E5%A4%8D"><span class="nav-number">3.</span> <span class="nav-text">IDA 虚表修复</span></a></li></ol></div>
-        </div>
-        <!--/noindex-->
-
-        <div class="site-overview-wrap sidebar-panel">
-          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Pa1r0t_9e"
-      src="/images/avatar.gif">
-  <p class="site-author-name" itemprop="name">Pa1r0t_9e</p>
-  <div class="site-description" itemprop="description">welcome to my bolg</div>
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="facebook"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-facebook"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+            <a title="instagram"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-instagram"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="reddit"
+               href="https://www.reddit.com/user/yelog/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-reddit"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="weibo"
+               href="http://weibo.com/u/2307534817"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-weibo"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="jianshu"
+               href="https://www.jianshu.com/u/ff56736de7cf"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-jianshu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="zhihu"
+               href="https://www.zhihu.com/people/jaytp/activities"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-zhihu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="oschina"
+               href="https://my.oschina.net/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-oschina"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:jaytp@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=872336115&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="kugou"
+               href="https://www.kugou.com/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-kugou"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="neteasemusic"
+               href="https://music.163.com/#/user/home?id=88151013"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-neteasemusic"></use>
+                    </svg>
+                
+            </a>
+        
+    
 </div>
-<div class="site-state-wrap site-overview-item animated">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-        <a href="/archives/">
-          <span class="site-state-item-count">32</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-          <a href="/categories/">
-        <span class="site-state-item-count">2</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author site-overview-item animated">
-      <span class="links-of-author-item">
-        <a href="mailto:2817455529@qq.com" title="E-Mail → mailto:2817455529@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
-      </span>
-  </div>
-  <div class="cc-license site-overview-item animated" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
-  </div>
 
 
 
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(33)</small>
+            
         </div>
-      </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="ctf">
+            
+            ctf
+            <small>(14)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="re">
+            
+            re
+            <small>(19)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
     </div>
-  </aside>
-  <div class="sidebar-dimmer"></div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">关于</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="33">
 
-
-    </header>
-
-    
-
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
-
-
-    <div class="main-inner post posts-expand">
-
-
-  
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://pa1r0t.github.io/2023/01/21/IDA%E7%BB%93%E6%9E%84%E4%BD%93%E5%88%86%E6%9E%90/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Pa1r0t_9e">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Pa1r0t">
-      <meta itemprop="description" content="welcome to my bolg">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="IDA结构体分析 | Pa1r0t">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          IDA结构体分析
-        </h1>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-01-21 09:52:17" itemprop="dateCreated datePublished" datetime="2023-01-21T09:52:17+08:00">2023-01-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-01-22 21:48:54" itemprop="dateModified" datetime="2023-01-22T21:48:54+08:00">2023-01-22</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/re/" itemprop="url" rel="index"><span itemprop="name">re</span></a>
-        </span>
-    </span>
-
-  
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
 </div>
 
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
         </div>
-      </header>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
 
     
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/05/16/%E6%9C%89%E7%90%86%E6%95%B0%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="有理数四则运算">有理数四则运算</span>
+            <span class="post-date" title="2023-05-16 16:49:16">2023/05/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/05/11/%E5%8F%8C%E6%8C%87%E9%92%88%E4%BC%98%E5%8C%96/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="双指针优化">双指针优化</span>
+            <span class="post-date" title="2023-05-11 15:21:59">2023/05/11</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/05/10/%E5%85%B3%E4%BA%8Ec-%E4%B8%ADdouble%E8%AF%AF%E5%B7%AE%E9%97%AE%E9%A2%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="关于c++中double误差问题">关于c++中double误差问题</span>
+            <span class="post-date" title="2023-05-10 10:46:59">2023/05/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/05/09/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E7%9A%84%E9%94%99%E8%AF%AF/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="奇奇怪怪的错误">奇奇怪怪的错误</span>
+            <span class="post-date" title="2023-05-09 10:30:44">2023/05/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/05/08/pat%E4%B9%99%E7%BA%A7%E7%AC%AC%E4%BA%8C%E5%A4%A9%E8%AE%B0%E5%BD%95/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="pat乙级第二天记录">pat乙级第二天记录</span>
+            <span class="post-date" title="2023-05-08 13:31:53">2023/05/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/05/07/map%E9%A2%98%E8%A7%A3%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%97%AE%E9%A2%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="map题解字符串问题">map题解字符串问题</span>
+            <span class="post-date" title="2023-05-07 19:33:37">2023/05/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/02/15/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91wp/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="西湖论剑wp">西湖论剑wp</span>
+            <span class="post-date" title="2023-02-15 10:06:30">2023/02/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/21/IDA%E7%BB%93%E6%9E%84%E4%BD%93%E5%88%86%E6%9E%90/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="IDA结构体分析">IDA结构体分析</span>
+            <span class="post-date" title="2023-01-21 09:52:17">2023/01/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/20/std%E9%80%86%E5%90%91/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="STL逆向">STL逆向</span>
+            <span class="post-date" title="2023-01-20 20:03:08">2023/01/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/19/Microcode/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Microcode">Microcode</span>
+            <span class="post-date" title="2023-01-19 22:09:48">2023/01/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/19/IDAPython/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="IDAPython">IDAPython</span>
+            <span class="post-date" title="2023-01-19 17:52:02">2023/01/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/01/14/hgame2023/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="hgame2023">hgame2023</span>
+            <span class="post-date" title="2023-01-14 10:09:49">2023/01/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/01/13/pwn-practice1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="pwn_practice1">pwn_practice1</span>
+            <span class="post-date" title="2023-01-13 11:50:36">2023/01/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/12/%E7%BC%96%E8%AF%91%E5%81%8F2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="编译2">编译2</span>
+            <span class="post-date" title="2023-01-12 22:07:41">2023/01/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/09/csapp1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="csapp1">csapp1</span>
+            <span class="post-date" title="2023-01-09 14:30:39">2023/01/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/09/%E7%BC%96%E8%AF%91%E7%AF%871/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="编译篇1">编译篇1</span>
+            <span class="post-date" title="2023-01-09 10:16:11">2023/01/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/05/AST%E6%B7%B7%E6%B7%862/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="AST混淆2">AST混淆2</span>
+            <span class="post-date" title="2023-01-05 17:57:25">2023/01/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/03/AST%E6%B7%B7%E6%B7%861/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="AST混淆1">AST混淆1</span>
+            <span class="post-date" title="2023-01-03 19:32:24">2023/01/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/02/ollvm%E5%81%9A%E6%B3%95/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ollvm做法">ollvm做法</span>
+            <span class="post-date" title="2023-01-02 22:06:24">2023/01/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/02/unicorn-x86%E6%9A%B4%E5%8A%9B%E8%B0%83%E7%94%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="x86暴力调用so">x86暴力调用so</span>
+            <span class="post-date" title="2023-01-02 09:03:22">2023/01/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/01/unicorn-learning5/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="unicorn_learning5">unicorn_learning5</span>
+            <span class="post-date" title="2023-01-01 09:58:42">2023/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2022/12/31/unicorn-learning4/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="unicorn_learning4">unicorn_learning4</span>
+            <span class="post-date" title="2022-12-31 14:12:48">2022/12/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2022/12/31/unicorn-learning3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="unicorn_learning3">unicorn_learning3</span>
+            <span class="post-date" title="2022-12-31 09:12:04">2022/12/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2022/12/30/unicorn-learning2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="unicorn_learning2">unicorn_learning2</span>
+            <span class="post-date" title="2022-12-30 09:40:33">2022/12/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2022/12/29/unicorn1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="unicorn_learning1">unicorn_learning1</span>
+            <span class="post-date" title="2022-12-29 14:32:54">2022/12/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2022/12/22/re-base3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="re_base3">re_base3</span>
+            <span class="post-date" title="2022-12-22 19:33:01">2022/12/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2022/12/21/re-base2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="re_base2">re_base2</span>
+            <span class="post-date" title="2022-12-21 21:56:29">2022/12/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2022/12/20/syc-level7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="syc_level7">syc_level7</span>
+            <span class="post-date" title="2022-12-20 11:30:36">2022/12/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2022/12/19/syc-level5/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="syc_level5">syc_level5</span>
+            <span class="post-date" title="2022-12-19 21:02:09">2022/12/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2022/12/17/re-base1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="re_base1">re_base1</span>
+            <span class="post-date" title="2022-12-17 21:16:25">2022/12/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2022/12/05/%E4%BF%A1%E5%88%9B%E7%BD%91%E5%AE%89wp/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="信创网安wp">信创网安wp</span>
+            <span class="post-date" title="2022-12-05 10:42:19">2022/12/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2022/11/29/buuctf-nov/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="NOV X联合出题人">NOV X联合出题人</span>
+            <span class="post-date" title="2022-11-29 16:52:11">2022/11/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2022/11/21/%E5%AE%89%E5%BE%BD%E7%9C%81%E8%B5%9B/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="安徽省赛">安徽省赛</span>
+            <span class="post-date" title="2022-11-21 14:13:57">2022/11/21</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-IDA结构体分析" class="article article-type-post" itemscope itemprop="blogPost">
     
+        <h1 class="article-title">IDA结构体分析</h1>
     
-    <div class="post-body" itemprop="articleBody">
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="re">re</a>
+            
+        </span>
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2023-01-22 21:48:54'>2023-01-21 09:52</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#IDA-%E4%BF%AE%E5%A4%8D%E6%9E%9A%E4%B8%BE%E5%80%BC"><span class="toc-text">IDA 修复枚举值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IDA-%E7%BB%93%E6%9E%84%E4%BD%93%E4%BF%AE%E5%A4%8D"><span class="toc-text">IDA 结构体修复</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IDA-%E8%99%9A%E8%A1%A8%E4%BF%AE%E5%A4%8D"><span class="toc-text">IDA 虚表修复</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
         <p>IDA 类型修复</p>
 <span id="more"></span>
 
@@ -373,15 +750,15 @@
 <h2 id="IDA-修复枚举值"><a href="#IDA-修复枚举值" class="headerlink" title="IDA 修复枚举值"></a>IDA 修复枚举值</h2><p>实验材料：ptrace1</p>
 <p>IDA 的类型数据库内置了常见的枚举（宏）的值，可以直接引入并修复。</p>
 <p>通过逆向分析，ptrace函数</p>
-<p><img data-src="/./../images/image-20230121101355025.png" alt="image-20230121101355025"></p>
+<p><img src="/./../images/image-20230121101355025.png" alt="image-20230121101355025"></p>
 <p>第一个参数就是ptrace函数的功能号</p>
 <p>鼠标锁定摁M键导入枚举值</p>
 <p>Ctrl+F5搜索ptrace关键字</p>
-<p><img data-src="/./../images/image-20230121101528976.png" alt="image-20230121101528976"></p>
+<p><img src="/./../images/image-20230121101528976.png" alt="image-20230121101528976"></p>
 <p>找到后双击即可</p>
-<p><img data-src="/./../images/image-20230121101553907.png" alt="image-20230121101553907"></p>
+<p><img src="/./../images/image-20230121101553907.png" alt="image-20230121101553907"></p>
 <p>下图就全部修复完成了</p>
-<p><img data-src="/./../images/image-20230121101813329.png" alt="image-20230121101813329"></p>
+<p><img src="/./../images/image-20230121101813329.png" alt="image-20230121101813329"></p>
 <h2 id="IDA-结构体修复"><a href="#IDA-结构体修复" class="headerlink" title="IDA 结构体修复"></a>IDA 结构体修复</h2><p>实验材料：monopoly</p>
 <p>这是一个大富翁游戏！</p>
 <p>确定结构体大小：</p>
@@ -389,220 +766,288 @@
 <li>内存分配可以直接确定结构体大小</li>
 <li>memcpy &#x2F; 局部变量偏移差 -&gt; 间接确定 （结构体&#x2F;类局部变量） 这种大多是在栈上</li>
 </ul>
-<p><img data-src="/./../images/image-20230121104326617.png" alt="image-20230121104326617"></p>
+<p><img src="/./../images/image-20230121104326617.png" alt="image-20230121104326617"></p>
 <p>创建相等大小匿名结构体，并将相关变量、参数的类型修改为该结构体</p>
 <p>这里看见这个0x70的new函数，直接在struct视图下创建结构体</p>
-<p><img data-src="/./../images/image-20230121105019521.png" alt="image-20230121105019521"></p>
+<p><img src="/./../images/image-20230121105019521.png" alt="image-20230121105019521"></p>
 <p>快捷键是Shift + F9，打开struct视图</p>
 <p>这里在struct视图下，右键点击增加结构体类型</p>
-<p><img data-src="/./../images/image-20230121105406208.png" alt="image-20230121105406208"></p>
+<p><img src="/./../images/image-20230121105406208.png" alt="image-20230121105406208"></p>
 <p>这里可以看见结构体大小</p>
-<p><img data-src="/./../images/image-20230121105556782.png" alt="image-20230121105556782"></p>
+<p><img src="/./../images/image-20230121105556782.png" alt="image-20230121105556782"></p>
 <p>鼠标光标在ends处，增加属性（大小）：摁d键</p>
-<p><img data-src="/./../images/image-20230121105718374.png" alt="image-20230121105718374"></p>
+<p><img src="/./../images/image-20230121105718374.png" alt="image-20230121105718374"></p>
 <p>这里直到sizeof显示为0x70为止，每个属性先以dq为单位，进行存储，后续再逆向分析再进行变更</p>
 <p>这样结构体就初步设置完成了</p>
-<p><img data-src="/./../images/image-20230121110056164.png" alt="image-20230121110056164"></p>
+<p><img src="/./../images/image-20230121110056164.png" alt="image-20230121110056164"></p>
 <p>这里回到代码处，这里将v0的类型修改为，刚刚我们创建的结构体类型</p>
-<p><img data-src="/./../images/image-20230121110310274.png" alt="image-20230121110310274"></p>
+<p><img src="/./../images/image-20230121110310274.png" alt="image-20230121110310274"></p>
 <p>第一种改法：摁Y键，进行类型修改为struc_1 *类型</p>
 <p>第二种改法：摁右键，转化为其他结构体：</p>
-<p><img data-src="/./../images/image-20230121110552200.png" alt="image-20230121110552200"></p>
+<p><img src="/./../images/image-20230121110552200.png" alt="image-20230121110552200"></p>
 <p>这里直接选择我们刚刚创建的类型即可</p>
-<p><img data-src="/./../images/image-20230121110626662.png" alt="image-20230121110626662"></p>
+<p><img src="/./../images/image-20230121110626662.png" alt="image-20230121110626662"></p>
 <p>这里创建好之后，执行下面的函数，我们跟进去看看</p>
-<p><img data-src="/./../images/image-20230121120704877.png" alt="image-20230121120704877"></p>
-<p>这里的a1进行了一系列操作，我们将a1的类修修改为我们定义的类型<img data-src="/./../images/image-20230121120850500.png" alt="image-20230121120850500"></p>
-<p>因为这个函数在new之后执行，所以可能是构造函数，这里我们改个函数名吧<img data-src="/./../images/image-20230121121052464.png" alt="image-20230121121052464"></p>
-<p>在构造函数中，有些属性是进行dword操作，这里我们就要将qword，改成dword类型<img data-src="/./../images/image-20230121121546769.png" alt="image-20230121121546769"></p>
-<p>比如field_48，这里双击field_48进入结构体定义处，将该属性改成dword，这里摁d键<img data-src="/./../images/image-20230121121758509.png" alt="image-20230121121758509"></p>
-<p>设置好之后下面未定义的也需要改成dword，就像这样<img data-src="/./../images/image-20230121121852483.png" alt="image-20230121121852483"></p>
-<p>其他变量也是一样修改，把剩下的也修改了，但是当最后一个属性改为dword后，总大小发生了改变，这里我们只需要在下面再增加一个变量即可<img data-src="/./../images/image-20230121122116991.png" alt="image-20230121122116991"></p>
-<p>最后就是这样<img data-src="/./../images/image-20230121122144895.png" alt="image-20230121122144895"></p>
-<p>然后在源码中摁F5，代码就好看多了<img data-src="/./../images/image-20230121122453040.png" alt="image-20230121122453040"></p>
-<p>上面循环处field_4c是以4字节进行访问，并且访问5词，也就是说field_4c开始处是一个以4字节为单位的一个数组，数组大小为5，在结构体定义处，右键点array设置数组，大小为5<img data-src="/./../images/image-20230121122734380.png" alt="image-20230121122734380"></p>
-<p>最终field_4c后面的变量也将合并进入数组中<img data-src="/./../images/image-20230121122825156.png" alt="image-20230121122825156"></p>
-<p>源码舒服，重命名为array1<img data-src="/./../images/image-20230121123416130.png" alt="image-20230121123416130"></p>
-<p>这里进行字符串的初始化和赋值操作<img data-src="/./../images/image-20230121123758528.png" alt="image-20230121123758528"></p>
+<p><img src="/./../images/image-20230121120704877.png" alt="image-20230121120704877"></p>
+<p>这里的a1进行了一系列操作，我们将a1的类修修改为我们定义的类型<img src="/./../images/image-20230121120850500.png" alt="image-20230121120850500"></p>
+<p>因为这个函数在new之后执行，所以可能是构造函数，这里我们改个函数名吧<img src="/./../images/image-20230121121052464.png" alt="image-20230121121052464"></p>
+<p>在构造函数中，有些属性是进行dword操作，这里我们就要将qword，改成dword类型<img src="/./../images/image-20230121121546769.png" alt="image-20230121121546769"></p>
+<p>比如field_48，这里双击field_48进入结构体定义处，将该属性改成dword，这里摁d键<img src="/./../images/image-20230121121758509.png" alt="image-20230121121758509"></p>
+<p>设置好之后下面未定义的也需要改成dword，就像这样<img src="/./../images/image-20230121121852483.png" alt="image-20230121121852483"></p>
+<p>其他变量也是一样修改，把剩下的也修改了，但是当最后一个属性改为dword后，总大小发生了改变，这里我们只需要在下面再增加一个变量即可<img src="/./../images/image-20230121122116991.png" alt="image-20230121122116991"></p>
+<p>最后就是这样<img src="/./../images/image-20230121122144895.png" alt="image-20230121122144895"></p>
+<p>然后在源码中摁F5，代码就好看多了<img src="/./../images/image-20230121122453040.png" alt="image-20230121122453040"></p>
+<p>上面循环处field_4c是以4字节进行访问，并且访问5词，也就是说field_4c开始处是一个以4字节为单位的一个数组，数组大小为5，在结构体定义处，右键点array设置数组，大小为5<img src="/./../images/image-20230121122734380.png" alt="image-20230121122734380"></p>
+<p>最终field_4c后面的变量也将合并进入数组中<img src="/./../images/image-20230121122825156.png" alt="image-20230121122825156"></p>
+<p>源码舒服，重命名为array1<img src="/./../images/image-20230121123416130.png" alt="image-20230121123416130"></p>
+<p>这里进行字符串的初始化和赋值操作<img src="/./../images/image-20230121123758528.png" alt="image-20230121123758528"></p>
 <p>这里我们将field_20改为str1</p>
-<p>根据大富翁游戏，初始化的字符串，根据名字都是一些建筑，我们可以把定义的结构体名称改成house，然后将构造函数改成init_house<img data-src="/./../images/image-20230121124542969.png" alt="image-20230121124542969"></p>
-<p>然后经过构造函数，申请到的对象内存都会存放到，以A1C0为首的地址处<img data-src="/./../images/image-20230121125509200.png" alt="image-20230121125509200"></p>
-<p><img data-src="/./../images/image-20230121125527179.png" alt="image-20230121125527179"></p>
-<p>上面一共64个位置，所以类型为house *为类型，数组长度为64个来存放house对象的指针<img data-src="/./../images/image-20230121125756372.png" alt="image-20230121125756372"></p>
-<p>这里再右键array改为64<img data-src="/./../images/image-20230121125834301.png" alt="image-20230121125834301"></p>
-<p>这些建筑正好形成地图，将数组名改成map即可<img data-src="/./../images/image-20230121130116722.png" alt="image-20230121130116722"></p>
-<p>分析另外一个结构体，这个结构体没有使用 new &#x2F; malloc 分配内存，如何确定大小？<img data-src="/./../images/image-20230121132813993.png" alt="image-20230121132813993"></p>
-<p>进入函数，看起来明显是个初始化函数<img data-src="/./../images/image-20230121132852076.png" alt="image-20230121132852076"></p>
-<p>两个变量都是紧挨着的在内存中，属于静态分配了<img data-src="/./../images/image-20230121132938102.png" alt="image-20230121132938102"></p>
-<p>两个变量位置相减为0x80，所以我们就暂时确定这个结构体的大小为0x80，然后我就去struct视图中去创建一个大小为0x80的结构体，还是老操作<img data-src="/./../images/image-20230121133259989.png" alt="image-20230121133259989"></p>
+<p>根据大富翁游戏，初始化的字符串，根据名字都是一些建筑，我们可以把定义的结构体名称改成house，然后将构造函数改成init_house<img src="/./../images/image-20230121124542969.png" alt="image-20230121124542969"></p>
+<p>然后经过构造函数，申请到的对象内存都会存放到，以A1C0为首的地址处<img src="/./../images/image-20230121125509200.png" alt="image-20230121125509200"></p>
+<p><img src="/./../images/image-20230121125527179.png" alt="image-20230121125527179"></p>
+<p>上面一共64个位置，所以类型为house *为类型，数组长度为64个来存放house对象的指针<img src="/./../images/image-20230121125756372.png" alt="image-20230121125756372"></p>
+<p>这里再右键array改为64<img src="/./../images/image-20230121125834301.png" alt="image-20230121125834301"></p>
+<p>这些建筑正好形成地图，将数组名改成map即可<img src="/./../images/image-20230121130116722.png" alt="image-20230121130116722"></p>
+<p>分析另外一个结构体，这个结构体没有使用 new &#x2F; malloc 分配内存，如何确定大小？<img src="/./../images/image-20230121132813993.png" alt="image-20230121132813993"></p>
+<p>进入函数，看起来明显是个初始化函数<img src="/./../images/image-20230121132852076.png" alt="image-20230121132852076"></p>
+<p>两个变量都是紧挨着的在内存中，属于静态分配了<img src="/./../images/image-20230121132938102.png" alt="image-20230121132938102"></p>
+<p>两个变量位置相减为0x80，所以我们就暂时确定这个结构体的大小为0x80，然后我就去struct视图中去创建一个大小为0x80的结构体，还是老操作<img src="/./../images/image-20230121133259989.png" alt="image-20230121133259989"></p>
 <p>这里其实可以先创建64长度的数组，然后再取消定义，这样就可以快速创建结构体了</p>
-<p>类型定义好之后，函数外的全局变量类型不急着更改，先更改函数形参的类型<img data-src="/./../images/image-20230122155016716.png" alt="image-20230122155016716"></p>
+<p>类型定义好之后，函数外的全局变量类型不急着更改，先更改函数形参的类型<img src="/./../images/image-20230122155016716.png" alt="image-20230122155016716"></p>
 <p>在函数中判断feild_20可能是个数组，这里先不理会</p>
-<p>后面函数形参类型也需要一个个去修改<img data-src="/./../images/image-20230122155424970.png" alt="image-20230122155424970"></p>
-<p>刷新一下变成这样了，给变量改个名<img data-src="/./../images/image-20230122182413118.png" alt="image-20230122182413118"></p>
-<p>把剩余需要修改的变量大小继续更改<img data-src="/./../images/image-20230122183001258.png" alt="image-20230122183001258"></p>
-<p>然后这里根据printf的字符串信息来判断结构体的类型<img data-src="/./../images/image-20230122183705595.png" alt="image-20230122183705595"></p>
+<p>后面函数形参类型也需要一个个去修改<img src="/./../images/image-20230122155424970.png" alt="image-20230122155424970"></p>
+<p>刷新一下变成这样了，给变量改个名<img src="/./../images/image-20230122182413118.png" alt="image-20230122182413118"></p>
+<p>把剩余需要修改的变量大小继续更改<img src="/./../images/image-20230122183001258.png" alt="image-20230122183001258"></p>
+<p>然后这里根据printf的字符串信息来判断结构体的类型<img src="/./../images/image-20230122183705595.png" alt="image-20230122183705595"></p>
 <p>v6可能是建筑的类型，从map数组中取出来的结构体都是house类型了，然后把变量名都改成自己猜想的名字。</p>
-<p>这个函数的实参是map数组元素，形参应该改为house结构体指针<img data-src="/./../images/image-20230122185813240.png" alt="image-20230122185813240"></p>
-<p>这里有个field_40,不能确定是啥<img data-src="/./../images/image-20230122190051439.png" alt="image-20230122190051439"></p>
-<p>我们可以用交叉引用，去别的地方找信息，刚好这里有一处<img data-src="/./../images/image-20230122190406178.png" alt="image-20230122190406178"></p>
+<p>这个函数的实参是map数组元素，形参应该改为house结构体指针<img src="/./../images/image-20230122185813240.png" alt="image-20230122185813240"></p>
+<p>这里有个field_40,不能确定是啥<img src="/./../images/image-20230122190051439.png" alt="image-20230122190051439"></p>
+<p>我们可以用交叉引用，去别的地方找信息，刚好这里有一处<img src="/./../images/image-20230122190406178.png" alt="image-20230122190406178"></p>
 <p>这里将ppp1赋给field_40，所以我们就将field_40改成结构体2类型</p>
 <p>以上就是随意逆向的结果，真正正经逆向都是要分析程序逻辑的，我们先随意逆向，分析部分属性信息，有助于我们之后的分析</p>
-<p>程序刚开始会让我们输入游戏难度等级<img data-src="/./../images/image-20230122191713348.png" alt="image-20230122191713348"></p>
-<p>经过分析这个就是获取数字的函数<img data-src="/./../images/image-20230122191835438.png" alt="image-20230122191835438"></p>
-<p>然后我们先从简单的easy_level开始<img data-src="/./../images/image-20230122192539523.png" alt="image-20230122192539523"></p>
-<p>从这分析出ppp3是玩家的意思，因为刚开始它就给ppp3给到初始的金额了<img data-src="/./../images/image-20230122192843765.png" alt="image-20230122192843765"></p>
-<p>然后进入一个循环，首先进入这个函数<img data-src="/./../images/image-20230122193721525.png" alt="image-20230122193721525"></p>
-<p>这个函数很明显是个循环<img data-src="/./../images/image-20230122193909583.png" alt="image-20230122193909583"></p>
-<p>有两个函数，一个只有player1另外还有player2，也就是一个人玩玩，另一个人玩<img data-src="/./../images/image-20230122195530524.png" alt="image-20230122195530524"><img data-src="/./../images/image-20230122195544442.png" alt="image-20230122195544442"></p>
-<p>然后这里我们需要输入我们想做的内容<img data-src="/./../images/image-20230122202153532.png" alt="image-20230122202153532"></p>
-<p>我们先以第一个，这里有个比较，应该是玩家资产数量<img data-src="/./../images/image-20230122202349924.png" alt="image-20230122202349924"></p>
+<p>程序刚开始会让我们输入游戏难度等级<img src="/./../images/image-20230122191713348.png" alt="image-20230122191713348"></p>
+<p>经过分析这个就是获取数字的函数<img src="/./../images/image-20230122191835438.png" alt="image-20230122191835438"></p>
+<p>然后我们先从简单的easy_level开始<img src="/./../images/image-20230122192539523.png" alt="image-20230122192539523"></p>
+<p>从这分析出ppp3是玩家的意思，因为刚开始它就给ppp3给到初始的金额了<img src="/./../images/image-20230122192843765.png" alt="image-20230122192843765"></p>
+<p>然后进入一个循环，首先进入这个函数<img src="/./../images/image-20230122193721525.png" alt="image-20230122193721525"></p>
+<p>这个函数很明显是个循环<img src="/./../images/image-20230122193909583.png" alt="image-20230122193909583"></p>
+<p>有两个函数，一个只有player1另外还有player2，也就是一个人玩玩，另一个人玩<img src="/./../images/image-20230122195530524.png" alt="image-20230122195530524"><img src="/./../images/image-20230122195544442.png" alt="image-20230122195544442"></p>
+<p>然后这里我们需要输入我们想做的内容<img src="/./../images/image-20230122202153532.png" alt="image-20230122202153532"></p>
+<p>我们先以第一个，这里有个比较，应该是玩家资产数量<img src="/./../images/image-20230122202349924.png" alt="image-20230122202349924"></p>
 <p>要求输入的值不能超过，玩家拥有的资产的数量。所以sub_452F函数估计就是资产的售卖了</p>
-<p>这里售卖的函数中<img data-src="/./../images/image-20230122203152235.png" alt="image-20230122203152235"></p>
-<p>这里资产数组大小为map的总个数为64个<img data-src="/./../images/image-20230122203328139.png" alt="image-20230122203328139"></p>
-<p>然后是3，购买资产<img data-src="/./../images/image-20230122210502911.png" alt="image-20230122210502911"></p>
-<p>分析得<img data-src="/./../images/image-20230122210702534.png" alt="image-20230122210702534"></p>
-<p>最终：<img data-src="/./../images/image-20230122210742758.png" alt="image-20230122210742758"></p>
-<p><img data-src="/./../images/image-20230122210913452.png" alt="image-20230122210913452"></p>
+<p>这里售卖的函数中<img src="/./../images/image-20230122203152235.png" alt="image-20230122203152235"></p>
+<p>这里资产数组大小为map的总个数为64个<img src="/./../images/image-20230122203328139.png" alt="image-20230122203328139"></p>
+<p>然后是3，购买资产<img src="/./../images/image-20230122210502911.png" alt="image-20230122210502911"></p>
+<p>分析得<img src="/./../images/image-20230122210702534.png" alt="image-20230122210702534"></p>
+<p>最终：<img src="/./../images/image-20230122210742758.png" alt="image-20230122210742758"></p>
+<p><img src="/./../images/image-20230122210913452.png" alt="image-20230122210913452"></p>
 <p>全局字段交叉引用 Ctrl + alt + X （要尽可能将相关函数找出来并修复类型，有利于查找）</p>
 <h2 id="IDA-虚表修复"><a href="#IDA-虚表修复" class="headerlink" title="IDA 虚表修复"></a>IDA 虚表修复</h2><p>实验材料： vtable</p>
 <p>虚表就是C++实现多态的一种机制</p>
 <p>为了实现C++的多态，C++使用了一种动态绑定的技术。这个技术的核心是虚函数表，当一个类（A）继承另一个类（B）时，类A会继承类B的函数的调用权。所以如果一个基类包含了虚函数，那么其继承类也可调用这些虚函数，换句话说，一个类继承了包含虚函数的基类，那么这个类也拥有自己的虚表。我们来看以下的代码。类A包含虚函数vfunc1，vfunc2，由于类A包含虚函数，故类A拥有一个虚表。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">vfunc1</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">vfunc2</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">func1</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">func2</span><span class="params">()</span></span>;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> m_data1, m_data2;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<p>类A的虚表如图1所示:<img data-src="/./../images/image-20230122212103043.png" alt="image-20230122212103043"></p>
+<p>类A的虚表如图1所示:<img src="/./../images/image-20230122212103043.png" alt="image-20230122212103043"></p>
 <p>虚表是一个指针数组，其元素是虚函数的指针，每个元素对应一个虚函数的函数指针。需要指出的是，普通的函数即非虚函数，其调用并不需要经过虚表，所以虚表的元素并不包括普通函数的函数指针。虚表内的条目，即虚函数指针的赋值发生在编译器的编译阶段，也就是说在代码的编译阶段，虚表就可以构造出来了</p>
 <p>虚表修复主要是为了重建虚表交叉引用,一般类的第一个地址就是虚表的地址。</p>
-<p>这里就是调用虚表的某一个函数<img data-src="/./../images/image-20230122213810302.png" alt="image-20230122213810302"></p>
-<p>这里类大小为0x28字节<img data-src="/./../images/image-20230122213834372.png" alt="image-20230122213834372"></p>
-<p>这里我们找到虚表，点击这个就是虚表<img data-src="/./../images/image-20230122213906848.png" alt="image-20230122213906848"></p>
-<p>然后右边是虚表的符号<img data-src="/./../images/image-20230122213950337.png" alt="image-20230122213950337"></p>
-<p>这里先进行构建结构体，在结构体中表示虚表，一个函数地址，在64位中为32位<img data-src="/./../images/image-20230122214250424.png" alt="image-20230122214250424"></p>
-<p>创建好后，创建类结构体，然后将类结构体的第一个属性类型设置为虚表类型<img data-src="/./../images/image-20230122214426259.png" alt="image-20230122214426259"></p>
-<p>然后将v3的类型设置为类结构体类型<img data-src="/./../images/image-20230122214509446.png" alt="image-20230122214509446"></p>
-<p>然后就修复完成了<img data-src="/./../images/image-20230122214621630.png" alt="image-20230122214621630"></p>
-<p><img data-src="/./../images/image-20230122214835711.png" alt="image-20230122214835711"></p>
+<p>这里就是调用虚表的某一个函数<img src="/./../images/image-20230122213810302.png" alt="image-20230122213810302"></p>
+<p>这里类大小为0x28字节<img src="/./../images/image-20230122213834372.png" alt="image-20230122213834372"></p>
+<p>这里我们找到虚表，点击这个就是虚表<img src="/./../images/image-20230122213906848.png" alt="image-20230122213906848"></p>
+<p>然后右边是虚表的符号<img src="/./../images/image-20230122213950337.png" alt="image-20230122213950337"></p>
+<p>这里先进行构建结构体，在结构体中表示虚表，一个函数地址，在64位中为32位<img src="/./../images/image-20230122214250424.png" alt="image-20230122214250424"></p>
+<p>创建好后，创建类结构体，然后将类结构体的第一个属性类型设置为虚表类型<img src="/./../images/image-20230122214426259.png" alt="image-20230122214426259"></p>
+<p>然后将v3的类型设置为类结构体类型<img src="/./../images/image-20230122214509446.png" alt="image-20230122214509446"></p>
+<p>然后就修复完成了<img src="/./../images/image-20230122214621630.png" alt="image-20230122214621630"></p>
+<p><img src="/./../images/image-20230122214835711.png" alt="image-20230122214835711"></p>
 
-    </div>
-
-    
-    
-    
       
-  <div class="popular-posts-header">相关文章</div>
-  <ul class="popular-posts">
-    <li class="popular-posts-item">
-        <div class="popular-posts-date">2023-01-02</div>
-      <div class="popular-posts-title"><a href="2023/01/02/ollvm做法/" rel="bookmark">ollvm做法</a></div>
-        <div class="popular-posts-excerpt"><p><p>unicorn start</p></p></div>
-    </li>
-  </ul>
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
+    </div>
+</article>
 
 
-    <footer class="post-footer">
-          <div class="reward-container">
-  <div>你的资助更能使我继续创作！！！</div>
-  <button>
-    赞赏
-  </button>
-  <div class="post-reward">
-      <div>
-        <img src="/images/wechatpay.jpg" alt="Pa1r0t_9e 微信">
-        <span>微信</span>
-      </div>
-      <div>
-        <img src="/images/alipay.png" alt="Pa1r0t_9e 支付宝">
-        <span>支付宝</span>
-      </div>
-
-  </div>
-</div>
-
-          
-
-<div class="post-copyright">
-<ul>
-  <li class="post-copyright-author">
-      <strong>本文作者： </strong>Pa1r0t_9e
-  </li>
-  <li class="post-copyright-link">
-      <strong>本文链接：</strong>
-      <a href="https://pa1r0t.github.io/2023/01/21/IDA%E7%BB%93%E6%9E%84%E4%BD%93%E5%88%86%E6%9E%90/" title="IDA结构体分析">https://pa1r0t.github.io/2023/01/21/IDA结构体分析/</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
-  </li>
-</ul>
-</div>
-
-
-        
-
-          <div class="post-nav">
-            <div class="post-nav-item">
-                <a href="/2023/01/20/std%E9%80%86%E5%90%91/" rel="prev" title="STL逆向">
-                  <i class="fa fa-chevron-left"></i> STL逆向
-                </a>
-            </div>
-            <div class="post-nav-item">
-                <a href="/2023/02/15/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91wp/" rel="next" title="西湖论剑wp">
-                  西湖论剑wp <i class="fa fa-chevron-right"></i>
-                </a>
-            </div>
-          </div>
-    </footer>
-  </article>
-</div>
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
 
 
 
 
 
 
-</div>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-inner">
+    
 
 
-<div class="copyright">
-  &copy; 
-  <span itemprop="copyrightYear">2023</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Pa1r0t_9e</span>
-</div>
-<!--
-  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
-  </div>
--->
+
 
     </div>
-  </footer>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2020 Yelog
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
 
-  
-<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
-<script src="/js/third-party/search/local-search.js"></script>
+    </div>
+</div>
 
-
-
-  <script src="/js/third-party/fancybox.js"></script>
-
-
-  
-
-
-
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
 
 
 </body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
 </html>

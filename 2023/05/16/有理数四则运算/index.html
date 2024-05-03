@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>有理数四则运算 | Pa1r0t</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="有理数四则运算 | Pa1r0t">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="welcome to my bolg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="categories">
+<meta property="og:url" content="https://pa1r0t.github.io/categories/index.html">
+<meta property="og:site_name" content="Pa1r0t">
+<meta property="og:description" content="welcome to my bolg">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-11-06T05:27:18.000Z">
+<meta property="article:modified_time" content="2022-11-07T03:30:48.209Z">
+<meta property="article:author" content="Pa1r0t_9e">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Pa1r0t" type="application/atom+xml">
+</head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>Pa1r0t_9e</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="facebook"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-facebook"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+            <a title="instagram"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-instagram"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="reddit"
+               href="https://www.reddit.com/user/yelog/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-reddit"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="weibo"
+               href="http://weibo.com/u/2307534817"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-weibo"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="jianshu"
+               href="https://www.jianshu.com/u/ff56736de7cf"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-jianshu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="zhihu"
+               href="https://www.zhihu.com/people/jaytp/activities"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-zhihu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="oschina"
+               href="https://my.oschina.net/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-oschina"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:jaytp@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=872336115&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="kugou"
+               href="https://www.kugou.com/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-kugou"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="neteasemusic"
+               href="https://music.163.com/#/user/home?id=88151013"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-neteasemusic"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(33)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="ctf">
+            
+            ctf
+            <small>(14)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="re">
+            
+            re
+            <small>(19)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">关于</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="33">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/05/16/%E6%9C%89%E7%90%86%E6%95%B0%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="有理数四则运算">有理数四则运算</span>
+            <span class="post-date" title="2023-05-16 16:49:16">2023/05/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/05/11/%E5%8F%8C%E6%8C%87%E9%92%88%E4%BC%98%E5%8C%96/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="双指针优化">双指针优化</span>
+            <span class="post-date" title="2023-05-11 15:21:59">2023/05/11</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/05/10/%E5%85%B3%E4%BA%8Ec-%E4%B8%ADdouble%E8%AF%AF%E5%B7%AE%E9%97%AE%E9%A2%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="关于c++中double误差问题">关于c++中double误差问题</span>
+            <span class="post-date" title="2023-05-10 10:46:59">2023/05/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/05/09/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E7%9A%84%E9%94%99%E8%AF%AF/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="奇奇怪怪的错误">奇奇怪怪的错误</span>
+            <span class="post-date" title="2023-05-09 10:30:44">2023/05/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/05/08/pat%E4%B9%99%E7%BA%A7%E7%AC%AC%E4%BA%8C%E5%A4%A9%E8%AE%B0%E5%BD%95/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="pat乙级第二天记录">pat乙级第二天记录</span>
+            <span class="post-date" title="2023-05-08 13:31:53">2023/05/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/05/07/map%E9%A2%98%E8%A7%A3%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%97%AE%E9%A2%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="map题解字符串问题">map题解字符串问题</span>
+            <span class="post-date" title="2023-05-07 19:33:37">2023/05/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/02/15/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91wp/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="西湖论剑wp">西湖论剑wp</span>
+            <span class="post-date" title="2023-02-15 10:06:30">2023/02/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/21/IDA%E7%BB%93%E6%9E%84%E4%BD%93%E5%88%86%E6%9E%90/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="IDA结构体分析">IDA结构体分析</span>
+            <span class="post-date" title="2023-01-21 09:52:17">2023/01/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/20/std%E9%80%86%E5%90%91/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="STL逆向">STL逆向</span>
+            <span class="post-date" title="2023-01-20 20:03:08">2023/01/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/19/Microcode/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Microcode">Microcode</span>
+            <span class="post-date" title="2023-01-19 22:09:48">2023/01/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/19/IDAPython/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="IDAPython">IDAPython</span>
+            <span class="post-date" title="2023-01-19 17:52:02">2023/01/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/01/14/hgame2023/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="hgame2023">hgame2023</span>
+            <span class="post-date" title="2023-01-14 10:09:49">2023/01/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/01/13/pwn-practice1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="pwn_practice1">pwn_practice1</span>
+            <span class="post-date" title="2023-01-13 11:50:36">2023/01/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/12/%E7%BC%96%E8%AF%91%E5%81%8F2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="编译2">编译2</span>
+            <span class="post-date" title="2023-01-12 22:07:41">2023/01/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/09/csapp1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="csapp1">csapp1</span>
+            <span class="post-date" title="2023-01-09 14:30:39">2023/01/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/09/%E7%BC%96%E8%AF%91%E7%AF%871/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="编译篇1">编译篇1</span>
+            <span class="post-date" title="2023-01-09 10:16:11">2023/01/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/05/AST%E6%B7%B7%E6%B7%862/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="AST混淆2">AST混淆2</span>
+            <span class="post-date" title="2023-01-05 17:57:25">2023/01/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/03/AST%E6%B7%B7%E6%B7%861/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="AST混淆1">AST混淆1</span>
+            <span class="post-date" title="2023-01-03 19:32:24">2023/01/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/02/ollvm%E5%81%9A%E6%B3%95/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ollvm做法">ollvm做法</span>
+            <span class="post-date" title="2023-01-02 22:06:24">2023/01/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/02/unicorn-x86%E6%9A%B4%E5%8A%9B%E8%B0%83%E7%94%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="x86暴力调用so">x86暴力调用so</span>
+            <span class="post-date" title="2023-01-02 09:03:22">2023/01/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/01/unicorn-learning5/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="unicorn_learning5">unicorn_learning5</span>
+            <span class="post-date" title="2023-01-01 09:58:42">2023/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2022/12/31/unicorn-learning4/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="unicorn_learning4">unicorn_learning4</span>
+            <span class="post-date" title="2022-12-31 14:12:48">2022/12/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2022/12/31/unicorn-learning3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="unicorn_learning3">unicorn_learning3</span>
+            <span class="post-date" title="2022-12-31 09:12:04">2022/12/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2022/12/30/unicorn-learning2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="unicorn_learning2">unicorn_learning2</span>
+            <span class="post-date" title="2022-12-30 09:40:33">2022/12/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2022/12/29/unicorn1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="unicorn_learning1">unicorn_learning1</span>
+            <span class="post-date" title="2022-12-29 14:32:54">2022/12/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2022/12/22/re-base3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="re_base3">re_base3</span>
+            <span class="post-date" title="2022-12-22 19:33:01">2022/12/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2022/12/21/re-base2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="re_base2">re_base2</span>
+            <span class="post-date" title="2022-12-21 21:56:29">2022/12/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2022/12/20/syc-level7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="syc_level7">syc_level7</span>
+            <span class="post-date" title="2022-12-20 11:30:36">2022/12/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2022/12/19/syc-level5/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="syc_level5">syc_level5</span>
+            <span class="post-date" title="2022-12-19 21:02:09">2022/12/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2022/12/17/re-base1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="re_base1">re_base1</span>
+            <span class="post-date" title="2022-12-17 21:16:25">2022/12/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2022/12/05/%E4%BF%A1%E5%88%9B%E7%BD%91%E5%AE%89wp/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="信创网安wp">信创网安wp</span>
+            <span class="post-date" title="2022-12-05 10:42:19">2022/12/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2022/11/29/buuctf-nov/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="NOV X联合出题人">NOV X联合出题人</span>
+            <span class="post-date" title="2022-11-29 16:52:11">2022/11/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2022/11/21/%E5%AE%89%E5%BE%BD%E7%9C%81%E8%B5%9B/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="安徽省赛">安徽省赛</span>
+            <span class="post-date" title="2022-11-21 14:13:57">2022/11/21</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-有理数四则运算" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">有理数四则运算</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="ctf">ctf</a>
+            
+        </span>
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2023-05-16 20:20:39'>2023-05-16 16:49</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%EF%BC%9A"><span class="toc-text">题目：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F%EF%BC%9A"><span class="toc-text">输入格式：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F%EF%BC%9A"><span class="toc-text">输出格式：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B-1%EF%BC%9A"><span class="toc-text">输入样例 1：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B-1%EF%BC%9A"><span class="toc-text">输出样例 1：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B-2%EF%BC%9A"><span class="toc-text">输入样例 2：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B-2%EF%BC%9A"><span class="toc-text">输出样例 2：</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>诸多细节一不小心就写烂了</p>
+<span id="more"></span>
+
+<h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>本题要求编写程序，计算 2 个有理数的和、差、积、商。</p>
+<h3 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h3><p>输入在一行中按照 <code>a1/b1 a2/b2</code> 的格式给出两个分数形式的有理数，其中分子和分母全是整型范围内的整数，负号只可能出现在分子前，分母不为 0。</p>
+<h3 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h3><p>分别在 4 行中按照 <code>有理数1 运算符 有理数2 = 结果</code> 的格式顺序输出 2 个有理数的和、差、积、商。注意输出的每个有理数必须是该有理数的最简形式 <code>k a/b</code>，其中 <code>k</code> 是整数部分，<code>a/b</code> 是最简分数部分；若为负数，则须加括号；若除法分母为 0，则输出 <code>Inf</code>。题目保证正确的输出中没有超过整型范围的整数。</p>
+<h3 id="输入样例-1："><a href="#输入样例-1：" class="headerlink" title="输入样例 1："></a>输入样例 1：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2/3 -4/2</span><br></pre></td></tr></table></figure>
+
+<h3 id="输出样例-1："><a href="#输出样例-1：" class="headerlink" title="输出样例 1："></a>输出样例 1：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">2/3 + (-2) = (-1 1/3)</span><br><span class="line">2/3 - (-2) = 2 2/3</span><br><span class="line">2/3 * (-2) = (-1 1/3)</span><br><span class="line">2/3 / (-2) = (-1/3)</span><br></pre></td></tr></table></figure>
+
+<h3 id="输入样例-2："><a href="#输入样例-2：" class="headerlink" title="输入样例 2："></a>输入样例 2：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5/3 0/6</span><br></pre></td></tr></table></figure>
+
+<h3 id="输出样例-2："><a href="#输出样例-2：" class="headerlink" title="输出样例 2："></a>输出样例 2：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1 2/3 + 0 = 1 2/3</span><br><span class="line">1 2/3 - 0 = 1 2/3</span><br><span class="line">1 2/3 * 0 = 0</span><br><span class="line">1 2/3 / 0 = Inf</span><br></pre></td></tr></table></figure>
+
+<p>原先求最小公倍数代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(m != n)&#123;	<span class="comment">//创立两个变量来求最小公约数 </span></span><br><span class="line">    <span class="keyword">if</span>(m &gt; n) m -= n;</span><br><span class="line">    <span class="keyword">else</span> n -= m;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行超时：</p>
+<p><img src="/./../images/image-20230516170613514.png" alt="image-20230516170613514"></p>
+<p><code>超时的原因可能是一个变量很大，一个变量很小，循环的次数太多了</code></p>
+<p>大佬的代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">gcd</span><span class="params">(<span class="type">int</span> t1, <span class="type">int</span> t2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> t2 == <span class="number">0</span> ? t1 : <span class="built_in">gcd</span>(t2, t1 % t2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>辗转相除法递归写法</p>
+<p>c++中库函数__gcd()求最小公倍数：要包含头文件#include<algorithm></algorithm></p>
+<p>不超时答案错误：</p>
+<p><img src="/./../images/image-20230516191023762.png" alt="image-20230516191023762"></p>
+<blockquote>
+<p>柳神分析：</p>
+<p><strong>func(m, n)的作用是对m&#x2F;n的分数进行化简，gcd(t1, t2)的作用是计算t1和t2的最大公约数～在func函数中，先看m和n里面是否有0（即m*n是否等于0），如果分母n&#x3D;0，输出Inf，如果分子m&#x3D;0，输出”0″～flag表示m和n是否异号，flag&#x3D;true表示后面要添加负号”(-“和括号”)”，再将m和n都转为abs(m)和abs(n)，即取他们的正数部分方便计算～x &#x3D; m&#x2F;n为m和n的可提取的整数部分，先根据flag的结果判断是否要在前面追加”(-“，然后根据x是否等于0判断要不要输出这个整数位，接着根据m%n是否等于0的结果判断后面还有没有小分数，如果m能被n整除，表示没有后面的小分数，那么就根据flag的结果判断要不要加”)”，然后直接return～如果有整数位，且后面有小分数，则要先输出一个空格，接着处理剩下的小分数，先把m分子减去已经提取出的整数部分，然后求m和n的最大公约数t，让m和n都除以t进行化简～最后输出“m&#x2F;n”，如果flag&#x3D;&#x3D;true还要在末尾输出”)”</strong></p>
+<p><strong>判断m和n是否异号千万不要写成判断m*n是否小于0，因为m*n的结果可能超过了long long int的长度，导致溢出大于0，如果这样写的话会有一个测试点无法通过</strong>（语言本身的问题，python不存在的）</p>
+</blockquote>
+<p>正确代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">long</span> <span class="type">long</span> <span class="title">gcd</span><span class="params">(<span class="type">long</span> <span class="type">long</span> a, <span class="type">long</span> <span class="type">long</span> b)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (b != <span class="number">0</span>) ? <span class="built_in">gcd</span>(b,a%b) : a;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">string <span class="title">func</span><span class="params">(<span class="type">long</span> <span class="type">long</span> a,<span class="type">long</span> <span class="type">long</span> b)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!a || !b) <span class="keyword">return</span> b == <span class="number">0</span> ? <span class="string">&quot;Inf&quot;</span> : <span class="string">&quot;0&quot;</span>; <span class="comment">// 分子分母有一个是0的情况 </span></span><br><span class="line">	string res = ((a &gt; <span class="number">0</span> &amp;&amp; b &lt; <span class="number">0</span>) || (a &lt; <span class="number">0</span> &amp;&amp; b &gt; <span class="number">0</span>)) ? <span class="string">&quot;(-&quot;</span> : <span class="string">&quot;&quot;</span>; <span class="comment">// 判断正负</span></span><br><span class="line">	a = <span class="built_in">abs</span>(a);b = <span class="built_in">abs</span>(b); </span><br><span class="line">	<span class="type">long</span> <span class="type">long</span> x = a/b;</span><br><span class="line">	res += (x != <span class="number">0</span>) ? <span class="built_in">to_string</span>(x) : <span class="string">&quot;&quot;</span>; <span class="comment">//整数部分</span></span><br><span class="line">	<span class="keyword">if</span>(a % b == <span class="number">0</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(res[<span class="number">0</span>] == <span class="string">&#x27;(&#x27;</span>) <span class="keyword">return</span> res+<span class="string">&quot;)&quot;</span>;</span><br><span class="line">		<span class="keyword">return</span> res;</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(x != <span class="number">0</span>) res += <span class="string">&quot; &quot;</span>;</span><br><span class="line">	a = a - b * x;</span><br><span class="line">	<span class="type">long</span> <span class="type">long</span> n = <span class="built_in">gcd</span>(a,b);</span><br><span class="line">	a /= n;b /= n;</span><br><span class="line">	res += <span class="built_in">to_string</span>(a) + <span class="string">&quot;/&quot;</span> + <span class="built_in">to_string</span>(b);</span><br><span class="line">	<span class="keyword">if</span>(res[<span class="number">0</span>] == <span class="string">&#x27;(&#x27;</span>) <span class="keyword">return</span> res + <span class="string">&quot;)&quot;</span>;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">void</span>)</span></span>&#123;</span><br><span class="line">	<span class="type">long</span> <span class="type">long</span>  f1,f2,m1,m2;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%lld/%lld %lld/%lld&quot;</span>,&amp;f1,&amp;m1,&amp;f2,&amp;m2);</span><br><span class="line">	string str1 = <span class="built_in">func</span>(f1,m1),str2 = <span class="built_in">func</span>(f2,m2);</span><br><span class="line">	cout &lt;&lt; str1 &lt;&lt; <span class="string">&quot; + &quot;</span> &lt;&lt; str2 &lt;&lt; <span class="string">&quot; = &quot;</span> &lt;&lt; <span class="built_in">func</span>(f1*m2+f2*m1,m1*m2) &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; str1 &lt;&lt; <span class="string">&quot; - &quot;</span> &lt;&lt; str2 &lt;&lt; <span class="string">&quot; = &quot;</span> &lt;&lt; <span class="built_in">func</span>(f1*m2-f2*m1,m1*m2) &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; str1 &lt;&lt; <span class="string">&quot; * &quot;</span> &lt;&lt; str2 &lt;&lt; <span class="string">&quot; = &quot;</span> &lt;&lt; <span class="built_in">func</span>(f1*f2,m1*m2) &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; str1 &lt;&lt; <span class="string">&quot; / &quot;</span> &lt;&lt; str2 &lt;&lt; <span class="string">&quot; = &quot;</span> &lt;&lt; <span class="built_in">func</span>(f1*m2,f2*m1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其实就是要把所有变量都给成long long类型，题目说好在整型范围内，气死我了😒</p>
+<p>然后这题我原本的想法是把四则运算全部合到一起，但是太混乱了。柳神这样把分数表示单独弄成一个函数，把运算全部改成简单数学运算，所有的细节都合成一个函数中，太妙了！！好绝👍</p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2020 Yelog
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
