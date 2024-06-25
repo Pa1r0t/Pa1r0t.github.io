@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>IDA工具使用 | Pa1r0t</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="IDA工具使用 | Pa1r0t">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="介绍大家好，我是Pa1r0t 在下末流二本在读，喜欢吹牛睡觉发呆">
+<meta property="og:type" content="website">
+<meta property="og:title" content="about">
+<meta property="og:url" content="https://pa1r0t.github.io/about/index.html">
+<meta property="og:site_name" content="Pa1r0t">
+<meta property="og:description" content="介绍大家好，我是Pa1r0t 在下末流二本在读，喜欢吹牛睡觉发呆">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-11-07T03:32:11.000Z">
+<meta property="article:modified_time" content="2023-05-07T11:38:25.964Z">
+<meta property="article:author" content="Pa1r0t_9e">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/darcula.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Pa1r0t" type="application/atom+xml">
+</head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>Pa1r0t_9e</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="facebook"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-facebook"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+            <a title="instagram"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-instagram"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="reddit"
+               href="https://www.reddit.com/user/yelog/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-reddit"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="weibo"
+               href="http://weibo.com/u/2307534817"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-weibo"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="jianshu"
+               href="https://www.jianshu.com/u/ff56736de7cf"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-jianshu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="zhihu"
+               href="https://www.zhihu.com/people/jaytp/activities"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-zhihu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="oschina"
+               href="https://my.oschina.net/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-oschina"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:jaytp@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=872336115&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="kugou"
+               href="https://www.kugou.com/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-kugou"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="neteasemusic"
+               href="https://music.163.com/#/user/home?id=88151013"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-neteasemusic"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(38)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="ctf">
+            
+            ctf
+            <small>(18)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="re">
+            
+            re
+            <small>(20)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">关于</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="38">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2024/06/24/IDA%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="IDA工具使用">IDA工具使用</span>
+            <span class="post-date" title="2024-06-24 22:30:05">2024/06/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2024/06/24/OD%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="OD工具的使用">OD工具的使用</span>
+            <span class="post-date" title="2024-06-24 22:06:30">2024/06/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2024/06/23/STL%E5%87%BD%E6%95%B0%E8%AF%86%E5%88%AB/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="STL函数识别">STL函数识别</span>
+            <span class="post-date" title="2024-06-23 12:50:23">2024/06/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2024/06/22/SMC%E5%8E%9F%E7%90%86/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SMC原理">SMC原理</span>
+            <span class="post-date" title="2024-06-22 18:31:02">2024/06/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2024/06/21/VMProtect%E5%8E%9F%E7%90%86%E4%B8%8E%E8%BF%98%E5%8E%9F-1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="VMProtect原理与还原(1)">VMProtect原理与还原(1)</span>
+            <span class="post-date" title="2024-06-21 13:24:07">2024/06/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/05/16/%E6%9C%89%E7%90%86%E6%95%B0%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="有理数四则运算">有理数四则运算</span>
+            <span class="post-date" title="2023-05-16 16:49:16">2023/05/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/05/11/%E5%8F%8C%E6%8C%87%E9%92%88%E4%BC%98%E5%8C%96/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="双指针优化">双指针优化</span>
+            <span class="post-date" title="2023-05-11 15:21:59">2023/05/11</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/05/10/%E5%85%B3%E4%BA%8Ec-%E4%B8%ADdouble%E8%AF%AF%E5%B7%AE%E9%97%AE%E9%A2%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="关于c++中double误差问题">关于c++中double误差问题</span>
+            <span class="post-date" title="2023-05-10 10:46:59">2023/05/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/05/09/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E7%9A%84%E9%94%99%E8%AF%AF/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="奇奇怪怪的错误">奇奇怪怪的错误</span>
+            <span class="post-date" title="2023-05-09 10:30:44">2023/05/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/05/08/pat%E4%B9%99%E7%BA%A7%E7%AC%AC%E4%BA%8C%E5%A4%A9%E8%AE%B0%E5%BD%95/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="pat乙级第二天记录">pat乙级第二天记录</span>
+            <span class="post-date" title="2023-05-08 13:31:53">2023/05/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/05/07/map%E9%A2%98%E8%A7%A3%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%97%AE%E9%A2%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="map题解字符串问题">map题解字符串问题</span>
+            <span class="post-date" title="2023-05-07 19:33:37">2023/05/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/02/15/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91wp/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="西湖论剑wp">西湖论剑wp</span>
+            <span class="post-date" title="2023-02-15 10:06:30">2023/02/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/21/IDA%E7%BB%93%E6%9E%84%E4%BD%93%E5%88%86%E6%9E%90/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="IDA结构体分析">IDA结构体分析</span>
+            <span class="post-date" title="2023-01-21 09:52:17">2023/01/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/20/std%E9%80%86%E5%90%91/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="STL逆向">STL逆向</span>
+            <span class="post-date" title="2023-01-20 20:03:08">2023/01/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/19/Microcode/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Microcode">Microcode</span>
+            <span class="post-date" title="2023-01-19 22:09:48">2023/01/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/19/IDAPython/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="IDAPython">IDAPython</span>
+            <span class="post-date" title="2023-01-19 17:52:02">2023/01/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/01/14/hgame2023/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="hgame2023">hgame2023</span>
+            <span class="post-date" title="2023-01-14 10:09:49">2023/01/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/01/13/pwn-practice1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="pwn_practice1">pwn_practice1</span>
+            <span class="post-date" title="2023-01-13 11:50:36">2023/01/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/12/%E7%BC%96%E8%AF%91%E5%81%8F2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="编译2">编译2</span>
+            <span class="post-date" title="2023-01-12 22:07:41">2023/01/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/09/csapp1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="csapp1">csapp1</span>
+            <span class="post-date" title="2023-01-09 14:30:39">2023/01/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/09/%E7%BC%96%E8%AF%91%E7%AF%871/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="编译篇1">编译篇1</span>
+            <span class="post-date" title="2023-01-09 10:16:11">2023/01/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/05/AST%E6%B7%B7%E6%B7%862/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="AST混淆2">AST混淆2</span>
+            <span class="post-date" title="2023-01-05 17:57:25">2023/01/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/03/AST%E6%B7%B7%E6%B7%861/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="AST混淆1">AST混淆1</span>
+            <span class="post-date" title="2023-01-03 19:32:24">2023/01/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/02/ollvm%E5%81%9A%E6%B3%95/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ollvm做法">ollvm做法</span>
+            <span class="post-date" title="2023-01-02 22:06:24">2023/01/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/02/unicorn-x86%E6%9A%B4%E5%8A%9B%E8%B0%83%E7%94%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="x86暴力调用so">x86暴力调用so</span>
+            <span class="post-date" title="2023-01-02 09:03:22">2023/01/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/01/unicorn-learning5/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="unicorn_learning5">unicorn_learning5</span>
+            <span class="post-date" title="2023-01-01 09:58:42">2023/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2022/12/31/unicorn-learning4/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="unicorn_learning4">unicorn_learning4</span>
+            <span class="post-date" title="2022-12-31 14:12:48">2022/12/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2022/12/31/unicorn-learning3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="unicorn_learning3">unicorn_learning3</span>
+            <span class="post-date" title="2022-12-31 09:12:04">2022/12/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2022/12/30/unicorn-learning2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="unicorn_learning2">unicorn_learning2</span>
+            <span class="post-date" title="2022-12-30 09:40:33">2022/12/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2022/12/29/unicorn1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="unicorn_learning1">unicorn_learning1</span>
+            <span class="post-date" title="2022-12-29 14:32:54">2022/12/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2022/12/22/re-base3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="re_base3">re_base3</span>
+            <span class="post-date" title="2022-12-22 19:33:01">2022/12/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2022/12/21/re-base2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="re_base2">re_base2</span>
+            <span class="post-date" title="2022-12-21 21:56:29">2022/12/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2022/12/20/syc-level7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="syc_level7">syc_level7</span>
+            <span class="post-date" title="2022-12-20 11:30:36">2022/12/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2022/12/19/syc-level5/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="syc_level5">syc_level5</span>
+            <span class="post-date" title="2022-12-19 21:02:09">2022/12/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2022/12/17/re-base1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="re_base1">re_base1</span>
+            <span class="post-date" title="2022-12-17 21:16:25">2022/12/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2022/12/05/%E4%BF%A1%E5%88%9B%E7%BD%91%E5%AE%89wp/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="信创网安wp">信创网安wp</span>
+            <span class="post-date" title="2022-12-05 10:42:19">2022/12/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2022/11/29/buuctf-nov/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="NOV X联合出题人">NOV X联合出题人</span>
+            <span class="post-date" title="2022-11-29 16:52:11">2022/11/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2022/11/21/%E5%AE%89%E5%BE%BD%E7%9C%81%E8%B5%9B/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="安徽省赛">安徽省赛</span>
+            <span class="post-date" title="2022-11-21 14:13:57">2022/11/21</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-IDA工具使用" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">IDA工具使用</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="ctf">ctf</a>
+            
+        </span>
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2024-06-25 16:33:13'>2024-06-24 22:30</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#IDA%E5%B7%A5%E5%85%B7%E4%BB%8B%E7%BB%8D"><span class="toc-text">IDA工具介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#IDA%E5%8A%9F%E8%83%BD%E7%95%8C%E9%9D%A2%E4%BB%8B%E7%BB%8D"><span class="toc-text">IDA功能界面介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%87%E7%BC%96%E4%BB%A3%E7%A0%81%E7%95%8C%E9%9D%A2%E6%B3%A8%E9%87%8A"><span class="toc-text">汇编代码界面注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%AA%E4%BB%A3%E7%A0%81%E4%BB%A3%E7%A0%81%E7%95%8C%E9%9D%A2%E6%B3%A8%E9%87%8A%EF%BC%8C%E5%BF%AB%E6%8D%B7%E9%94%AE-x2F"><span class="toc-text">伪代码代码界面注释，快捷键 &#x2F;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%AA%97%E5%8F%A3-shift-f12"><span class="toc-text">字符串窗口 shift+f12</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E8%A1%A8%E7%AA%97%E5%8F%A3"><span class="toc-text">导入表窗口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E5%87%BA%E8%A1%A8%E7%AA%97%E5%8F%A3"><span class="toc-text">导出表窗口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%AE%E7%AA%97%E5%8F%A3"><span class="toc-text">十六进制数据窗口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%AA%97%E5%8F%A3"><span class="toc-text">函数窗口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E7%AA%97%E5%8F%A3"><span class="toc-text">结构体窗口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rdata%E6%AE%B5%E4%B8%AD%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">.rdata段中的字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BB%E6%89%BE%E5%85%A5%E5%8F%A3%E7%82%B9-%E5%BF%AB%E6%8D%B7%E9%94%AE-ctrl-e"><span class="toc-text">寻找入口点 快捷键 ctrl+e</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E8%B7%B3%E8%BD%AC-%E5%BF%AB%E6%8D%B7%E9%94%AE-G"><span class="toc-text">地址跳转 快捷键 G</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%87%8D%E5%91%BD%E5%90%8D-%E5%9C%A8%E5%8F%98%E9%87%8F%E5%90%8D%E4%B8%8B%E6%8C%89-n"><span class="toc-text">参考重命名 在变量名下按 n</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E7%B1%BB%E5%9E%8B%E4%BF%AE%E6%94%B9-%E5%9C%A8%E5%8F%98%E9%87%8F%E5%90%8D%E4%B8%8B%E6%8C%89-y"><span class="toc-text">参考类型修改 在变量名下按 y</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E8%BD%AC%E5%8C%96%E4%B8%BA%E4%BB%A3%E7%A0%81-%E5%9C%A8%E6%95%B0%E6%8D%AE%E5%BC%80%E5%A7%8B%E7%9A%84%E5%9C%B0%E6%96%B9%E6%8C%89-C"><span class="toc-text">数据转化为代码 在数据开始的地方按 C</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%87%BD%E6%95%B0-%E5%9C%A8%E4%BB%A3%E7%A0%81%E5%BC%80%E5%A7%8B%E7%9A%84%E5%9C%B0%E6%96%B9%E6%8C%89-P"><span class="toc-text">创建函数 在代码开始的地方按 P</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%96%E6%B6%88%E5%AE%9A%E4%B9%89-%E5%9C%A8%E9%9C%80%E8%A6%81%E5%8F%96%E6%B6%88%E5%AE%9A%E4%B9%89%E7%9A%84%E5%9C%B0%E6%96%B9%E6%8C%89-U"><span class="toc-text">取消定义 在需要取消定义的地方按 U</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E6%95%B0%E7%BB%84-%E5%9C%A8%E9%9C%80%E8%A6%81%E5%AE%9A%E4%B9%89%E4%B8%BA%E6%95%B0%E7%BB%84%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BC%80%E5%A7%8B%E7%9A%84%E5%9C%B0%E6%96%B9%E6%8C%89"><span class="toc-text">定义数组 在需要定义为数组的数据开始的地方按 *</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE-%E9%80%89%E4%B8%AD%E8%A6%81%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE%E5%90%8E%E6%8C%89shift-e"><span class="toc-text">提取数据 选中要提取数据后按shift+e</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E7%AD%BE%E7%9A%84%E4%BD%BF%E7%94%A8-%E5%8A%A0%E6%A0%87%E8%AE%B0%EF%BC%9Aalt-m-%E8%B7%B3%E8%BD%AC%E5%88%B0%E6%A0%87%E8%AE%B0%EF%BC%9Actrl-m"><span class="toc-text">标签的使用 加标记：alt+m  跳转到标记：ctrl+m</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-text">快捷键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IDA%E6%8F%92%E4%BB%B6%E7%9A%84%E5%AE%89%E8%A3%85"><span class="toc-text">IDA插件的安装</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IDA%E7%9A%84%E9%AB%98%E7%BA%A7%E4%BD%BF%E7%94%A8"><span class="toc-text">IDA的高级使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ida%E4%B8%AD%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%90%9C%E7%B4%A2%E7%9A%84%E6%8A%80%E5%B7%A7"><span class="toc-text">ida中字符串搜索的技巧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%97%E5%88%B0%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0%E4%B8%8E%E8%B0%83%E7%94%A8%E5%AE%83%E7%9A%84%E5%87%BD%E6%95%B0%E4%B9%8B%E9%97%B4%E5%85%B3%E7%B3%BB%E5%9B%BE"><span class="toc-text">得到一个函数与调用它的函数之间关系图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%97%E5%88%B0%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0%E4%B8%8E%E5%AE%83%E8%B0%83%E7%94%A8%E7%9A%84%E5%87%BD%E6%95%B0%E4%B9%8B%E9%97%B4%E5%85%B3%E7%B3%BB%E5%9B%BE"><span class="toc-text">得到一个函数与它调用的函数之间关系图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%AA%97%E5%8F%A3%E7%9A%84%E8%AE%BE%E7%BD%AE%E4%BB%A5%E5%BE%97%E5%88%B0%E5%B0%BD%E5%8F%AF%E8%83%BD%E5%A4%9A%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">修改字符串窗口的设置以得到尽可能多的字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E6%AF%94%E6%BA%90%E4%BB%A3%E7%A0%81%E4%B8%AD%E7%BB%93%E6%9E%84%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8Eida%E5%AF%B9%E7%BB%93%E6%9E%84%E4%BD%93%E5%8F%8D%E7%BC%96%E8%AF%91%E7%BB%93%E6%9E%9C%E6%9D%A5%E7%86%9F%E6%82%89%E7%9C%8B%E4%BC%AA%E4%BB%A3%E7%A0%81"><span class="toc-text">对比源代码中结构的定义与ida对结构体反编译结果来熟悉看伪代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E6%AF%94%E6%BA%90%E4%BB%A3%E7%A0%81%E4%B8%AD%E7%BB%93%E6%9E%84%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8Eida%E5%AF%B9%E7%BB%93%E6%9E%84%E4%BD%93%E5%8F%8D%E7%BC%96%E8%AF%91%E7%BB%93%E6%9E%9C%E6%9D%A5%E7%86%9F%E6%82%89%E7%9C%8B%E4%BC%AA%E4%BB%A3%E7%A0%81-1"><span class="toc-text">对比源代码中结构的定义与ida对结构体反编译结果来熟悉看伪代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IDA%E4%B8%ADpython%E8%84%9A%E6%9C%AC%E7%9A%84%E7%BC%96%E5%86%99-%E8%BD%BD%E5%85%A5%E8%84%9A%E6%9C%AC%E6%89%A7%E8%A1%8C%EF%BC%9Aalt-f7-%E6%89%93%E5%BC%80%E6%89%A7%E8%A1%8C%E8%84%9A%E6%9C%AC%E7%AA%97%E5%8F%A3%EF%BC%9Ashift-f2"><span class="toc-text">IDA中python脚本的编写 载入脚本执行：alt+f7 打开执行脚本窗口：shift+f2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3ida%E5%8F%8D%E7%BC%96%E8%AF%91%E9%81%87%E5%88%B0%EF%BC%9ADecompilation-failure-xxxx-too-big-function"><span class="toc-text">解决ida反编译遇到：Decompilation failure:xxxx:too big function</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E8%B0%83%E8%B0%83%E8%AF%95-windows"><span class="toc-text">动调调试-windows</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E8%B0%83%E8%B0%83%E8%AF%95-linux-x86"><span class="toc-text">动调调试-linux-x86</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IDA%E4%B8%AD%E5%88%B6%E4%BD%9Csig%E6%96%87%E4%BB%B6"><span class="toc-text">IDA中制作sig文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IDA%E4%B8%AD%E7%9A%84sig%E6%96%87%E4%BB%B6%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">IDA中的sig文件是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IDA%E4%B8%AD%E8%87%AA%E5%B8%A6%E7%9A%84%E7%AD%BE%E5%90%8D%E6%96%87%E4%BB%B6"><span class="toc-text">IDA中自带的签名文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%88%86%E6%9E%90%E7%9A%84elf%E6%96%87%E4%BB%B6%E6%9C%AA%E5%BC%95%E7%94%A8sig%E6%96%87%E4%BB%B6%E6%97%B6%E7%9A%84main%E5%87%BD%E6%95%B0"><span class="toc-text">查看分析的elf文件未引用sig文件时的main函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E8%AF%A5elf%E6%96%87%E4%BB%B6%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%BF%A1%E6%81%AF%E5%B0%BD%E5%8F%AF%E8%83%BD%E6%89%BE%E5%88%B0%E8%AF%A5elf%E6%96%87%E4%BB%B6%E7%9A%84%E7%BC%96%E8%AF%91%E5%B9%B3%E5%8F%B0"><span class="toc-text">查看该elf文件的字符串信息尽可能找到该elf文件的编译平台</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%BE%E5%88%B0%E7%9B%AE%E6%A0%87%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9A%84libc-a%E6%96%87%E4%BB%B6"><span class="toc-text">找到目标环境下的libc.a文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BDIDA%E5%AE%98%E6%96%B9%E6%8F%90%E4%BE%9B%E7%9A%84FLAIR%E5%B7%A5%E5%85%B7%E9%9B%86%EF%BC%8C%E6%88%91%E4%BB%AC%E9%80%89%E6%8B%A9%E4%BD%BF%E7%94%A8linux%E4%B8%8B%E5%B9%B3%E5%8F%B0%E7%9A%84%E6%96%87%E4%BB%B6"><span class="toc-text">下载IDA官方提供的FLAIR工具集，我们选择使用linux下平台的文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8linux%E6%96%87%E4%BB%B6%E4%B8%8B%E7%9A%84pelf%E5%B0%86libc-a%E8%BD%AC%E5%8C%96%E4%B8%BAlibc-pat"><span class="toc-text">使用linux文件下的pelf将libc.a转化为libc.pat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E7%9D%80%E4%BD%BF%E7%94%A8sigmake%E5%B0%86libc-pat%E6%96%87%E4%BB%B6%E5%88%B6%E4%BD%9C%E6%88%90libc-sig%E6%96%87%E4%BB%B6"><span class="toc-text">接着使用sigmake将libc.pat文件制作成libc.sig文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E5%AE%8C-exc%E6%96%87%E4%BB%B6%E5%90%8E%EF%BC%8C%E5%86%8D%E6%AC%A1%E9%87%8D%E5%A4%8D%E4%B9%8B%E5%89%8D%E7%94%9F%E6%88%90sig%E6%96%87%E4%BB%B6%E7%9A%84%E5%91%BD%E4%BB%A4%E5%B0%B1%E5%A5%BD%E4%BA%86%E3%80%82"><span class="toc-text">修改完.exc文件后，再次重复之前生成sig文件的命令就好了。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E7%94%9F%E6%88%90%E7%9A%84sig%E6%96%87%E4%BB%B6%E5%88%B0IDA%E4%B8%AD"><span class="toc-text">应用生成的sig文件到IDA中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%BA%94%E7%94%A8%E6%96%B0sig%E6%96%87%E4%BB%B6%E5%90%8E%E7%9A%84main%E5%87%BD%E6%95%B0"><span class="toc-text">查看应用新sig文件后的main函数</span></a></li></ol></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>​	IDA逆向神器</p>
+<span id="more"></span>
+
+<h1 id="IDA工具介绍"><a href="#IDA工具介绍" class="headerlink" title="IDA工具介绍"></a>IDA工具介绍</h1><p>​	IDA Pro（交互式反汇编器专业版，我们一般简称为IDA）是一款递归下降的反汇编器，由Hex-Rays SA发布，是安全从事人员的必备工具之一。它强大的静态反汇编，反编译功能及动态调试功能让我们分析程序变得简单。它支持数十种CPU指令集其中包括[Intel x86](<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Intel">https://baike.baidu.com/item/Intel</a> x86)，<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/x64/8161446">x64</a>，<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/MIPS/2173143">MIPS</a>，<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/PowerPC">PowerPC</a>，<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/ARM/7518299">ARM</a>，<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Z80">Z80</a>，68000，c8051等等，无论是winodws平台下的pe可执行文件，linux平台下的elf文件及ios平台下的Mach-O文件都适用。</p>
+<p>一个简单的C语言程序用作实验。</p>
+<img src="/./../images/image-20240624223417082.png" alt="image-20240624223417082" style="zoom: 67%;">
+
+<p>IDA分为32版本与64版本，这是根据所要反汇编程序的位数来区分的，但其实他们自身都是64位的程序。</p>
+<img src="/./../images/image-20240624223542585.png" alt="image-20240624223542585" style="zoom:67%;">
+
+<p>根据程序的位数选择对应位数的IDA打开程序。（附件是64位的</p>
+<p>一般没有特殊需求，我们直接默认点击OK就好了。</p>
+<img src="/./../images/image-20240624223624670.png" alt="image-20240624223624670" style="zoom:67%;">
+
+<p>点击Ok后接着的各种提示，如加载对应的pdb符号文件，统统点击否，然后进行来到载入主窗口。</p>
+<img src="/./../images/image-20240624223755676.png" alt="image-20240624223755676" style="zoom:67%;">
+
+<p>然后再关闭IDA,出现下面的提示框。</p>
+<p>一般我我们就选择下面标出的2个选项中的一个即可。第一个保存为了下次分析继续使用，另外一个不保存。</p>
+<img src="/./../images/image-20240624224547589.png" alt="image-20240624224547589" style="zoom:67%;">
+
+<p>上一步点击保存文件退出后，将该exe文件再次重新载入IDA。</p>
+<p>overwrite 重新写入，代表覆盖以前的。</p>
+<p>load existing 加载已经存在的，就是直接加载我们之前分析过该程序保存的数据库文件，保存了上次的分析记录方便我们继续分析。</p>
+<img src="/./../images/image-20240624224631709.png" alt="image-20240624224631709" style="zoom:67%;">
+
+<p>IDA功能界面介绍</p>
+<img src="/./../images/image-20240624224704443.png" alt="image-20240624224704443" style="zoom:67%;">
+
+<p>流程图界面显示对应的伪代码，此界面下按 &#x2F; 即可。</p>
+<img src="/./../images/image-20240624224743397.png" alt="image-20240624224743397" style="zoom:67%;">
+
+<p>Text-view文本视图</p>
+<img src="/./../images/image-20240624225000199.png" alt="image-20240624225000199" style="zoom:67%;">
+
+<p>切换图形视图和文本视图（点空格键就行）</p>
+<img src="/./../images/image-20240624225021469.png" alt="image-20240624225021469" style="zoom:67%;">
+
+<h2 id="IDA功能界面介绍"><a href="#IDA功能界面介绍" class="headerlink" title="IDA功能界面介绍"></a>IDA功能界面介绍</h2><p>导航栏</p>
+<img src="/./../images/image-20240624225156980.png" alt="image-20240624225156980" style="zoom:67%;">
+
+<ul>
+<li>- 蓝色:.text section</li>
+<li>- 深蓝:用户写的函数编译后的代码区</li>
+<li>- 浅蓝:编译器自己添加的函数，像启动函数，异常函数等等..</li>
+<li>- 粉红色:.idata section 有关输入表的一些数据信息</li>
+<li>- 军绿色：.rdata section 纯数据，只读</li>
+<li>- 灰色:为了段对齐而留下的空隙</li>
+<li>- 黑色: 禁区</li>
+</ul>
+<h3 id="汇编代码界面注释"><a href="#汇编代码界面注释" class="headerlink" title="汇编代码界面注释"></a>汇编代码界面注释</h3><p>一种是Enter comment(快捷键是shift+;))，另一种是Enter repeatable comment(快捷键是;和OD一样)</p>
+<p>前一种输入的注释只在该处出现，后一种注释，会在所有交叉参考处出现，如果一个程序位置引用了另一个包含可重复注释的位置，则该注释会在第一个位置回显，且以灰色显示。</p>
+<img src="/./../images/image-20240624225610836.png" alt="image-20240624225610836" style="zoom:67%;">
+
+<h3 id="伪代码代码界面注释，快捷键-x2F"><a href="#伪代码代码界面注释，快捷键-x2F" class="headerlink" title="伪代码代码界面注释，快捷键 &#x2F;"></a>伪代码代码界面注释，快捷键 &#x2F;</h3><img src="/./../images/image-20240624225839579.png" alt="image-20240624225839579" style="zoom:67%;">
+
+<h3 id="字符串窗口-shift-f12"><a href="#字符串窗口-shift-f12" class="headerlink" title="字符串窗口 shift+f12"></a>字符串窗口 shift+f12</h3><p>程序中被IDA解析出来的字符串，当然还有因为未解析出来所以没显示的。	 	</p>
+<img src="/./../images/image-20240624225955694.png" alt="image-20240624225955694" style="zoom:67%;">
+
+<h3 id="导入表窗口"><a href="#导入表窗口" class="headerlink" title="导入表窗口"></a>导入表窗口</h3><p>程序从动态链接库中导入的要使用的函数。</p>
+<img src="/./../images/image-20240625100801523.png" alt="image-20240625100801523" style="zoom:67%;">
+
+<h3 id="导出表窗口"><a href="#导出表窗口" class="headerlink" title="导出表窗口"></a>导出表窗口</h3><p>程序导出给其它程序使用的函数。</p>
+<img src="/./../images/image-20240625100939872.png" alt="image-20240625100939872" style="zoom:67%;">
+
+<h3 id="十六进制数据窗口"><a href="#十六进制数据窗口" class="headerlink" title="十六进制数据窗口"></a>十六进制数据窗口</h3><p>类似于一个十六进制编辑工具看文件的二进制信息</p>
+<img src="/./../images/image-20240625101040674.png" alt="image-20240625101040674" style="zoom:67%;">
+
+<h3 id="函数窗口"><a href="#函数窗口" class="headerlink" title="函数窗口"></a>函数窗口</h3><p>对于ida没有识别出来的函数，统统以sub_函数地址命名。</p>
+<p>为了方便，我们还可以直接在函数窗口ctrl+f，然后搜索目标函数。</p>
+<img src="/./../images/image-20240625101251726.png" alt="image-20240625101251726" style="zoom:67%;">
+
+<h3 id="结构体窗口"><a href="#结构体窗口" class="headerlink" title="结构体窗口"></a>结构体窗口</h3><p>这里显示了本次分析程序ida中已经定义了的结构体，同时我们也可以在插入创建新的结构体。</p>
+<img src="/./../images/image-20240625101410492.png" alt="image-20240625101410492" style="zoom:67%;">
+
+<h3 id="rdata段中的字符串"><a href="#rdata段中的字符串" class="headerlink" title=".rdata段中的字符串"></a>.rdata段中的字符串</h3><p>用于定义字符串都在一块内存区域，根据这个也是定位找字符串的方法。</p>
+<p>如下，.rdata段的字符串信息，最右边的是隐式的可重复注释，指示的那里引用了该字符串。<img src="/./../images/image-20240625101520158.png" alt="image-20240625101520158" style="zoom:67%;"></p>
+<h3 id="寻找入口点-快捷键-ctrl-e"><a href="#寻找入口点-快捷键-ctrl-e" class="headerlink" title="寻找入口点 快捷键 ctrl+e"></a>寻找入口点 快捷键 ctrl+e</h3><p>在IDA载入程序分析完毕后，ctrl+e打开选择程序入口点的窗口，这里可以方便找到程序的入口点及用到的回调函数。<img src="/./../images/image-20240625101703454.png" alt="image-20240625101703454" style="zoom:67%;"></p>
+<h3 id="地址跳转-快捷键-G"><a href="#地址跳转-快捷键-G" class="headerlink" title="地址跳转 快捷键 G"></a>地址跳转 快捷键 G</h3><p>按下快捷键 G，输入地址后跳转到目的地址<img src="/./../images/image-20240625103013716.png" alt="image-20240625103013716" style="zoom:67%;"></p>
+<h3 id="参考重命名-在变量名下按-n"><a href="#参考重命名-在变量名下按-n" class="headerlink" title="参考重命名 在变量名下按 n"></a>参考重命名 在变量名下按 n</h3><p>在分析一个程序时，我们可以对一些变量或者函数重命名，改成我们易于我们理解的名字，便于分析程序。</p>
+<p>如下，假如我们知道了v12变量是一个计数功能，那我们就可以给他重命名为 <strong>count</strong><img src="/./../images/image-20240625103212589.png" alt="image-20240625103212589" style="zoom:67%;"></p>
+<h3 id="参考类型修改-在变量名下按-y"><a href="#参考类型修改-在变量名下按-y" class="headerlink" title="参考类型修改 在变量名下按 y"></a>参考类型修改 在变量名下按 y</h3><p>在分析一个程序时，IDA对一些变量名可能解析的不是很正确，这就需要我们手动去修改变量的类型。</p>
+<p>如下所示，在v12变量下按y键后再输入我们要修改的变量类型。<img src="/./../images/image-20240625103350144.png" alt="image-20240625103350144" style="zoom:67%;"></p>
+<h3 id="数据转化为代码-在数据开始的地方按-C"><a href="#数据转化为代码-在数据开始的地方按-C" class="headerlink" title="数据转化为代码 在数据开始的地方按 C"></a>数据转化为代码 在数据开始的地方按 C</h3><p>在分析一个程序时，有时候因为栈帧或者其它原因使IDA不能反编一个函数有问题，又或者程序有smc，我们在手动对数据解码后，接着在解码数据开始的地方按C键就将数据转化为代码了。如下所示，我们在57h的地方按下C键，IDA就会自动对数据解析成代码了。<img src="/./../images/image-20240625103448935.png" alt="image-20240625103448935" style="zoom:67%;"></p>
+<h3 id="创建函数-在代码开始的地方按-P"><a href="#创建函数-在代码开始的地方按-P" class="headerlink" title="创建函数 在代码开始的地方按 P"></a>创建函数 在代码开始的地方按 P</h3><p>如上一步中所说的，我们先对数据按C键将数据转化为了代码，这时候还需要在代码开始的地方按p键，让IDA在将一段代码上创建成一个函数。</p>
+<p>如下，可以注意到左边的地址是红色，这时候我们在0x4025A0地址下按p就在这一段汇编创建函数且左边的红色地址消失。</p>
+<img src="/./../images/image-20240625103917545.png" alt="image-20240625103917545" style="zoom:67%;">
+
+<h3 id="取消定义-在需要取消定义的地方按-U"><a href="#取消定义-在需要取消定义的地方按-U" class="headerlink" title="取消定义 在需要取消定义的地方按 U"></a>取消定义 在需要取消定义的地方按 U</h3><p>通过在指定的数据或者代码下按U键我们可以取消IDA对该数据的定义，如代码，数组等。</p>
+<p>如下，我们在aDS按u键后，得到了下面第二张图的结果。<img src="/./../images/image-20240625104241055.png" alt="image-20240625104241055" style="zoom:67%;"></p>
+<h3 id="定义数组-在需要定义为数组的数据开始的地方按"><a href="#定义数组-在需要定义为数组的数据开始的地方按" class="headerlink" title="定义数组 在需要定义为数组的数据开始的地方按 *"></a>定义数组 在需要定义为数组的数据开始的地方按 *</h3><p>分析一个程序时，我们有时候在硬编码的数据中看见一段连续的数据且我们确定它为数组，但IDA并没有将其解析为数组，这时候我们就可以在这段数据开始的地方按下*，弹出如下所示的框：</p>
+<p>选好满足我们要求的选项后，按ok即可。<img src="/./../images/image-20240625105751524.png" alt="image-20240625105751524" style="zoom:67%;"></p>
+<h3 id="提取数据-选中要提取数据后按shift-e"><a href="#提取数据-选中要提取数据后按shift-e" class="headerlink" title="提取数据 选中要提取数据后按shift+e"></a>提取数据 选中要提取数据后按shift+e</h3><p>在我们需要得到程序中的一段数据时，我们可以先选中这段数据然后按shift+e</p>
+<p>如下，我们先选中数据，接着按shift+e后得到下面的第二组图：<img src="/./../images/image-20240625110450627.png" alt="image-20240625110450627" style="zoom:67%;"><img src="/./../images/image-20240625110516853.png" alt="image-20240625110516853" style="zoom:67%;"></p>
+<h3 id="标签的使用-加标记：alt-m-跳转到标记：ctrl-m"><a href="#标签的使用-加标记：alt-m-跳转到标记：ctrl-m" class="headerlink" title="标签的使用 加标记：alt+m  跳转到标记：ctrl+m"></a>标签的使用 加标记：alt+m  跳转到标记：ctrl+m</h3><p>使用标签功能我们可以在程序代码的任何位置快速跳到我们做了标签的地方，这对于快速跳到关键代码的位置是很实用的。</p>
+<p>如在下图中，我们知道了0x4015A2地址处是printf的功能，那么我们可以在这个地址下按alt+m,对这个地址加上printf的标记。那么当我们此时在程序任何位置，按crtl+m，选中printf标记就可以快速跳回到这里了。<img src="/./../images/image-20240625125317577.png" alt="image-20240625125317577"></p>
+<h3 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h3><ul>
+<li>F5 : 反汇编当前函数</li>
+<li>; ：为当前指令添加全文交叉引用的注释</li>
+<li>N ：定义或修改名称，通常用来标注函数名</li>
+<li>G ：跳转到任意地址</li>
+<li>Esc ：返回到跳转前的位置</li>
+<li>H ：十六进制显示数据</li>
+<li>y ：改变数据类型</li>
+<li>X ：查看按上层调用</li>
+<li>Space :图形视图和文本视图切换</li>
+<li>Shift+f12：字符串窗口列表</li>
+<li>二进制搜索：alt+b</li>
+<li>文本搜索：alt+t</li>
+<li>快照：shift+ctrl+w</li>
+<li>tab：反编译与流程图切换</li>
+<li>alt+a：字符串操作</li>
+<li>流程按&#x2F;：流程图加上伪代码</li>
+</ul>
+<h3 id="IDA插件的安装"><a href="#IDA插件的安装" class="headerlink" title="IDA插件的安装"></a>IDA插件的安装</h3><p>若我们有想要安装的插件，直接到将其放到IDA安装目录中的plugins文件夹下即可。<img src="/./../images/image-20240625130110115.png" alt="image-20240625130110115" style="zoom:67%;"></p>
+<hr>
+<h1 id="IDA的高级使用"><a href="#IDA的高级使用" class="headerlink" title="IDA的高级使用"></a>IDA的高级使用</h1><h3 id="ida中字符串搜索的技巧"><a href="#ida中字符串搜索的技巧" class="headerlink" title="ida中字符串搜索的技巧"></a>ida中字符串搜索的技巧</h3><p>ida中有两种搜索：文本搜索（alt+t），二进制搜索（alt+b）</p>
+<p>而文本搜索是很局限的，他只是对在shift+f12中ida已经列出来的字符串中搜索，对于很多很多中文字符串，宽字符它都是搜索不出来的。</p>
+<p>所以一般着重使用二进制搜索：</p>
+<p>1.对要搜索的十六进制字符串以空格分隔为两位十六进制值组成的列表。</p>
+<p>2.要搜索内嵌的字符串数据，必须将要搜索的字符串用双引号括起来。</p>
+<p>3.在搜索十六进制字节序列时，最好选中Match_case选项，不然，假如要搜索的序列为：E9 41 C3，而E9 61 C3也出现在了搜索结果中。这是因为，0x41对应于字符A，而0x61则对应于字符a，所以IDA认为这两个字符串相互匹配。<img src="/./../images/image-20240625130539779.png" alt="image-20240625130539779" style="zoom:67%;"></p>
+<h3 id="得到一个函数与调用它的函数之间关系图"><a href="#得到一个函数与调用它的函数之间关系图" class="headerlink" title="得到一个函数与调用它的函数之间关系图"></a>得到一个函数与调用它的函数之间关系图</h3><p>在一个函数的图形化界面右键选择Xref graph to..</p>
+<p>如下得到了main函数与调用main函数之间的关系图<img src="/./../images/image-20240625130826952.png" alt="image-20240625130826952" style="zoom:67%;"></p>
+<h3 id="得到一个函数与它调用的函数之间关系图"><a href="#得到一个函数与它调用的函数之间关系图" class="headerlink" title="得到一个函数与它调用的函数之间关系图"></a>得到一个函数与它调用的函数之间关系图</h3><p>在一个函数的图形化界面右键选择Xref graph from..</p>
+<p>如下得到了main函数与main调用函数之间的关系图<img src="/./../images/image-20240625131500262.png" alt="image-20240625131500262"></p>
+<h3 id="修改字符串窗口的设置以得到尽可能多的字符串"><a href="#修改字符串窗口的设置以得到尽可能多的字符串" class="headerlink" title="修改字符串窗口的设置以得到尽可能多的字符串"></a>修改字符串窗口的设置以得到尽可能多的字符串</h3><p>有时候我们可能发现程序中长度为4的关键字符串在字符串窗口找不到，其实这是ida中设置的原因，默认字符串窗口能显示的字符串长度为5。</p>
+<p>在字符串窗口右键后点击Setup，然后将最小字符串长度改为4就好。<img src="/./../images/image-20240625131758472.png" alt="image-20240625131758472" style="zoom:67%;"></p>
+<h3 id="对比源代码中结构的定义与ida对结构体反编译结果来熟悉看伪代码"><a href="#对比源代码中结构的定义与ida对结构体反编译结果来熟悉看伪代码" class="headerlink" title="对比源代码中结构的定义与ida对结构体反编译结果来熟悉看伪代码"></a>对比源代码中结构的定义与ida对结构体反编译结果来熟悉看伪代码</h3><p>源代码：</p>
+<pre><code class="C">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt; 
+
+typedef struct _Link
+&#123;
+    int data;
+    char a[20];
+    struct _Link *next;
+&#125; Link, *pLink;
+ 
+int main(void)	
+&#123;
+    pLink head;
+    Link link, link1;
+    
+    head = &amp;link;
+    link.data = 1;
+    strcpy(link.a, &quot;IDA工具的使用&quot;); 
+    link1.data = 2;
+    strcpy(link1.a, &quot;learning!&quot;);
+    link.next = &amp;link1;
+    link1.next = NULL;
+    
+    while(head)
+    &#123;
+        printf(&quot;%d %s\n&quot;, head-&gt;data, head-&gt;a);
+        head = head-&gt;next;
+    &#125;
+    
+    putchar(10);
+    system(&quot;pause&quot;);
+    
+    return 0;
+&#125;
+</code></pre>
+<p>Ida反编译结果：</p>
+<pre><code class="c">int __cdecl main(int argc, const char **argv, const char **envp)
+&#123;
+  Link link; // [rsp+20h] [rbp-50h] BYREF
+  Link link1; // [rsp+40h] [rbp-30h] BYREF
+  pLink head; // [rsp+68h] [rbp-8h]
+
+  _main();
+  head = &amp;link;
+  link.data = 1;
+  *(_QWORD *)link.a = 0xB5DFBEA4B9414449ui64;
+  *(_DWORD *)&amp;link.a[8] = -742798652;
+  *(_WORD *)&amp;link.a[12] = 195;
+  link1.data = 2;
+  strcpy(link1.a, &quot;learning!&quot;);
+  link.next = &amp;link1;
+  link1.next = 0i64;
+  while ( head )
+  &#123;
+    printf(&quot;%d %s\n&quot;, (unsigned int)head-&gt;data, head-&gt;a);
+    head = head-&gt;next;
+  &#125;
+  putchar(10);
+  system(&quot;pause&quot;);
+  return 0;
+&#125;
+</code></pre>
+<h3 id="对比源代码中结构的定义与ida对结构体反编译结果来熟悉看伪代码-1"><a href="#对比源代码中结构的定义与ida对结构体反编译结果来熟悉看伪代码-1" class="headerlink" title="对比源代码中结构的定义与ida对结构体反编译结果来熟悉看伪代码"></a>对比源代码中结构的定义与ida对结构体反编译结果来熟悉看伪代码</h3><p>从上面的结果我们可以看出，源代码中定义的结构体它的实质就是分配一块内存，然后这块内存组织了其中变量。但是ida反编译时并不能将其还原出来，它只能得到它的实质结果，那就是一段连续的空间上每个变量分别定义出来。我们在分析出结构体后，插入创建分析出的结构体后再应用就能在IDA中还原出结构体了。<img src="/./../images/image-20240625132903604.png" alt="image-20240625132903604"></p>
+<h3 id="IDA中python脚本的编写-载入脚本执行：alt-f7-打开执行脚本窗口：shift-f2"><a href="#IDA中python脚本的编写-载入脚本执行：alt-f7-打开执行脚本窗口：shift-f2" class="headerlink" title="IDA中python脚本的编写 载入脚本执行：alt+f7 打开执行脚本窗口：shift+f2"></a>IDA中python脚本的编写 载入脚本执行：alt+f7 打开执行脚本窗口：shift+f2</h3><p>在下面的窗口中写python代码可以很好的和IDA交互。要用的api查官方文档：<a target="_blank" rel="noopener" href="https://hex-rays.com/wp-content/static/products/ida/support/idapython_docs/">https://hex-rays.com/wp-content/static/products/ida/support/idapython_docs/</a><img src="/./../images/image-20240625153316743.png" alt="image-20240625153316743" style="zoom:67%;"></p>
+<h2 id="解决ida反编译遇到：Decompilation-failure-xxxx-too-big-function"><a href="#解决ida反编译遇到：Decompilation-failure-xxxx-too-big-function" class="headerlink" title="解决ida反编译遇到：Decompilation failure:xxxx:too big function"></a>解决ida反编译遇到：Decompilation failure:xxxx:too big function</h2><p>这是因为ida默认反编译函数的大小只有64K，所以这里会反编译会失败。<img src="/./../images/image-20240625153453498.png" alt="image-20240625153453498"></p>
+<p>这个问题可以通过修改反编译插件的配置文件\cfg\hexrays.cfg中MAX_FUNCSIZE，改为1024就好了<img src="/./../images/image-20240625153513048.png" alt="image-20240625153513048"></p>
+<h3 id="动调调试-windows"><a href="#动调调试-windows" class="headerlink" title="动调调试-windows"></a>动调调试-windows</h3><p>按下图所示选择好指定好选项，程序中下好断点，直接F9程序就调试起来了。<img src="/./../images/image-20240625153612954.png" alt="image-20240625153612954" style="zoom:67%;"></p>
+<h3 id="动调调试-linux-x86"><a href="#动调调试-linux-x86" class="headerlink" title="动调调试-linux-x86"></a>动调调试-linux-x86</h3><p>首先找到IDA的dbgsrv文件夹<img src="/./../images/image-20240625153657427.png" alt="image-20240625153657427" style="zoom:67%;"></p>
+<p>进入dbgsrv文件夹</p>
+<p>其中linux_server是我们调试32elf文件所要使用的服务程序，linux_server64是调试64elf所要使用的服务程序。<img src="/./../images/image-20240625153723917.png" alt="image-20240625153723917" style="zoom:67%;"></p>
+<p>将上面提到的2个服务程序复制到linux虚拟机和所要调试的文件放在同一个文件夹下。这里为了以后方便也可以放入&#x2F;usr&#x2F;bin&#x2F;下，以后直接通过命令（linux_server或linux_server64）就启动了。<img src="/./../images/image-20240625153832400.png" alt="image-20240625153832400" style="zoom:67%;"></p>
+<p>使用chmod 777 linux_server linux_server64，赋予这两个文件有执行的权限。</p>
+<p>然后根据我们所要调试程序的位数启动对应版本的服务程序。<img src="/./../images/image-20240625153909254.png" alt="image-20240625153909254"></p>
+<p>使用ifconfig命令查看当前虚拟机的ip地址<img src="/./../images/image-20240625153927204.png" alt="image-20240625153927204" style="zoom:67%;"></p>
+<p>配置ida中调试选项<img src="/./../images/image-20240625153950841.png" alt="image-20240625153950841" style="zoom:67%;"></p>
+<p>最后注意本机与目的linux环境能相互ping通，下好断点，直接F9启动程序即开始调试。</p>
+<h2 id="IDA中制作sig文件"><a href="#IDA中制作sig文件" class="headerlink" title="IDA中制作sig文件"></a>IDA中制作sig文件</h2><h3 id="IDA中的sig文件是什么？"><a href="#IDA中的sig文件是什么？" class="headerlink" title="IDA中的sig文件是什么？"></a>IDA中的sig文件是什么？</h3><p>它是满足IDA中FLIRT(库文件快速识别与鉴定技术)而使用的一种签名文件。它使用自定义的格式，记录了一些库函数的特征序列值。在我们找到合适的库文件并以此制作相应的签名文件后将其应用IDA中，它将通过特征值自动去匹配程序中的函数，并对匹配上的函数自动重命名（要注意的是：就算匹配上它也只会对IDA默认命名函数的函数重命名，换句话说就是如果之前我们对该函数已经进行了重命名，那么之后就算签名文件匹配上这个函数也不会对其进行重命名）。这能很好的解决静态编译且去除符号程序因本身函数与库函数混杂在一起增大了我们分析程序难度的问题，帮助减少工作能，更快的去分析程序本身的函数。</p>
+<h3 id="IDA中自带的签名文件"><a href="#IDA中自带的签名文件" class="headerlink" title="IDA中自带的签名文件"></a>IDA中自带的签名文件</h3><p>在IDA安装目录中的sig文件夹下我们能找到IDA中本身自带的签名文件。不同文件夹表示不同架构平台要使用的签名文件。这里我们在自己添加签名文件时也一定要注意好其架构。<img src="/./../images/image-20240625154211982.png" alt="image-20240625154211982" style="zoom:67%;"></p>
+<p>在IDA自带的签名文件中只有一小部分类unix下的签名文件，这是因为在类unix下使用编译器的是开源的gcc，不同的linux发行版本的libc.a也都不尽相同且更新很快，IDA也就不可能把所有版本的libc.a都制作一份签名文件保存下来。所以在我们分析静态链接且去除了符号表的elf文件时，可以发现很多库函数都没有识别出来，这在程序很大时无疑增加了它的分析难度和我们所花费的精力。</p>
+<p>下面也是以一个静态链接且<strong>去除了符号的elf文件</strong>来一步一步找到它的库并制作相应的sig文件进而恢复它的符号。</p>
+<h3 id="查看分析的elf文件未引用sig文件时的main函数"><a href="#查看分析的elf文件未引用sig文件时的main函数" class="headerlink" title="查看分析的elf文件未引用sig文件时的main函数"></a>查看分析的elf文件未引用sig文件时的main函数</h3><p>如下所示，所有函数都是没有符号的。<img src="/./../images/image-20240625154929920.png" alt="image-20240625154929920" style="zoom:67%;"></p>
+<h3 id="查看该elf文件的字符串信息尽可能找到该elf文件的编译平台"><a href="#查看该elf文件的字符串信息尽可能找到该elf文件的编译平台" class="headerlink" title="查看该elf文件的字符串信息尽可能找到该elf文件的编译平台"></a>查看该elf文件的字符串信息尽可能找到该elf文件的编译平台</h3><blockquote>
+<p>strings -a 1 | grep ‘ubun’</p>
+</blockquote>
+<img src="/./../images/image-20240625155210709.png" alt="image-20240625155210709">
+
+<h3 id="找到目标环境下的libc-a文件"><a href="#找到目标环境下的libc-a文件" class="headerlink" title="找到目标环境下的libc.a文件"></a>找到目标环境下的libc.a文件</h3><blockquote>
+<p>whereis libc.a</p>
+</blockquote>
+<p><img src="/./../images/image-20240625155334421.png" alt="image-20240625155334421"></p>
+<h3 id="下载IDA官方提供的FLAIR工具集，我们选择使用linux下平台的文件"><a href="#下载IDA官方提供的FLAIR工具集，我们选择使用linux下平台的文件" class="headerlink" title="下载IDA官方提供的FLAIR工具集，我们选择使用linux下平台的文件"></a>下载IDA官方提供的FLAIR工具集，我们选择使用linux下平台的文件</h3><p>将linux文件夹拖入我们的linux环境中</p>
+<p><img src="/./../images/image-20240625155416288.png" alt="image-20240625155416288"></p>
+<h3 id="使用linux文件下的pelf将libc-a转化为libc-pat"><a href="#使用linux文件下的pelf将libc-a转化为libc-pat" class="headerlink" title="使用linux文件下的pelf将libc.a转化为libc.pat"></a>使用linux文件下的pelf将libc.a转化为libc.pat</h3><blockquote>
+<p>.&#x2F;linux&#x2F;pelf libc.a libc.pat</p>
+</blockquote>
+<p>如果正常的话不会有提示信息，在当前文件下生成libc.pat文件。</p>
+<p>但也常出现下面这个错误：<img src="/./../images/image-20240625155543066.png" alt="image-20240625155543066"></p>
+<p>看意思是不能识别重定位类型，那我们在上面的命令下加上如下选项即可：</p>
+<blockquote>
+<p>.&#x2F;linux&#x2F;pelf -r42:0:0 libc.a libc.pat</p>
+</blockquote>
+<p>42是重定位类型，根据提示的错误来。</p>
+<h3 id="接着使用sigmake将libc-pat文件制作成libc-sig文件"><a href="#接着使用sigmake将libc-pat文件制作成libc-sig文件" class="headerlink" title="接着使用sigmake将libc.pat文件制作成libc.sig文件"></a>接着使用sigmake将libc.pat文件制作成libc.sig文件</h3><blockquote>
+<p>.&#x2F;linux&#x2F;sigmake -n“my_sig” libc.pat libc.sig  -n后是添加的注释信息</p>
+</blockquote>
+<p>正常的话也是直接就生成相应的sig文件了。但也常出现下面的错误：</p>
+<p>意思是有22个函数它们同一个特征值不止对应一个函数，如果制作成了sig文件在匹配成功时也不知道到底应用那个函数名字。</p>
+<p><img src="/./../images/image-20240625162838622.png" alt="image-20240625162838622"></p>
+<p>它会在当前目录下生成一个.exc文件，它是可编辑的，我们将该.exc文件的前几行注释删除，在我们要选择特征值对应的函数名称最前面加一个+号即可，如果不管就什么也不加。如下图，我选择了第一个该特征值的第一个函数。<img src="/./../images/image-20240625162940235.png" alt="image-20240625162940235"></p>
+<h3 id="修改完-exc文件后，再次重复之前生成sig文件的命令就好了。"><a href="#修改完-exc文件后，再次重复之前生成sig文件的命令就好了。" class="headerlink" title="修改完.exc文件后，再次重复之前生成sig文件的命令就好了。"></a>修改完.exc文件后，再次重复之前生成sig文件的命令就好了。</h3><blockquote>
+<p>.&#x2F;linux&#x2F;sigmake -n“my_sig” libc.pat libc.sig</p>
+</blockquote>
+<h3 id="应用生成的sig文件到IDA中"><a href="#应用生成的sig文件到IDA中" class="headerlink" title="应用生成的sig文件到IDA中"></a>应用生成的sig文件到IDA中</h3><p>将生成的签名文件复制到IDA中的sig目录下。</p>
+<p>回到IDA中之前分析的该elf文件，shift+f5打开应用库的窗口，然后右键把我们新复制到的sig目录下的sig文件添加进来。如下图，添加后，成功匹配了程序中的735个函数。而上面之前的libc却匹配了0个函数，这也正说明了版本变化带来的差异之大。</p>
+<img src="/./../images/image-20240625163029263.png" alt="image-20240625163029263" style="zoom:67%;">
+
+<h3 id="查看应用新sig文件后的main函数"><a href="#查看应用新sig文件后的main函数" class="headerlink" title="查看应用新sig文件后的main函数"></a>查看应用新sig文件后的main函数</h3><p>如下图，scanf和puts相关函数都识别出来了。<img src="/./../images/image-20240625163056902.png" alt="image-20240625163056902" style="zoom:67%;"></p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2020 Yelog
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

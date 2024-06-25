@@ -6,15 +6,15 @@
   <meta name="keywords" content="">
   <meta name="description" content="unicorn_learning1 | Pa1r0t">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="welcome to my bolg">
+<meta name="description" content="介绍大家好，我是Pa1r0t 在下末流二本在读，喜欢吹牛睡觉发呆">
 <meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="https://pa1r0t.github.io/categories/index.html">
+<meta property="og:title" content="about">
+<meta property="og:url" content="https://pa1r0t.github.io/about/index.html">
 <meta property="og:site_name" content="Pa1r0t">
-<meta property="og:description" content="welcome to my bolg">
+<meta property="og:description" content="介绍大家好，我是Pa1r0t 在下末流二本在读，喜欢吹牛睡觉发呆">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-11-06T05:27:18.000Z">
-<meta property="article:modified_time" content="2022-11-07T03:30:48.209Z">
+<meta property="article:published_time" content="2022-11-07T03:32:11.000Z">
+<meta property="article:modified_time" content="2023-05-07T11:38:25.964Z">
 <meta property="article:author" content="Pa1r0t_9e">
 <meta name="twitter:card" content="summary">
 
@@ -23,7 +23,7 @@
 
 <link href="/css/style.css?v=1.1.0" rel="stylesheet">
 
-<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+<link href="/css/hl_theme/darcula.css?v=1.1.0" rel="stylesheet">
 
 <link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
 
@@ -244,7 +244,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(33)</small>
+                <small>(38)</small>
             
         </div>
     </li>
@@ -256,7 +256,7 @@
         <div data-rel="ctf">
             
             ctf
-            <small>(14)</small>
+            <small>(18)</small>
         </div>
         
     </li>
@@ -271,7 +271,7 @@
         <div data-rel="re">
             
             re
-            <small>(19)</small>
+            <small>(20)</small>
         </div>
         
     </li>
@@ -299,7 +299,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="33">
+<input type="hidden" id="yelog_site_posts_number" value="38">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -351,6 +351,51 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2024/06/24/IDA%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="IDA工具使用">IDA工具使用</span>
+            <span class="post-date" title="2024-06-24 22:30:05">2024/06/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2024/06/24/OD%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="OD工具的使用">OD工具的使用</span>
+            <span class="post-date" title="2024-06-24 22:06:30">2024/06/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2024/06/23/STL%E5%87%BD%E6%95%B0%E8%AF%86%E5%88%AB/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="STL函数识别">STL函数识别</span>
+            <span class="post-date" title="2024-06-23 12:50:23">2024/06/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2024/06/22/SMC%E5%8E%9F%E7%90%86/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SMC原理">SMC原理</span>
+            <span class="post-date" title="2024-06-22 18:31:02">2024/06/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2024/06/21/VMProtect%E5%8E%9F%E7%90%86%E4%B8%8E%E8%BF%98%E5%8E%9F-1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="VMProtect原理与还原(1)">VMProtect原理与还原(1)</span>
+            <span class="post-date" title="2024-06-21 13:24:07">2024/06/21</span>
+        </a>
         
         
         <a  class="全部文章 ctf "
@@ -731,29 +776,52 @@
 
 <h1 id="Unicorn-入门学习"><a href="#Unicorn-入门学习" class="headerlink" title="Unicorn 入门学习"></a>Unicorn 入门学习</h1><p>unicorn 是用于执行多种cpu框架的虚拟架构系统</p>
 <h5 id="下面进行模仿arm架构，执行arm指令"><a href="#下面进行模仿arm架构，执行arm指令" class="headerlink" title="下面进行模仿arm架构，执行arm指令"></a>下面进行模仿arm架构，执行arm指令</h5><p>首先在python中导入unicorn</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> unicorn <span class="keyword">import</span> *</span><br></pre></td></tr></table></figure>
-
+<pre><code class="python">from unicorn import *
+</code></pre>
 <p>如何根据自己要执行指令对应哪个cpu架构，来导入相应的处理器相关的常量</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> unicorn.arm_const  <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> unicorn.arm64_const <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> unicorn.m68k_const <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> unicorn.mips_const <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> unicorn.sparc_const <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> unicorn.x86_const <span class="keyword">import</span> *</span><br></pre></td></tr></table></figure>
-
+<pre><code class="py">from unicorn.arm_const  import *
+from unicorn.arm64_const import *
+from unicorn.m68k_const import *
+from unicorn.mips_const import *
+from unicorn.sparc_const import *
+from unicorn.x86_const import *
+</code></pre>
 <p>寄存器常量命名规则：<br>UC_ + 指令集 + <em>REG</em> + 大写寄存器名<br>UC_ARM<em>REG</em> + 大写寄存器名 （UC_ARM_REG_R0）<br>UC_X86<em>REG</em> + 大写寄存器名 （UC_X86_REG_EAX）</p>
 <p>这里我们选择unicorn.arm_const</p>
 <h4 id="创建arm虚拟机（UC）"><a href="#创建arm虚拟机（UC）" class="headerlink" title="创建arm虚拟机（UC）"></a>创建arm虚拟机（UC）</h4><p>Uc 是unicorn的主类，Uc对象则代表了一个独立的虚拟机实例，它有独立的寄存器和内存等资源，不同Uc对象之间的数据是独立的。Uc的构造函数有两个参数 <em>arch</em> 和 <em>mode</em>，用来指定模拟执行的指令集和对应的位数或模式。<br>arch常量参数一般以 UC<em>ARCH</em> 开头，MODE常量以UC<em>MODE</em> 开头。</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Test ARM</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test_arm</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Emulate ARM code&quot;</span>)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="comment"># Initialize emulator in ARM mode</span></span><br><span class="line">        mu = Uc(UC_ARCH_ARM, UC_MODE_ARM)	<span class="comment"># 创建代码</span></span><br><span class="line">        <span class="comment"># 其它代码添加到此处</span></span><br><span class="line">        <span class="keyword">return</span> mu</span><br><span class="line">    <span class="keyword">except</span> UcError <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;ERROR: %s&quot;</span> % e)</span><br><span class="line"></span><br><span class="line">mu = test_arm() <span class="comment"># mu就是arm虚拟机</span></span><br></pre></td></tr></table></figure>
+<pre><code class="py"># Test ARM
+def test_arm():
+    print(&quot;Emulate ARM code&quot;)
+    try:
+        # Initialize emulator in ARM mode
+        mu = Uc(UC_ARCH_ARM, UC_MODE_ARM)	# 创建代码
+        # 其它代码添加到此处
+        return mu
+    except UcError as e:
+        print(&quot;ERROR: %s&quot; % e)
 
+mu = test_arm() # mu就是arm虚拟机
+</code></pre>
 <h4 id="映射内存"><a href="#映射内存" class="headerlink" title="映射内存"></a>映射内存</h4><p>想用Unicorn模拟执行代码，是不能将代码字节流直接以参数形式传递给Unicorn，而是将要执行的代码写入到Unicorn 的虚拟内存中。Uc 虚拟机实例初始内存是没有任何映射的，在读写内存之前使用<em>uc_mem_map</em>函数映射一段内存</p>
 <p>这里开始地址和地址大小都要和0x1000&#x3D;&#x3D;对齐&#x3D;&#x3D;</p>
 <p>否则就是我这种错误：</p>
 <p><img src="/./../images/image-20221229151625712.png" alt="image-20221229151625712"></p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ADDRESS = <span class="number">0x10000</span></span><br><span class="line">mu.mem_map(ADDRESS, <span class="number">0x1000</span>)  <span class="comment"># 这里大小自己估算</span></span><br></pre></td></tr></table></figure>
-
+<pre><code class="py">ADDRESS = 0x10000
+mu.mem_map(ADDRESS, 0x1000)  # 这里大小自己估算
+</code></pre>
 <h4 id="写入代码"><a href="#写入代码" class="headerlink" title="写入代码"></a>写入代码</h4><p>将想要执行的代码写进我们创建的内存中</p>
 <p>mem_write的第二个参数必须是byte字节数组，只支持python的byte数组，不能是String或者bytearray。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ARM_CODE   = <span class="string">b&quot;\x37\x00\xa0\xe3\x03\x10\x42\xe0&quot;</span></span><br><span class="line"><span class="comment"># mov r0, #0x37;</span></span><br><span class="line"><span class="comment"># sub r1, r2, r3</span></span><br><span class="line">mu.mem_write(ADDRESS, ARM_CODE) </span><br></pre></td></tr></table></figure>
-
+<pre><code class="python">ARM_CODE   = b&quot;\x37\x00\xa0\xe3\x03\x10\x42\xe0&quot;
+# mov r0, #0x37;
+# sub r1, r2, r3
+mu.mem_write(ADDRESS, ARM_CODE) 
+</code></pre>
 <p>给寄存器初始赋值</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mu.reg_write(UC_ARM_REG_R0, <span class="number">0x0</span>)</span><br><span class="line">mu.reg_write(UC_ARM_REG_R2, <span class="number">0x4</span>)</span><br><span class="line">mu.reg_write(UC_ARM_REG_R3, <span class="number">0x1</span>)</span><br><span class="line"><span class="comment"># 这里r1的结果预估是0x3</span></span><br></pre></td></tr></table></figure>
-
+<pre><code class="python">mu.reg_write(UC_ARM_REG_R0, 0x0)
+mu.reg_write(UC_ARM_REG_R2, 0x4)
+mu.reg_write(UC_ARM_REG_R3, 0x1)
+# 这里r1的结果预估是0x3
+</code></pre>
 <h4 id="添加指令级的Hook"><a href="#添加指令级的Hook" class="headerlink" title="添加指令级的Hook"></a>添加指令级的Hook</h4><p>hook类型：</p>
 <ul>
 <li>指令执行类：<ul>
@@ -782,30 +850,71 @@
 </li>
 </ul>
 <p><img src="/./../images/image-20221229153037712.png" alt="image-20221229153037712"></p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">hook_add</span>(<span class="params">self, htype, callback, user_data=<span class="literal">None</span>, begin=<span class="number">1</span>, end=<span class="number">0</span>, arg1=<span class="number">0</span></span>):</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">mu.hook_add(UC_HOOK_CODE, hook_code, begin=ADDRESS, end=<span class="number">0x1000</span>)</span><br></pre></td></tr></table></figure>
-
+<pre><code class="py">def hook_add(self, htype, callback, user_data=None, begin=1, end=0, arg1=0):
+    pass
+mu.hook_add(UC_HOOK_CODE, hook_code, begin=ADDRESS, end=0x1000)
+</code></pre>
 <p>以上是添加hook的操作</p>
 <p>在begin…end范围内的每一条指令被执行前都会调用callback。</p>
 <p>hook函数编写：</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># callback for tracing instructions</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">hook_code</span>(<span class="params">uc, address, size, user_data</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;&gt;&gt;&gt; Tracing instruction at 0x%x, instruction size = 0x%x&quot;</span> %(address, size))</span><br></pre></td></tr></table></figure>
-
+<pre><code class="py"># callback for tracing instructions
+def hook_code(uc, address, size, user_data):
+    print(&quot;&gt;&gt;&gt; Tracing instruction at 0x%x, instruction size = 0x%x&quot; %(address, size))
+</code></pre>
 <h4 id="执行虚拟机"><a href="#执行虚拟机" class="headerlink" title="执行虚拟机"></a>执行虚拟机</h4><p>emu_start 可以通过timeout参数设置最长执行时长，防止线程死在虚拟机里面。emu_start 执行完成后，可以通过读取内存或寄存器的方式来获取执行结果。</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">emu_start</span>(<span class="params">self, begin, until, timeout=<span class="number">0</span>, count=<span class="number">0</span></span>):</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">mu.emu_start(ADDRESS, ADDRESS + <span class="built_in">len</span>(ARM_CODE))</span><br></pre></td></tr></table></figure>
-
+<pre><code class="py">def emu_start(self, begin, until, timeout=0, count=0):
+    pass
+mu.emu_start(ADDRESS, ADDRESS + len(ARM_CODE))
+</code></pre>
 <p>执行成功，hook函数一共被调用两次（指令有两条）</p>
 <p><img src="/./../images/image-20221229154734059.png" alt="image-20221229154734059"></p>
-<h4 id="获取寄存器结果"><a href="#获取寄存器结果" class="headerlink" title="获取寄存器结果"></a>获取寄存器结果</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">r0 = mu.reg_read(UC_ARM_REG_R0)</span><br><span class="line">r1 = mu.reg_read(UC_ARM_REG_R1)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;&gt;&gt;&gt; R0 = 0x%x&quot;</span> % r0)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;&gt;&gt;&gt; R1 = 0x%x&quot;</span> % r1)</span><br></pre></td></tr></table></figure>
-
+<h4 id="获取寄存器结果"><a href="#获取寄存器结果" class="headerlink" title="获取寄存器结果"></a>获取寄存器结果</h4><pre><code class="py">r0 = mu.reg_read(UC_ARM_REG_R0)
+r1 = mu.reg_read(UC_ARM_REG_R1)
+print(&quot;&gt;&gt;&gt; R0 = 0x%x&quot; % r0)
+print(&quot;&gt;&gt;&gt; R1 = 0x%x&quot; % r1)
+</code></pre>
 <p>和推理的结果相同！！！！</p>
 <p><img src="/./../images/image-20221229154900787.png" alt="image-20221229154900787"></p>
 <hr>
 <h3 id="个人测试全过程："><a href="#个人测试全过程：" class="headerlink" title="个人测试全过程："></a>个人测试全过程：</h3><p><img src="/./../images/image-20221229155328503.png" alt="image-20221229155328503"></p>
 <p><img src="/./../images/image-20221229155356531.png" alt="image-20221229155356531"></p>
 <p>完整代码：</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> unicorn <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> unicorn.arm_const <span class="keyword">import</span> *</span><br><span class="line">ARM_CODE   = <span class="string">b&quot;\x37\x00\xa0\xe3\x03\x10\x42\xe0&quot;</span></span><br><span class="line"><span class="comment"># mov r0, #0x37;</span></span><br><span class="line"><span class="comment"># sub r1, r2, r3</span></span><br><span class="line"><span class="comment"># Test ARM</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># callback for tracing instructions</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">hook_code</span>(<span class="params">uc, address, size, user_data</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;&gt;&gt;&gt; Tracing instruction at 0x%x, instruction size = 0x%x&quot;</span> %(address, size))</span><br><span class="line"> </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test_arm</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Emulate ARM code&quot;</span>)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="comment"># Initialize emulator in ARM mode</span></span><br><span class="line">        mu = Uc(UC_ARCH_ARM, UC_MODE_THUMB)</span><br><span class="line"> </span><br><span class="line">        <span class="comment"># map 2MB memory for this emulation</span></span><br><span class="line">        ADDRESS = <span class="number">0x10000</span></span><br><span class="line">        mu.mem_map(ADDRESS, <span class="number">2</span> * <span class="number">0x10000</span>)</span><br><span class="line">        mu.mem_write(ADDRESS, ARM_CODE)</span><br><span class="line"> </span><br><span class="line">        mu.reg_write(UC_ARM_REG_R0, <span class="number">0x1234</span>)</span><br><span class="line">        mu.reg_write(UC_ARM_REG_R2, <span class="number">0x6789</span>)</span><br><span class="line">        mu.reg_write(UC_ARM_REG_R3, <span class="number">0x3333</span>)</span><br><span class="line"> </span><br><span class="line">        mu.hook_add(UC_HOOK_CODE, hook_code, begin=ADDRESS, end=ADDRESS)</span><br><span class="line">        <span class="comment"># emulate machine code in infinite time</span></span><br><span class="line">        mu.emu_start(ADDRESS, ADDRESS + <span class="built_in">len</span>(ARM_CODE))</span><br><span class="line">        r0 = mu.reg_read(UC_ARM_REG_R0)</span><br><span class="line">        r1 = mu.reg_read(UC_ARM_REG_R1)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;&gt;&gt;&gt; R0 = 0x%x&quot;</span> % r0)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;&gt;&gt;&gt; R1 = 0x%x&quot;</span> % r1)</span><br><span class="line">    <span class="keyword">except</span> UcError <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;ERROR: %s&quot;</span> % e)</span><br></pre></td></tr></table></figure>
-
-
-
+<pre><code class="py">from unicorn import *
+from unicorn.arm_const import *
+ARM_CODE   = b&quot;\x37\x00\xa0\xe3\x03\x10\x42\xe0&quot;
+# mov r0, #0x37;
+# sub r1, r2, r3
+# Test ARM
+ 
+# callback for tracing instructions
+def hook_code(uc, address, size, user_data):
+    print(&quot;&gt;&gt;&gt; Tracing instruction at 0x%x, instruction size = 0x%x&quot; %(address, size))
+ 
+def test_arm():
+    print(&quot;Emulate ARM code&quot;)
+    try:
+        # Initialize emulator in ARM mode
+        mu = Uc(UC_ARCH_ARM, UC_MODE_THUMB)
+ 
+        # map 2MB memory for this emulation
+        ADDRESS = 0x10000
+        mu.mem_map(ADDRESS, 2 * 0x10000)
+        mu.mem_write(ADDRESS, ARM_CODE)
+ 
+        mu.reg_write(UC_ARM_REG_R0, 0x1234)
+        mu.reg_write(UC_ARM_REG_R2, 0x6789)
+        mu.reg_write(UC_ARM_REG_R3, 0x3333)
+ 
+        mu.hook_add(UC_HOOK_CODE, hook_code, begin=ADDRESS, end=ADDRESS)
+        # emulate machine code in infinite time
+        mu.emu_start(ADDRESS, ADDRESS + len(ARM_CODE))
+        r0 = mu.reg_read(UC_ARM_REG_R0)
+        r1 = mu.reg_read(UC_ARM_REG_R1)
+        print(&quot;&gt;&gt;&gt; R0 = 0x%x&quot; % r0)
+        print(&quot;&gt;&gt;&gt; R1 = 0x%x&quot; % r1)
+    except UcError as e:
+        print(&quot;ERROR: %s&quot; % e)
+</code></pre>
 <blockquote>
 <p>文章引用Pandaos大佬的文章：[<a target="_blank" rel="noopener" href="https://bbs.pediy.com/thread-253868.htm#msg_header_h1_1">原创] Unicorn 在 Android 的应用-Android安全-看雪论坛-安全社区|安全招聘|bbs.pediy.com</a></p>
 </blockquote>

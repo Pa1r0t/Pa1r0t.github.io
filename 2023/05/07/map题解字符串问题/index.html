@@ -6,15 +6,15 @@
   <meta name="keywords" content="">
   <meta name="description" content="map题解字符串问题 | Pa1r0t">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="welcome to my bolg">
+<meta name="description" content="介绍大家好，我是Pa1r0t 在下末流二本在读，喜欢吹牛睡觉发呆">
 <meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="https://pa1r0t.github.io/categories/index.html">
+<meta property="og:title" content="about">
+<meta property="og:url" content="https://pa1r0t.github.io/about/index.html">
 <meta property="og:site_name" content="Pa1r0t">
-<meta property="og:description" content="welcome to my bolg">
+<meta property="og:description" content="介绍大家好，我是Pa1r0t 在下末流二本在读，喜欢吹牛睡觉发呆">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-11-06T05:27:18.000Z">
-<meta property="article:modified_time" content="2022-11-07T03:30:48.209Z">
+<meta property="article:published_time" content="2022-11-07T03:32:11.000Z">
+<meta property="article:modified_time" content="2023-05-07T11:38:25.964Z">
 <meta property="article:author" content="Pa1r0t_9e">
 <meta name="twitter:card" content="summary">
 
@@ -23,7 +23,7 @@
 
 <link href="/css/style.css?v=1.1.0" rel="stylesheet">
 
-<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+<link href="/css/hl_theme/darcula.css?v=1.1.0" rel="stylesheet">
 
 <link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
 
@@ -244,7 +244,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(33)</small>
+                <small>(38)</small>
             
         </div>
     </li>
@@ -256,7 +256,7 @@
         <div data-rel="ctf">
             
             ctf
-            <small>(14)</small>
+            <small>(18)</small>
         </div>
         
     </li>
@@ -271,7 +271,7 @@
         <div data-rel="re">
             
             re
-            <small>(19)</small>
+            <small>(20)</small>
         </div>
         
     </li>
@@ -299,7 +299,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="33">
+<input type="hidden" id="yelog_site_posts_number" value="38">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -351,6 +351,51 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2024/06/24/IDA%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="IDA工具使用">IDA工具使用</span>
+            <span class="post-date" title="2024-06-24 22:30:05">2024/06/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2024/06/24/OD%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="OD工具的使用">OD工具的使用</span>
+            <span class="post-date" title="2024-06-24 22:06:30">2024/06/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2024/06/23/STL%E5%87%BD%E6%95%B0%E8%AF%86%E5%88%AB/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="STL函数识别">STL函数识别</span>
+            <span class="post-date" title="2024-06-23 12:50:23">2024/06/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2024/06/22/SMC%E5%8E%9F%E7%90%86/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SMC原理">SMC原理</span>
+            <span class="post-date" title="2024-06-22 18:31:02">2024/06/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2024/06/21/VMProtect%E5%8E%9F%E7%90%86%E4%B8%8E%E8%BF%98%E5%8E%9F-1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="VMProtect原理与还原(1)">VMProtect原理与还原(1)</span>
+            <span class="post-date" title="2024-06-21 13:24:07">2024/06/21</span>
+        </a>
         
         
         <a  class="全部文章 ctf "
@@ -740,13 +785,61 @@
 <p>现在就请你为 PAT 写一个自动裁判程序，判定哪些字符串是可以获得“<strong>答案正确</strong>”的。</p>
 <h3 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h3><p>每个测试输入包含 1 个测试用例。第 1 行给出一个正整数 <em>n</em> (≤10)，是需要检测的字符串个数。接下来每个字符串占一行，字符串长度不超过 100，且不包含空格。</p>
 <h3 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h3><p>每个字符串的检测结果占一行，如果该字符串可以获得“<strong>答案正确</strong>”，则输出 <code>YES</code>，否则输出 <code>NO</code>。</p>
-<h3 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">10</span><br><span class="line">PAT</span><br><span class="line">PAAT</span><br><span class="line">AAPATAA</span><br><span class="line">AAPAATAAAA</span><br><span class="line">xPATx</span><br><span class="line">PT</span><br><span class="line">Whatever</span><br><span class="line">APAAATAA</span><br><span class="line">APT</span><br><span class="line">APATTAA</span><br></pre></td></tr></table></figure>
-
-<h3 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">YES</span><br><span class="line">YES</span><br><span class="line">YES</span><br><span class="line">YES</span><br><span class="line">NO</span><br><span class="line">NO</span><br><span class="line">NO</span><br><span class="line">NO</span><br><span class="line">NO</span><br><span class="line">NO</span><br></pre></td></tr></table></figure>
-
+<h3 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h3><pre><code class="in">10
+PAT
+PAAT
+AAPATAA
+AAPAATAAAA
+xPATx
+PT
+Whatever
+APAAATAA
+APT
+APATTAA
+</code></pre>
+<h3 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h3><pre><code class="out">YES
+YES
+YES
+YES
+NO
+NO
+NO
+NO
+NO
+NO
+</code></pre>
 <p>题解：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;map&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">void</span>)</span></span>&#123;</span><br><span class="line">	<span class="type">int</span> n;</span><br><span class="line">	string s;</span><br><span class="line">	<span class="type">int</span> p=<span class="number">-1</span>,t=<span class="number">-1</span>;</span><br><span class="line">	cin &gt;&gt; n;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">		cin &gt;&gt; s;</span><br><span class="line">		map&lt;<span class="type">char</span>,<span class="type">int</span>&gt; mp;</span><br><span class="line">		<span class="comment">//遍历字符串</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;s.<span class="built_in">size</span>();j++)&#123;</span><br><span class="line">			<span class="comment">//记录字符数量 </span></span><br><span class="line">			mp[s[j]]++;</span><br><span class="line">			<span class="comment">//记录P,T的位置</span></span><br><span class="line">			<span class="keyword">if</span>(s[j] == <span class="string">&#x27;P&#x27;</span>) p = j;</span><br><span class="line">			<span class="keyword">if</span>(s[j] == <span class="string">&#x27;T&#x27;</span>) t = j;</span><br><span class="line">		&#125; </span><br><span class="line">		<span class="comment">//mp[&#x27;A&#x27;] != 0 必须要有A字符</span></span><br><span class="line">		<span class="comment">//mp[&#x27;P&#x27;] == 1 &amp;&amp; mp[&#x27;T&#x27;] == 1  PT字符必须要有且有一个 </span></span><br><span class="line">		<span class="comment">//t-p &gt; 1 P和T的位置满足中间一个距离，即中间必须有A</span></span><br><span class="line">		<span class="comment">//mp.size() == 3 仅有P A T</span></span><br><span class="line">		<span class="comment">//p*(t-p-1)==s.size()-t-1 前A数量 ×中间A数量 = 后A数量 </span></span><br><span class="line">		<span class="keyword">if</span>(mp[<span class="string">&#x27;A&#x27;</span>] != <span class="number">0</span> &amp;&amp; mp[<span class="string">&#x27;P&#x27;</span>] == <span class="number">1</span> &amp;&amp; mp[<span class="string">&#x27;T&#x27;</span>] == <span class="number">1</span> &amp;&amp; t-p != <span class="number">1</span> &amp;&amp; mp.<span class="built_in">size</span>() == <span class="number">3</span> &amp;&amp; p*(t-p<span class="number">-1</span>)==s.<span class="built_in">size</span>()-t<span class="number">-1</span>)</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;YES\n&quot;</span>);</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;NO\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-
+<pre><code class="c++">#include&lt;iostream&gt;
+#include&lt;map&gt;
+using namespace std;
+int main(void)&#123;
+    int n;
+    string s;
+    int p=-1,t=-1;
+    cin &gt;&gt; n;
+    for(int i=0;i&lt;n;i++)&#123;
+        cin &gt;&gt; s;
+        map&lt;char,int&gt; mp;
+        //遍历字符串
+        for(int j=0;j&lt;s.size();j++)&#123;
+            //记录字符数量 
+            mp[s[j]]++;
+            //记录P,T的位置
+            if(s[j] == &#39;P&#39;) p = j;
+            if(s[j] == &#39;T&#39;) t = j;
+        &#125; 
+        //mp[&#39;A&#39;] != 0 必须要有A字符
+        //mp[&#39;P&#39;] == 1 &amp;&amp; mp[&#39;T&#39;] == 1  PT字符必须要有且有一个 
+        //t-p &gt; 1 P和T的位置满足中间一个距离，即中间必须有A
+        //mp.size() == 3 仅有P A T
+        //p*(t-p-1)==s.size()-t-1 前A数量 ×中间A数量 = 后A数量 
+        if(mp[&#39;A&#39;] != 0 &amp;&amp; mp[&#39;P&#39;] == 1 &amp;&amp; mp[&#39;T&#39;] == 1 &amp;&amp; t-p != 1 &amp;&amp; mp.size() == 3 &amp;&amp; p*(t-p-1)==s.size()-t-1)
+            printf(&quot;YES\n&quot;);
+        else
+            printf(&quot;NO\n&quot;);
+    &#125;
+&#125; 
+</code></pre>
 <p>这题本来是要计算字符A位置上数量约束，一个map就巧妙解决了所有约束太妙了。</p>
 <p>申明：此题主要看柳神解答，非本人独创</p>
 <p>参考链接：<a target="_blank" rel="noopener" href="https://www.liuchuo.net/archives/460">1003. 我要通过！(20)-PAT乙级真题 – 柳婼 の blog (liuchuo.net)</a></p>

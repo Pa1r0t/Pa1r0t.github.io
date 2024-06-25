@@ -6,15 +6,15 @@
   <meta name="keywords" content="">
   <meta name="description" content="IDAPython | Pa1r0t">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="welcome to my bolg">
+<meta name="description" content="介绍大家好，我是Pa1r0t 在下末流二本在读，喜欢吹牛睡觉发呆">
 <meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="https://pa1r0t.github.io/categories/index.html">
+<meta property="og:title" content="about">
+<meta property="og:url" content="https://pa1r0t.github.io/about/index.html">
 <meta property="og:site_name" content="Pa1r0t">
-<meta property="og:description" content="welcome to my bolg">
+<meta property="og:description" content="介绍大家好，我是Pa1r0t 在下末流二本在读，喜欢吹牛睡觉发呆">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-11-06T05:27:18.000Z">
-<meta property="article:modified_time" content="2022-11-07T03:30:48.209Z">
+<meta property="article:published_time" content="2022-11-07T03:32:11.000Z">
+<meta property="article:modified_time" content="2023-05-07T11:38:25.964Z">
 <meta property="article:author" content="Pa1r0t_9e">
 <meta name="twitter:card" content="summary">
 
@@ -23,7 +23,7 @@
 
 <link href="/css/style.css?v=1.1.0" rel="stylesheet">
 
-<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+<link href="/css/hl_theme/darcula.css?v=1.1.0" rel="stylesheet">
 
 <link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
 
@@ -244,7 +244,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(33)</small>
+                <small>(38)</small>
             
         </div>
     </li>
@@ -256,7 +256,7 @@
         <div data-rel="ctf">
             
             ctf
-            <small>(14)</small>
+            <small>(18)</small>
         </div>
         
     </li>
@@ -271,7 +271,7 @@
         <div data-rel="re">
             
             re
-            <small>(19)</small>
+            <small>(20)</small>
         </div>
         
     </li>
@@ -299,7 +299,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="33">
+<input type="hidden" id="yelog_site_posts_number" value="38">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -351,6 +351,51 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2024/06/24/IDA%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="IDA工具使用">IDA工具使用</span>
+            <span class="post-date" title="2024-06-24 22:30:05">2024/06/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2024/06/24/OD%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="OD工具的使用">OD工具的使用</span>
+            <span class="post-date" title="2024-06-24 22:06:30">2024/06/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2024/06/23/STL%E5%87%BD%E6%95%B0%E8%AF%86%E5%88%AB/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="STL函数识别">STL函数识别</span>
+            <span class="post-date" title="2024-06-23 12:50:23">2024/06/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2024/06/22/SMC%E5%8E%9F%E7%90%86/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SMC原理">SMC原理</span>
+            <span class="post-date" title="2024-06-22 18:31:02">2024/06/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2024/06/21/VMProtect%E5%8E%9F%E7%90%86%E4%B8%8E%E8%BF%98%E5%8E%9F-1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="VMProtect原理与还原(1)">VMProtect原理与还原(1)</span>
+            <span class="post-date" title="2024-06-21 13:24:07">2024/06/21</span>
+        </a>
         
         
         <a  class="全部文章 ctf "
@@ -734,44 +779,100 @@
 <li>调试内存</li>
 </ul>
 <h3 id="常用脚本接口介绍"><a href="#常用脚本接口介绍" class="headerlink" title="常用脚本接口介绍"></a>常用脚本接口介绍</h3><p>寄存器操作（调试）</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">idc.get_reg_value(<span class="string">&#x27;rax’)</span></span><br><span class="line"><span class="string">idaapi.set_reg_val(&quot;rax&quot;, 1234)</span></span><br></pre></td></tr></table></figure>
-
+<pre><code class="py">idc.get_reg_value(&#39;rax’)
+idaapi.set_reg_val(&quot;rax&quot;, 1234)
+</code></pre>
 <p>读取 xmm 寄存器</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">read_xmm_reg</span>(<span class="params">name</span>):</span><br><span class="line">    rv = idaapi.regval_t()</span><br><span class="line">    idaapi.get_reg_val(name,rv)</span><br><span class="line">    <span class="keyword">return</span> (struct.unpack(<span class="string">&quot;Q&quot;</span>,rv.<span class="built_in">bytes</span>())[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
-
+<pre><code class="py">def read_xmm_reg(name):
+    rv = idaapi.regval_t()
+    idaapi.get_reg_val(name,rv)
+    return (struct.unpack(&quot;Q&quot;,rv.bytes())[0])
+</code></pre>
 <p>调试内存操作	dbg 是指debug内存（调试内存）</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">idc.read_dbg_byte(addr)</span><br><span class="line">idc.read_dbg_word(addr)</span><br><span class="line">idc.read_dbg_dword(addr)</span><br><span class="line">idc.read_dbg_qword(addr)</span><br><span class="line">idc.read_dbg_memory(addr,size)</span><br><span class="line">idc.patch_dbg_byte(addr,val)</span><br></pre></td></tr></table></figure>
-
+<pre><code class="python">idc.read_dbg_byte(addr)
+idc.read_dbg_word(addr)
+idc.read_dbg_dword(addr)
+idc.read_dbg_qword(addr)
+idc.read_dbg_memory(addr,size)
+idc.patch_dbg_byte(addr,val)
+</code></pre>
 <p>调试内存读写封装</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">patch_dbg_mem</span>(<span class="params">addr,data</span>):</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(data)):</span><br><span class="line">        idc.patch_dbg_byte(addr+i,data[i])</span><br><span class="line">        </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">read_dbg_mem</span>(<span class="params">addr,size</span>):</span><br><span class="line">    dd = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(size):</span><br><span class="line">        dd.append(idc.read_dbg_byte(addr+i))</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">bytes</span>(dd)</span><br></pre></td></tr></table></figure>
-
+<pre><code class="py">def patch_dbg_mem(addr,data):
+    for i in range(len(data)):
+        idc.patch_dbg_byte(addr+i,data[i])
+        
+def read_dbg_mem(addr,size):
+    dd = []
+    for i in range(size):
+        dd.append(idc.read_dbg_byte(addr+i))
+    return bytes(dd)
+</code></pre>
 <p>本地内存操作（会修改idb数据库）</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">idc.get_qword(addr)</span><br><span class="line">idc.patch_qword(addr,val)</span><br><span class="line">idc.patch_dword(addr,val)</span><br><span class="line">idc.patch_word(addr,val)</span><br><span class="line">idc.patch_byte(addr,val)</span><br><span class="line">idc.get_bytes(addr,size)</span><br></pre></td></tr></table></figure>
-
+<pre><code class="py">idc.get_qword(addr)
+idc.patch_qword(addr,val)
+idc.patch_dword(addr,val)
+idc.patch_word(addr,val)
+idc.patch_byte(addr,val)
+idc.get_bytes(addr,size)
+</code></pre>
 <p>反汇编操作</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">idc.GetDisasm(addr) <span class="comment"># 只能返回一条汇编指令</span></span><br><span class="line">idc.next_head(addr) <span class="comment"># 获取下一条汇编指令的地址</span></span><br></pre></td></tr></table></figure>
-
+<pre><code class="py">idc.GetDisasm(addr) # 只能返回一条汇编指令
+idc.next_head(addr) # 获取下一条汇编指令的地址
+</code></pre>
 <p>交叉引用分析</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ref <span class="keyword">in</span> idautils.XrefsTo(ea):</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">hex</span>(ref.frm))</span><br></pre></td></tr></table></figure>
-
+<pre><code class="py">for ref in idautils.XrefsTo(ea):
+    print(hex(ref.frm))
+</code></pre>
 <p>杂项常用接口</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">idc.add_bpt(addr) <span class="comment"># 添加断点</span></span><br><span class="line">idaapi.get_imagebase() <span class="comment"># 获取基地址</span></span><br><span class="line">idc.create_insn(addr) <span class="comment"># 生成汇编指令，相当于快捷键C 常用于固件分析</span></span><br><span class="line">ida_funcs.add_func(addr) <span class="comment"># 生成函数，相当于快捷键p</span></span><br><span class="line">ida_bytes.create_strlit(addr) <span class="comment"># 生成字符串，相当于快捷键A</span></span><br></pre></td></tr></table></figure>
-
+<pre><code class="py">idc.add_bpt(addr) # 添加断点
+idaapi.get_imagebase() # 获取基地址
+idc.create_insn(addr) # 生成汇编指令，相当于快捷键C 常用于固件分析
+ida_funcs.add_func(addr) # 生成函数，相当于快捷键p
+ida_bytes.create_strlit(addr) # 生成字符串，相当于快捷键A
+</code></pre>
 <p>函数遍历</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> func <span class="keyword">in</span> idautils.Functions():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;0x%x,%s&quot;</span> % (func,idc.get_func_name(func)))</span><br></pre></td></tr></table></figure>
-
+<pre><code class="py">for func in idautils.Functions():
+    print(&quot;0x%x,%s&quot; % (func,idc.get_func_name(func)))
+</code></pre>
 <p>基本块的遍历</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">fn = 目标函数地址</span><br><span class="line">f_blocks = idaapi.FlowChart(idaapi.get_func(fn),flags=idaapi.FC_PREDS)</span><br><span class="line"><span class="keyword">for</span> blocks <span class="keyword">in</span> f_blocks:</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">hex</span>(blocks.start_ea))</span><br><span class="line">    <span class="comment"># 基本块的前驱</span></span><br><span class="line">    <span class="keyword">for</span> pre <span class="keyword">in</span> blocks.preds():</span><br><span class="line">        <span class="built_in">print</span>(<span class="built_in">hex</span>(pre.start_ea))</span><br><span class="line">    <span class="comment"># 基本块的后继</span></span><br><span class="line">    <span class="keyword">for</span> sucess <span class="keyword">in</span> blocks.succs():</span><br><span class="line">        <span class="built_in">print</span>(<span class="built_in">hex</span>(sucess.start_ea))</span><br></pre></td></tr></table></figure>
-
+<pre><code class="py">fn = 目标函数地址
+f_blocks = idaapi.FlowChart(idaapi.get_func(fn),flags=idaapi.FC_PREDS)
+for blocks in f_blocks:
+    print(hex(blocks.start_ea))
+    # 基本块的前驱
+    for pre in blocks.preds():
+        print(hex(pre.start_ea))
+    # 基本块的后继
+    for sucess in blocks.succs():
+        print(hex(sucess.start_ea))
+</code></pre>
 <p>指令遍历</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ins <span class="keyword">in</span> idautils.FuncItems(addr):</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">hex</span>(ins))</span><br></pre></td></tr></table></figure>
-
+<pre><code class="py">for ins in idautils.FuncItems(addr):
+    print(hex(ins))
+</code></pre>
 <h3 id="实战部分"><a href="#实战部分" class="headerlink" title="实战部分"></a>实战部分</h3><p>ollvm批量断点设置：</p>
 <p>实验材料：ollvm-flat</p>
 <p>注意：<strong>判断真实块的依据是查找</strong> <strong>ollvm</strong> <strong>汇集点基本块的交叉引用，不一定准确</strong></p>
 <p>断点脚本：</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> idc</span><br><span class="line"><span class="keyword">import</span> idaapi</span><br><span class="line"><span class="keyword">import</span> struct</span><br><span class="line"><span class="keyword">import</span> idautils</span><br><span class="line"></span><br><span class="line"><span class="comment"># ollvm函数地址</span></span><br><span class="line">fn = <span class="number">0x401F60</span></span><br><span class="line"><span class="comment"># ollvm基本块汇集地址</span></span><br><span class="line">ollvm_tail = <span class="number">0x405D4B</span></span><br><span class="line"><span class="comment"># 拿到函数基本块的迭代器</span></span><br><span class="line">f_blocks = idaapi.FlowChart(idaapi.get_func(fn),flags=idaapi.FC_PREDS)</span><br><span class="line"><span class="comment"># 然后遍历函数基本块</span></span><br><span class="line"><span class="keyword">for</span> block <span class="keyword">in</span> f_blocks:</span><br><span class="line">    <span class="comment"># 拿到每个基本块的后驱</span></span><br><span class="line">    <span class="keyword">for</span> sucess <span class="keyword">in</span> block.succs():</span><br><span class="line">        <span class="keyword">if</span> sucess.start_ea == ollvm_tail:</span><br><span class="line">            <span class="built_in">print</span>(<span class="built_in">hex</span>(block.start_ea))</span><br><span class="line">            idc.add_bpt(block.start_ea)</span><br></pre></td></tr></table></figure>
+<pre><code class="py">import idc
+import idaapi
+import struct
+import idautils
 
+# ollvm函数地址
+fn = 0x401F60
+# ollvm基本块汇集地址
+ollvm_tail = 0x405D4B
+# 拿到函数基本块的迭代器
+f_blocks = idaapi.FlowChart(idaapi.get_func(fn),flags=idaapi.FC_PREDS)
+# 然后遍历函数基本块
+for block in f_blocks:
+    # 拿到每个基本块的后驱
+    for sucess in block.succs():
+        if sucess.start_ea == ollvm_tail:
+            print(hex(block.start_ea))
+            idc.add_bpt(block.start_ea)
+</code></pre>
 <p>复制到ida下面，摁回车两次就行</p>
 <p><img src="/./../images/image-20230119182419401.png" alt="image-20230119182419401"></p>
 <p>成功打上断点，打上断点的基本块都是真实块</p>
@@ -792,8 +893,15 @@
 <p>在断点处右键编辑断点</p>
 <p><img src="/./../images/image-20230119183413079.png" alt="image-20230119183413079"></p>
 <p>脚本：</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> idc</span><br><span class="line"><span class="keyword">import</span> idaapi</span><br><span class="line"><span class="keyword">import</span> struct</span><br><span class="line"><span class="keyword">import</span> idautils</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">bp</span>():</span><br><span class="line">    rax = idc.get_reg_value(<span class="string">&#x27;rax&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> rax == <span class="number">16949</span></span><br></pre></td></tr></table></figure>
+<pre><code class="py">import idc
+import idaapi
+import struct
+import idautils
 
+def bp():
+    rax = idc.get_reg_value(&#39;rax&#39;)
+    return rax == 16949
+</code></pre>
 <p>先在ida中执行脚本</p>
 <p>然后编辑断点，增加condition条件</p>
 <p><img src="/./../images/image-20230119183620480.png" alt="image-20230119183620480"></p>
@@ -802,8 +910,11 @@
 <p><img src="/./../images/image-20230119183829577.png" alt="image-20230119183829577"></p>
 <p>条件断点运用：dump rand 函数每一次执行结果，不让程序停下来</p>
 <p>脚本：条件断点函数返回 False，IDA 不会命中该断点,利用这个特性提取运行时数据</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">bp</span>():</span><br><span class="line">    rax = idc.get_reg_value(<span class="string">&#x27;rax&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(rax,end=<span class="string">&#x27;,&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
-
+<pre><code class="py">def bp():
+    rax = idc.get_reg_value(&#39;rax&#39;)
+    print(rax,end=&#39;,&#39;)
+    return False
+</code></pre>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>

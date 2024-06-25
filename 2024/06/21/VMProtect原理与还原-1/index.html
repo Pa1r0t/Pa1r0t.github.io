@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>VMProtect原理与还原(1) | Pa1r0t</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="VMProtect原理与还原(1) | Pa1r0t">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="介绍大家好，我是Pa1r0t 在下末流二本在读，喜欢吹牛睡觉发呆">
+<meta property="og:type" content="website">
+<meta property="og:title" content="about">
+<meta property="og:url" content="https://pa1r0t.github.io/about/index.html">
+<meta property="og:site_name" content="Pa1r0t">
+<meta property="og:description" content="介绍大家好，我是Pa1r0t 在下末流二本在读，喜欢吹牛睡觉发呆">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-11-07T03:32:11.000Z">
+<meta property="article:modified_time" content="2023-05-07T11:38:25.964Z">
+<meta property="article:author" content="Pa1r0t_9e">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/darcula.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Pa1r0t" type="application/atom+xml">
+</head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>Pa1r0t_9e</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="facebook"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-facebook"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+            <a title="instagram"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-instagram"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="reddit"
+               href="https://www.reddit.com/user/yelog/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-reddit"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="weibo"
+               href="http://weibo.com/u/2307534817"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-weibo"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="jianshu"
+               href="https://www.jianshu.com/u/ff56736de7cf"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-jianshu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="zhihu"
+               href="https://www.zhihu.com/people/jaytp/activities"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-zhihu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="oschina"
+               href="https://my.oschina.net/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-oschina"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:jaytp@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=872336115&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="kugou"
+               href="https://www.kugou.com/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-kugou"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="neteasemusic"
+               href="https://music.163.com/#/user/home?id=88151013"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-neteasemusic"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(38)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="ctf">
+            
+            ctf
+            <small>(18)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="re">
+            
+            re
+            <small>(20)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">关于</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="38">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2024/06/24/IDA%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="IDA工具使用">IDA工具使用</span>
+            <span class="post-date" title="2024-06-24 22:30:05">2024/06/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2024/06/24/OD%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="OD工具的使用">OD工具的使用</span>
+            <span class="post-date" title="2024-06-24 22:06:30">2024/06/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2024/06/23/STL%E5%87%BD%E6%95%B0%E8%AF%86%E5%88%AB/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="STL函数识别">STL函数识别</span>
+            <span class="post-date" title="2024-06-23 12:50:23">2024/06/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2024/06/22/SMC%E5%8E%9F%E7%90%86/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SMC原理">SMC原理</span>
+            <span class="post-date" title="2024-06-22 18:31:02">2024/06/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2024/06/21/VMProtect%E5%8E%9F%E7%90%86%E4%B8%8E%E8%BF%98%E5%8E%9F-1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="VMProtect原理与还原(1)">VMProtect原理与还原(1)</span>
+            <span class="post-date" title="2024-06-21 13:24:07">2024/06/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/05/16/%E6%9C%89%E7%90%86%E6%95%B0%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="有理数四则运算">有理数四则运算</span>
+            <span class="post-date" title="2023-05-16 16:49:16">2023/05/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/05/11/%E5%8F%8C%E6%8C%87%E9%92%88%E4%BC%98%E5%8C%96/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="双指针优化">双指针优化</span>
+            <span class="post-date" title="2023-05-11 15:21:59">2023/05/11</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/05/10/%E5%85%B3%E4%BA%8Ec-%E4%B8%ADdouble%E8%AF%AF%E5%B7%AE%E9%97%AE%E9%A2%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="关于c++中double误差问题">关于c++中double误差问题</span>
+            <span class="post-date" title="2023-05-10 10:46:59">2023/05/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/05/09/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E7%9A%84%E9%94%99%E8%AF%AF/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="奇奇怪怪的错误">奇奇怪怪的错误</span>
+            <span class="post-date" title="2023-05-09 10:30:44">2023/05/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/05/08/pat%E4%B9%99%E7%BA%A7%E7%AC%AC%E4%BA%8C%E5%A4%A9%E8%AE%B0%E5%BD%95/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="pat乙级第二天记录">pat乙级第二天记录</span>
+            <span class="post-date" title="2023-05-08 13:31:53">2023/05/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/05/07/map%E9%A2%98%E8%A7%A3%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%97%AE%E9%A2%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="map题解字符串问题">map题解字符串问题</span>
+            <span class="post-date" title="2023-05-07 19:33:37">2023/05/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/02/15/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91wp/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="西湖论剑wp">西湖论剑wp</span>
+            <span class="post-date" title="2023-02-15 10:06:30">2023/02/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/21/IDA%E7%BB%93%E6%9E%84%E4%BD%93%E5%88%86%E6%9E%90/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="IDA结构体分析">IDA结构体分析</span>
+            <span class="post-date" title="2023-01-21 09:52:17">2023/01/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/20/std%E9%80%86%E5%90%91/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="STL逆向">STL逆向</span>
+            <span class="post-date" title="2023-01-20 20:03:08">2023/01/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/19/Microcode/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Microcode">Microcode</span>
+            <span class="post-date" title="2023-01-19 22:09:48">2023/01/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/19/IDAPython/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="IDAPython">IDAPython</span>
+            <span class="post-date" title="2023-01-19 17:52:02">2023/01/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/01/14/hgame2023/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="hgame2023">hgame2023</span>
+            <span class="post-date" title="2023-01-14 10:09:49">2023/01/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2023/01/13/pwn-practice1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="pwn_practice1">pwn_practice1</span>
+            <span class="post-date" title="2023-01-13 11:50:36">2023/01/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/12/%E7%BC%96%E8%AF%91%E5%81%8F2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="编译2">编译2</span>
+            <span class="post-date" title="2023-01-12 22:07:41">2023/01/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/09/csapp1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="csapp1">csapp1</span>
+            <span class="post-date" title="2023-01-09 14:30:39">2023/01/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/09/%E7%BC%96%E8%AF%91%E7%AF%871/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="编译篇1">编译篇1</span>
+            <span class="post-date" title="2023-01-09 10:16:11">2023/01/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/05/AST%E6%B7%B7%E6%B7%862/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="AST混淆2">AST混淆2</span>
+            <span class="post-date" title="2023-01-05 17:57:25">2023/01/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/03/AST%E6%B7%B7%E6%B7%861/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="AST混淆1">AST混淆1</span>
+            <span class="post-date" title="2023-01-03 19:32:24">2023/01/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/02/ollvm%E5%81%9A%E6%B3%95/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ollvm做法">ollvm做法</span>
+            <span class="post-date" title="2023-01-02 22:06:24">2023/01/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/02/unicorn-x86%E6%9A%B4%E5%8A%9B%E8%B0%83%E7%94%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="x86暴力调用so">x86暴力调用so</span>
+            <span class="post-date" title="2023-01-02 09:03:22">2023/01/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2023/01/01/unicorn-learning5/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="unicorn_learning5">unicorn_learning5</span>
+            <span class="post-date" title="2023-01-01 09:58:42">2023/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2022/12/31/unicorn-learning4/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="unicorn_learning4">unicorn_learning4</span>
+            <span class="post-date" title="2022-12-31 14:12:48">2022/12/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2022/12/31/unicorn-learning3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="unicorn_learning3">unicorn_learning3</span>
+            <span class="post-date" title="2022-12-31 09:12:04">2022/12/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2022/12/30/unicorn-learning2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="unicorn_learning2">unicorn_learning2</span>
+            <span class="post-date" title="2022-12-30 09:40:33">2022/12/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2022/12/29/unicorn1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="unicorn_learning1">unicorn_learning1</span>
+            <span class="post-date" title="2022-12-29 14:32:54">2022/12/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2022/12/22/re-base3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="re_base3">re_base3</span>
+            <span class="post-date" title="2022-12-22 19:33:01">2022/12/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2022/12/21/re-base2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="re_base2">re_base2</span>
+            <span class="post-date" title="2022-12-21 21:56:29">2022/12/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2022/12/20/syc-level7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="syc_level7">syc_level7</span>
+            <span class="post-date" title="2022-12-20 11:30:36">2022/12/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2022/12/19/syc-level5/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="syc_level5">syc_level5</span>
+            <span class="post-date" title="2022-12-19 21:02:09">2022/12/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 re "
+           href="/2022/12/17/re-base1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="re_base1">re_base1</span>
+            <span class="post-date" title="2022-12-17 21:16:25">2022/12/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2022/12/05/%E4%BF%A1%E5%88%9B%E7%BD%91%E5%AE%89wp/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="信创网安wp">信创网安wp</span>
+            <span class="post-date" title="2022-12-05 10:42:19">2022/12/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2022/11/29/buuctf-nov/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="NOV X联合出题人">NOV X联合出题人</span>
+            <span class="post-date" title="2022-11-29 16:52:11">2022/11/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 ctf "
+           href="/2022/11/21/%E5%AE%89%E5%BE%BD%E7%9C%81%E8%B5%9B/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="安徽省赛">安徽省赛</span>
+            <span class="post-date" title="2022-11-21 14:13:57">2022/11/21</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-VMProtect原理与还原-1" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">VMProtect原理与还原(1)</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="re">re</a>
+            
+        </span>
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2024-06-22 18:30:34'>2024-06-21 13:24</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFVMProtect"><span class="toc-text">什么是VMProtect?</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%98%E5%8E%9F%E6%95%88%E6%9E%9C%EF%BC%9A"><span class="toc-text">还原效果：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="toc-text">预备知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#dll%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD"><span class="toc-text">dll的主要功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#kernel32-dll"><span class="toc-text">kernel32.dll</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#user32-dll"><span class="toc-text">user32.dll</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gdi32-dll"><span class="toc-text">gdi32.dll</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#comdlg32-dll"><span class="toc-text">comdlg32.dll</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#advapi32-dll"><span class="toc-text">advapi32.dll</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#shell32-dll"><span class="toc-text">shell32.dll</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ole32-dll"><span class="toc-text">ole32.dll</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#odbc32-dll"><span class="toc-text">odbc32.dll</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PE%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F"><span class="toc-text">PE文件格式</span></a></li></ol></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>​	工具、脱壳</p>
+<span id="more"></span>
+
+<h1 id="什么是VMProtect"><a href="#什么是VMProtect" class="headerlink" title="什么是VMProtect?"></a>什么是VMProtect?</h1><p>​	Virtual Machine Protect. 虚拟机保护</p>
+<p>​	VMProtect的基本原则是通过使应用程序代码和逻辑变得非常复杂,<strong>执行虚拟化代码片段的虚拟机是嵌入到受保护应用程序的结果代码中的</strong>。</p>
+<p>​	虚拟化代码，无需解码，不同于对代码进行加密&#x2F;解密，VMProtect让其在虚拟CPU上运行。而这个异于常规X36&#x2F;X64CPU的虚拟CPU，会对每个受保护的文件发出不同的指令集。</p>
+<p>​	VMP有自己的虚拟CPU和虚拟指令集，那么对原生指令进行保护时，将原生指令转换为虚拟指令。</p>
+<h2 id="还原效果："><a href="#还原效果：" class="headerlink" title="还原效果："></a>还原效果：</h2><p>原汇编代码：</p>
+<pre><code class="assembly">lea eax,dword ptr ds:[edx+0x6]
+add eax,ecx
+retn
+</code></pre>
+<p>还原后代码：</p>
+<pre><code class="assembly">lea dreg[3c], [ dreg[14] + 00000006 ]
+lea dreg[00], [ dreg[08] + dreg[3c] ]  
+retn
+</code></pre>
+<p><strong>我们看到寄存器还是虚拟寄存器，最后需要我们进行寄存器的转换分析，转换为真实寄存器，第二条</strong>lea<strong>指令经过寄存器变换，也将还原成add指令</strong></p>
+<hr>
+<h1 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h1><h2 id="dll的主要功能"><a href="#dll的主要功能" class="headerlink" title="dll的主要功能"></a>dll的主要功能</h2><h2 id="kernel32-dll"><a href="#kernel32-dll" class="headerlink" title="kernel32.dll"></a><strong>kernel32.dll</strong></h2><p>kernel32.dll是Windows 9x&#x2F;Me中非常重要的32位动态链接库文件，属于内核级文件。它控制着<strong>系统的内存管理、数据的输入输出操作和中断处理</strong>，当Windows启动时，kernel32.dll就驻留在内存中特定的写保护区域，使别的程序无法占用这个内存区域。</p>
+<h3 id="user32-dll"><a href="#user32-dll" class="headerlink" title="user32.dll"></a><strong>user32.dll</strong></h3><p>user32.dll是Windows用户界面相关应用程序接口，用于包括<strong>Windows处理，基本用户界面</strong>等特性，如<strong>创建窗口和发送消息</strong>。</p>
+<p>在早期32-bit 版本的Windows中，用户控件是在ComCtl32中实现的，但是一些控件的显示功能是在User32.dll中实现的。例如在一个窗口中非客户区域（边框和菜单）的绘制就是由User32.dll来完成的。User32.dll 是操作系统的一个核心控件，它和操作系统是紧密联系在一起的。也就是说，不同版本的Windows中User32.dll 是不同。因此，应用程序在不同版本的Windows中运行的时候，由于User32.dll的不同，会导致应用程序的界面通常会有微小的不同。</p>
+<h3 id="gdi32-dll"><a href="#gdi32-dll" class="headerlink" title="gdi32.dll"></a><strong>gdi32.dll</strong></h3><p>gdi32.dll是Windows GDI<strong>图形用户界面相关程序，包含的函数用来绘制图像和显示文字</strong></p>
+<h3 id="comdlg32-dll"><a href="#comdlg32-dll" class="headerlink" title="comdlg32.dll"></a><strong>comdlg32.dll</strong></h3><p>comdlg32.dll是Windows应用程序<strong>公用对话框模块</strong>，用于例如打开文件对话框。</p>
+<h3 id="advapi32-dll"><a href="#advapi32-dll" class="headerlink" title="advapi32.dll"></a><strong>advapi32.dll</strong></h3><p>advapi32.dll是一个高级API应用程序接口服务库的一部分，包含的函数与对象的安全性，注册表的操控以及事件日志有关。</p>
+<h3 id="shell32-dll"><a href="#shell32-dll" class="headerlink" title="shell32.dll"></a><strong>shell32.dll</strong></h3><p>shell32.dll是Windows的32位<strong>外壳动态链接库文件</strong>，用于打开网页和文件，建立文件时的默认文件名的设置等大量功能。</p>
+<p>严格来讲，它只是代码的合集，真正执行这些功能的是操作系统的相关程序，dll文件只是根据设置调用这些程序的相关功能罢了。</p>
+<h3 id="ole32-dll"><a href="#ole32-dll" class="headerlink" title="ole32.dll"></a><strong>ole32.dll</strong></h3><p>ole32.dll是对象链接和嵌入相关模块。</p>
+<h3 id="odbc32-dll"><a href="#odbc32-dll" class="headerlink" title="odbc32.dll"></a><strong>odbc32.dll</strong></h3><p>odbc32.dll是ODBC数据库查询相关文件。 </p>
+<h3 id="PE文件格式"><a href="#PE文件格式" class="headerlink" title="PE文件格式"></a>PE文件格式</h3><p>PE结构可以大致分为:</p>
+<ul>
+<li><p>DOS部分	u_IMAGE_DOS_HEADER</p>
+<pre><code class="assembly">typedef struct _IMAGE_DOS_HEADER 
+&#123;      
+    WORD   e_magic;                      
+    WORD   e_cblp;                         
+    WORD   e_cp;                            
+    WORD   e_crlc;                          
+    WORD   e_cparhdr;                   
+    WORD   e_minalloc;                  
+    WORD   e_maxalloc;                 
+    WORD   e_ss;                            
+    WORD   e_sp;                            
+    WORD   e_csum;                       
+    WORD   e_ip;                            
+    WORD   e_cs;        
+        WORD   e_lfarlc;                        
+    WORD   e_ovno;                       
+    WORD   e_res[4];                      
+    WORD   e_oemid;                     
+    WORD   e_oeminfo;                  
+    WORD   e_res2[10];                  
+    LONG    e_lfanew;                      
+&#125; IMAGE_DOS_HEADER, *PIMAGE_DOS_HEADER;
+</code></pre>
+<p>该结构体中需要掌握的字段只有 2 个，分别是第一个字段 <code>e_magic</code> 和最后一个字段 <code>e_lfanew</code> 字段</p>
+<p><code>e_magic</code>字段:<br>DOS 可执行文件的标识符，占用 2 字节。该位置保存着的字符是“MZ”</p>
+<p><code>e_lfanew</code>字段：<br>保存着PE头的起始位置。</p>
+<p>作用：</p>
+<ul>
+<li><code>定位PE文件头开始位置</code>，也可用于<code>PE文件合法性检测</code></li>
+</ul>
+</li>
+</ul>
+<p>​	u_IMAGE_NT_HEADERS NT头（PE头）</p>
+<p>DOS头偏移多少是PE头位置</p>
+<pre><code class="assembly">typedef struct _IMAGE_NT_HEADERS 
+&#123;  
+    DWORD Signature;  //PE标识
+    IMAGE_FILE_HEADER FileHeader;  	
+    IMAGE_OPTIONAL_HEADER OptionalHeader;
+
+&#125; IMAGE_NT_HEADERS, *PIMAGE_NT_HEADERS;
+</code></pre>
+<ul>
+<li>PE文件头   u_IMAGE_FILE_HEADER</li>
+</ul>
+<pre><code class="assembly">typedef struct _IMAGE_FILE_HEADER 
+&#123;  
+    WORD Machine;  
+    WORD NumberOfSections;  //主要关心区段数目
+    DWORD TimeDateStamp;  
+    DWORD PointerToSymbolTable;  
+    DWORD NumberOfSymbols;  
+    WORD SizeOfOptionalHeader;  
+    WORD Characteristics;
+&#125; IMAGE_FILE_HEADER, *PIMAGE_FILE_HEADER;
+</code></pre>
+<p><strong>_IMAGE_OPTIONAL_HEADER</strong></p>
+<pre><code class="assembly">typedef struct _IMAGE_OPTIONAL_HEADER 
+&#123;  
+    WORD Magic;  
+    BYTE MajorLinkerVersion;  
+    BYTE MinorLinkerVersion;  
+    DWORD SizeOfCode;  
+    DWORD SizeOfInitializedData;  
+    DWORD SizeOfUninitializedData;  
+    DWORD AddressOfEntryPoint;  //入口点
+    DWORD BaseOfCode;  
+    DWORD BaseOfData;  
+    DWORD ImageBase;  //映像基地址/模块地址
+    DWORD SectionAlignment;  //区段对齐
+    DWORD FileAlignment;  	//文件对齐
+    WORD  MajorOperatingSystemVersion;  
+    WORD  MinorOperatingSystemVersion;  
+    WORD  MajorImageVersion;  
+    WORD  MinorImageVersion;  
+    WORD  MajorSubsystemVersion;  
+    WORD  MinorSubsystemVersion;  
+    DWORD    Win32VersionValue;  
+    DWORD    SizeOfImage;  //映像大小
+    DWORD    SizeOfHeaders;  
+    DWORD    CheckSum;  
+    WORD     Subsystem;  
+    WORD     DllCharacteristics;  //dll属性
+    DWORD    SizeOfStackReserve;  
+    DWORD    SizeOfStackCommit;  
+    DWORD SizeOfHeapReserve;  
+    DWORD SizeOfHeapCommit;  
+    DWORD LoaderFlags;  
+    DWORD NumberOfRvaAndSizes;
+    IMAGE_DATA_DIRECTORY DataDirectory[IMAGE_NUMBEROF_DIRECTORY_ENTRIES];//数据目录包含在选项头里
+&#125; IMAGE_OPTIONAL_HEADER, *PIMAGE_OPTIONAL_HEADER;
+</code></pre>
+<ul>
+<li>节数据(块数据) u_IMAGE_DATA_DIRECTORY</li>
+</ul>
+<pre><code class="c">typedef struct _IMAGE_DATA_DIRECTORY 
+&#123;
+    DWORD   VirtualAddress;
+    DWORD   Size;
+&#125; IMAGE_DATA_DIRECTORY, *PIMAGE_DATA_DIRECTORY;
+
+#define IMAGE_NUMBEROF_DIRECTORY_ENTRIES    16	//16个数据目录
+</code></pre>
+<ul>
+<li>区域段结构 u_IMAGE_SECTION_HEADER</li>
+</ul>
+<pre><code class="c">typedef struct _IMAGE_SECTION_HEADER 
+&#123;
+    BYTE    Name[IMAGE_SIZEOF_SHORT_NAME];//区段名称
+    union &#123;
+            DWORD   PhysicalAddress;
+            DWORD   VirtualSize;//程序加载后区段大小
+    &#125; Misc;
+    DWORD   VirtualAddress;//程序加载后区段地址
+    DWORD   SizeOfRawData;//文件中数据大小
+    DWORD   PointerToRawData;//文件中数据偏移
+    DWORD   PointerToRelocations;
+    DWORD   PointerToLinenumbers;
+    WORD    NumberOfRelocations;
+    WORD    NumberOfLinenumbers;
+    DWORD   Characteristics;//区段属性
+&#125; IMAGE_SECTION_HEADER, *PIMAGE_SECTION_HEADER;
+
+#define IMAGE_SIZEOF_SECTION_HEADER          40
+</code></pre>
+<ul>
+<li>调试信息</li>
+</ul>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2020 Yelog
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
