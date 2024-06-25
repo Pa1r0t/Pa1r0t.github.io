@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>unicorn_learning4 | Pa1r0t</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="unicorn_learning4 | Pa1r0t">
+  <title>机器学习_李宏毅(1) | Pa1r0t</title>
+  <meta name="keywords" content=" AI学习 ">
+  <meta name="description" content="机器学习_李宏毅(1) | Pa1r0t">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="welcome to my bolg">
 <meta property="og:type" content="website">
@@ -740,9 +740,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-unicorn-learning4" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-机器学习-李宏毅-1" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">unicorn_learning4</h1>
+        <h1 class="article-title">机器学习_李宏毅(1)</h1>
     
     <div class="article-meta">
         
@@ -752,15 +752,22 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="re">re</a>
+            <a  data-rel="AI">AI</a>
             
         </span>
         
         
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color5">AI学习</a>
+            
+        </span>
+        
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-12-31 16:10:21'>2022-12-31 14:12</time>
+            发布时间 : <time class="date" title='最后更新: 2024-06-25 20:56:44'>2024-06-25 20:55</time>
         
     </div>
     <div class="article-meta">
@@ -782,7 +789,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87"><span class="toc-text">目标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E5%86%8Cjava%E7%B1%BB%E5%92%8C%E6%96%B9%E6%B3%95"><span class="toc-text">注册java类和方法</span></a></li></ol>
+        
     
 <style>
     .left-col .switch-btn,
@@ -798,139 +805,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>unicorn_starting</p>
-<p>模拟Jni与Java交互</p>
+        <p> 李宏毅的课超棒</p>
 <span id="more"></span>
 
-<h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>hook这个函数，其中存在调用java类和java函数</p>
-<p><img src="/./../images/image-20221231150501748.png" alt="image-20221231150501748"></p>
-<p>尝试将上一次的代码进行修改后直接执行，观察结果</p>
-<p><img src="/./../images/image-20221231153507375.png" alt="image-20221231153507375"></p>
-<h3 id="注册java类和方法"><a href="#注册java类和方法" class="headerlink" title="注册java类和方法"></a>注册java类和方法</h3><p>结果发现不能找到java这个类，下面已经给出申明，直接复制即可</p>
-<pre><code class="py">class com_sec_udemo_MainActivity(metaclass=JavaClassDef, jvm_name=&quot;com/sec/udemo/MainActivity&quot;):
-    def __init__(self):
-        pass
-# 添加自定义java类
-emulator.java_classloader.add_class(com_sec_udemo_MainActivity)
-</code></pre>
-<p>执行后发现又要声明相关方法:</p>
-<p><img src="/./../images/image-20221231154406776.png" alt="image-20221231154406776"></p>
-<p>声明方法：</p>
-<pre><code class="py">@java_method_def(name=&#39;getSaltFromJava&#39;,signature=&#39;(Ljava/lang/String;)Ljava/lang/String;&#39;,
-                     args_list=[&#39;jstring&#39;],native=False) # 这里native=False申明此方法非native方法
-def getSaltFromJava(self,mu,data):
-        pass
-</code></pre>
-<p>这个函数在java中的功能如下：</p>
-<p><img src="/./../images/image-20221231142325743.png" alt="image-20221231142325743"></p>
-<p>这里我们作出拼接返回即可</p>
-<p>执行后再次报错</p>
-<p><img src="/./../images/image-20221231155418523.png" alt="image-20221231155418523"></p>
-<p>这里我们缺少jobject对象，这里我们手动创建一下，然后传入进去</p>
-<pre><code class="py">obj = com_sec_udemo_MainActivity()
-sign = emulator.call_symbol(libnat_mod,&#39;Java_com_sec_udemo_MainActivity_sign_1lv3&#39;,
-        emulator.java_vm.jni_env.address_ptr,obj,&#39;123&#39;)
-print(sign)
-</code></pre>
-<p>然后这里又有相加时出现错误</p>
-<p><img src="/./../images/image-20221231160243373.png" alt="image-20221231160243373"></p>
-<p>这里我们调试一下，data的内容：</p>
-<p><img src="/./../images/image-20221231160423365.png" alt="image-20221231160423365"></p>
-<p>一看是java string类型，类型展开发现value中value就是python的str类型</p>
-<p><img src="/./../images/image-20221231160549317.png" alt="image-20221231160549317"></p>
-<p>修改后成功出结果：</p>
-<p><img src="/./../images/image-20221231160712892.png" alt="image-20221231160712892"></p>
-<p>完整代码：</p>
-<pre><code class="py">from unicorn import *
-import logging
-import sys
-from androidemu.java.helpers.native_method import native_method
-from UnicornTraceDebugger import udbg
-from androidemu.emulator import Emulator
-from androidemu.utils import memory_helpers
-from androidemu.java.java_classloader import JavaClassDef
-from androidemu.java.java_method_def import java_method_def
-
-# 配置logging
-logging.basicConfig(
-    stream=sys.stdout,
-    level=logging.DEBUG,
-    format=&quot;%(asctime)s %(levelname)7s %(name)34s | %(message)s&quot;
-                    )
-# 用于打印调试信息
-logger = logging.getLogger(__name__)
-
-class com_sec_udemo_MainActivity(metaclass=JavaClassDef, jvm_name=&quot;com/sec/udemo/MainActivity&quot;):
-    def __init__(self):
-        pass
-    @java_method_def(name=&#39;getSaltFromJava&#39;,signature=&#39;(Ljava/lang/String;)Ljava/lang/String;&#39;,
-                     args_list=[&#39;jstring&#39;],native=False)
-    def getSaltFromJava(self,mu,data):
-        print(&#39;hello&#39;)
-        return data.value.value + &#39;salt..&#39;
-
-# 根据执行失败的库函数，进行hook，直接本地写函数实现相关库函数功能,首先导入修饰器
-@native_method
-def __aeabi_memclr(mu,addr,size):
-    mu.mem_write(addr,bytes(size))
-    print(&#39;__aeabi_memclr_ptr (addr:%x,size:%d)&#39; % (addr,size))
-
-@native_method
-def __aeabi_memcpy(mu,dist,source,size):
-    data = mu.mem_read(source,size)
-    mu.mem_write(dist,bytes(data))
-    print(&#39;__aeabi_memcpy (dist:%x,source:%x)&#39; % (dist,source))
-
-@native_method
-def sprintf(mu,buffer,format,arg1,arg2):
-    format1 = memory_helpers.read_utf8(mu,format)
-    data1 = memory_helpers.read_utf8(mu,arg1)
-    res = format1 % (data1,arg2)
-    mu.mem_write(buffer,bytes((res+&#39;\x00&#39;).encode(&#39;utf-8&#39;)))
-    print(&#39;sprintf (%s)&#39; % (format))
-
-# 创建模拟器
-emulator = Emulator()
-
-# 添加hook 此处必须在导入so文件之前就hook，因为此hook的本质就是hook got表的内容
-# 在导入so文件之前hook才生效，导入之后没法hook
-emulator.modules.add_symbol_hook(&#39;__aeabi_memclr&#39;, emulator.hooker.write_function(__aeabi_memclr) + 1)
-emulator.modules.add_symbol_hook(&#39;__aeabi_memcpy&#39;, emulator.hooker.write_function(__aeabi_memcpy) + 1)
-emulator.modules.add_symbol_hook(&#39;sprintf&#39;, emulator.hooker.write_function(sprintf) + 1)
-
-# 添加自定义java类
-emulator.java_classloader.add_class(com_sec_udemo_MainActivity)
-
-# 加载相关so文件
-# do_init 参数为false，即不执行初始化函数，因为unicorn不能实现相关初始化操作，
-# 这可能会涉及更多库的调用
-emulator.load_library(&#39;./lib/libc.so&#39;,do_init=False)
-libnat_mod = emulator.load_library(&#39;./lib/libnative-lib.so&#39;,do_init=False)
-
-# 执行报错时打印调试信息，跟踪报错与定位发生报错的相关地址
-dbg = udbg.UnicornDebugger(emulator.mu,udbg.UDBG_MODE_ALL)
-
-
-# 开始执行想要执行的jni函数
-try:
-    # 根据so模块调用指定的函数，后面都是函数的参数
-    # 参数1: JNIEnv
-    # 参数2: 是java类的对象，这里填0即可
-    # 参数3: 是函数输入字符串
-    obj = com_sec_udemo_MainActivity()
-    sign = emulator.call_symbol(libnat_mod,&#39;Java_com_sec_udemo_MainActivity_sign_1lv3&#39;,
-                         emulator.java_vm.jni_env.address_ptr,obj,&#39;123&#39;)
-    print(sign)
-except UcError as e:
-    # 打印调用栈
-    tracks = dbg.get_tracks()
-    # 这里打印调用地址即可，打印后100条
-    for addr in tracks[-100:-1]:
-        print(hex(addr - 0xcbc66000))
-    print(e)
-
-
-</code></pre>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
