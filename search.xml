@@ -252,8 +252,11 @@ int main(void)
 <h3 id="查看应用新sig文件后的main函数"><a href="#查看应用新sig文件后的main函数" class="headerlink" title="查看应用新sig文件后的main函数"></a>查看应用新sig文件后的main函数</h3><p>如下图，scanf和puts相关函数都识别出来了。<img src="/./../images/image-20240625163056902.png" alt="image-20240625163056902" style="zoom:67%;"></p>
 ]]></content>
       <categories>
-        <category>ctf</category>
+        <category>ctf&gt;工具使用</category>
       </categories>
+      <tags>
+        <tag>IDA</tag>
+      </tags>
   </entry>
   <entry>
     <title>机器学习_李宏毅(1)</title>
@@ -263,7 +266,7 @@ int main(void)
 
 ]]></content>
       <categories>
-        <category>AI</category>
+        <category>AI&gt;机器学习</category>
       </categories>
       <tags>
         <tag>AI学习</tag>
@@ -280,8 +283,11 @@ int main(void)
 <p>​	在传统的软件开发模型中，程序员使用编辑器、汇编器和链接器中的一个或几个创建可执行程序。为了回溯编程过程（或者叫对程序进行逆向工程），我们使用各种工具来撤销汇编和编译过程。这些工具就叫做反汇编工具和反汇编器。反汇编器撤销汇编过程，我们可以得到汇编语言形式的输出结果（以机械语言作为输入）。反编译器则以汇编语言甚至是机械语言为输入，输出结果是高级语言。</p>
 ]]></content>
       <categories>
-        <category>ctf</category>
+        <category>ctf&gt;工具使用</category>
       </categories>
+      <tags>
+        <tag>OD</tag>
+      </tags>
   </entry>
   <entry>
     <title>STL函数识别</title>
@@ -394,7 +400,7 @@ for elem in elements:
 </code></pre>
 ]]></content>
       <categories>
-        <category>ctf</category>
+        <category>ctf&gt;Windows逆向</category>
       </categories>
   </entry>
   <entry>
@@ -407,7 +413,7 @@ for elem in elements:
 
 ]]></content>
       <categories>
-        <category>ctf</category>
+        <category>ctf&gt;Windows逆向</category>
       </categories>
   </entry>
   <entry>
@@ -575,8 +581,11 @@ retn
 </ul>
 ]]></content>
       <categories>
-        <category>re</category>
+        <category>re&gt;前置知识学习</category>
       </categories>
+      <tags>
+        <tag>VMProtect</tag>
+      </tags>
   </entry>
   <entry>
     <title>有理数四则运算</title>
@@ -664,7 +673,7 @@ int main(void)&#123;
 <p>然后这题我原本的想法是把四则运算全部合到一起，但是太混乱了。柳神这样把分数表示单独弄成一个函数，把运算全部改成简单数学运算，所有的细节都合成一个函数中，太妙了！！好绝👍</p>
 ]]></content>
       <categories>
-        <category>ctf</category>
+        <category>PAT练习</category>
       </categories>
   </entry>
   <entry>
@@ -771,7 +780,7 @@ int main(void)&#123;
 </code></pre>
 ]]></content>
       <categories>
-        <category>ctf</category>
+        <category>PAT练习</category>
       </categories>
   </entry>
   <entry>
@@ -860,7 +869,7 @@ int main(void)&#123;
 </code></pre>
 ]]></content>
       <categories>
-        <category>ctf</category>
+        <category>PAT练习</category>
       </categories>
   </entry>
   <entry>
@@ -1024,7 +1033,7 @@ int main(void)&#123;
 </code></pre>
 ]]></content>
       <categories>
-        <category>ctf</category>
+        <category>PAT练习</category>
       </categories>
   </entry>
   <entry>
@@ -1168,7 +1177,7 @@ int main(void)&#123;
 </code></pre>
 ]]></content>
       <categories>
-        <category>ctf</category>
+        <category>PAT练习</category>
       </categories>
   </entry>
   <entry>
@@ -1249,7 +1258,7 @@ int main(void)&#123;
 <p>参考链接：<a href="https://www.liuchuo.net/archives/460">1003. 我要通过！(20)-PAT乙级真题 – 柳婼 の blog (liuchuo.net)</a></p>
 ]]></content>
       <categories>
-        <category>ctf</category>
+        <category>PAT练习</category>
       </categories>
   </entry>
   <entry>
@@ -1329,7 +1338,7 @@ int main ()
 <p>VT实现：<a href="https://www.cnblogs.com/wingsummer/p/15971289.html">VT 入门番外篇——最小 VT 实现 - 寂静的羽夏 - 博客园 (cnblogs.com)</a></p>
 ]]></content>
       <categories>
-        <category>ctf</category>
+        <category>ctf&gt;赛题复现wp</category>
       </categories>
   </entry>
   <entry>
@@ -1479,12 +1488,15 @@ private:
 <p><img src="/./../images/image-20230122214835711.png" alt="image-20230122214835711"></p>
 ]]></content>
       <categories>
-        <category>re</category>
+        <category>re&gt;工具使用</category>
       </categories>
+      <tags>
+        <tag>IDA</tag>
+      </tags>
   </entry>
   <entry>
     <title>STL逆向</title>
-    <url>/2023/01/20/std%E9%80%86%E5%90%91/</url>
+    <url>/2023/01/20/STL%E9%80%86%E5%90%91/</url>
     <content><![CDATA[<p>c++ STL</p>
 <span id="more"></span>
 
@@ -1713,7 +1725,7 @@ def parse_gnu_map_travel(address):
 <hr>
 <h1 id="实战部分"><a href="#实战部分" class="headerlink" title="实战部分"></a>实战部分</h1>]]></content>
       <categories>
-        <category>re</category>
+        <category>re&gt;Windows逆向</category>
       </categories>
   </entry>
   <entry>
@@ -1809,7 +1821,7 @@ print_microcode(0x1229)
 <p><img src="/./../images/image-20230119222437041.png" alt="image-20230119222437041"></p>
 ]]></content>
       <categories>
-        <category>re</category>
+        <category>re&gt;前置知识学习</category>
       </categories>
   </entry>
   <entry>
@@ -1962,8 +1974,11 @@ def bp():
 </code></pre>
 ]]></content>
       <categories>
-        <category>re</category>
+        <category>re&gt;技巧与典型场景</category>
       </categories>
+      <tags>
+        <tag>IDA</tag>
+      </tags>
   </entry>
   <entry>
     <title>hgame2023</title>
@@ -2512,7 +2527,7 @@ io.interactive()
 <hr>
 <h1 id="Week3"><a href="#Week3" class="headerlink" title="Week3"></a>Week3</h1><h2 id="re-1"><a href="#re-1" class="headerlink" title="re"></a>re</h2>]]></content>
       <categories>
-        <category>ctf</category>
+        <category>ctf&gt;赛题复现wp</category>
       </categories>
   </entry>
   <entry>
@@ -2606,12 +2621,12 @@ io.interactive()
 <h3 id="结果："><a href="#结果：" class="headerlink" title="结果："></a>结果：</h3><p><img src="/./../images/image-20230113203306010.png" alt="image-20230113203306010"></p>
 ]]></content>
       <categories>
-        <category>ctf</category>
+        <category>ctf&gt;赛题复现wp</category>
       </categories>
   </entry>
   <entry>
     <title>编译2</title>
-    <url>/2023/01/12/%E7%BC%96%E8%AF%91%E5%81%8F2/</url>
+    <url>/2023/01/12/%E7%BC%96%E8%AF%91%E7%AF%872/</url>
     <content><![CDATA[<p>高级语言描述</p>
 <span id="more"></span>
 
@@ -2689,7 +2704,7 @@ io.interactive()
 <p><img src="/./../images/image-20230114204912084.png" alt="image-20230114204912084"></p>
 ]]></content>
       <categories>
-        <category>re</category>
+        <category>re&gt;前置知识</category>
       </categories>
   </entry>
   <entry>
@@ -2787,7 +2802,7 @@ io.interactive()
 <p>不过C99的标准不一样，看上面的表就知道</p>
 ]]></content>
       <categories>
-        <category>re</category>
+        <category>re&gt;前置知识</category>
       </categories>
   </entry>
   <entry>
@@ -2997,7 +3012,7 @@ io.interactive()
 </ul>
 ]]></content>
       <categories>
-        <category>re</category>
+        <category>re&gt;前置知识</category>
       </categories>
   </entry>
   <entry>
@@ -3016,7 +3031,7 @@ io.interactive()
 </div>
 <script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
       <categories>
-        <category>re</category>
+        <category>re&gt;js逆向</category>
       </categories>
   </entry>
   <entry>
@@ -3035,7 +3050,7 @@ io.interactive()
 </div>
 <script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
       <categories>
-        <category>re</category>
+        <category>re&gt;</category>
       </categories>
   </entry>
   <entry>
@@ -3051,7 +3066,7 @@ io.interactive()
 <p>然后执行该python文件</p>
 ]]></content>
       <categories>
-        <category>re</category>
+        <category>ctf&gt;常见混淆技术</category>
       </categories>
   </entry>
   <entry>
@@ -3070,8 +3085,11 @@ io.interactive()
 </div>
 <script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
       <categories>
-        <category>re</category>
+        <category>re&gt;前置知识学习</category>
       </categories>
+      <tags>
+        <tag>unicorn</tag>
+      </tags>
   </entry>
   <entry>
     <title>unicorn_learning5</title>
@@ -3089,8 +3107,11 @@ io.interactive()
 </div>
 <script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
       <categories>
-        <category>re</category>
+        <category>re&gt;前置知识学习</category>
       </categories>
+      <tags>
+        <tag>unicorn</tag>
+      </tags>
   </entry>
   <entry>
     <title>unicorn_learning4</title>
@@ -3230,8 +3251,11 @@ except UcError as e:
 </code></pre>
 ]]></content>
       <categories>
-        <category>re</category>
+        <category>re&gt;前置知识学习</category>
       </categories>
+      <tags>
+        <tag>unicorn</tag>
+      </tags>
   </entry>
   <entry>
     <title>unicorn_learning3</title>
@@ -3431,8 +3455,11 @@ except UcError as e:
 </code></pre>
 ]]></content>
       <categories>
-        <category>re</category>
+        <category>re&gt;前置知识学习</category>
       </categories>
+      <tags>
+        <tag>unicorn</tag>
+      </tags>
   </entry>
   <entry>
     <title>unicorn_learning2</title>
@@ -3596,8 +3623,11 @@ except UcError as e:
 </code></pre>
 ]]></content>
       <categories>
-        <category>re</category>
+        <category>re&gt;前置知识学习</category>
       </categories>
+      <tags>
+        <tag>unicorn</tag>
+      </tags>
   </entry>
   <entry>
     <title>unicorn_learning1</title>
@@ -3752,8 +3782,11 @@ def test_arm():
 </blockquote>
 ]]></content>
       <categories>
-        <category>re</category>
+        <category>re&gt;前置知识学习</category>
       </categories>
+      <tags>
+        <tag>unicorn</tag>
+      </tags>
   </entry>
   <entry>
     <title>re_base3</title>
@@ -3835,7 +3868,7 @@ def test_arm():
 <hr>
 <h1 id="IAT-hook"><a href="#IAT-hook" class="headerlink" title="IAT hook"></a>IAT hook</h1>]]></content>
       <categories>
-        <category>re</category>
+        <category>re&gt;前置知识学习</category>
       </categories>
   </entry>
   <entry>
@@ -4055,7 +4088,7 @@ extern &quot;C&quot; &#123;
 <p>附加后在键盘输入字母，od会立马断住。</p>
 ]]></content>
       <categories>
-        <category>re</category>
+        <category>re&gt;前置知识学习</category>
       </categories>
   </entry>
   <entry>
@@ -4124,7 +4157,7 @@ long_to_bytes(flag)
 </code></pre>
 ]]></content>
       <categories>
-        <category>ctf</category>
+        <category>ctf&gt;赛题复现wp</category>
       </categories>
   </entry>
   <entry>
@@ -4189,7 +4222,7 @@ bytearray(a1)
 </code></pre>
 <h2 id><a href="#" class="headerlink" title></a></h2>]]></content>
       <categories>
-        <category>ctf</category>
+        <category>ctf&gt;赛题复现wp</category>
       </categories>
   </entry>
   <entry>
@@ -4227,8 +4260,11 @@ bytearray(a1)
 <p><img src="/./../images/image-20221217213618822.png" alt="image-20221217213618822"></p>
 ]]></content>
       <categories>
-        <category>re</category>
+        <category>re&gt;工具使用</category>
       </categories>
+      <tags>
+        <tag>OD</tag>
+      </tags>
   </entry>
   <entry>
     <title>信创网安wp</title>
@@ -4333,7 +4369,7 @@ long_to_bytes(m)
 </code></pre>
 ]]></content>
       <categories>
-        <category>ctf</category>
+        <category>ctf&gt;赛题复现wp</category>
       </categories>
   </entry>
   <entry>
@@ -5045,7 +5081,7 @@ index = [&#39;2&#39;, &#39;3&#39;, &#39;5&#39;, &#39;7&#39;, &#39;b&#39;, &#39;d
 <hr>
 ]]></content>
       <categories>
-        <category>ctf</category>
+        <category>ctf&gt;赛题复现wp</category>
       </categories>
   </entry>
   <entry>
@@ -5152,7 +5188,7 @@ if __name__ == &quot;__main__&quot;:
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这里个人的算法功底还有待提升，算法还是要多练，不然明明会做，但是现场做不出来，太难受了！！！</p>
 ]]></content>
       <categories>
-        <category>ctf</category>
+        <category>ctf&gt;赛题复现wp</category>
       </categories>
   </entry>
 </search>
